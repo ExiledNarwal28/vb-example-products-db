@@ -1,0 +1,1912 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="COOPInventaireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tb_Categorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nchar" MaxLength="40" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Commande">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UtilisateurID" Type="int" />
+          <Property Name="FournisseurID" Type="int" />
+          <Property Name="CommandeItemID" Type="int" />
+          <Property Name="No" Type="int" />
+          <Property Name="PO" Type="nchar" MaxLength="20" />
+          <Property Name="Date" Type="date" />
+          <Property Name="NomExpediteur" Type="nchar" MaxLength="30" />
+          <Property Name="NoTracking" Type="nchar" MaxLength="30" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_CommandeItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProduitID" Type="int" />
+          <Property Name="Qt" Type="int" />
+          <Property Name="DateReception" Type="date" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Departement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nchar" MaxLength="5" />
+          <Property Name="Nom" Type="nchar" MaxLength="20" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Emplacement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="100" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Facture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembreID" Type="int" />
+          <Property Name="UtilisateurID" Type="int" />
+          <Property Name="FactureItemID" Type="int" />
+          <Property Name="No" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ModePaiement" Type="varchar" MaxLength="30" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_FactureItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProduitID" Type="int" />
+          <Property Name="Qt" Type="int" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Fournisseur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nchar" MaxLength="10" />
+          <Property Name="Nom" Type="nchar" MaxLength="30" />
+          <Property Name="Addresse" Type="nchar" MaxLength="100" />
+          <Property Name="Tel1" Type="nchar" MaxLength="20" />
+          <Property Name="Tel2" Type="nchar" MaxLength="20" />
+          <Property Name="Fax" Type="nchar" MaxLength="20" />
+          <Property Name="CodePostal" Type="nchar" MaxLength="10" />
+          <Property Name="NomContact" Type="nchar" MaxLength="40" />
+          <Property Name="MargeRegulier" Type="float" />
+          <Property Name="MargeMembre" Type="float" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Inventaire">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProduitID" Type="int" />
+          <Property Name="DepartementID" Type="int" />
+          <Property Name="CategorieID" Type="int" />
+          <Property Name="FournisseurID" Type="int" />
+          <Property Name="Qt" Type="int" />
+          <Property Name="PrixAchat" Type="float" />
+          <Property Name="PrixVente" Type="float" />
+          <Property Name="PrixVenteMembre" Type="float" />
+          <Property Name="R1" Type="int" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+          <Property Name="R3" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'COOPInventaire.dbo.Tb_Localisation' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="Tb_Localisation">
+          <Key>
+            <PropertyRef Name="InventaireID" />
+          </Key>
+          <Property Name="InventaireID" Type="int" Nullable="false" />
+          <Property Name="EmplacementID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Membre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoCarte" Type="int" />
+          <Property Name="Nom" Type="nchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nchar" MaxLength="50" />
+          <Property Name="Addresse" Type="nchar" MaxLength="100" />
+          <Property Name="Ville" Type="nchar" MaxLength="50" />
+          <Property Name="CodePostal" Type="nchar" MaxLength="10" />
+          <Property Name="Tel" Type="nchar" MaxLength="20" />
+          <Property Name="EtudiantDA" Type="nchar" MaxLength="10" />
+          <Property Name="EnseignantNo" Type="nchar" MaxLength="10" />
+          <Property Name="DateEntree" Type="date" />
+          <Property Name="DateRemb" Type="date" />
+          <Property Name="Don" Type="varchar" MaxLength="30" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_NiveauAcces">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tb_Produit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Devaluation" Type="bit" />
+          <Property Name="Suppression" Type="bit" />
+          <Property Name="CodeBarre" Type="nchar" MaxLength="50" />
+          <Property Name="CodeProduit" Type="nchar" MaxLength="30" />
+          <Property Name="Description" Type="nchar" MaxLength="100" />
+          <Property Name="Taxe1" Type="bit" />
+          <Property Name="Taxe2" Type="bit" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Tb_Taxe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Taxe1" Type="float" />
+          <Property Name="Taxe2" Type="float" />
+          <Property Name="DateEffective" Type="date" />
+        </EntityType>
+        <EntityType Name="Tb_Utilisateur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NiveauAccessID" Type="int" />
+          <Property Name="Nom" Type="nchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nchar" MaxLength="50" />
+          <Property Name="Username" Type="nchar" MaxLength="30" />
+          <Property Name="Courriel" Type="nchar" MaxLength="50" />
+          <Property Name="Password" Type="nchar" MaxLength="50" />
+          <Property Name="R1" Type="varchar" MaxLength="30" />
+          <Property Name="R2" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_Tb_Commande_Tb_CommandeItem">
+          <End Role="Tb_CommandeItem" Type="Self.Tb_CommandeItem" Multiplicity="0..1" />
+          <End Role="Tb_Commande" Type="Self.Tb_Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_CommandeItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Commande">
+              <PropertyRef Name="CommandeItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Commande_Tb_Fournisseur">
+          <End Role="Tb_Fournisseur" Type="Self.Tb_Fournisseur" Multiplicity="0..1" />
+          <End Role="Tb_Commande" Type="Self.Tb_Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Fournisseur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Commande">
+              <PropertyRef Name="FournisseurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Commande_Tb_Utilisateur">
+          <End Role="Tb_Utilisateur" Type="Self.Tb_Utilisateur" Multiplicity="0..1" />
+          <End Role="Tb_Commande" Type="Self.Tb_Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Utilisateur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Commande">
+              <PropertyRef Name="UtilisateurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_CommandeItem_Tb_Produit">
+          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+          <End Role="Tb_CommandeItem" Type="Self.Tb_CommandeItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Produit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_CommandeItem">
+              <PropertyRef Name="ProduitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Facture_Tb_FactureItem">
+          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="0..1" />
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_FactureItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Facture">
+              <PropertyRef Name="FactureItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Facture_Tb_Membre">
+          <End Role="Tb_Membre" Type="Self.Tb_Membre" Multiplicity="0..1" />
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Membre">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Facture">
+              <PropertyRef Name="MembreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Facture_Tb_Utilisateur">
+          <End Role="Tb_Utilisateur" Type="Self.Tb_Utilisateur" Multiplicity="0..1" />
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Utilisateur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Facture">
+              <PropertyRef Name="UtilisateurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_FactureItem_Tb_Produit">
+          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Produit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_FactureItem">
+              <PropertyRef Name="ProduitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Categorie">
+          <End Role="Tb_Categorie" Type="Self.Tb_Categorie" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Categorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="CategorieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Departement">
+          <End Role="Tb_Departement" Type="Self.Tb_Departement" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Departement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="DepartementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Emplacement">
+          <End Role="Tb_Emplacement" Type="Self.Tb_Emplacement" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Emplacement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="R1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Fournisseur">
+          <End Role="Tb_Fournisseur" Type="Self.Tb_Fournisseur" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Fournisseur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="FournisseurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Produit">
+          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Produit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="ProduitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Localisation_Tb_Emplacement">
+          <End Role="Tb_Emplacement" Type="Self.Tb_Emplacement" Multiplicity="0..1" />
+          <End Role="Tb_Localisation" Type="Self.Tb_Localisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Emplacement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Localisation">
+              <PropertyRef Name="EmplacementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Localisation_Tb_Inventaire">
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="1" />
+          <End Role="Tb_Localisation" Type="Self.Tb_Localisation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Inventaire">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Localisation">
+              <PropertyRef Name="InventaireID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Utilisateur_Tb_NiveauAcces">
+          <End Role="Tb_NiveauAcces" Type="Self.Tb_NiveauAcces" Multiplicity="0..1" />
+          <End Role="Tb_Utilisateur" Type="Self.Tb_Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_NiveauAcces">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Utilisateur">
+              <PropertyRef Name="NiveauAccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Original_ID" Type="int" Mode="In" />
+          <Parameter Name="IsNull_Nom" Type="int" Mode="In" />
+          <Parameter Name="Original_Nom" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteDepartement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Original_ID" Type="int" Mode="In" />
+          <Parameter Name="IsNull_Code" Type="int" Mode="In" />
+          <Parameter Name="Original_Code" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="InsertCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="InsertDepartement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Code" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="InsertInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodeProduit" Type="nchar" Mode="In" />
+          <Parameter Name="Description" Type="nchar" Mode="In" />
+          <Parameter Name="Emplacement" Type="nchar" Mode="In" />
+          <Parameter Name="Categorie" Type="nchar" Mode="In" />
+          <Parameter Name="Departement" Type="nchar" Mode="In" />
+          <Parameter Name="FournisseurCode" Type="nchar" Mode="In" />
+          <Parameter Name="FournisseurNom" Type="nchar" Mode="In" />
+          <Parameter Name="PrixVente" Type="float" Mode="In" />
+          <Parameter Name="Qt" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ReduireQtInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Amount" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectDepartement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectInventaireCompletFiltreCodeProduit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodeProduit" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireCompletFiltreDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireCompletParCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategorieID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireCompletParCategorieFiltreCodeProduit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategorieID" Type="int" Mode="In" />
+          <Parameter Name="CodeProduit" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireCompletParCategorieFiltreDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategorieID" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireCompletParDepartement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DepartementID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireCompletParDepartementFiltreCodeProduit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DepartementID" Type="int" Mode="In" />
+          <Parameter Name="CodeProduit" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireCompletParDepartementFiltreDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DepartementID" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireReduitFacture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectInventaireReduitFactureFiltreCodeProduit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodeProduit" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectInventaireReduitFactureFiltreDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateCategorie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom" Type="nchar" Mode="In" />
+          <Parameter Name="Original_ID" Type="int" Mode="In" />
+          <Parameter Name="IsNull_Nom" Type="int" Mode="In" />
+          <Parameter Name="Original_Nom" Type="nchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateDepartement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Code" Type="nchar" Mode="In" />
+          <Parameter Name="Original_ID" Type="int" Mode="In" />
+          <Parameter Name="IsNull_Code" Type="int" Mode="In" />
+          <Parameter Name="Original_Code" Type="nchar" Mode="In" />
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="CodeProduit" Type="nchar" Mode="In" />
+          <Parameter Name="Description" Type="nchar" Mode="In" />
+          <Parameter Name="Emplacement" Type="nchar" Mode="In" />
+          <Parameter Name="Categorie" Type="nchar" Mode="In" />
+          <Parameter Name="Departement" Type="nchar" Mode="In" />
+          <Parameter Name="FournisseurCode" Type="nchar" Mode="In" />
+          <Parameter Name="FournisseurNom" Type="nchar" Mode="In" />
+          <Parameter Name="PrixVente" Type="float" Mode="In" />
+          <Parameter Name="Qt" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="COOPInventaireModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Categorie" EntityType="Self.Tb_Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Commande" EntityType="Self.Tb_Commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_CommandeItem" EntityType="Self.Tb_CommandeItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Departement" EntityType="Self.Tb_Departement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Emplacement" EntityType="Self.Tb_Emplacement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Facture" EntityType="Self.Tb_Facture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_FactureItem" EntityType="Self.Tb_FactureItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Fournisseur" EntityType="Self.Tb_Fournisseur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Inventaire" EntityType="Self.Tb_Inventaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Membre" EntityType="Self.Tb_Membre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_NiveauAcces" EntityType="Self.Tb_NiveauAcces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Produit" EntityType="Self.Tb_Produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Taxe" EntityType="Self.Tb_Taxe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Utilisateur" EntityType="Self.Tb_Utilisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Localisation" EntityType="Self.Tb_Localisation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Tb_Localisation].[InventaireID] AS [InventaireID], 
+[Tb_Localisation].[EmplacementID] AS [EmplacementID]
+FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Tb_Commande_Tb_CommandeItem" Association="Self.FK_Tb_Commande_Tb_CommandeItem">
+            <End Role="Tb_CommandeItem" EntitySet="Tb_CommandeItem" />
+            <End Role="Tb_Commande" EntitySet="Tb_Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Commande_Tb_Fournisseur" Association="Self.FK_Tb_Commande_Tb_Fournisseur">
+            <End Role="Tb_Fournisseur" EntitySet="Tb_Fournisseur" />
+            <End Role="Tb_Commande" EntitySet="Tb_Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Commande_Tb_Utilisateur" Association="Self.FK_Tb_Commande_Tb_Utilisateur">
+            <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
+            <End Role="Tb_Commande" EntitySet="Tb_Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_CommandeItem_Tb_Produit" Association="Self.FK_Tb_CommandeItem_Tb_Produit">
+            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+            <End Role="Tb_CommandeItem" EntitySet="Tb_CommandeItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Facture_Tb_FactureItem" Association="Self.FK_Tb_Facture_Tb_FactureItem">
+            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Facture_Tb_Membre" Association="Self.FK_Tb_Facture_Tb_Membre">
+            <End Role="Tb_Membre" EntitySet="Tb_Membre" />
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Facture_Tb_Utilisateur" Association="Self.FK_Tb_Facture_Tb_Utilisateur">
+            <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_FactureItem_Tb_Produit" Association="Self.FK_Tb_FactureItem_Tb_Produit">
+            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Categorie" Association="Self.FK_Tb_Inventaire_Tb_Categorie">
+            <End Role="Tb_Categorie" EntitySet="Tb_Categorie" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Departement" Association="Self.FK_Tb_Inventaire_Tb_Departement">
+            <End Role="Tb_Departement" EntitySet="Tb_Departement" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Emplacement" Association="Self.FK_Tb_Inventaire_Tb_Emplacement">
+            <End Role="Tb_Emplacement" EntitySet="Tb_Emplacement" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Fournisseur" Association="Self.FK_Tb_Inventaire_Tb_Fournisseur">
+            <End Role="Tb_Fournisseur" EntitySet="Tb_Fournisseur" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Produit" Association="Self.FK_Tb_Inventaire_Tb_Produit">
+            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Localisation_Tb_Emplacement" Association="Self.FK_Tb_Localisation_Tb_Emplacement">
+            <End Role="Tb_Emplacement" EntitySet="Tb_Emplacement" />
+            <End Role="Tb_Localisation" EntitySet="Tb_Localisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Localisation_Tb_Inventaire" Association="Self.FK_Tb_Localisation_Tb_Inventaire">
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+            <End Role="Tb_Localisation" EntitySet="Tb_Localisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Utilisateur_Tb_NiveauAcces" Association="Self.FK_Tb_Utilisateur_Tb_NiveauAcces">
+            <End Role="Tb_NiveauAcces" EntitySet="Tb_NiveauAcces" />
+            <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="COOPInventaireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tb_Categorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_Inventaire_Tb_Categorie" FromRole="Tb_Categorie" ToRole="Tb_Inventaire" />
+        </EntityType>
+        <EntityType Name="Tb_Commande">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UtilisateurID" Type="Int32" />
+          <Property Name="FournisseurID" Type="Int32" />
+          <Property Name="CommandeItemID" Type="Int32" />
+          <Property Name="No" Type="Int32" />
+          <Property Name="PO" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="NomExpediteur" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="NoTracking" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_CommandeItem" Relationship="Self.FK_Tb_Commande_Tb_CommandeItem" FromRole="Tb_Commande" ToRole="Tb_CommandeItem" />
+          <NavigationProperty Name="Tb_Fournisseur" Relationship="Self.FK_Tb_Commande_Tb_Fournisseur" FromRole="Tb_Commande" ToRole="Tb_Fournisseur" />
+          <NavigationProperty Name="Tb_Utilisateur" Relationship="Self.FK_Tb_Commande_Tb_Utilisateur" FromRole="Tb_Commande" ToRole="Tb_Utilisateur" />
+        </EntityType>
+        <EntityType Name="Tb_CommandeItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProduitID" Type="Int32" />
+          <Property Name="Qt" Type="Int32" />
+          <Property Name="DateReception" Type="DateTime" Precision="0" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Commande" Relationship="Self.FK_Tb_Commande_Tb_CommandeItem" FromRole="Tb_CommandeItem" ToRole="Tb_Commande" />
+          <NavigationProperty Name="Tb_Produit" Relationship="Self.FK_Tb_CommandeItem_Tb_Produit" FromRole="Tb_CommandeItem" ToRole="Tb_Produit" />
+        </EntityType>
+        <EntityType Name="Tb_Departement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Nom" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_Inventaire_Tb_Departement" FromRole="Tb_Departement" ToRole="Tb_Inventaire" />
+        </EntityType>
+        <EntityType Name="Tb_Emplacement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_Inventaire_Tb_Emplacement" FromRole="Tb_Emplacement" ToRole="Tb_Inventaire" />
+          <NavigationProperty Name="Tb_Localisation" Relationship="Self.FK_Tb_Localisation_Tb_Emplacement" FromRole="Tb_Emplacement" ToRole="Tb_Localisation" />
+        </EntityType>
+        <EntityType Name="Tb_Facture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembreID" Type="Int32" />
+          <Property Name="UtilisateurID" Type="Int32" />
+          <Property Name="FactureItemID" Type="Int32" />
+          <Property Name="No" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ModePaiement" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_FactureItem" Relationship="Self.FK_Tb_Facture_Tb_FactureItem" FromRole="Tb_Facture" ToRole="Tb_FactureItem" />
+          <NavigationProperty Name="Tb_Membre" Relationship="Self.FK_Tb_Facture_Tb_Membre" FromRole="Tb_Facture" ToRole="Tb_Membre" />
+          <NavigationProperty Name="Tb_Utilisateur" Relationship="Self.FK_Tb_Facture_Tb_Utilisateur" FromRole="Tb_Facture" ToRole="Tb_Utilisateur" />
+        </EntityType>
+        <EntityType Name="Tb_FactureItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProduitID" Type="Int32" />
+          <Property Name="Qt" Type="Int32" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Facture" Relationship="Self.FK_Tb_Facture_Tb_FactureItem" FromRole="Tb_FactureItem" ToRole="Tb_Facture" />
+          <NavigationProperty Name="Tb_Produit" Relationship="Self.FK_Tb_FactureItem_Tb_Produit" FromRole="Tb_FactureItem" ToRole="Tb_Produit" />
+        </EntityType>
+        <EntityType Name="Tb_Fournisseur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Nom" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Addresse" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Tel1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Tel2" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NomContact" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="MargeRegulier" Type="Double" />
+          <Property Name="MargeMembre" Type="Double" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Commande" Relationship="Self.FK_Tb_Commande_Tb_Fournisseur" FromRole="Tb_Fournisseur" ToRole="Tb_Commande" />
+          <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_Inventaire_Tb_Fournisseur" FromRole="Tb_Fournisseur" ToRole="Tb_Inventaire" />
+        </EntityType>
+        <EntityType Name="Tb_Inventaire">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProduitID" Type="Int32" />
+          <Property Name="DepartementID" Type="Int32" />
+          <Property Name="CategorieID" Type="Int32" />
+          <Property Name="FournisseurID" Type="Int32" />
+          <Property Name="Qt" Type="Int32" />
+          <Property Name="PrixAchat" Type="Double" />
+          <Property Name="PrixVente" Type="Double" />
+          <Property Name="PrixVenteMembre" Type="Double" />
+          <Property Name="R1" Type="Int32" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Categorie" Relationship="Self.FK_Tb_Inventaire_Tb_Categorie" FromRole="Tb_Inventaire" ToRole="Tb_Categorie" />
+          <NavigationProperty Name="Tb_Departement" Relationship="Self.FK_Tb_Inventaire_Tb_Departement" FromRole="Tb_Inventaire" ToRole="Tb_Departement" />
+          <NavigationProperty Name="Tb_Emplacement" Relationship="Self.FK_Tb_Inventaire_Tb_Emplacement" FromRole="Tb_Inventaire" ToRole="Tb_Emplacement" />
+          <NavigationProperty Name="Tb_Fournisseur" Relationship="Self.FK_Tb_Inventaire_Tb_Fournisseur" FromRole="Tb_Inventaire" ToRole="Tb_Fournisseur" />
+          <NavigationProperty Name="Tb_Produit" Relationship="Self.FK_Tb_Inventaire_Tb_Produit" FromRole="Tb_Inventaire" ToRole="Tb_Produit" />
+          <NavigationProperty Name="Tb_Localisation" Relationship="Self.FK_Tb_Localisation_Tb_Inventaire" FromRole="Tb_Inventaire" ToRole="Tb_Localisation" />
+        </EntityType>
+        <EntityType Name="Tb_Membre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoCarte" Type="Int32" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Addresse" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="EtudiantDA" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="EnseignantNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DateEntree" Type="DateTime" Precision="0" />
+          <Property Name="DateRemb" Type="DateTime" Precision="0" />
+          <Property Name="Don" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Facture" Relationship="Self.FK_Tb_Facture_Tb_Membre" FromRole="Tb_Membre" ToRole="Tb_Facture" />
+        </EntityType>
+        <EntityType Name="Tb_NiveauAcces">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Tb_Utilisateur" Relationship="Self.FK_Tb_Utilisateur_Tb_NiveauAcces" FromRole="Tb_NiveauAcces" ToRole="Tb_Utilisateur" />
+        </EntityType>
+        <EntityType Name="Tb_Produit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Devaluation" Type="Boolean" />
+          <Property Name="Suppression" Type="Boolean" />
+          <Property Name="CodeBarre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CodeProduit" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Taxe1" Type="Boolean" />
+          <Property Name="Taxe2" Type="Boolean" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_CommandeItem" Relationship="Self.FK_Tb_CommandeItem_Tb_Produit" FromRole="Tb_Produit" ToRole="Tb_CommandeItem" />
+          <NavigationProperty Name="Tb_FactureItem" Relationship="Self.FK_Tb_FactureItem_Tb_Produit" FromRole="Tb_Produit" ToRole="Tb_FactureItem" />
+          <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_Inventaire_Tb_Produit" FromRole="Tb_Produit" ToRole="Tb_Inventaire" />
+        </EntityType>
+        <EntityType Name="Tb_Taxe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Taxe1" Type="Double" />
+          <Property Name="Taxe2" Type="Double" />
+          <Property Name="DateEffective" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Tb_Utilisateur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NiveauAccessID" Type="Int32" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Courriel" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Commande" Relationship="Self.FK_Tb_Commande_Tb_Utilisateur" FromRole="Tb_Utilisateur" ToRole="Tb_Commande" />
+          <NavigationProperty Name="Tb_Facture" Relationship="Self.FK_Tb_Facture_Tb_Utilisateur" FromRole="Tb_Utilisateur" ToRole="Tb_Facture" />
+          <NavigationProperty Name="Tb_NiveauAcces" Relationship="Self.FK_Tb_Utilisateur_Tb_NiveauAcces" FromRole="Tb_Utilisateur" ToRole="Tb_NiveauAcces" />
+        </EntityType>
+        <EntityType Name="Tb_Localisation">
+          <Key>
+            <PropertyRef Name="InventaireID" />
+          </Key>
+          <Property Name="InventaireID" Type="Int32" Nullable="false" />
+          <Property Name="EmplacementID" Type="Int32" />
+          <NavigationProperty Name="Tb_Emplacement" Relationship="Self.FK_Tb_Localisation_Tb_Emplacement" FromRole="Tb_Localisation" ToRole="Tb_Emplacement" />
+          <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_Localisation_Tb_Inventaire" FromRole="Tb_Localisation" ToRole="Tb_Inventaire" />
+        </EntityType>
+        <Association Name="FK_Tb_Inventaire_Tb_Categorie">
+          <End Role="Tb_Categorie" Type="Self.Tb_Categorie" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Categorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="CategorieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Commande_Tb_CommandeItem">
+          <End Role="Tb_CommandeItem" Type="Self.Tb_CommandeItem" Multiplicity="0..1" />
+          <End Role="Tb_Commande" Type="Self.Tb_Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_CommandeItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Commande">
+              <PropertyRef Name="CommandeItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Commande_Tb_Fournisseur">
+          <End Role="Tb_Fournisseur" Type="Self.Tb_Fournisseur" Multiplicity="0..1" />
+          <End Role="Tb_Commande" Type="Self.Tb_Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Fournisseur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Commande">
+              <PropertyRef Name="FournisseurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Commande_Tb_Utilisateur">
+          <End Role="Tb_Utilisateur" Type="Self.Tb_Utilisateur" Multiplicity="0..1" />
+          <End Role="Tb_Commande" Type="Self.Tb_Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Utilisateur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Commande">
+              <PropertyRef Name="UtilisateurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_CommandeItem_Tb_Produit">
+          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+          <End Role="Tb_CommandeItem" Type="Self.Tb_CommandeItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Produit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_CommandeItem">
+              <PropertyRef Name="ProduitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Departement">
+          <End Role="Tb_Departement" Type="Self.Tb_Departement" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Departement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="DepartementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Emplacement">
+          <End Role="Tb_Emplacement" Type="Self.Tb_Emplacement" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Emplacement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="R1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Localisation_Tb_Emplacement">
+          <End Role="Tb_Emplacement" Type="Self.Tb_Emplacement" Multiplicity="0..1" />
+          <End Role="Tb_Localisation" Type="Self.Tb_Localisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Emplacement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Localisation">
+              <PropertyRef Name="EmplacementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Facture_Tb_FactureItem">
+          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="0..1" />
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_FactureItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Facture">
+              <PropertyRef Name="FactureItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Facture_Tb_Membre">
+          <End Role="Tb_Membre" Type="Self.Tb_Membre" Multiplicity="0..1" />
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Membre">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Facture">
+              <PropertyRef Name="MembreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Facture_Tb_Utilisateur">
+          <End Role="Tb_Utilisateur" Type="Self.Tb_Utilisateur" Multiplicity="0..1" />
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Utilisateur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Facture">
+              <PropertyRef Name="UtilisateurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_FactureItem_Tb_Produit">
+          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Produit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_FactureItem">
+              <PropertyRef Name="ProduitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Fournisseur">
+          <End Role="Tb_Fournisseur" Type="Self.Tb_Fournisseur" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Fournisseur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="FournisseurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Inventaire_Tb_Produit">
+          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Produit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Inventaire">
+              <PropertyRef Name="ProduitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Localisation_Tb_Inventaire">
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="1" />
+          <End Role="Tb_Localisation" Type="Self.Tb_Localisation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Inventaire">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Localisation">
+              <PropertyRef Name="InventaireID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_Utilisateur_Tb_NiveauAcces">
+          <End Role="Tb_NiveauAcces" Type="Self.Tb_NiveauAcces" Multiplicity="0..1" />
+          <End Role="Tb_Utilisateur" Type="Self.Tb_Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_NiveauAcces">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_Utilisateur">
+              <PropertyRef Name="NiveauAccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="COOPInventaireEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tb_Categorie" EntityType="Self.Tb_Categorie" />
+          <EntitySet Name="Tb_Commande" EntityType="Self.Tb_Commande" />
+          <EntitySet Name="Tb_CommandeItem" EntityType="Self.Tb_CommandeItem" />
+          <EntitySet Name="Tb_Departement" EntityType="Self.Tb_Departement" />
+          <EntitySet Name="Tb_Emplacement" EntityType="Self.Tb_Emplacement" />
+          <EntitySet Name="Tb_Facture" EntityType="Self.Tb_Facture" />
+          <EntitySet Name="Tb_FactureItem" EntityType="Self.Tb_FactureItem" />
+          <EntitySet Name="Tb_Fournisseur" EntityType="Self.Tb_Fournisseur" />
+          <EntitySet Name="Tb_Inventaire" EntityType="Self.Tb_Inventaire" />
+          <EntitySet Name="Tb_Membre" EntityType="Self.Tb_Membre" />
+          <EntitySet Name="Tb_NiveauAcces" EntityType="Self.Tb_NiveauAcces" />
+          <EntitySet Name="Tb_Produit" EntityType="Self.Tb_Produit" />
+          <EntitySet Name="Tb_Taxe" EntityType="Self.Tb_Taxe" />
+          <EntitySet Name="Tb_Utilisateur" EntityType="Self.Tb_Utilisateur" />
+          <EntitySet Name="Tb_Localisation" EntityType="Self.Tb_Localisation" />
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Categorie" Association="Self.FK_Tb_Inventaire_Tb_Categorie">
+            <End Role="Tb_Categorie" EntitySet="Tb_Categorie" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Commande_Tb_CommandeItem" Association="Self.FK_Tb_Commande_Tb_CommandeItem">
+            <End Role="Tb_CommandeItem" EntitySet="Tb_CommandeItem" />
+            <End Role="Tb_Commande" EntitySet="Tb_Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Commande_Tb_Fournisseur" Association="Self.FK_Tb_Commande_Tb_Fournisseur">
+            <End Role="Tb_Fournisseur" EntitySet="Tb_Fournisseur" />
+            <End Role="Tb_Commande" EntitySet="Tb_Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Commande_Tb_Utilisateur" Association="Self.FK_Tb_Commande_Tb_Utilisateur">
+            <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
+            <End Role="Tb_Commande" EntitySet="Tb_Commande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_CommandeItem_Tb_Produit" Association="Self.FK_Tb_CommandeItem_Tb_Produit">
+            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+            <End Role="Tb_CommandeItem" EntitySet="Tb_CommandeItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Departement" Association="Self.FK_Tb_Inventaire_Tb_Departement">
+            <End Role="Tb_Departement" EntitySet="Tb_Departement" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Emplacement" Association="Self.FK_Tb_Inventaire_Tb_Emplacement">
+            <End Role="Tb_Emplacement" EntitySet="Tb_Emplacement" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Localisation_Tb_Emplacement" Association="Self.FK_Tb_Localisation_Tb_Emplacement">
+            <End Role="Tb_Emplacement" EntitySet="Tb_Emplacement" />
+            <End Role="Tb_Localisation" EntitySet="Tb_Localisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Facture_Tb_FactureItem" Association="Self.FK_Tb_Facture_Tb_FactureItem">
+            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Facture_Tb_Membre" Association="Self.FK_Tb_Facture_Tb_Membre">
+            <End Role="Tb_Membre" EntitySet="Tb_Membre" />
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Facture_Tb_Utilisateur" Association="Self.FK_Tb_Facture_Tb_Utilisateur">
+            <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_FactureItem_Tb_Produit" Association="Self.FK_Tb_FactureItem_Tb_Produit">
+            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Fournisseur" Association="Self.FK_Tb_Inventaire_Tb_Fournisseur">
+            <End Role="Tb_Fournisseur" EntitySet="Tb_Fournisseur" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Inventaire_Tb_Produit" Association="Self.FK_Tb_Inventaire_Tb_Produit">
+            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Localisation_Tb_Inventaire" Association="Self.FK_Tb_Localisation_Tb_Inventaire">
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
+            <End Role="Tb_Localisation" EntitySet="Tb_Localisation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_Utilisateur_Tb_NiveauAcces" Association="Self.FK_Tb_Utilisateur_Tb_NiveauAcces">
+            <End Role="Tb_NiveauAcces" EntitySet="Tb_NiveauAcces" />
+            <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
+          </AssociationSet>
+          <FunctionImport Name="DeleteCategorie">
+            <Parameter Name="Original_ID" Mode="In" Type="Int32" />
+            <Parameter Name="IsNull_Nom" Mode="In" Type="Int32" />
+            <Parameter Name="Original_Nom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDepartement">
+            <Parameter Name="Original_ID" Mode="In" Type="Int32" />
+            <Parameter Name="IsNull_Code" Mode="In" Type="Int32" />
+            <Parameter Name="Original_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteInventaireComplet">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertCategorie" ReturnType="Collection(COOPInventaireModel.InsertCategorie_Result)">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertDepartement" ReturnType="Collection(COOPInventaireModel.InsertDepartement_Result)">
+            <Parameter Name="Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertInventaireComplet">
+            <Parameter Name="CodeProduit" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Emplacement" Mode="In" Type="String" />
+            <Parameter Name="Categorie" Mode="In" Type="String" />
+            <Parameter Name="Departement" Mode="In" Type="String" />
+            <Parameter Name="FournisseurCode" Mode="In" Type="String" />
+            <Parameter Name="FournisseurNom" Mode="In" Type="String" />
+            <Parameter Name="PrixVente" Mode="In" Type="Double" />
+            <Parameter Name="Qt" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ReduireQtInventaireComplet">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Amount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectCategorie" ReturnType="Collection(COOPInventaireModel.SelectCategorie_Result)" />
+          <FunctionImport Name="SelectDepartement" ReturnType="Collection(COOPInventaireModel.SelectDepartement_Result)" />
+          <FunctionImport Name="SelectInventaireComplet" ReturnType="Collection(COOPInventaireModel.SelectInventaireComplet_Result)" />
+          <FunctionImport Name="SelectInventaireCompletFiltreCodeProduit" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletFiltreCodeProduit_Result)">
+            <Parameter Name="CodeProduit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletFiltreDescription" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletFiltreDescription_Result)">
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletParCategorie" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletParCategorie_Result)">
+            <Parameter Name="CategorieID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletParCategorieFiltreCodeProduit" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletParCategorieFiltreCodeProduit_Result)">
+            <Parameter Name="CategorieID" Mode="In" Type="Int32" />
+            <Parameter Name="CodeProduit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletParCategorieFiltreDescription" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletParCategorieFiltreDescription_Result)">
+            <Parameter Name="CategorieID" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletParDepartement" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletParDepartement_Result)">
+            <Parameter Name="DepartementID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletParDepartementFiltreCodeProduit" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletParDepartementFiltreCodeProduit_Result)">
+            <Parameter Name="DepartementID" Mode="In" Type="Int32" />
+            <Parameter Name="CodeProduit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletParDepartementFiltreDescription" ReturnType="Collection(COOPInventaireModel.SelectInventaireCompletParDepartementFiltreDescription_Result)">
+            <Parameter Name="DepartementID" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireReduitFacture" ReturnType="Collection(COOPInventaireModel.SelectInventaireReduitFacture_Result)" />
+          <FunctionImport Name="SelectInventaireReduitFactureFiltreCodeProduit" ReturnType="Collection(COOPInventaireModel.SelectInventaireReduitFactureFiltreCodeProduit_Result)">
+            <Parameter Name="CodeProduit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectInventaireReduitFactureFiltreDescription" ReturnType="Collection(COOPInventaireModel.SelectInventaireReduitFactureFiltreDescription_Result)">
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(COOPInventaireModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(COOPInventaireModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="UpdateCategorie" ReturnType="Collection(COOPInventaireModel.UpdateCategorie_Result)">
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="Original_ID" Mode="In" Type="Int32" />
+            <Parameter Name="IsNull_Nom" Mode="In" Type="Int32" />
+            <Parameter Name="Original_Nom" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateDepartement" ReturnType="Collection(COOPInventaireModel.UpdateDepartement_Result)">
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="Original_ID" Mode="In" Type="Int32" />
+            <Parameter Name="IsNull_Code" Mode="In" Type="Int32" />
+            <Parameter Name="Original_Code" Mode="In" Type="String" />
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateInventaireComplet">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="CodeProduit" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Emplacement" Mode="In" Type="String" />
+            <Parameter Name="Categorie" Mode="In" Type="String" />
+            <Parameter Name="Departement" Mode="In" Type="String" />
+            <Parameter Name="FournisseurCode" Mode="In" Type="String" />
+            <Parameter Name="FournisseurNom" Mode="In" Type="String" />
+            <Parameter Name="PrixVente" Mode="In" Type="Double" />
+            <Parameter Name="Qt" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="InsertCategorie_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="InsertDepartement_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="SelectCategorie_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="SelectDepartement_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireComplet_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletFiltreCodeProduit_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletFiltreDescription_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletParCategorie_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletParCategorieFiltreCodeProduit_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletParCategorieFiltreDescription_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletParDepartement_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletParDepartementFiltreCodeProduit_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletParDepartementFiltreDescription_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireReduitFacture_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ProduitID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireReduitFactureFiltreCodeProduit_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ProduitID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireReduitFactureFiltreDescription_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ProduitID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UpdateCategorie_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="UpdateDepartement_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="5" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="COOPInventaireModelStoreContainer" CdmEntityContainer="COOPInventaireEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="COOPInventaireModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Categorie">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Categorie">
+              <MappingFragment StoreEntitySet="Tb_Categorie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Commande">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Commande">
+              <MappingFragment StoreEntitySet="Tb_Commande">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UtilisateurID" ColumnName="UtilisateurID" />
+                <ScalarProperty Name="FournisseurID" ColumnName="FournisseurID" />
+                <ScalarProperty Name="CommandeItemID" ColumnName="CommandeItemID" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="PO" ColumnName="PO" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="NomExpediteur" ColumnName="NomExpediteur" />
+                <ScalarProperty Name="NoTracking" ColumnName="NoTracking" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_CommandeItem">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_CommandeItem">
+              <MappingFragment StoreEntitySet="Tb_CommandeItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProduitID" ColumnName="ProduitID" />
+                <ScalarProperty Name="Qt" ColumnName="Qt" />
+                <ScalarProperty Name="DateReception" ColumnName="DateReception" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Departement">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Departement">
+              <MappingFragment StoreEntitySet="Tb_Departement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Emplacement">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Emplacement">
+              <MappingFragment StoreEntitySet="Tb_Emplacement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Facture">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Facture">
+              <MappingFragment StoreEntitySet="Tb_Facture">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MembreID" ColumnName="MembreID" />
+                <ScalarProperty Name="UtilisateurID" ColumnName="UtilisateurID" />
+                <ScalarProperty Name="FactureItemID" ColumnName="FactureItemID" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ModePaiement" ColumnName="ModePaiement" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_FactureItem">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_FactureItem">
+              <MappingFragment StoreEntitySet="Tb_FactureItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProduitID" ColumnName="ProduitID" />
+                <ScalarProperty Name="Qt" ColumnName="Qt" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Fournisseur">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Fournisseur">
+              <MappingFragment StoreEntitySet="Tb_Fournisseur">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Addresse" ColumnName="Addresse" />
+                <ScalarProperty Name="Tel1" ColumnName="Tel1" />
+                <ScalarProperty Name="Tel2" ColumnName="Tel2" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="NomContact" ColumnName="NomContact" />
+                <ScalarProperty Name="MargeRegulier" ColumnName="MargeRegulier" />
+                <ScalarProperty Name="MargeMembre" ColumnName="MargeMembre" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Inventaire">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Inventaire">
+              <MappingFragment StoreEntitySet="Tb_Inventaire">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProduitID" ColumnName="ProduitID" />
+                <ScalarProperty Name="DepartementID" ColumnName="DepartementID" />
+                <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+                <ScalarProperty Name="FournisseurID" ColumnName="FournisseurID" />
+                <ScalarProperty Name="Qt" ColumnName="Qt" />
+                <ScalarProperty Name="PrixAchat" ColumnName="PrixAchat" />
+                <ScalarProperty Name="PrixVente" ColumnName="PrixVente" />
+                <ScalarProperty Name="PrixVenteMembre" ColumnName="PrixVenteMembre" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+                <ScalarProperty Name="R3" ColumnName="R3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Membre">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Membre">
+              <MappingFragment StoreEntitySet="Tb_Membre">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NoCarte" ColumnName="NoCarte" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Addresse" ColumnName="Addresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="EtudiantDA" ColumnName="EtudiantDA" />
+                <ScalarProperty Name="EnseignantNo" ColumnName="EnseignantNo" />
+                <ScalarProperty Name="DateEntree" ColumnName="DateEntree" />
+                <ScalarProperty Name="DateRemb" ColumnName="DateRemb" />
+                <ScalarProperty Name="Don" ColumnName="Don" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_NiveauAcces">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_NiveauAcces">
+              <MappingFragment StoreEntitySet="Tb_NiveauAcces">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Produit">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Produit">
+              <MappingFragment StoreEntitySet="Tb_Produit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Devaluation" ColumnName="Devaluation" />
+                <ScalarProperty Name="Suppression" ColumnName="Suppression" />
+                <ScalarProperty Name="CodeBarre" ColumnName="CodeBarre" />
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Taxe1" ColumnName="Taxe1" />
+                <ScalarProperty Name="Taxe2" ColumnName="Taxe2" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Taxe">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Taxe">
+              <MappingFragment StoreEntitySet="Tb_Taxe">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Taxe1" ColumnName="Taxe1" />
+                <ScalarProperty Name="Taxe2" ColumnName="Taxe2" />
+                <ScalarProperty Name="DateEffective" ColumnName="DateEffective" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Utilisateur">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Utilisateur">
+              <MappingFragment StoreEntitySet="Tb_Utilisateur">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NiveauAccessID" ColumnName="NiveauAccessID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Localisation">
+            <EntityTypeMapping TypeName="COOPInventaireModel.Tb_Localisation">
+              <MappingFragment StoreEntitySet="Tb_Localisation">
+                <ScalarProperty Name="InventaireID" ColumnName="InventaireID" />
+                <ScalarProperty Name="EmplacementID" ColumnName="EmplacementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteCategorie" FunctionName="COOPInventaireModel.Store.DeleteCategorie" />
+          <FunctionImportMapping FunctionImportName="DeleteDepartement" FunctionName="COOPInventaireModel.Store.DeleteDepartement" />
+          <FunctionImportMapping FunctionImportName="DeleteInventaireComplet" FunctionName="COOPInventaireModel.Store.DeleteInventaireComplet" />
+          <FunctionImportMapping FunctionImportName="InsertCategorie" FunctionName="COOPInventaireModel.Store.InsertCategorie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.InsertCategorie_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertDepartement" FunctionName="COOPInventaireModel.Store.InsertDepartement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.InsertDepartement_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertInventaireComplet" FunctionName="COOPInventaireModel.Store.InsertInventaireComplet" />
+          <FunctionImportMapping FunctionImportName="ReduireQtInventaireComplet" FunctionName="COOPInventaireModel.Store.ReduireQtInventaireComplet" />
+          <FunctionImportMapping FunctionImportName="SelectCategorie" FunctionName="COOPInventaireModel.Store.SelectCategorie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectCategorie_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectDepartement" FunctionName="COOPInventaireModel.Store.SelectDepartement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectDepartement_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireComplet" FunctionName="COOPInventaireModel.Store.SelectInventaireComplet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireComplet_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletFiltreCodeProduit" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletFiltreCodeProduit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletFiltreCodeProduit_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletFiltreDescription" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletFiltreDescription">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletFiltreDescription_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletParCategorie" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletParCategorie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletParCategorie_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletParCategorieFiltreCodeProduit" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletParCategorieFiltreCodeProduit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletParCategorieFiltreCodeProduit_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletParCategorieFiltreDescription" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletParCategorieFiltreDescription">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletParCategorieFiltreDescription_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletParDepartement" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletParDepartement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletParDepartement_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletParDepartementFiltreCodeProduit" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletParDepartementFiltreCodeProduit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletParDepartementFiltreCodeProduit_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletParDepartementFiltreDescription" FunctionName="COOPInventaireModel.Store.SelectInventaireCompletParDepartementFiltreDescription">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireCompletParDepartementFiltreDescription_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireReduitFacture" FunctionName="COOPInventaireModel.Store.SelectInventaireReduitFacture">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireReduitFacture_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProduitID" ColumnName="ProduitID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireReduitFactureFiltreCodeProduit" FunctionName="COOPInventaireModel.Store.SelectInventaireReduitFactureFiltreCodeProduit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireReduitFactureFiltreCodeProduit_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProduitID" ColumnName="ProduitID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireReduitFactureFiltreDescription" FunctionName="COOPInventaireModel.Store.SelectInventaireReduitFactureFiltreDescription">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.SelectInventaireReduitFactureFiltreDescription_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProduitID" ColumnName="ProduitID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="COOPInventaireModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="COOPInventaireModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="COOPInventaireModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="COOPInventaireModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="COOPInventaireModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="COOPInventaireModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COOPInventaireModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="UpdateCategorie" FunctionName="COOPInventaireModel.Store.UpdateCategorie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.UpdateCategorie_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateDepartement" FunctionName="COOPInventaireModel.Store.UpdateDepartement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaireModel.UpdateDepartement_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateInventaireComplet" FunctionName="COOPInventaireModel.Store.UpdateInventaireComplet" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
