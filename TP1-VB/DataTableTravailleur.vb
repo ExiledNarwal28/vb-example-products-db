@@ -32,6 +32,10 @@ Public Class DataTableTravailleur
     DBContexte.UpdateInventaireComplet(iD, codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
   End Sub
 
+  Public Sub DeleteInventaireComplet(ByVal iD As Int32)
+    DBContexte.DeleteInventaireComplet(iD)
+  End Sub
+
   '  ---> Non class
 
   Public Sub LireDataTable(ByVal NomFichier As String, ByVal NomTable As String)

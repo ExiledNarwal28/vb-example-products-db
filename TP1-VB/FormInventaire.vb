@@ -74,13 +74,13 @@ Public Class FormInventaire
 
         For Each Rangee As DataRow In DataTableTrav.ObtenirRangees("Items", ListeSelection)
           stringRangeesSelectionnees &=
-            Rangee("item_code_produit").ToString() &
-            "(" & Rangee("item_desc").ToString() & ")" & Environment.NewLine
+            Rangee(2).ToString() &
+            "(" & Rangee(3).ToString() & ")" & Environment.NewLine
         Next
 
         If MsgBox(
           "Voulez vous vraiment supprimer : " _
-          & Environment.NewLine _
+          & vbNewLine _
           & stringRangeesSelectionnees _
           & "?",
           MsgBoxStyle.YesNo,
@@ -88,11 +88,13 @@ Public Class FormInventaire
 
           ' Si l'utilisateur répond positivement, on supprime.
           For Each Id As Integer In ListeSelection
-            DataGridViewItems.Rows.Remove(DataGridViewItems.Rows(Id - 1))
+            DataTableTrav.DeleteInventaireComplet(Id)
           Next
 
           ' Il faut ensuite tout enlever de la liste d'ids et mettre à jour l'interface
           ListeSelection.Clear()
+
+          ' TODO : vérifier ça
           MettreAJourNbItems()
           MettreAJourCheckBox()
         End If
