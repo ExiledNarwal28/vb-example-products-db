@@ -18,9 +18,21 @@ Public Class DataTableTravailleur
     End Try
   End Sub
 
+  ' Méthode qui retourne une liste de DataRows pour remplir un DataGridView
   Public Function GetDataInventaireComplet() As List(Of TP1_VB.SelectInventaireComplet_Result)
     Return DBContexte.SelectInventaireComplet.ToList
   End Function
+
+  ' Méthode pour insérer dans l'inventaire complet
+  Public Sub InsertInventaireComplet(ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
+    DBContexte.InsertInventaireComplet(codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
+  End Sub
+
+  Public Sub UpdateInventaireComplet(ByVal iD As Int32, ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
+    DBContexte.UpdateInventaireComplet(iD, codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
+  End Sub
+
+  '  ---> Non class
 
   Public Sub LireDataTable(ByVal NomFichier As String, ByVal NomTable As String)
     ' Méthode pour lire une base de données à partir d'un fichier

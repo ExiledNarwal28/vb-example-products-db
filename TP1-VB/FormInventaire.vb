@@ -11,7 +11,7 @@ Imports System.Xml.Serialization
 Public Class FormInventaire
   Private DataTableTrav As DataTableTravailleur
 
-  Private FormAjoutItem As FormManipulerItem
+  Private FormManipulerItem As FormManipulerItem
   Private FormNouvelleFacture As FormNouvelleFacture
   Private FormConnexionAdmin As FormConnexionAdmin
 
@@ -20,7 +20,7 @@ Public Class FormInventaire
   Private Sub FormInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     DataTableTrav = New DataTableTravailleur
 
-    FormAjoutItem = New FormManipulerItem(DataTableTrav)
+    FormManipulerItem = New FormManipulerItem(DataTableTrav)
     FormNouvelleFacture = New FormNouvelleFacture(DataTableTrav)
     FormConnexionAdmin = New FormConnexionAdmin
 
@@ -41,8 +41,8 @@ Public Class FormInventaire
   End Sub
 
   Private Sub ButtonAjoutItems_Click(sender As Object, e As EventArgs) Handles ButtonAjoutItems.Click
-    FormAjoutItem.SetFormulaireMode("Ajout")
-    FormAjoutItem.Show()
+    FormManipulerItem.SetFormulaireMode("Ajout")
+    FormManipulerItem.ShowDialog()
   End Sub
 
   Private Sub ButtonModifierItems_Click(sender As Object, e As EventArgs) Handles ButtonModifierItems.Click
@@ -50,9 +50,9 @@ Public Class FormInventaire
 
     ' On vérifie si l'utilisateur a bien sélectionné une seule rangée
     If ListeSelection.Count = 1 Then
-      FormAjoutItem.SetRangeeModif(DataTableTrav.ObtenirRangees("Items", ListeSelection)(0))
-      FormAjoutItem.SetFormulaireMode("Modification")
-      FormAjoutItem.Show()
+      FormManipulerItem.SetIDModif(ListeSelection.First)
+      FormManipulerItem.SetFormulaireMode("Modification")
+      FormManipulerItem.ShowDialog()
     Else
       If ListeSelection.Count < 1 Then
         MsgBox("Veuillez sélectionner une cellule de la table.")

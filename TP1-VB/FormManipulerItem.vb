@@ -4,14 +4,13 @@ Public Class FormManipulerItem
   Private DataTableTrav As DataTableTravailleur
 
   Private FormulaireMode As String ' Ajout ou modifications
-  ' Private RangeeModif As DataGridViewRow
-  Private RangeeModif As DataRow
+  Private IDModif As Int32
 
   Public Sub New(ByRef DataTableTrav As DataTableTravailleur)
     InitializeComponent()
     Me.DataTableTrav = DataTableTrav
     Me.FormulaireMode = ""
-    Me.RangeeModif = Nothing
+    Me.IDModif = -1
 
     PopulerCombobox()
   End Sub
@@ -31,14 +30,14 @@ Public Class FormManipulerItem
         Me.Text = "Modification d'un item"
         Me.ButtonItemsAjoutAction.Text = "Modifier"
         Me.ButtonItemsAjoutAction.BackColor = Color.DarkOrange
-        If Not RangeeModif Is Nothing Then
+        If Not Me.IDModif = -1 Then
           Me.RemplirChampsRangee()
         End If
     End Select
   End Sub
 
-  Public Sub SetRangeeModif(ByRef RangeeModif As DataRow)
-    Me.RangeeModif = RangeeModif
+  Public Sub SetIDModif(ByVal IDModif As Int32)
+    Me.IDModif = IDModif
   End Sub
 
   Private Sub PopulerCombobox()
@@ -65,7 +64,7 @@ Public Class FormManipulerItem
       ' On vérifie quel est le mode du formulaire
       Select Case Me.FormulaireMode
         Case "Ajout"
-          Me.AjouterAuDatatable()
+          Me.InsertInventaireComplet()
           Me.Hide()
           Me.ViderFormulaire()
         Case "Modification"
@@ -93,11 +92,33 @@ Public Class FormManipulerItem
     Return CInt(dv(0).Item(0)) + 1
   End Function
 
-  Private Sub AjouterAuDatatable()
-    ' Méthode pour ajouter un nouveau Datarow
-    Dim dt As DataTable = DataTableTrav.ObtenirDataTable("Items")
+  ' Méthode pour insérer à l'inventaire complet
+  Private Sub InsertInventaireComplet()
+    DataTableTrav.InsertInventaireComplet(
+      TextBoxItemAjoutCodeProduit.Text,
+      TextBoxItemAjoutDesc.Text,
+      TextBoxItemAjoutEmp.Text,
+      CStr(ComboBoxItemAjoutCatNom.SelectedItem),
+      CStr(ComboBoxItemAjoutDepNom.SelectedItem),
+      TextBoxItemAjoutFournCode.Text,
+      CStr(ComboBoxItemAjoutFournNom.SelectedItem),
+      CDbl(TextBoxItemAjoutPrixV.Text),
+      CInt(TextBoxItemAjoutPrixV.Text))
+  End Sub
 
-    dt.Rows.Add(ConstruireDatarow(dt))
+  ' Méthode pour modifier dans l'inventaire complet
+  Private Sub UpdateInventaireComplet()
+    DataTableTrav.UpdateInventaireComplet(
+      Me.IDModif,
+      TextBoxItemAjoutCodeProduit.Text,
+      TextBoxItemAjoutDesc.Text,
+      TextBoxItemAjoutEmp.Text,
+      CStr(ComboBoxItemAjoutCatNom.SelectedItem),
+      CStr(ComboBoxItemAjoutDepNom.SelectedItem),
+      TextBoxItemAjoutFournCode.Text,
+      CStr(ComboBoxItemAjoutFournNom.SelectedItem),
+      CDbl(TextBoxItemAjoutPrixV.Text),
+      CInt(TextBoxItemAjoutPrixV.Text))
   End Sub
 
   Private Function ModifierRangee() As Boolean
@@ -110,9 +131,7 @@ Public Class FormManipulerItem
           MsgBoxStyle.YesNo,
           "Attention!") = DialogResult.Yes Then
 
-      ' Si l'utilisateur répond positivement, on modifie.
-      ' Pas besoin de rien retourner. Si c'est une modification, on modifie directement la rangée.
-      ConstruireDatarow(dt)
+      Me.UpdateInventaireComplet()
 
       ' On retourne vrai, pour cacher le formulaire
       Return True
@@ -120,35 +139,6 @@ Public Class FormManipulerItem
 
     ' Si l'utilisateur n'est pas content de ses modifications, on retourne faux pour rester le formulaire ouvert
     Return False
-  End Function
-
-  Private Function ConstruireDatarow(ByVal Table As DataTable) As DataRow
-    ' TOFIX : Il y a des meilleurs façons de faire ça
-    Dim nouvelleRangee As DataRow
-
-    Select Case Me.FormulaireMode
-      Case "Ajout"
-        ' Si c'est un ajout, c'est une nouvelle rangée et un nouveau id
-        nouvelleRangee = Table.NewRow()
-        nouvelleRangee("item_id") = GetDernierItemId()
-      Case "Modification"
-        ' Si c'est une modification, la rangée est celle qu'on modifie
-        nouvelleRangee = Table.Rows(CInt(Me.RangeeModif(0)) - 1)
-    End Select
-
-    ' Le compilateur n'aime pas ça puisque nouveauRow est instancié dans le Select Case. Pourtant, il sera toujours instancié
-    nouvelleRangee("item_code_produit") = TextBoxItemAjoutCodeProduit.Text
-    nouvelleRangee("item_dep_nom") = ComboBoxItemAjoutDepNom.SelectedItem
-    nouvelleRangee("item_cat_nom") = ComboBoxItemAjoutCatNom.SelectedItem
-    nouvelleRangee("item_fourn_nom") = ComboBoxItemAjoutFournNom.SelectedItem
-    nouvelleRangee("item_fourn_code") = TextBoxItemAjoutFournCode.Text
-    nouvelleRangee("item_desc") = TextBoxItemAjoutDesc.Text
-    nouvelleRangee("item_emp") = TextBoxItemAjoutEmp.Text
-    nouvelleRangee("item_prix_vente") = CDbl(TextBoxItemAjoutPrixV.Text)
-    nouvelleRangee("item_prix_achat") = CDbl(TextBoxItemAjoutPrixA.Text)
-    nouvelleRangee("item_qt") = CInt(TextBoxItemAjoutQt.Text)
-
-    Return nouvelleRangee
   End Function
 
   Private Sub ViderFormulaire()
@@ -169,26 +159,20 @@ Public Class FormManipulerItem
   Private Sub RemplirChampsRangee()
     ' Méthode pour remplir l'intégralité du formulaire avec une rangée
 
-    'TextBoxItemAjoutCodeProduit.Text = RangeeModif.Cells("item_code_produit").Value.ToString()
-    'TextBoxItemAjoutDesc.Text = RangeeModif.Cells("item_desc").Value.ToString()
-    'TextBoxItemAjoutEmp.Text = RangeeModif.Cells("item_emp").Value.ToString()
-    'TextBoxItemAjoutFournCode.Text = RangeeModif.Cells("item_fourn_code").Value.ToString()
-    'TextBoxItemAjoutPrixA.Text = RangeeModif.Cells("item_prix_achat").Value.ToString()
-    'TextBoxItemAjoutPrixV.Text = RangeeModif.Cells("item_prix_vente").Value.ToString()
-    'TextBoxItemAjoutQt.Text = RangeeModif.Cells("item_qt").Value.ToString()
+    ' TODO
 
-    TextBoxItemAjoutCodeProduit.Text = RangeeModif("item_code_produit").ToString()
-    TextBoxItemAjoutDesc.Text = RangeeModif("item_desc").ToString()
-    TextBoxItemAjoutEmp.Text = RangeeModif("item_emp").ToString()
-    TextBoxItemAjoutFournCode.Text = RangeeModif("item_fourn_code").ToString()
-    TextBoxItemAjoutPrixA.Text = RangeeModif("item_prix_achat").ToString()
-    TextBoxItemAjoutPrixV.Text = RangeeModif("item_prix_vente").ToString()
-    TextBoxItemAjoutQt.Text = RangeeModif("item_qt").ToString()
+    'TextBoxItemAjoutCodeProduit.Text = RangeeModif("item_code_produit").ToString()
+    'TextBoxItemAjoutDesc.Text = RangeeModif("item_desc").ToString()
+    'TextBoxItemAjoutEmp.Text = RangeeModif("item_emp").ToString()
+    'TextBoxItemAjoutFournCode.Text = RangeeModif("item_fourn_code").ToString()
+    'TextBoxItemAjoutPrixA.Text = RangeeModif("item_prix_achat").ToString()
+    'TextBoxItemAjoutPrixV.Text = RangeeModif("item_prix_vente").ToString()
+    'TextBoxItemAjoutQt.Text = RangeeModif("item_qt").ToString()
 
-    ' Si le nom n'est pas dans les VariablesGlobales, alors l'index est -1. Pas d'erreur.
-    ComboBoxItemAjoutFournNom.SelectedIndex = Array.IndexOf(VariablesGlobales.FOURN_NOM, RangeeModif("item_fourn_nom").ToString())
-    ComboBoxItemAjoutCatNom.SelectedIndex = Array.IndexOf(VariablesGlobales.CAT_NOM, RangeeModif("item_cat_nom").ToString())
-    ComboBoxItemAjoutDepNom.SelectedIndex = Array.IndexOf(VariablesGlobales.DEP_NOM, RangeeModif("item_dep_nom").ToString())
+    '' Si le nom n'est pas dans les VariablesGlobales, alors l'index est -1. Pas d'erreur.
+    'ComboBoxItemAjoutFournNom.SelectedIndex = Array.IndexOf(VariablesGlobales.FOURN_NOM, RangeeModif("item_fourn_nom").ToString())
+    'ComboBoxItemAjoutCatNom.SelectedIndex = Array.IndexOf(VariablesGlobales.CAT_NOM, RangeeModif("item_cat_nom").ToString())
+    'ComboBoxItemAjoutDepNom.SelectedIndex = Array.IndexOf(VariablesGlobales.DEP_NOM, RangeeModif("item_dep_nom").ToString())
   End Sub
 
   Private Function VerifierChamp() As Boolean
