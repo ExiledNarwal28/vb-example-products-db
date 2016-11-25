@@ -46,11 +46,18 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -71,6 +78,21 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="COOPInventaireEDM.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COOPInventaireEDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COOPInventaireEDM.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="COOPInventaireEDM.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataTableTravailleur.vb" />
     <Compile Include="FormAffichageFacture.Designer.vb">
       <DependentUpon>FormAffichageFacture.vb</DependentUpon>
@@ -102,6 +124,12 @@
     <Compile Include="FormNouvelleFacture.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="InsertCategorie_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InsertDepartement_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -116,6 +144,108 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SelectCategorie_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectDepartement_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletFiltreCodeProduit_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletFiltreDescription_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletParCategorieFiltreCodeProduit_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletParCategorieFiltreDescription_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletParCategorie_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletParDepartementFiltreCodeProduit_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletParDepartementFiltreDescription_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletParDepartement_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireComplet_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireReduitFactureFiltreCodeProduit_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireReduitFactureFiltreDescription_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireReduitFacture_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Categorie.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Commande.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_CommandeItem.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Departement.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Emplacement.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Facture.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_FactureItem.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Fournisseur.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Inventaire.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Localisation.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Membre.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_NiveauAcces.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Produit.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Taxe.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Utilisateur.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateCategorie_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateDepartement_Result.vb">
+      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="VariablesGlobales.vb" />
   </ItemGroup>
@@ -143,6 +273,23 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="COOPInventaireEDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>COOPInventaireEDM.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="COOPInventaireEDM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
+      <LastGenOutput>COOPInventaireEDM.Context.vb</LastGenOutput>
+    </None>
+    <None Include="COOPInventaireEDM.edmx.diagram">
+      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
+    </None>
+    <None Include="COOPInventaireEDM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
+      <LastGenOutput>COOPInventaireEDM.vb</LastGenOutput>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -153,6 +300,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -22,9 +22,10 @@ Partial Class FormInventaire
   'Ne la modifiez pas à l'aide de l'éditeur de code.
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
-    Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+    Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
     Me.TabControlInventaire = New System.Windows.Forms.TabControl()
     Me.TabPageItems = New System.Windows.Forms.TabPage()
+    Me.LabelItemsNb = New System.Windows.Forms.Label()
     Me.CheckBoxItemsNb = New System.Windows.Forms.CheckBox()
     Me.TextBoxItemsTotal = New System.Windows.Forms.TextBox()
     Me.LabelItemsTotal = New System.Windows.Forms.Label()
@@ -55,7 +56,8 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonConnexionAdmin = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
-    Me.LabelItemsNb = New System.Windows.Forms.Label()
+    Me.TabPage1 = New System.Windows.Forms.TabPage()
+    Me.TabPage2 = New System.Windows.Forms.TabPage()
     Me.TabControlInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,6 +69,8 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.TabControlInventaire.Controls.Add(Me.TabPageItems)
+    Me.TabControlInventaire.Controls.Add(Me.TabPage1)
+    Me.TabControlInventaire.Controls.Add(Me.TabPage2)
     Me.TabControlInventaire.Location = New System.Drawing.Point(12, 12)
     Me.TabControlInventaire.Name = "TabControlInventaire"
     Me.TabControlInventaire.SelectedIndex = 0
@@ -104,7 +108,16 @@ Partial Class FormInventaire
     Me.TabPageItems.Padding = New System.Windows.Forms.Padding(3)
     Me.TabPageItems.Size = New System.Drawing.Size(1009, 508)
     Me.TabPageItems.TabIndex = 0
-    Me.TabPageItems.Text = "Items"
+    Me.TabPageItems.Text = "Inventaire"
+    '
+    'LabelItemsNb
+    '
+    Me.LabelItemsNb.AutoSize = True
+    Me.LabelItemsNb.Location = New System.Drawing.Point(160, 489)
+    Me.LabelItemsNb.Name = "LabelItemsNb"
+    Me.LabelItemsNb.Size = New System.Drawing.Size(150, 13)
+    Me.LabelItemsNb.TabIndex = 27
+    Me.LabelItemsNb.Text = "Nombre d'items sélectionnés : "
     '
     'CheckBoxItemsNb
     '
@@ -318,14 +331,14 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DataGridViewItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-    DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-    DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-    DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-    DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-    DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-    Me.DataGridViewItems.DefaultCellStyle = DataGridViewCellStyle2
+    DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+    DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+    DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+    DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+    DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+    DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+    Me.DataGridViewItems.DefaultCellStyle = DataGridViewCellStyle1
     Me.DataGridViewItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewItems.Location = New System.Drawing.Point(160, 9)
     Me.DataGridViewItems.Name = "DataGridViewItems"
@@ -389,14 +402,25 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
     '
-    'LabelItemsNb
+    'TabPage1
     '
-    Me.LabelItemsNb.AutoSize = True
-    Me.LabelItemsNb.Location = New System.Drawing.Point(160, 489)
-    Me.LabelItemsNb.Name = "LabelItemsNb"
-    Me.LabelItemsNb.Size = New System.Drawing.Size(150, 13)
-    Me.LabelItemsNb.TabIndex = 27
-    Me.LabelItemsNb.Text = "Nombre d'items sélectionnés : "
+    Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+    Me.TabPage1.Name = "TabPage1"
+    Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+    Me.TabPage1.Size = New System.Drawing.Size(1009, 508)
+    Me.TabPage1.TabIndex = 1
+    Me.TabPage1.Text = "Factures"
+    Me.TabPage1.UseVisualStyleBackColor = True
+    '
+    'TabPage2
+    '
+    Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+    Me.TabPage2.Name = "TabPage2"
+    Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+    Me.TabPage2.Size = New System.Drawing.Size(1009, 508)
+    Me.TabPage2.TabIndex = 2
+    Me.TabPage2.Text = "Utilisateurs"
+    Me.TabPage2.UseVisualStyleBackColor = True
     '
     'FormInventaire
     '
@@ -485,5 +509,7 @@ Partial Class FormInventaire
   Friend WithEvents LabelItemsTotal As System.Windows.Forms.Label
   Friend WithEvents CheckBoxItemsNb As System.Windows.Forms.CheckBox
   Friend WithEvents LabelItemsNb As System.Windows.Forms.Label
+  Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+  Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
 
 End Class

@@ -26,12 +26,9 @@ Public Class FormInventaire
 
     ListeSelection = New List(Of Integer)
 
-    DataTableTrav.LireDataTable("items_db", "Items")
-    ' DataTableTrav.ConstruireTableCSV("finalBD.csv", "Items")
-
-    DataGridViewItems.DataSource = DataTableTrav.ObtenirDataTable("Items")
+    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
     DataGridViewItems.Refresh()
-    AffichageItemsColonnes()
+    AffichageInventaireCompletColonnes()
 
     MettreAJourNbItems()
 
@@ -180,7 +177,7 @@ Public Class FormInventaire
     TextBoxRechItemsFourn.Text = String.Empty
   End Sub
 
-  Private Sub AffichageItemsColonnes()
+  Private Sub AffichageInventaireCompletColonnes()
     ' Méthode pour configurer l'affichage des colonnes
 
     ' Source : http://vb.net-informations.com/datagridview/vb.net_datagridview_checkbox.htm
@@ -193,33 +190,19 @@ Public Class FormInventaire
 
     ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
     With DataGridViewItems
-      .Columns("item_chk").DisplayIndex = 0
-      .Columns("item_code_produit").DisplayIndex = 1
-      .Columns("item_desc").DisplayIndex = 2
-      .Columns("item_emp").DisplayIndex = 3
-      .Columns("item_dep_nom").DisplayIndex = 4
-      .Columns("item_cat_nom").DisplayIndex = 5
-      .Columns("item_fourn_nom").DisplayIndex = 6
-      .Columns("item_fourn_code").DisplayIndex = 7
-      .Columns("item_prix_achat").DisplayIndex = 8
-      .Columns("item_prix_vente").DisplayIndex = 9
-      .Columns("item_qt").DisplayIndex = 10
+      .Columns(10).DisplayIndex = 0 ' Les checkboxs
 
-      .Columns("item_chk").HeaderText = ""
-      .Columns("item_code_produit").HeaderText = "Code du produit"
-      .Columns("item_desc").HeaderText = "Description"
-      .Columns("item_emp").HeaderText = "Emplacement"
-      .Columns("item_dep_nom").HeaderText = "Département"
-      .Columns("item_cat_nom").HeaderText = "Catégorie"
-      .Columns("item_fourn_nom").HeaderText = "Fournisseur"
-      .Columns("item_fourn_code").HeaderText = "Code fourn."
-      .Columns("item_prix_achat").HeaderText = "Prix achat"
-      .Columns("item_prix_vente").HeaderText = "Prix vente"
-      .Columns("item_qt").HeaderText = "Quantité"
-
-      .Columns("item_id").Visible = False
-
-      .AutoResizeColumns()
+      .Columns(0).Visible = False ' ID
+      .Columns(1).HeaderText = "Code du produit"
+      .Columns(2).HeaderText = "Description"
+      .Columns(3).HeaderText = "Emplacement"
+      .Columns(4).HeaderText = "Catégorie"
+      .Columns(5).HeaderText = "Département"
+      .Columns(6).HeaderText = "Code fourn."
+      .Columns(7).HeaderText = "Fournisseur"
+      .Columns(8).HeaderText = "Prix vente"
+      .Columns(9).HeaderText = "Quantité"
+      .Columns(10).HeaderText = "" ' Les checkboxs
     End With
 
     ' Il faut mettre à jour de total des items
@@ -311,10 +294,10 @@ Public Class FormInventaire
 
     If CBool(chk.Value) Then
       chk.Value = False
-      ListeSelection.Remove(CInt(dgv.CurrentRow.Cells("item_id").Value))
+      ListeSelection.Remove(CInt(dgv.CurrentRow.Cells(0).Value))
     Else
       chk.Value = True
-      ListeSelection.Add(CInt(dgv.CurrentRow.Cells("item_id").Value))
+      ListeSelection.Add(CInt(dgv.CurrentRow.Cells(0).Value))
     End If
 
     MettreAJourNbItems()

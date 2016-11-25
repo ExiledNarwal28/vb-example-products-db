@@ -6,122 +6,21 @@ Imports System.Xml.Serialization
 
 Public Class DataTableTravailleur
   Private ItemsTable As DataTable
+  Private DBContexte As COOPInventaireEntities
 
   Public Sub New()
     ItemsTable = New DataTable("Items")
+
+    Try
+      DBContexte = New COOPInventaireEntities()
+    Catch ex As Exception
+      ' TODO
+    End Try
   End Sub
 
-  'Public Sub ConstruireTableCSV(ByVal NomFichier As String, ByVal NomTable As String)
-  '  ' Cette fonction lit un fichier CSV et construit le DataTable Item avec.
-  '  ' Source : https://msdn.microsoft.com/en-us/library/hfx3s9wd(v=vs.110).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-1
-  '  ' Source : Notes de cours
-
-  '  Dim Table As DataTable = ObtenirDataTable(NomTable)
-
-  '  If Not Table Is Nothing Then
-  '    If My.Computer.FileSystem.FileExists(NomFichier) Then
-  '      ' On crée une table pour les items
-  '      Dim Chaine As String = ""
-  '      Dim Lecteur As StreamReader = File.OpenText(NomFichier)
-
-  '      ' On utilise la première ligne du fichier pour construire les colonnes
-  '      ConstruireItemsColonnesCSV(Table, Lecteur.ReadLine())
-
-  '      While Lecteur.Peek > -1
-  '        Chaine = Lecteur.ReadLine()
-  '        Try
-  '          AjouterItemsRangeeCSV(Table, Chaine)
-  '        Catch ex As Exception
-  '          MsgBox(ex.Message)
-  '        End Try
-  '      End While
-
-  '      Lecteur.Close()
-  '    Else
-  '      MsgBox("Fichier CSV non trouvé.")
-  '    End If
-  '  Else
-  '    MsgBox("Impossible de construire la table.")
-  '  End If
-  'End Sub
-
-  'Private Sub ConstruireItemsColonnesCSV(ByRef Table As DataTable, ByVal Ligne As String)
-  '  Dim LigneArray() As String = Split(Ligne, ";")
-
-  '  ' TOFIX : Cette méthode n'est pas optimale, mais c'est ma solution actuelle.
-  '  For Index As Integer = 0 To 10
-  '    If Index = 0 Then
-  '      ' Pour la première valeur, on fait une clé unique
-  '      Dim idCol As DataColumn = Table.Columns.Add(LigneArray(Index), Type.GetType("System.Int32"))
-  '      idCol.AllowDBNull = False
-  '      idCol.Unique = True
-  '    Else
-  '      If Index = 6 Or Index = 7 Then
-  '        ' Pour le prix d'achat et le prix de vente
-  '        Table.Columns.Add(LigneArray(Index), Type.GetType("System.Double"))
-  '      Else
-  '        If Index = 8 Then
-  '          ' La quantité
-  '          Table.Columns.Add(LigneArray(Index), Type.GetType("System.Int32"))
-  '        Else
-  '          ' Tout le reste est un string
-  '          Table.Columns.Add(LigneArray(Index), Type.GetType("System.String"))
-  '        End If
-  '      End If
-  '    End If
-  '  Next
-  'End Sub
-
-  'Private Sub AjouterItemsRangeeCSV(ByRef Table As DataTable, ByVal Ligne As String)
-  '  ' Source : https://msdn.microsoft.com/en-us/library/5ycd1034.aspx
-  '  Dim LigneSeparee() As String = Split(Ligne, ";")
-  '  Dim nouvelleRangee As DataRow = Table.NewRow()
-
-  '  ' TOFIX : Cette méthode n'est pas optimale, mais c'est ma solution actuelle.
-  '  For Index As Integer = 0 To 10
-  '    If Index = 0 Or Index = 8 Then
-  '      ' Id et quantité
-
-  '      If LigneSeparee(Index) = "" Then
-  '        ' Il peut arriver que la quantité n'est pas été spécifiée
-  '        nouvelleRangee(Index) = 0
-  '      Else
-  '        Try
-  '          nouvelleRangee(Index) = CInt(LigneSeparee(Index))
-  '        Catch ex As Exception
-  '          MsgBox(ex.Message)
-  '        End Try
-  '      End If
-
-  '    Else
-
-  '      If Index = 6 Or Index = 7 Then
-  '        ' Pour le prix d'achat et le prix de vente
-  '        ' Il est nécéssaire de vérifier si le string existe
-
-  '        If LigneSeparee(Index) = "" Then
-  '          ' Si rien n'était entré pour le prix d'achat ou de vente, alors c'est 0
-  '          nouvelleRangee(Index) = 0
-  '        Else
-  '          Try
-  '            ' Si le CSV est construit en anglais plutôt qu'en français
-  '            nouvelleRangee(Index) = Convert.ToDouble(LigneSeparee(Index).Replace(".", ","))
-  '          Catch ex As Exception
-  '            MsgBox(ex.Message)
-  '          End Try
-  '        End If
-
-  '      Else
-
-  '        ' Tout le reste est un string
-  '        nouvelleRangee(Index) = LigneSeparee(Index)
-
-  '      End If
-  '    End If
-  '  Next
-
-  '  Table.Rows.Add(nouvelleRangee)
-  'End Sub
+  Public Function GetDataInventaireComplet() As List(Of TP1_VB.SelectInventaireComplet_Result)
+    Return DBContexte.SelectInventaireComplet.ToList
+  End Function
 
   Public Sub LireDataTable(ByVal NomFichier As String, ByVal NomTable As String)
     ' Méthode pour lire une base de données à partir d'un fichier
