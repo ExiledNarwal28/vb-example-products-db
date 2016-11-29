@@ -1,4 +1,4 @@
-#AUT2016 - VB.NET - TP3#
+﻿#AUT2016 - VB.NET - TP3#
 
 Ceci est le travail TP3 en VB.NET, fait par moi (Fabien Roy).
 
@@ -10,7 +10,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	L'inventaire ne devrait pas avoir à aller chercher les données quand on annule l'ajout/la modification
 
 ###Ce que je n'ai pas eu le temps de règler (bugs)###
-        (Rien)
+	(Rien)
 
 ###Ce que je n'ai pas eu à regler (vieux bugs/features du TP1 qui ne nécéssitent pas de correction)###
 	Le formulaire FormAjoutItem construit lui-même un datarow et l'envoie dans le DataTable Items. Il faudrait que ce soit gèrer entièrement par DataTableTravailleur.
@@ -80,6 +80,12 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 ###ConnexionString###
 
 	1 [ ] Pouvoir choisir l'addresse du ConnectionString en se connectant
+
+###Autre###
+	
+	4 [ ] Supprimer les fichiers du TP1
+	4 [ ] Renommer README.md en LISEZMOI.md
+	4 [ ] Vérifier les TODO dans le programme
 
 ##Historiques des versions de LISEZMOI.md##
 
