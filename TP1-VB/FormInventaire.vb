@@ -43,6 +43,7 @@ Public Class FormInventaire
   Private Sub ButtonAjoutItems_Click(sender As Object, e As EventArgs) Handles ButtonAjoutItems.Click
     FormManipulerItem.SetFormulaireMode("Ajout")
     FormManipulerItem.ShowDialog()
+    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
   End Sub
 
   Private Sub ButtonModifierItems_Click(sender As Object, e As EventArgs) Handles ButtonModifierItems.Click

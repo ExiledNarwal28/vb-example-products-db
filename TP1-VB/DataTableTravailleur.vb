@@ -27,14 +27,17 @@ Public Class DataTableTravailleur
   ' Méthode pour insérer dans l'inventaire complet
   Public Sub InsertInventaireComplet(ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
     DBContexte.InsertInventaireComplet(codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
+    DBContexte.SaveChanges()
   End Sub
 
   Public Sub UpdateInventaireComplet(ByVal iD As Int32, ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
     DBContexte.UpdateInventaireComplet(iD, codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
+    DBContexte.SaveChanges()
   End Sub
 
   Public Sub DeleteInventaireComplet(ByVal iD As Int32)
     DBContexte.DeleteInventaireComplet(iD)
+    DBContexte.SaveChanges()
   End Sub
 
   '  ---> Non class
@@ -195,68 +198,4 @@ Public Class DataTableTravailleur
     ' Si la Table n'est pas spécifiée, alors on ne retourne rien.
     Return Nothing
   End Function
-
-  ' ALLO ALLO ALLO LIRE CECI MERCI
-  ' Les méthodes/fonctions suivantes ne sont pas utilisées.
-  ' Je les ai laissé ici commentées pour montrer que j'ai réussi à convertir un fichier en binaire.
-  ' Je n'ai pas eu le temps d'implémenter ceci dans mon programme.
-  ' Je reste ceci ici surtout parce que je vais m'en servir plus tard.
-  ' La dernière méthode commentée est un exemple de compression de fichier.
-
-  'Private Sub EcrireStringABinaire(ByVal Chaine As String, ByVal NomFichier As String)
-  '   Méthode qui recoit un String et l'écrit dans un fichier en binaire
-  '   Exemple : EcrireStringABinaire("lol", "lol")
-  '   Source : http://stackoverflow.com/questions/15867568/writing-bits-into-binary-file-in-vb-net
-
-  '  Dim writer As BinaryWriter = New BinaryWriter(File.Open(NomFichier, FileMode.Append)) ' TODO : Append ?
-  '  Using writer
-  '    writer.Write(Chaine)
-  '  End Using
-  '  writer.Close()
-  'End Sub
-
-  'Private Function LireBinaireAString(ByVal NomFichier As String) As String
-  '   Méthode qui recoit un nom de fichier binaire et retourne son contenu en String
-  '   Exemple : MsgBox(LireBinaireAString("lol"))
-  '   Source : http://stackoverflow.com/questions/15867568/writing-bits-into-binary-file-in-vb-net
-
-  '  Dim Chaine As String
-
-  '  If (File.Exists(NomFichier)) Then
-  '    Dim reader As BinaryReader = New BinaryReader(File.Open(NomFichier, FileMode.Open))
-  '    Using reader
-  '      Chaine = reader.ReadString()
-  '    End Using
-  '    reader.Close()
-
-  '    Return Chaine
-  '  End If
-  '  Return "" ' Retourne un String vide si le fichier n'est pas trouvé
-  'End Function
-
-  'Private Sub CompresserFichier(ByVal NomFichier As String)
-  '  ' TODO : C'est de la merde, ça
-  '  ' Source : http://stackoverflow.com/questions/6463280/how-do-i-discover-the-users-desktop-folder
-  '  Dim DirTempo As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & NomFichier
-
-  '  ' Source : https://msdn.microsoft.com/en-us/library/9wzc03ze.aspx
-  '  ' On crée un dossier "temporaire"
-  '  My.Computer.FileSystem.CreateDirectory(DirTempo)
-
-  '  ' Source : https://msdn.microsoft.com/en-us/library/2t00swhw.aspx
-  '  ' On déplace le fichier dans le dossier temporaire
-  '  My.Computer.FileSystem.MoveFile(NomFichier, DirTempo & "\" & NomFichier)
-
-  '  ' Source : https://msdn.microsoft.com/en-us/library/ms404280(v=vs.110).aspx
-  '  ' On compresse le dossier temporaire
-  '  ZipFile.CreateFromDirectory(DirTempo, DirTempo & ".zip")
-
-  '  ' TODO : la suppression ne marche pas
-  '  ' On supprime le contenu du dossier temporaire
-  '  My.Computer.FileSystem.DeleteFile(DirTempo & "\" & NomFichier)
-
-  '  ' Source : https://msdn.microsoft.com/en-us/library/24t911bf(v=vs.100).aspx
-  '  ' On supprime le dossier temporaire
-  '  My.Computer.FileSystem.DeleteDirectory(DirTempo, FileIO.DeleteDirectoryOption.ThrowIfDirectoryNonEmpty)
-  'End Sub
 End Class
