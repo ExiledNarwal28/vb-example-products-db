@@ -1,48 +1,49 @@
-# AUT2016 - VB.NET - TP3 #
+#AUT2016 - VB.NET - TP3#
 
 Ceci est le travail TP3 en VB.NET, fait par moi (Fabien Roy).
 
-C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et LinQ.
+C'est une gestion d'inventaire de COOP de cÃ©gep qui utilise SQL Server 2014 et LinQ.
 
-## Liste de bugs/features ## 
+##Liste de bugs/features##
 
-Ce que je n'ai pas eu le temps d'ajouter (features) : 
-	- L'inventaire ne devrait pas avoir à aller chercher les données quand on annule l'ajout/la modification
+###Ce que je n'ai pas eu le temps d'ajouter (features)###
+	L'inventaire ne devrait pas avoir Ã  aller chercher les donnÃ©es quand on annule l'ajout/la modification
 
-Ce que je n'ai pas eu le temps de règler (bugs) : 
+###Ce que je n'ai pas eu le temps de rÃ¨gler (bugs)###
+        (Rien)
 
-Ce que je n'ai pas eu à regler (vieux bugs/features du TP1 qui ne nécéssitent pas de correction) : 
-	- Le formulaire FormAjoutItem construit lui-même un datarow et l'envoie dans le DataTable Items. Il faudrait que ce soit gèrer entièrement par DataTableTravailleur.
-	- Faire marcher le filtre des items sélectionnés et la recherche en même temps
-	- S'il y a trop d'items dans la facture et que le formulaire d'affichage de facture dépasse l'écran, l'impression ne comportera pas la page au complet (parce que je me sers d'une capture d'écran pour l'impression)
+###Ce que je n'ai pas eu Ã  regler (vieux bugs/features du TP1 qui ne nÃ©cÃ©ssitent pas de correction)###
+	Le formulaire FormAjoutItem construit lui-mÃªme un datarow et l'envoie dans le DataTable Items. Il faudrait que ce soit gÃ¨rer entiÃ¨rement par DataTableTravailleur.
+	Faire marcher le filtre des items sÃ©lectionnÃ©s et la recherche en mÃªme temps
+	S'il y a trop d'items dans la facture et que le formulaire d'affichage de facture dÃ©passe l'Ã©cran, l'impression ne comportera pas la page au complet (parce que je me sers d'une capture d'Ã©cran pour l'impression)
 
-## Choses à faire ##
+## Choses Ã  faire ##
 
 ### LinQ + inventaire ###
 
-	1 [x] Adapter le DGV à LinQ
-	1 [x] Adapter Insert à LinQ
-	1 [x] Adapter Update à LinQ
-	1 [x] Adapter Delete à LinQ
-	1 [ ] Vérifier pour les prix d'achats
-	3 [ ] Adapter filtres à LinQ
+	1 [x] Adapter le DGV Ã  LinQ
+	1 [x] Adapter Insert Ã  LinQ
+	1 [x] Adapter Update Ã  LinQ
+	1 [x] Adapter Delete Ã  LinQ
+	1 [ ] VÃ©rifier pour les prix d'achats
+	3 [ ] Adapter filtres Ã  LinQ
 	3 [ ] Faire fonctionner le total d'inventaire
 
 ### LinQ + factures ###
 
-	1 [ ] Adapter le DGV de factures à LinQ
-	1 [ ] Adapter l'ajout d'éléments à la facture à LinQ
+	1 [ ] Adapter le DGV de factures Ã  LinQ
+	1 [ ] Adapter l'ajout d'Ã©lÃ©ments Ã  la facture Ã  LinQ
 	1 [ ] Faire fonctionner la facture comme au TP1 avec LinQ
 	2 [ ] Baisser l'inventaire des factures avec LinQ
-	2 [ ] Ajouter les factures à la base de données lors de la création
+	2 [ ] Ajouter les factures Ã  la base de donnÃ©es lors de la crÃ©ation
 	3 [ ] Faire fonctionner l'impression comme au TP1 avec LinQ
 
 ### Tab des factures ###
 	
-	2 [ ] Faire les procedures stockées de select
-	2 [ ] Faire les procedures stockées d'insert
-	2 [ ] Faire les procedures stockées d'update
-	2 [ ] Faire les procedures stockées de delete
+	2 [ ] Faire les procedures stockÃ©es de select
+	2 [ ] Faire les procedures stockÃ©es d'insert
+	2 [ ] Faire les procedures stockÃ©es d'update
+	2 [ ] Faire les procedures stockÃ©es de delete
 	2 [ ] Faire le DGV des factures
 	2 [ ] Faire l'ajout de factures
 	2 [ ] Faire la modification de factures
@@ -50,14 +51,14 @@ Ce que je n'ai pas eu à regler (vieux bugs/features du TP1 qui ne nécéssitent pa
 
 ### Gestion de droits ###
 
-	1 [ ] Demander une connexion au départ du programme
-	2 [ ] Faire les procedures stockées de select d'utilisateur
-	2 [ ] Faire les procedures stockées de select d'utilisateur + des droits (au besoin)
-	2 [ ] Faire les procedures stockées d'insert d'utilisateur
-	2 [ ] Faire les procedures stockées d'update d'utilisateur
-	2 [ ] Faire les procedures stockées d'update d'utilisateur + des droits (au besoin)
-	2 [ ] Faire les procedures stockées de suppresion d'utilisateur
-	3 [ ] Pouvoir se déconnnecter
+	1 [ ] Demander une connexion au dÃ©part du programme
+	2 [ ] Faire les procedures stockÃ©es de select d'utilisateur
+	2 [ ] Faire les procedures stockÃ©es de select d'utilisateur + des droits (au besoin)
+	2 [ ] Faire les procedures stockÃ©es d'insert d'utilisateur
+	2 [ ] Faire les procedures stockÃ©es d'update d'utilisateur
+	2 [ ] Faire les procedures stockÃ©es d'update d'utilisateur + des droits (au besoin)
+	2 [ ] Faire les procedures stockÃ©es de suppresion d'utilisateur
+	3 [ ] Pouvoir se dÃ©connnecter
 
 ### Application des droits ###
 
@@ -67,7 +68,7 @@ Ce que je n'ai pas eu à regler (vieux bugs/features du TP1 qui ne nécéssitent pa
 	3 [ ] Faire le bit 4 - Utilisateur Update infos (Permet le bouton)
 	3 [ ] Faire le bit 8 - Utilisateur Delete (Permet le bouton)
 	3 [ ] Faire le bit 16 - Utilisateur Update droits (Change le DGV)
-	3 [ ] Faire le bit 32 - Inventaire Select (Permet le DGV +  le Tab) <- L'utilisateur ne pourra pas produire de factures
+	3 [ ] Faire le bit 32 - Inventaire Select (Permet le DGV +  le Tab) (Ne pourra pas produire de factures)
 	3 [ ] Faire le bit 64 - Inventaire Insert (Permet le bouton)
 	3 [ ] Faire le bit 128 - Inventaire Update (Permet le bouton)
 	3 [ ] Faire le bit 256 - Inventaire Delete (Permet le bouton)
@@ -76,11 +77,11 @@ Ce que je n'ai pas eu à regler (vieux bugs/features du TP1 qui ne nécéssitent pa
 	3 [ ] Faire le bit 2048 - Factures Insert (Permet le bouton)
 	3 [ ] Faire le bit 4096 - Factures Update (Permet le bouton)
 
-### ConnexionString ###
+###ConnexionString###
 
 	1 [ ] Pouvoir choisir l'addresse du ConnectionString en se connectant
 
-## Historiques des versions de LISEZMOI.md ##
+##Historiques des versions de LISEZMOI.md##
 
 Ceci est mon travail TP1 en VB.net.
 
@@ -91,27 +92,27 @@ Cela comprends :
 	- L'ajout d'items
 	- La modification d'items
 	- La suppression d'items
-	- Le calcul de données administratives (totaux)
+	- Le calcul de donnÃ©es administratives (totaux)
 	- La connexion administrateur
 	- L'interface administrateur
-	- La facturation (avec vérification et suppression de quantités)
+	- La facturation (avec vÃ©rification et suppression de quantitÃ©s)
 	- L'impression de facture
 	- La sauvegarde de la table "Items" dans un fichier.
-	- Sélection des items par checkbox.
-	- Un filtre pour voir seulement les items sélectionnés.
+	- SÃ©lection des items par checkbox.
+	- Un filtre pour voir seulement les items sÃ©lectionnÃ©s.
 
 Ce que je n'ai pas eu le temps d'ajouter (features) : 
 	- Enregistrement en binaire, compression et encryption. L'enregistrement de base est fonctionnel.
-	- Le formulaire FormAjoutItem construit lui-même un datarow et l'envoie dans le DataTable Items. Il faudrait que ce soit gèrer entièrement par DataTableTravailleur.
-	- Faire marcher le filtre des items sélectionnés et la recherche en même temps
+	- Le formulaire FormAjoutItem construit lui-mÃªme un datarow et l'envoie dans le DataTable Items. Il faudrait que ce soit gÃ¨rer entiÃ¨rement par DataTableTravailleur.
+	- Faire marcher le filtre des items sÃ©lectionnÃ©s et la recherche en mÃªme temps
 
-Ce que je n'ai pas eu le temps de règler (bugs) : 
-	- S'il y a trop d'items dans la facture et que le formulaire d'affichage de facture dépasse l'écran, l'impression ne comportera pas la page au complet (parce que je me sers d'une capture d'écran pour l'impression)
-	- Dans la méthode LireDataTable de DataTableTravailleur, la façon de lire la table n'est pas valide. Je crois que j'ai un problème de référence.
+Ce que je n'ai pas eu le temps de rÃ¨gler (bugs) : 
+	- S'il y a trop d'items dans la facture et que le formulaire d'affichage de facture dÃ©passe l'Ã©cran, l'impression ne comportera pas la page au complet (parce que je me sers d'une capture d'Ã©cran pour l'impression)
+	- Dans la mÃ©thode LireDataTable de DataTableTravailleur, la faÃ§on de lire la table n'est pas valide. Je crois que j'ai un problÃ¨me de rÃ©fÃ©rence.
 
-Dans mon code, on peut parfois voir des commentaires spécifiques
-	TODO : petit mémo à moi-même
-	TOFIX : bugs à règler
-	TOADD : ajout à faire (feature)
+Dans mon code, on peut parfois voir des commentaires spÃ©cifiques
+	TODO : petit mÃ©mo Ã  moi-mÃªme
+	TOFIX : bugs Ã  rÃ¨gler
+	TOADD : ajout Ã  faire (feature)
 
-Je préfère laisser ces commentaires dans mon codes, puisque certains aident à cerner les erreurs dont je parle ici et puisque cela va m'être utile dans le TP2.
+Je prÃ©fÃ¨re laisser ces commentaires dans mon codes, puisque certains aident Ã  cerner les erreurs dont je parle ici et puisque cela va m'Ãªtre utile dans le TP2.
