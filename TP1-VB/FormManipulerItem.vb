@@ -11,8 +11,6 @@ Public Class FormManipulerItem
     Me.DataTableTrav = DataTableTrav
     Me.FormulaireMode = ""
     Me.IDModif = -1
-
-    PopulerCombobox()
   End Sub
 
   Public Sub SetFormulaireMode(ByVal Mode As String)
@@ -38,23 +36,6 @@ Public Class FormManipulerItem
 
   Public Sub SetIDModif(ByVal IDModif As Int32)
     Me.IDModif = IDModif
-  End Sub
-
-  Private Sub PopulerCombobox()
-    ' Source: http://stackoverflow.com/questions/22682075/how-to-populate-a-combobox-with-a-string-array
-
-    For Each colonne As String In VariablesGlobales.CAT_NOM
-      ComboBoxItemAjoutCatNom.Items.Add(colonne)
-    Next
-
-    For Each colonne As String In VariablesGlobales.DEP_NOM
-      ComboBoxItemAjoutDepNom.Items.Add(colonne)
-    Next
-
-    ComboBoxItemAjoutFournNom.MaxDropDownItems = 10
-    For Each colonne As String In VariablesGlobales.FOURN_NOM
-      ComboBoxItemAjoutFournNom.Items.Add(colonne)
-    Next
   End Sub
 
   Private Sub ButtonItemsAjoutAction_Click(sender As Object, e As EventArgs) Handles ButtonItemsAjoutAction.Click
@@ -98,10 +79,10 @@ Public Class FormManipulerItem
       TextBoxItemAjoutCodeProduit.Text,
       TextBoxItemAjoutDesc.Text,
       TextBoxItemAjoutEmp.Text,
-      CStr(ComboBoxItemAjoutCatNom.SelectedItem),
-      CStr(ComboBoxItemAjoutDepNom.SelectedItem),
+      TextBoxItemAjoutCat.Text,
+      TextBoxItemAjoutDep.Text,
       TextBoxItemAjoutFournCode.Text,
-      CStr(ComboBoxItemAjoutFournNom.SelectedItem),
+      TextBoxItemAjoutFournNom.Text,
       CDbl(TextBoxItemAjoutPrixV.Text),
       CInt(TextBoxItemAjoutPrixV.Text))
   End Sub
@@ -113,10 +94,10 @@ Public Class FormManipulerItem
       TextBoxItemAjoutCodeProduit.Text,
       TextBoxItemAjoutDesc.Text,
       TextBoxItemAjoutEmp.Text,
-      CStr(ComboBoxItemAjoutCatNom.SelectedItem),
-      CStr(ComboBoxItemAjoutDepNom.SelectedItem),
+      TextBoxItemAjoutCat.Text,
+      TextBoxItemAjoutDep.Text,
       TextBoxItemAjoutFournCode.Text,
-      CStr(ComboBoxItemAjoutFournNom.SelectedItem),
+      TextBoxItemAjoutFournNom.Text,
       CDbl(TextBoxItemAjoutPrixV.Text),
       CInt(TextBoxItemAjoutPrixV.Text))
   End Sub
@@ -147,10 +128,10 @@ Public Class FormManipulerItem
     TextBoxItemAjoutCodeProduit.Text = ""
     TextBoxItemAjoutDesc.Text = ""
     TextBoxItemAjoutEmp.Text = ""
-    ComboBoxItemAjoutFournNom.SelectedIndex = -1
+    TextBoxItemAjoutCat.Text = ""
     TextBoxItemAjoutFournCode.Text = ""
-    ComboBoxItemAjoutDepNom.SelectedIndex = -1
-    ComboBoxItemAjoutCatNom.SelectedIndex = -1
+    TextBoxItemAjoutDep.Text = ""
+    TextBoxItemAjoutFournNom.Text = ""
     TextBoxItemAjoutPrixA.Text = ""
     TextBoxItemAjoutPrixV.Text = ""
     TextBoxItemAjoutQt.Text = ""
@@ -195,7 +176,7 @@ Public Class FormManipulerItem
       Resultat = False
     End If
 
-    If ComboBoxItemAjoutFournNom.SelectedIndex = -1 Then
+    If TextBoxItemAjoutFournNom.Text = "" Then
       LabelItemAjoutFournNom.ForeColor = Color.Red
       Resultat = False
     End If
@@ -205,12 +186,12 @@ Public Class FormManipulerItem
       Resultat = False
     End If
 
-    If ComboBoxItemAjoutDepNom.SelectedIndex = -1 Then
+    If TextBoxItemAjoutDep.Text = "" Then
       LabelItemAjoutDepNom.ForeColor = Color.Red
       Resultat = False
     End If
 
-    If ComboBoxItemAjoutCatNom.SelectedIndex = -1 Then
+    If TextBoxItemAjoutCat.Text = "" Then
       LabelItemAjoutCatNom.ForeColor = Color.Red
       Resultat = False
     End If
@@ -235,6 +216,20 @@ Public Class FormManipulerItem
     Return Resultat
   End Function
 
+  ' Méthode pour mettre les couleurs des labels à la couleur normale
+  Private Sub LabelCouleurNormale()
+    LabelItemAjoutCatNom.ForeColor = Color.Black
+    LabelItemAjoutCodeProduit.ForeColor = Color.Black
+    LabelItemAjoutDepNom.ForeColor = Color.Black
+    LabelItemAjoutDesc.ForeColor = Color.Black
+    LabelItemAjoutEmp.ForeColor = Color.Black
+    LabelItemAjoutFournCode.ForeColor = Color.Black
+    LabelItemAjoutFournNom.ForeColor = Color.Black
+    LabelItemAjoutPrixA.ForeColor = Color.Black
+    LabelItemAjoutPrixV.ForeColor = Color.Black
+    LabelItemAjoutQt.ForeColor = Color.Black
+  End Sub
+
   Private Sub TextBoxItemAjoutCodeProduit_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutCodeProduit.TextChanged
     LabelItemAjoutCodeProduit.ForeColor = Color.Black
   End Sub
@@ -247,7 +242,7 @@ Public Class FormManipulerItem
     LabelItemAjoutEmp.ForeColor = Color.Black
   End Sub
 
-  Private Sub ComboBoxItemAjoutFournNom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItemAjoutFournNom.SelectedIndexChanged
+  Private Sub ComboBoxItemAjoutFournNom_SelectedIndexChanged(sender As Object, e As EventArgs)
     LabelItemAjoutFournNom.ForeColor = Color.Black
   End Sub
 
@@ -255,11 +250,11 @@ Public Class FormManipulerItem
     LabelItemAjoutFournCode.ForeColor = Color.Black
   End Sub
 
-  Private Sub ComboBoxItemAjoutDepNom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItemAjoutDepNom.SelectedIndexChanged
+  Private Sub ComboBoxItemAjoutDepNom_SelectedIndexChanged(sender As Object, e As EventArgs)
     LabelItemAjoutDepNom.ForeColor = Color.Black
   End Sub
 
-  Private Sub ComboBoxItemAjoutCatNom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxItemAjoutCatNom.SelectedIndexChanged
+  Private Sub ComboBoxItemAjoutCatNom_SelectedIndexChanged(sender As Object, e As EventArgs)
     LabelItemAjoutCatNom.ForeColor = Color.Black
   End Sub
 
@@ -280,6 +275,7 @@ Public Class FormManipulerItem
     Handles MyBase.Closing
     ' Source : https://bytes.com/topic/visual-basic-net/answers/371062-hide-main-form-instead-closing
     ' Fonction pour cacher le formulaire au lieu de le fermer
+    Me.LabelCouleurNormale()
     Me.Hide()
     e.Cancel = True
   End Sub

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b043d09ed0454a4f8d0d7c503ec2c2a7" Name="Diagram1">
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Categorie" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Commande" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_CommandeItem" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Departement" Width="1.5" PointX="5.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Emplacement" Width="1.5" PointX="5.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Facture" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_FactureItem" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Fournisseur" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Inventaire" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Membre" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_NiveauAcces" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Produit" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Taxe" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Utilisateur" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel.Tb_Localisation" Width="1.5" PointX="10.25" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Inventaire_Tb_Categorie" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Commande_Tb_CommandeItem" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Commande_Tb_Fournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Commande_Tb_Utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_CommandeItem_Tb_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Inventaire_Tb_Departement" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Inventaire_Tb_Emplacement" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Localisation_Tb_Emplacement" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Facture_Tb_FactureItem" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Facture_Tb_Membre" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Facture_Tb_Utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_FactureItem_Tb_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Inventaire_Tb_Fournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Inventaire_Tb_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Localisation_Tb_Inventaire" ManuallyRouted="false" />
+        <AssociationConnector Association="COOPInventaire_TP3_testsModel.FK_Tb_Utilisateur_Tb_NiveauAcces" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

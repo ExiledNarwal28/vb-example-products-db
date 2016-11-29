@@ -6,13 +6,14 @@ Imports System.Xml.Serialization
 
 Public Class DataTableTravailleur
   Private ItemsTable As DataTable
-  Private DBContexte As COOPInventaireEntities
+  ' Private DBContexte As COOPInventaireEntitiesi
+  Private DBContexte As COOPInventaire_TP3_testsEntities
 
   Public Sub New()
     ItemsTable = New DataTable("Items")
 
     Try
-      DBContexte = New COOPInventaireEntities()
+      DBContexte = New COOPInventaire_TP3_testsEntities()
     Catch ex As Exception
       ' TODO
     End Try

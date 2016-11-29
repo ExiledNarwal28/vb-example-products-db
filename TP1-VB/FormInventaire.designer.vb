@@ -48,6 +48,8 @@ Partial Class FormInventaire
     Me.TextBoxRechItemsCode = New System.Windows.Forms.TextBox()
     Me.LabelRechItems = New System.Windows.Forms.Label()
     Me.DataGridViewItems = New System.Windows.Forms.DataGridView()
+    Me.TabPage1 = New System.Windows.Forms.TabPage()
+    Me.TabPage2 = New System.Windows.Forms.TabPage()
     Me.fact_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.fact_stotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.nb_items_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,8 +58,6 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonConnexionAdmin = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
-    Me.TabPage1 = New System.Windows.Forms.TabPage()
-    Me.TabPage2 = New System.Windows.Forms.TabPage()
     Me.TabControlInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -138,6 +138,7 @@ Partial Class FormInventaire
     Me.TextBoxItemsTotal.ReadOnly = True
     Me.TextBoxItemsTotal.Size = New System.Drawing.Size(145, 20)
     Me.TextBoxItemsTotal.TabIndex = 24
+    Me.TextBoxItemsTotal.Visible = False
     '
     'LabelItemsTotal
     '
@@ -148,6 +149,7 @@ Partial Class FormInventaire
     Me.LabelItemsTotal.Size = New System.Drawing.Size(134, 13)
     Me.LabelItemsTotal.TabIndex = 23
     Me.LabelItemsTotal.Text = "Total de l'inventaire affiché"
+    Me.LabelItemsTotal.Visible = False
     '
     'LabelItemsFourn
     '
@@ -259,6 +261,7 @@ Partial Class FormInventaire
     Me.ButtonSupprimerItems.TabIndex = 7
     Me.ButtonSupprimerItems.Text = "Supprimer"
     Me.ButtonSupprimerItems.UseVisualStyleBackColor = False
+    Me.ButtonSupprimerItems.Visible = False
     '
     'ButtonModifierItems
     '
@@ -270,6 +273,7 @@ Partial Class FormInventaire
     Me.ButtonModifierItems.TabIndex = 6
     Me.ButtonModifierItems.Text = "Modifier"
     Me.ButtonModifierItems.UseVisualStyleBackColor = False
+    Me.ButtonModifierItems.Visible = False
     '
     'LabelItemRecherche
     '
@@ -303,6 +307,7 @@ Partial Class FormInventaire
     Me.ButtonAjoutItems.TabIndex = 3
     Me.ButtonAjoutItems.Text = "Ajouter"
     Me.ButtonAjoutItems.UseVisualStyleBackColor = False
+    Me.ButtonAjoutItems.Visible = False
     '
     'TextBoxRechItemsCode
     '
@@ -347,6 +352,26 @@ Partial Class FormInventaire
     Me.DataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
     Me.DataGridViewItems.Size = New System.Drawing.Size(843, 475)
     Me.DataGridViewItems.TabIndex = 0
+    '
+    'TabPage1
+    '
+    Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+    Me.TabPage1.Name = "TabPage1"
+    Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+    Me.TabPage1.Size = New System.Drawing.Size(1009, 508)
+    Me.TabPage1.TabIndex = 1
+    Me.TabPage1.Text = "Factures"
+    Me.TabPage1.UseVisualStyleBackColor = True
+    '
+    'TabPage2
+    '
+    Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+    Me.TabPage2.Name = "TabPage2"
+    Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+    Me.TabPage2.Size = New System.Drawing.Size(1009, 508)
+    Me.TabPage2.TabIndex = 2
+    Me.TabPage2.Text = "Utilisateurs"
+    Me.TabPage2.UseVisualStyleBackColor = True
     '
     'fact_total
     '
@@ -401,26 +426,6 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.TabIndex = 8
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
-    '
-    'TabPage1
-    '
-    Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-    Me.TabPage1.Name = "TabPage1"
-    Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-    Me.TabPage1.Size = New System.Drawing.Size(1009, 508)
-    Me.TabPage1.TabIndex = 1
-    Me.TabPage1.Text = "Factures"
-    Me.TabPage1.UseVisualStyleBackColor = True
-    '
-    'TabPage2
-    '
-    Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-    Me.TabPage2.Name = "TabPage2"
-    Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-    Me.TabPage2.Size = New System.Drawing.Size(1009, 508)
-    Me.TabPage2.TabIndex = 2
-    Me.TabPage2.Text = "Utilisateurs"
-    Me.TabPage2.UseVisualStyleBackColor = True
     '
     'FormInventaire
     '

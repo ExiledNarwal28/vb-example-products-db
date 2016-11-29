@@ -29,10 +29,7 @@ Partial Class FormManipulerItem
     Me.TextBoxItemAjoutEmp = New System.Windows.Forms.TextBox()
     Me.LabelItemAjoutEmp = New System.Windows.Forms.Label()
     Me.LabelItemAjoutFournNom = New System.Windows.Forms.Label()
-    Me.ComboBoxItemAjoutFournNom = New System.Windows.Forms.ComboBox()
-    Me.ComboBoxItemAjoutCatNom = New System.Windows.Forms.ComboBox()
     Me.LabelItemAjoutCatNom = New System.Windows.Forms.Label()
-    Me.ComboBoxItemAjoutDepNom = New System.Windows.Forms.ComboBox()
     Me.LabelItemAjoutDepNom = New System.Windows.Forms.Label()
     Me.TextBoxItemAjoutPrixA = New System.Windows.Forms.TextBox()
     Me.LabelItemAjoutPrixA = New System.Windows.Forms.Label()
@@ -44,6 +41,9 @@ Partial Class FormManipulerItem
     Me.ButtonItemsAjoutAnnuler = New System.Windows.Forms.Button()
     Me.TextBoxItemAjoutFournCode = New System.Windows.Forms.TextBox()
     Me.LabelItemAjoutFournCode = New System.Windows.Forms.Label()
+    Me.TextBoxItemAjoutFournNom = New System.Windows.Forms.TextBox()
+    Me.TextBoxItemAjoutDep = New System.Windows.Forms.TextBox()
+    Me.TextBoxItemAjoutCat = New System.Windows.Forms.TextBox()
     Me.SuspendLayout()
     '
     'LabelItemAjoutCodeProduit
@@ -103,24 +103,6 @@ Partial Class FormManipulerItem
     Me.LabelItemAjoutFournNom.TabIndex = 6
     Me.LabelItemAjoutFournNom.Text = "Fournisseur : "
     '
-    'ComboBoxItemAjoutFournNom
-    '
-    Me.ComboBoxItemAjoutFournNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-    Me.ComboBoxItemAjoutFournNom.FormattingEnabled = True
-    Me.ComboBoxItemAjoutFournNom.Location = New System.Drawing.Point(109, 85)
-    Me.ComboBoxItemAjoutFournNom.Name = "ComboBoxItemAjoutFournNom"
-    Me.ComboBoxItemAjoutFournNom.Size = New System.Drawing.Size(274, 21)
-    Me.ComboBoxItemAjoutFournNom.TabIndex = 7
-    '
-    'ComboBoxItemAjoutCatNom
-    '
-    Me.ComboBoxItemAjoutCatNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-    Me.ComboBoxItemAjoutCatNom.FormattingEnabled = True
-    Me.ComboBoxItemAjoutCatNom.Location = New System.Drawing.Point(109, 165)
-    Me.ComboBoxItemAjoutCatNom.Name = "ComboBoxItemAjoutCatNom"
-    Me.ComboBoxItemAjoutCatNom.Size = New System.Drawing.Size(274, 21)
-    Me.ComboBoxItemAjoutCatNom.TabIndex = 9
-    '
     'LabelItemAjoutCatNom
     '
     Me.LabelItemAjoutCatNom.AutoSize = True
@@ -129,15 +111,6 @@ Partial Class FormManipulerItem
     Me.LabelItemAjoutCatNom.Size = New System.Drawing.Size(61, 13)
     Me.LabelItemAjoutCatNom.TabIndex = 8
     Me.LabelItemAjoutCatNom.Text = "Catégorie : "
-    '
-    'ComboBoxItemAjoutDepNom
-    '
-    Me.ComboBoxItemAjoutDepNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-    Me.ComboBoxItemAjoutDepNom.FormattingEnabled = True
-    Me.ComboBoxItemAjoutDepNom.Location = New System.Drawing.Point(109, 138)
-    Me.ComboBoxItemAjoutDepNom.Name = "ComboBoxItemAjoutDepNom"
-    Me.ComboBoxItemAjoutDepNom.Size = New System.Drawing.Size(274, 21)
-    Me.ComboBoxItemAjoutDepNom.TabIndex = 11
     '
     'LabelItemAjoutDepNom
     '
@@ -234,11 +207,35 @@ Partial Class FormManipulerItem
     Me.LabelItemAjoutFournCode.TabIndex = 20
     Me.LabelItemAjoutFournCode.Text = "Code Fourn. : "
     '
-    'FormAjoutItem
+    'TextBoxItemAjoutFournNom
+    '
+    Me.TextBoxItemAjoutFournNom.Location = New System.Drawing.Point(109, 86)
+    Me.TextBoxItemAjoutFournNom.Name = "TextBoxItemAjoutFournNom"
+    Me.TextBoxItemAjoutFournNom.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxItemAjoutFournNom.TabIndex = 22
+    '
+    'TextBoxItemAjoutDep
+    '
+    Me.TextBoxItemAjoutDep.Location = New System.Drawing.Point(109, 138)
+    Me.TextBoxItemAjoutDep.Name = "TextBoxItemAjoutDep"
+    Me.TextBoxItemAjoutDep.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxItemAjoutDep.TabIndex = 23
+    '
+    'TextBoxItemAjoutCat
+    '
+    Me.TextBoxItemAjoutCat.Location = New System.Drawing.Point(109, 165)
+    Me.TextBoxItemAjoutCat.Name = "TextBoxItemAjoutCat"
+    Me.TextBoxItemAjoutCat.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxItemAjoutCat.TabIndex = 24
+    '
+    'FormManipulerItem
     '
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
     Me.BackColor = System.Drawing.Color.PaleTurquoise
     Me.ClientSize = New System.Drawing.Size(395, 298)
+    Me.Controls.Add(Me.TextBoxItemAjoutCat)
+    Me.Controls.Add(Me.TextBoxItemAjoutDep)
+    Me.Controls.Add(Me.TextBoxItemAjoutFournNom)
     Me.Controls.Add(Me.TextBoxItemAjoutFournCode)
     Me.Controls.Add(Me.LabelItemAjoutFournCode)
     Me.Controls.Add(Me.ButtonItemsAjoutAnnuler)
@@ -249,11 +246,8 @@ Partial Class FormManipulerItem
     Me.Controls.Add(Me.LabelItemAjoutPrixV)
     Me.Controls.Add(Me.TextBoxItemAjoutPrixA)
     Me.Controls.Add(Me.LabelItemAjoutPrixA)
-    Me.Controls.Add(Me.ComboBoxItemAjoutDepNom)
     Me.Controls.Add(Me.LabelItemAjoutDepNom)
-    Me.Controls.Add(Me.ComboBoxItemAjoutCatNom)
     Me.Controls.Add(Me.LabelItemAjoutCatNom)
-    Me.Controls.Add(Me.ComboBoxItemAjoutFournNom)
     Me.Controls.Add(Me.LabelItemAjoutFournNom)
     Me.Controls.Add(Me.TextBoxItemAjoutEmp)
     Me.Controls.Add(Me.LabelItemAjoutEmp)
@@ -261,7 +255,7 @@ Partial Class FormManipulerItem
     Me.Controls.Add(Me.LabelItemAjoutDesc)
     Me.Controls.Add(Me.TextBoxItemAjoutCodeProduit)
     Me.Controls.Add(Me.LabelItemAjoutCodeProduit)
-    Me.Name = "FormAjoutItem"
+    Me.Name = "FormManipulerItem"
     Me.Text = "Ajout d'un item"
     Me.ResumeLayout(False)
     Me.PerformLayout()
@@ -274,10 +268,7 @@ Partial Class FormManipulerItem
   Friend WithEvents TextBoxItemAjoutEmp As System.Windows.Forms.TextBox
   Friend WithEvents LabelItemAjoutEmp As System.Windows.Forms.Label
   Friend WithEvents LabelItemAjoutFournNom As System.Windows.Forms.Label
-  Friend WithEvents ComboBoxItemAjoutFournNom As System.Windows.Forms.ComboBox
-  Friend WithEvents ComboBoxItemAjoutCatNom As System.Windows.Forms.ComboBox
   Friend WithEvents LabelItemAjoutCatNom As System.Windows.Forms.Label
-  Friend WithEvents ComboBoxItemAjoutDepNom As System.Windows.Forms.ComboBox
   Friend WithEvents LabelItemAjoutDepNom As System.Windows.Forms.Label
   Friend WithEvents TextBoxItemAjoutPrixA As System.Windows.Forms.TextBox
   Friend WithEvents LabelItemAjoutPrixA As System.Windows.Forms.Label
@@ -289,4 +280,7 @@ Partial Class FormManipulerItem
   Friend WithEvents ButtonItemsAjoutAnnuler As System.Windows.Forms.Button
   Friend WithEvents TextBoxItemAjoutFournCode As System.Windows.Forms.TextBox
   Friend WithEvents LabelItemAjoutFournCode As System.Windows.Forms.Label
+  Friend WithEvents TextBoxItemAjoutFournNom As System.Windows.Forms.TextBox
+  Friend WithEvents TextBoxItemAjoutDep As System.Windows.Forms.TextBox
+  Friend WithEvents TextBoxItemAjoutCat As System.Windows.Forms.TextBox
 End Class

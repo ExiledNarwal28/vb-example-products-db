@@ -62,9 +62,8 @@ Public Class FormInventaire
     End If
   End Sub
 
+  ' Méthode pour supprimer une rangée de la table
   Private Sub ButtonSupprimerItems_Click(sender As Object, e As EventArgs) Handles ButtonSupprimerItems.Click
-    ' Méthode pour supprimer une rangée de la table
-
     ' On vérifie si l'utilisateur a bien sélectionné une rangée
     If DataGridViewItems.SelectedRows.Count >= 1 Then
       Try
