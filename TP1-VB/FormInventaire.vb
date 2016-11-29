@@ -54,6 +54,7 @@ Public Class FormInventaire
       FormManipulerItem.SetIDModif(ListeSelection.First)
       FormManipulerItem.SetFormulaireMode("Modification")
       FormManipulerItem.ShowDialog()
+      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
     Else
       If ListeSelection.Count < 1 Then
         MsgBox("Veuillez sélectionner une cellule de la table.")
@@ -70,19 +71,8 @@ Public Class FormInventaire
       Try
         ' Source : http://stackoverflow.com/questions/9181363/yes-no-function-in-a-messagebox
 
-        Dim stringRangeesSelectionnees As String = ""
-
-        For Each Rangee As DataRow In DataTableTrav.ObtenirRangees("Items", ListeSelection)
-          stringRangeesSelectionnees &=
-            Rangee(2).ToString() &
-            "(" & Rangee(3).ToString() & ")" & Environment.NewLine
-        Next
-
         If MsgBox(
-          "Voulez vous vraiment supprimer : " _
-          & vbNewLine _
-          & stringRangeesSelectionnees _
-          & "?",
+          "Voulez vous vraiment supprimer cette/ces rangée(s)?",
           MsgBoxStyle.YesNo,
           "Attention!") = DialogResult.Yes Then
 

@@ -93,20 +93,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="COOPInventaire_TP3_tests.Context.vb">
+    <Compile Include="COOPInventaire_TP3_testsEDM.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>COOPInventaire_TP3_tests.Context.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="COOPInventaire_TP3_testsEDM.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>COOPInventaire_TP3_testsEDM.edmx</DependentUpon>
     </Compile>
-    <Compile Include="COOPInventaire_TP3_tests.vb">
+    <Compile Include="COOPInventaire_TP3_testsEDM.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="DataTableTravailleur.vb" />
     <Compile Include="FormAffichageFacture.Designer.vb">
@@ -140,10 +140,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InsertCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="InsertDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -161,106 +161,109 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="SelectCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletParCategorieFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletParCategorieFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletParCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletParDepartementFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletParDepartementFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireCompletParDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInventaireCompletSingle_Result.vb">
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireComplet_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireReduitFactureFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireReduitFactureFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireReduitFacture_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Categorie.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Commande.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_CommandeItem.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Departement.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Emplacement.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Facture.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_FactureItem.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Fournisseur.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Inventaire.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Localisation.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Membre.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_NiveauAcces.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Produit.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Taxe.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Utilisateur.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="UpdateCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="UpdateDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_tests.tt</DependentUpon>
+      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="VariablesGlobales.vb" />
   </ItemGroup>
@@ -309,18 +312,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>COOPInventaire_TP3_testsEDM.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <None Include="COOPInventaire_TP3_tests.Context.tt">
+    <None Include="COOPInventaire_TP3_testsEDM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>COOPInventaire_TP3_testsEDM.edmx</DependentUpon>
-      <LastGenOutput>COOPInventaire_TP3_tests.Context.vb</LastGenOutput>
+      <LastGenOutput>COOPInventaire_TP3_testsEDM.Context.vb</LastGenOutput>
     </None>
     <None Include="COOPInventaire_TP3_testsEDM.edmx.diagram">
       <DependentUpon>COOPInventaire_TP3_testsEDM.edmx</DependentUpon>
     </None>
-    <None Include="COOPInventaire_TP3_tests.tt">
+    <None Include="COOPInventaire_TP3_testsEDM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>COOPInventaire_TP3_testsEDM.edmx</DependentUpon>
-      <LastGenOutput>COOPInventaire_TP3_tests.vb</LastGenOutput>
+      <LastGenOutput>COOPInventaire_TP3_testsEDM.vb</LastGenOutput>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

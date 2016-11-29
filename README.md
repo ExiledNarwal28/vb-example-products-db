@@ -5,6 +5,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et L
 Cela comprends : 
 
 Ce que je n'ai pas eu le temps d'ajouter (features) : 
+	- L'inventaire ne devrait pas avoir à aller chercher les données quand on annule l'ajout/la modification
 
 Ce que je n'ai pas eu le temps de règler (bugs) : 
 

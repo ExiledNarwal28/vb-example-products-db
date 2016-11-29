@@ -6,14 +6,14 @@ Imports System.Xml.Serialization
 
 Public Class DataTableTravailleur
   Private ItemsTable As DataTable
-  ' Private DBContexte As COOPInventaireEntitiesi
-  Private DBContexte As COOPInventaire_TP3_testsEntities
+  ' Private DBContexte As COOPInventaireEntities
+  Private DBContexte As COOPInventaire_TP3_testsEntities1
 
   Public Sub New()
     ItemsTable = New DataTable("Items")
 
     Try
-      DBContexte = New COOPInventaire_TP3_testsEntities()
+      DBContexte = New COOPInventaire_TP3_testsEntities1()
     Catch ex As Exception
       ' TODO
     End Try
@@ -24,20 +24,39 @@ Public Class DataTableTravailleur
     Return DBContexte.SelectInventaireComplet.ToList
   End Function
 
+  ' Méthode qui retourne un seul DataRow avec son Id
+  Public Function GetDataInventaireCompletSingle(ByVal iD As Int32) As TP1_VB.SelectInventaireCompletSingle_Result
+    ' Try catch au cas où la base de données serait corrompue et que 2 inventaires auraient le même ID
+    Try
+      Return DBContexte.SelectInventaireCompletSingle(iD).Single()
+    Catch ex As Exception
+      MsgBox(ex.Message)
+      Return Nothing
+    End Try
+  End Function
+
   ' Méthode pour insérer dans l'inventaire complet
   Public Sub InsertInventaireComplet(ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
     DBContexte.InsertInventaireComplet(codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
-    DBContexte.SaveChanges()
+    Me.Sauvegarder()
   End Sub
 
   Public Sub UpdateInventaireComplet(ByVal iD As Int32, ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
     DBContexte.UpdateInventaireComplet(iD, codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
-    DBContexte.SaveChanges()
+    Me.Sauvegarder()
   End Sub
 
   Public Sub DeleteInventaireComplet(ByVal iD As Int32)
     DBContexte.DeleteInventaireComplet(iD)
-    DBContexte.SaveChanges()
+    Me.Sauvegarder()
+  End Sub
+
+  Public Sub Sauvegarder()
+    Try
+      DBContexte.SaveChanges()
+    Catch ex As Exception
+      MsgBox(ex.Message)
+    End Try
   End Sub
 
   '  ---> Non class

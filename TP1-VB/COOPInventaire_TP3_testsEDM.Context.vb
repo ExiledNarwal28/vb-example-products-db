@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class COOPInventaire_TP3_testsEntities
+Partial Public Class COOPInventaire_TP3_testsEntities1
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=COOPInventaire_TP3_testsEntities")
+        MyBase.New("name=COOPInventaire_TP3_testsEntities1")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -176,6 +176,12 @@ Partial Public Class COOPInventaire_TP3_testsEntities
         Dim descriptionParameter As ObjectParameter = If(description IsNot Nothing, New ObjectParameter("Description", description), New ObjectParameter("Description", GetType(String)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletParDepartementFiltreDescription_Result)("SelectInventaireCompletParDepartementFiltreDescription", departementIDParameter, descriptionParameter)
+    End Function
+
+    Public Overridable Function SelectInventaireCompletSingle(iD As Nullable(Of Integer)) As ObjectResult(Of SelectInventaireCompletSingle_Result)
+        Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletSingle_Result)("SelectInventaireCompletSingle", iDParameter)
     End Function
 
     Public Overridable Function SelectInventaireReduitFacture() As ObjectResult(Of SelectInventaireReduitFacture_Result)

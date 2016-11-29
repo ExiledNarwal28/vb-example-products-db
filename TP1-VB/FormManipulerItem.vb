@@ -137,23 +137,24 @@ Public Class FormManipulerItem
     TextBoxItemAjoutQt.Text = ""
   End Sub
 
+  ' Méthode pour remplir l'intégralité du formulaire avec une rangée
   Private Sub RemplirChampsRangee()
-    ' Méthode pour remplir l'intégralité du formulaire avec une rangée
+    Dim Donnees As TP1_VB.SelectInventaireCompletSingle_Result = Me.DataTableTrav.GetDataInventaireCompletSingle(IDModif)
 
-    ' TODO
+    MsgBox(Donnees.ToString())
 
-    'TextBoxItemAjoutCodeProduit.Text = RangeeModif("item_code_produit").ToString()
-    'TextBoxItemAjoutDesc.Text = RangeeModif("item_desc").ToString()
-    'TextBoxItemAjoutEmp.Text = RangeeModif("item_emp").ToString()
-    'TextBoxItemAjoutFournCode.Text = RangeeModif("item_fourn_code").ToString()
-    'TextBoxItemAjoutPrixA.Text = RangeeModif("item_prix_achat").ToString()
-    'TextBoxItemAjoutPrixV.Text = RangeeModif("item_prix_vente").ToString()
-    'TextBoxItemAjoutQt.Text = RangeeModif("item_qt").ToString()
-
-    '' Si le nom n'est pas dans les VariablesGlobales, alors l'index est -1. Pas d'erreur.
-    'ComboBoxItemAjoutFournNom.SelectedIndex = Array.IndexOf(VariablesGlobales.FOURN_NOM, RangeeModif("item_fourn_nom").ToString())
-    'ComboBoxItemAjoutCatNom.SelectedIndex = Array.IndexOf(VariablesGlobales.CAT_NOM, RangeeModif("item_cat_nom").ToString())
-    'ComboBoxItemAjoutDepNom.SelectedIndex = Array.IndexOf(VariablesGlobales.DEP_NOM, RangeeModif("item_dep_nom").ToString())
+    With Donnees
+      TextBoxItemAjoutCodeProduit.Text = .Code_de_produit
+      TextBoxItemAjoutDesc.Text = .Description
+      TextBoxItemAjoutEmp.Text = .Emplacement
+      TextBoxItemAjoutFournNom.Text = .Nom_de_fournisseur
+      TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur
+      TextBoxItemAjoutCat.Text = .Catégorie
+      TextBoxItemAjoutDep.Text = .Département
+      TextBoxItemAjoutPrixA.Text = "123,45"
+      TextBoxItemAjoutPrixV.Text = CStr(.Prix_de_vente)
+      TextBoxItemAjoutQt.Text = CStr(.Quantité)
+    End With
   End Sub
 
   Private Function VerifierChamp() As Boolean
