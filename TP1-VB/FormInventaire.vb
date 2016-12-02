@@ -182,7 +182,7 @@ Public Class FormInventaire
 
     ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
     With DataGridViewItems
-      .Columns(10).DisplayIndex = 0 ' Les checkboxs
+      .Columns(11).DisplayIndex = 0 ' Les checkboxs
 
       .Columns(0).Visible = False ' ID
       .Columns(1).HeaderText = "Code du produit"
@@ -193,8 +193,9 @@ Public Class FormInventaire
       .Columns(6).HeaderText = "Code fourn."
       .Columns(7).HeaderText = "Fournisseur"
       .Columns(8).HeaderText = "Prix vente"
-      .Columns(9).HeaderText = "Quantité"
-      .Columns(10).HeaderText = "" ' Les checkboxs
+      .Columns(9).HeaderText = "Prix d'achat"
+      .Columns(10).HeaderText = "Quantité"
+      .Columns(11).HeaderText = "" ' Les checkboxs
     End With
 
     ' Il faut mettre à jour de total des items
