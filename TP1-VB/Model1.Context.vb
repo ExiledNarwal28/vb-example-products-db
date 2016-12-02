@@ -90,6 +90,12 @@ Partial Public Class COOPInventaire_TP3_testsEntities
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletSingle_Result)("SelectInventaireCompletSingle", iDParameter)
     End Function
 
+    Public Overridable Function SelectInventaireFactureSingleParID(iD As Nullable(Of Integer)) As ObjectResult(Of SelectInventaireFactureSingleParID_Result)
+        Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireFactureSingleParID_Result)("SelectInventaireFactureSingleParID", iDParameter)
+    End Function
+
     Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
         Dim diagramnameParameter As ObjectParameter = If(diagramname IsNot Nothing, New ObjectParameter("diagramname", diagramname), New ObjectParameter("diagramname", GetType(String)))
 

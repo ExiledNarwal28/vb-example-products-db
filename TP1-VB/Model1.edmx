@@ -416,6 +416,9 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
         <Function Name="SelectInventaireCompletSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SelectInventaireFactureSingleParID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -1072,6 +1075,9 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImport Name="SelectInventaireCompletSingle" ReturnType="Collection(COOPInventaire_TP3_testsModel.SelectInventaireCompletSingle_Result)">
             <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SelectInventaireFactureSingleParID" ReturnType="Collection(COOPInventaire_TP3_testsModel.SelectInventaireFactureSingleParID_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1140,6 +1146,13 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
           <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
           <Property Type="Double" Name="Prix_d_achat" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireFactureSingleParID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
           <Property Type="Int32" Name="Quantité" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1401,6 +1414,17 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
                 <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
                 <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
                 <ScalarProperty Name="Prix_d_achat" ColumnName="Prix d'achat" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectInventaireFactureSingleParID" FunctionName="COOPInventaire_TP3_testsModel.Store.SelectInventaireFactureSingleParID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel.SelectInventaireFactureSingleParID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
                 <ScalarProperty Name="Quantité" ColumnName="Quantité" />
               </ComplexTypeMapping>
             </ResultMapping>

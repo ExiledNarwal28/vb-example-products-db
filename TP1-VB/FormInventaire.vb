@@ -36,7 +36,7 @@ Public Class FormInventaire
   End Sub
 
   Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
-    ' FormNouvelleFacture.SetRangees(DataTableTrav.ObtenirRangees("Items", ListeSelection))
+    FormNouvelleFacture.SetProduitID(ListeSelection)
     FormNouvelleFacture.Show()
   End Sub
 

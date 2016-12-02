@@ -35,6 +35,19 @@ Public Class DataTableTravailleur
     End Try
   End Function
 
+  Function GetDataInventaireFactureParID(ListID As List(Of Integer)) As IEnumerable(Of Object)
+    Dim SelectQuery = From Tb_Inventaire In DBContexte.Tb_Inventaire _
+                      Join Tb_Produit In DBContexte.Tb_Produit On Tb_Produit.ID Equals Tb_Inventaire.ID _
+                      Where ListID.Contains(Tb_Inventaire.ID) _
+                      Select Tb_Inventaire.ID, _
+                      Tb_Produit.CodeProduit, _
+                      Tb_Produit.Description, _
+                      Tb_Inventaire.PrixVente, _
+                      Tb_Inventaire.Qt
+
+    Return SelectQuery.ToList()
+  End Function
+
   ' Méthode pour insérer dans l'inventaire complet
   Public Sub InsertInventaireComplet(ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal prixAchat As Double, ByVal qt As Int32)
     DBContexte.InsertInventaireComplet(codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, prixAchat, qt)
@@ -59,14 +72,8 @@ Public Class DataTableTravailleur
     End Try
   End Sub
 
-  '  ---> Non classé
-
+  ' Méthode qui recoit un dictionnaire d'item_id et d'item_qt pour enlever des items de l'inventaire
   Public Sub EnleverQuantite(ByVal DictQuantites As Dictionary(Of Integer, Integer))
-    ' Méthode qui recoit un dictionnaire d'item_id et d'item_qt pour enlever des items de l'inventaire
-    ' TOADD : Pour le future du programme, lorsqu'un item tombe à 0 de qt, obsolete = True
-
-    ' La seule table dont on enlève des quantités est Items
-
     ' Source : http://stackoverflow.com/questions/18628917/how-can-iterate-in-dictionary-in-vb-net
     For Each Paire As KeyValuePair(Of Integer, Integer) In DictQuantites
       DBContexte.ReduireQtInventaireComplet(Paire.Key, Paire.Value)
@@ -138,4 +145,5 @@ Public Class DataTableTravailleur
     ' Si la Table n'est pas spécifiée, alors on ne retourne rien.
     Return Nothing
   End Function
+
 End Class
