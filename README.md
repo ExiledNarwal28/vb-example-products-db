@@ -25,7 +25,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [x] Adapter Insert à LinQ
 	1 [x] Adapter Update à LinQ
 	1 [x] Adapter Delete à LinQ
-	1 [ ] Vérifier pour les prix d'achats
+	1 [x] Vérifier pour les prix d'achats
 	3 [ ] Adapter filtres à LinQ
 	3 [ ] Faire fonctionner le total d'inventaire
 
@@ -81,7 +81,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	3 [ ] Faire le bit 64 - Inventaire Insert (Permet le bouton)
 	3 [ ] Faire le bit 128 - Inventaire Update (Permet le bouton)
 	3 [ ] Faire le bit 256 - Inventaire Delete (Permet le bouton)
-	3 [ ] Faire le bit 512 - Inventaire Estimations (Permet le Textbox)
+	3 [ ] Faire le bit 512 - Inventaire Admin (Permet le Textbox d'estimations + prix achat)
 	3 [ ] Faire le bit 1024 - Factures Select (Permet le DGV + le Tab)
 	3 [ ] Faire le bit 2048 - Factures Insert (Permet le bouton)
 	3 [ ] Faire le bit 4096 - Factures Update (Permet le bouton)
