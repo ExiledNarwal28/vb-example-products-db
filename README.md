@@ -31,9 +31,10 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 
 ### LinQ + factures ###
 
-	1 [ ] Vérifier qu'il y a une sélection avant d'envoyer vers la facture
-	1 [ ] Adapter le DGV de factures à LinQ
-	1 [ ] Adapter l'ajout d'éléments à la facture à LinQ
+	1 [ ] Réparer le DGV et les quantités
+	1 [x] Vérifier qu'il y a une sélection avant d'envoyer vers la facture
+	1 [x] Adapter le DGV de factures à LinQ
+	1 [x] Adapter l'ajout d'éléments à la facture à LinQ
 	1 [ ] Faire fonctionner la facture comme au TP1 avec LinQ
 	2 [ ] Baisser l'inventaire des factures avec LinQ
 	2 [ ] Ajouter les factures à la base de données lors de la création

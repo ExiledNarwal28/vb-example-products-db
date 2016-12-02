@@ -44,6 +44,9 @@ Public Class DataTableTravailleur
                       Tb_Produit.Description, _
                       Tb_Inventaire.PrixVente, _
                       Tb_Inventaire.Qt
+    ' Faire une table pour les champs qtvoulue, qtnouv et ext
+    ' Join les deux, send ca
+    ' Joue pis amuse toi
 
     Return SelectQuery.ToList()
   End Function
