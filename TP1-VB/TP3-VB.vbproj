@@ -78,21 +78,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="COOPInventaireEDM.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>COOPInventaireEDM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="COOPInventaireEDM.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="COOPInventaireEDM.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>COOPInventaireEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="COOPInventaire_TP3_testsEDM.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -139,12 +124,6 @@
     <Compile Include="FormNouvelleFacture.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InsertCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="InsertDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -160,49 +139,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SelectCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletParCategorieFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletParCategorieFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletParCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletParDepartementFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletParDepartementFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireCompletParDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="SelectInventaireCompletSingle_Result.vb">
       <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectInventaireComplet_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireReduitFactureFiltreCodeProduit_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireReduitFactureFiltreDescription_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SelectInventaireReduitFacture_Result.vb">
       <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.vb">
@@ -259,12 +199,6 @@
     <Compile Include="Tb_Utilisateur.vb">
       <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="UpdateCategorie_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UpdateDepartement_Result.vb">
-      <DependentUpon>COOPInventaire_TP3_testsEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="VariablesGlobales.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -291,23 +225,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="COOPInventaireEDM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>COOPInventaireEDM.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <None Include="COOPInventaireEDM.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
-      <LastGenOutput>COOPInventaireEDM.Context.vb</LastGenOutput>
-    </None>
-    <None Include="COOPInventaireEDM.edmx.diagram">
-      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
-    </None>
-    <None Include="COOPInventaireEDM.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>COOPInventaireEDM.edmx</DependentUpon>
-      <LastGenOutput>COOPInventaireEDM.vb</LastGenOutput>
-    </None>
     <EntityDeploy Include="COOPInventaire_TP3_testsEDM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>COOPInventaire_TP3_testsEDM.Designer.vb</LastGenOutput>

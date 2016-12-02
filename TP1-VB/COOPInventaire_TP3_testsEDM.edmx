@@ -968,7 +968,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="COOPInventaire_TP3_testsEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="COOPInventaire_TP3_testsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tb_Categorie" EntityType="Self.Tb_Categorie" />
           <EntitySet Name="Tb_Commande" EntityType="Self.Tb_Commande" />
@@ -1139,6 +1139,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
           <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Double" Name="Prix_d_achat" Nullable="true" />
           <Property Type="Int32" Name="Quantité" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1157,7 +1158,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="COOPInventaire_TP3_testsModelStoreContainer" CdmEntityContainer="COOPInventaire_TP3_testsEntities2">
+        <EntityContainerMapping StorageEntityContainer="COOPInventaire_TP3_testsModelStoreContainer" CdmEntityContainer="COOPInventaire_TP3_testsEntities">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="COOPInventaire_TP3_testsModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1399,6 +1400,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
                 <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
                 <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
                 <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Prix_d_achat" ColumnName="Prix d'achat" />
                 <ScalarProperty Name="Quantité" ColumnName="Quantité" />
               </ComplexTypeMapping>
             </ResultMapping>

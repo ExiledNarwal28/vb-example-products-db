@@ -31,6 +31,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 
 ### LinQ + factures ###
 
+	1 [ ] Vérifier qu'il y a une sélection avant d'envoyer vers la facture
 	1 [ ] Adapter le DGV de factures à LinQ
 	1 [ ] Adapter l'ajout d'éléments à la facture à LinQ
 	1 [ ] Faire fonctionner la facture comme au TP1 avec LinQ
@@ -49,15 +50,23 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	2 [ ] Faire la modification de factures
 	2 [ ] Faire la suppresion de factures
 
+### Utilisateurs de la base de données ###
+
+	1 [ ] Faire en sorte que le login est pour un utilisateur de la base de données
+	1 [ ] Demander une connexion au départ du programme
+	1 [ ] Pouvoir choisir l'addresse du ConnectionString en se connectant
+	1 [ ] Lier la table Utilisateur avec les logins sur la base de données
+	1 [ ] Aller chercher les droits des utilisateurs
+	2 [ ] Faire les procedures stockées de select d'utilisateur
+	2 [ ] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
+	2 [ ] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
+	2 [ ] Avoir une procédure stockée pour le delete d'utilisateurs de la base de données
+	2 [ ] Faire marcher les procédures stockées avec les utilisateurs de la base de données + 
+
 ### Gestion de droits ###
 
-	1 [ ] Demander une connexion au départ du programme
-	2 [ ] Faire les procedures stockées de select d'utilisateur
 	2 [ ] Faire les procedures stockées de select d'utilisateur + des droits (au besoin)
-	2 [ ] Faire les procedures stockées d'insert d'utilisateur
-	2 [ ] Faire les procedures stockées d'update d'utilisateur
 	2 [ ] Faire les procedures stockées d'update d'utilisateur + des droits (au besoin)
-	2 [ ] Faire les procedures stockées de suppresion d'utilisateur
 	3 [ ] Pouvoir se déconnnecter
 
 ### Application des droits ###
@@ -77,17 +86,13 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	3 [ ] Faire le bit 2048 - Factures Insert (Permet le bouton)
 	3 [ ] Faire le bit 4096 - Factures Update (Permet le bouton)
 
-###ConnexionString###
-
-	1 [ ] Pouvoir choisir l'addresse du ConnectionString en se connectant
-
-###Autre###
+### Autre ###
 	
 	4 [ ] Supprimer les fichiers du TP1
 	4 [ ] Renommer README.md en LISEZMOI.md
 	4 [ ] Vérifier les TODO dans le programme
 
-##Historiques des versions de LISEZMOI.md##
+## Historiques des versions de LISEZMOI.md ##
 
 Ceci est mon travail TP1 en VB.net.
 

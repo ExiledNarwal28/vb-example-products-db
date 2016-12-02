@@ -36,7 +36,7 @@ Public Class FormInventaire
   End Sub
 
   Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
-    FormNouvelleFacture.SetRangees(DataTableTrav.ObtenirRangees("Items", ListeSelection))
+    ' FormNouvelleFacture.SetRangees(DataTableTrav.ObtenirRangees("Items", ListeSelection))
     FormNouvelleFacture.Show()
   End Sub
 
@@ -124,7 +124,7 @@ Public Class FormInventaire
       DataGridViewItems.Refresh()
     Else
       ' Si l'utilisateur enlève sa recherche, alors la source est la table entière
-      DataGridViewItems.DataSource = DataTableTrav.ObtenirDataTable("Items")
+      ' DataGridViewItems.DataSource = DataTableTrav.ObtenirDataTable("Items")
       DataGridViewItems.Refresh()
     End If
 
@@ -203,17 +203,17 @@ Public Class FormInventaire
 
   Private Sub ButtonSauvegarder_Click(sender As Object, e As EventArgs) Handles ButtonSauvegarder.Click
     ' TODO pour TP2 : il va falloir un bouton sauvegarder individuel pour chaque DataTable
-    DataTableTrav.EnregistrerDataTables()
+    DataTableTrav.Sauvegarder()
 
     MsgBox("Sauvegarde effectuée!")
   End Sub
 
+  ' Méthode lorsque le programme ferme
   Private Sub FormInventaire_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-    ' Méthode lorsque le programme ferme
     ' Source : https://msdn.microsoft.com/en-us/library/system.windows.forms.form.closing(v=vs.110).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-2
 
     ' On sauvegarde la base de données lorsqu'on quitte le programme, juste pour être certain
-    DataTableTrav.EnregistrerDataTables()
+    DataTableTrav.Sauvegarder()
   End Sub
 
   Private Sub EcrireTotalItems()
