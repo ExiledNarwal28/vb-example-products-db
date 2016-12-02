@@ -20,6 +20,7 @@ Partial Public Class SelectInventaireComplet_Result
     Public Property Code_de_fournisseur As String
     Public Property Nom_de_fournisseur As String
     Public Property Prix_de_vente As Nullable(Of Double)
+    Public Property Prix_d_achat As Nullable(Of Double)
     Public Property Quantité As Nullable(Of Integer)
 
 End Class

@@ -7,13 +7,13 @@ Imports System.Xml.Serialization
 Public Class DataTableTravailleur
   Private ItemsTable As DataTable
   ' Private DBContexte As COOPInventaireEntities
-  Private DBContexte As COOPInventaire_TP3_testsEntities1
+  Private DBContexte As COOPInventaire_TP3_testsEntities2
 
   Public Sub New()
     ItemsTable = New DataTable("Items")
 
     Try
-      DBContexte = New COOPInventaire_TP3_testsEntities1()
+      DBContexte = New COOPInventaire_TP3_testsEntities2()
     Catch ex As Exception
       ' TODO
     End Try
@@ -36,13 +36,13 @@ Public Class DataTableTravailleur
   End Function
 
   ' Méthode pour insérer dans l'inventaire complet
-  Public Sub InsertInventaireComplet(ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
-    DBContexte.InsertInventaireComplet(codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
+  Public Sub InsertInventaireComplet(ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal prixAchat As Double, ByVal qt As Int32)
+    DBContexte.InsertInventaireComplet(codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, prixAchat, qt)
     Me.Sauvegarder()
   End Sub
 
-  Public Sub UpdateInventaireComplet(ByVal iD As Int32, ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal qt As Int32)
-    DBContexte.UpdateInventaireComplet(iD, codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, qt)
+  Public Sub UpdateInventaireComplet(ByVal iD As Int32, ByVal codeProduit As String, ByVal description As String, ByVal emplacement As String, ByVal categorie As String, ByVal departement As String, ByVal fournisseurCode As String, ByVal fournisseurNom As String, ByVal prixVente As Double, ByVal prixAchat As Double, ByVal qt As Int32)
+    DBContexte.UpdateInventaireComplet(iD, codeProduit, description, emplacement, categorie, departement, fournisseurCode, fournisseurNom, prixVente, prixAchat, qt)
     Me.Sauvegarder()
   End Sub
 

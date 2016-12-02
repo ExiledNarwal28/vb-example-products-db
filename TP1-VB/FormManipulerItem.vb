@@ -84,7 +84,8 @@ Public Class FormManipulerItem
       TextBoxItemAjoutFournCode.Text,
       TextBoxItemAjoutFournNom.Text,
       CDbl(TextBoxItemAjoutPrixV.Text),
-      CInt(TextBoxItemAjoutPrixV.Text))
+      CDbl(TextBoxItemAjoutPrixA.Text),
+      CInt(TextBoxItemAjoutQt.Text))
   End Sub
 
   ' Méthode pour modifier dans l'inventaire complet
@@ -99,7 +100,8 @@ Public Class FormManipulerItem
       TextBoxItemAjoutFournCode.Text,
       TextBoxItemAjoutFournNom.Text,
       CDbl(TextBoxItemAjoutPrixV.Text),
-      CInt(TextBoxItemAjoutPrixV.Text))
+      CDbl(TextBoxItemAjoutPrixA.Text),
+      CInt(TextBoxItemAjoutQt.Text))
   End Sub
 
   Private Function ModifierRangee() As Boolean
@@ -151,7 +153,7 @@ Public Class FormManipulerItem
       TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur
       TextBoxItemAjoutCat.Text = .Catégorie
       TextBoxItemAjoutDep.Text = .Département
-      TextBoxItemAjoutPrixA.Text = "123,45"
+      TextBoxItemAjoutPrixA.Text = CStr(.Prix_dachat)
       TextBoxItemAjoutPrixV.Text = CStr(.Prix_de_vente)
       TextBoxItemAjoutQt.Text = CStr(.Quantité)
     End With

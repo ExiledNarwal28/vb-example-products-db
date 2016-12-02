@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class COOPInventaire_TP3_testsEntities1
+Partial Public Class COOPInventaire_TP3_testsEntities2
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=COOPInventaire_TP3_testsEntities1")
+        MyBase.New("name=COOPInventaire_TP3_testsEntities2")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -42,45 +42,13 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
     Public Property Tb_Utilisateur() As DbSet(Of Tb_Utilisateur)
     Public Property Tb_Localisation() As DbSet(Of Tb_Localisation)
 
-    Public Overridable Function DeleteCategorie(original_ID As Nullable(Of Integer), isNull_Nom As Nullable(Of Integer), original_Nom As String) As Integer
-        Dim original_IDParameter As ObjectParameter = If(original_ID.HasValue, New ObjectParameter("Original_ID", original_ID), New ObjectParameter("Original_ID", GetType(Integer)))
-
-        Dim isNull_NomParameter As ObjectParameter = If(isNull_Nom.HasValue, New ObjectParameter("IsNull_Nom", isNull_Nom), New ObjectParameter("IsNull_Nom", GetType(Integer)))
-
-        Dim original_NomParameter As ObjectParameter = If(original_Nom IsNot Nothing, New ObjectParameter("Original_Nom", original_Nom), New ObjectParameter("Original_Nom", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("DeleteCategorie", original_IDParameter, isNull_NomParameter, original_NomParameter)
-    End Function
-
-    Public Overridable Function DeleteDepartement(original_ID As Nullable(Of Integer), isNull_Code As Nullable(Of Integer), original_Code As String) As Integer
-        Dim original_IDParameter As ObjectParameter = If(original_ID.HasValue, New ObjectParameter("Original_ID", original_ID), New ObjectParameter("Original_ID", GetType(Integer)))
-
-        Dim isNull_CodeParameter As ObjectParameter = If(isNull_Code.HasValue, New ObjectParameter("IsNull_Code", isNull_Code), New ObjectParameter("IsNull_Code", GetType(Integer)))
-
-        Dim original_CodeParameter As ObjectParameter = If(original_Code IsNot Nothing, New ObjectParameter("Original_Code", original_Code), New ObjectParameter("Original_Code", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("DeleteDepartement", original_IDParameter, isNull_CodeParameter, original_CodeParameter)
-    End Function
-
     Public Overridable Function DeleteInventaireComplet(iD As Nullable(Of Integer)) As Integer
         Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("DeleteInventaireComplet", iDParameter)
     End Function
 
-    Public Overridable Function InsertCategorie(nom As String) As ObjectResult(Of InsertCategorie_Result)
-        Dim nomParameter As ObjectParameter = If(nom IsNot Nothing, New ObjectParameter("Nom", nom), New ObjectParameter("Nom", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of InsertCategorie_Result)("InsertCategorie", nomParameter)
-    End Function
-
-    Public Overridable Function InsertDepartement(code As String) As ObjectResult(Of InsertDepartement_Result)
-        Dim codeParameter As ObjectParameter = If(code IsNot Nothing, New ObjectParameter("Code", code), New ObjectParameter("Code", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of InsertDepartement_Result)("InsertDepartement", codeParameter)
-    End Function
-
-    Public Overridable Function InsertInventaireComplet(codeProduit As String, description As String, emplacement As String, categorie As String, departement As String, fournisseurCode As String, fournisseurNom As String, prixVente As Nullable(Of Double), qt As Nullable(Of Integer)) As Integer
+    Public Overridable Function InsertInventaireComplet(codeProduit As String, description As String, emplacement As String, categorie As String, departement As String, fournisseurCode As String, fournisseurNom As String, prixVente As Nullable(Of Double), prixAchat As Nullable(Of Double), qt As Nullable(Of Integer)) As Integer
         Dim codeProduitParameter As ObjectParameter = If(codeProduit IsNot Nothing, New ObjectParameter("CodeProduit", codeProduit), New ObjectParameter("CodeProduit", GetType(String)))
 
         Dim descriptionParameter As ObjectParameter = If(description IsNot Nothing, New ObjectParameter("Description", description), New ObjectParameter("Description", GetType(String)))
@@ -97,9 +65,11 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
 
         Dim prixVenteParameter As ObjectParameter = If(prixVente.HasValue, New ObjectParameter("PrixVente", prixVente), New ObjectParameter("PrixVente", GetType(Double)))
 
+        Dim prixAchatParameter As ObjectParameter = If(prixAchat.HasValue, New ObjectParameter("PrixAchat", prixAchat), New ObjectParameter("PrixAchat", GetType(Double)))
+
         Dim qtParameter As ObjectParameter = If(qt.HasValue, New ObjectParameter("Qt", qt), New ObjectParameter("Qt", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("InsertInventaireComplet", codeProduitParameter, descriptionParameter, emplacementParameter, categorieParameter, departementParameter, fournisseurCodeParameter, fournisseurNomParameter, prixVenteParameter, qtParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("InsertInventaireComplet", codeProduitParameter, descriptionParameter, emplacementParameter, categorieParameter, departementParameter, fournisseurCodeParameter, fournisseurNomParameter, prixVenteParameter, prixAchatParameter, qtParameter)
     End Function
 
     Public Overridable Function ReduireQtInventaireComplet(iD As Nullable(Of Integer), amount As Nullable(Of Integer)) As Integer
@@ -110,94 +80,14 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("ReduireQtInventaireComplet", iDParameter, amountParameter)
     End Function
 
-    Public Overridable Function SelectCategorie() As ObjectResult(Of SelectCategorie_Result)
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectCategorie_Result)("SelectCategorie")
-    End Function
-
-    Public Overridable Function SelectDepartement() As ObjectResult(Of SelectDepartement_Result)
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectDepartement_Result)("SelectDepartement")
-    End Function
-
     Public Overridable Function SelectInventaireComplet() As ObjectResult(Of SelectInventaireComplet_Result)
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireComplet_Result)("SelectInventaireComplet")
-    End Function
-
-    Public Overridable Function SelectInventaireCompletFiltreCodeProduit(codeProduit As String) As ObjectResult(Of SelectInventaireCompletFiltreCodeProduit_Result)
-        Dim codeProduitParameter As ObjectParameter = If(codeProduit IsNot Nothing, New ObjectParameter("CodeProduit", codeProduit), New ObjectParameter("CodeProduit", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletFiltreCodeProduit_Result)("SelectInventaireCompletFiltreCodeProduit", codeProduitParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireCompletFiltreDescription(description As String) As ObjectResult(Of SelectInventaireCompletFiltreDescription_Result)
-        Dim descriptionParameter As ObjectParameter = If(description IsNot Nothing, New ObjectParameter("Description", description), New ObjectParameter("Description", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletFiltreDescription_Result)("SelectInventaireCompletFiltreDescription", descriptionParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireCompletParCategorie(categorieID As Nullable(Of Integer)) As ObjectResult(Of SelectInventaireCompletParCategorie_Result)
-        Dim categorieIDParameter As ObjectParameter = If(categorieID.HasValue, New ObjectParameter("CategorieID", categorieID), New ObjectParameter("CategorieID", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletParCategorie_Result)("SelectInventaireCompletParCategorie", categorieIDParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireCompletParCategorieFiltreCodeProduit(categorieID As Nullable(Of Integer), codeProduit As String) As ObjectResult(Of SelectInventaireCompletParCategorieFiltreCodeProduit_Result)
-        Dim categorieIDParameter As ObjectParameter = If(categorieID.HasValue, New ObjectParameter("CategorieID", categorieID), New ObjectParameter("CategorieID", GetType(Integer)))
-
-        Dim codeProduitParameter As ObjectParameter = If(codeProduit IsNot Nothing, New ObjectParameter("CodeProduit", codeProduit), New ObjectParameter("CodeProduit", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletParCategorieFiltreCodeProduit_Result)("SelectInventaireCompletParCategorieFiltreCodeProduit", categorieIDParameter, codeProduitParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireCompletParCategorieFiltreDescription(categorieID As Nullable(Of Integer), description As String) As ObjectResult(Of SelectInventaireCompletParCategorieFiltreDescription_Result)
-        Dim categorieIDParameter As ObjectParameter = If(categorieID.HasValue, New ObjectParameter("CategorieID", categorieID), New ObjectParameter("CategorieID", GetType(Integer)))
-
-        Dim descriptionParameter As ObjectParameter = If(description IsNot Nothing, New ObjectParameter("Description", description), New ObjectParameter("Description", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletParCategorieFiltreDescription_Result)("SelectInventaireCompletParCategorieFiltreDescription", categorieIDParameter, descriptionParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireCompletParDepartement(departementID As Nullable(Of Integer)) As ObjectResult(Of SelectInventaireCompletParDepartement_Result)
-        Dim departementIDParameter As ObjectParameter = If(departementID.HasValue, New ObjectParameter("DepartementID", departementID), New ObjectParameter("DepartementID", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletParDepartement_Result)("SelectInventaireCompletParDepartement", departementIDParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireCompletParDepartementFiltreCodeProduit(departementID As Nullable(Of Integer), codeProduit As String) As ObjectResult(Of SelectInventaireCompletParDepartementFiltreCodeProduit_Result)
-        Dim departementIDParameter As ObjectParameter = If(departementID.HasValue, New ObjectParameter("DepartementID", departementID), New ObjectParameter("DepartementID", GetType(Integer)))
-
-        Dim codeProduitParameter As ObjectParameter = If(codeProduit IsNot Nothing, New ObjectParameter("CodeProduit", codeProduit), New ObjectParameter("CodeProduit", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletParDepartementFiltreCodeProduit_Result)("SelectInventaireCompletParDepartementFiltreCodeProduit", departementIDParameter, codeProduitParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireCompletParDepartementFiltreDescription(departementID As Nullable(Of Integer), description As String) As ObjectResult(Of SelectInventaireCompletParDepartementFiltreDescription_Result)
-        Dim departementIDParameter As ObjectParameter = If(departementID.HasValue, New ObjectParameter("DepartementID", departementID), New ObjectParameter("DepartementID", GetType(Integer)))
-
-        Dim descriptionParameter As ObjectParameter = If(description IsNot Nothing, New ObjectParameter("Description", description), New ObjectParameter("Description", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletParDepartementFiltreDescription_Result)("SelectInventaireCompletParDepartementFiltreDescription", departementIDParameter, descriptionParameter)
     End Function
 
     Public Overridable Function SelectInventaireCompletSingle(iD As Nullable(Of Integer)) As ObjectResult(Of SelectInventaireCompletSingle_Result)
         Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletSingle_Result)("SelectInventaireCompletSingle", iDParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireReduitFacture() As ObjectResult(Of SelectInventaireReduitFacture_Result)
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireReduitFacture_Result)("SelectInventaireReduitFacture")
-    End Function
-
-    Public Overridable Function SelectInventaireReduitFactureFiltreCodeProduit(codeProduit As String) As ObjectResult(Of SelectInventaireReduitFactureFiltreCodeProduit_Result)
-        Dim codeProduitParameter As ObjectParameter = If(codeProduit IsNot Nothing, New ObjectParameter("CodeProduit", codeProduit), New ObjectParameter("CodeProduit", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireReduitFactureFiltreCodeProduit_Result)("SelectInventaireReduitFactureFiltreCodeProduit", codeProduitParameter)
-    End Function
-
-    Public Overridable Function SelectInventaireReduitFactureFiltreDescription(description As String) As ObjectResult(Of SelectInventaireReduitFactureFiltreDescription_Result)
-        Dim descriptionParameter As ObjectParameter = If(description IsNot Nothing, New ObjectParameter("Description", description), New ObjectParameter("Description", GetType(String)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireReduitFactureFiltreDescription_Result)("SelectInventaireReduitFactureFiltreDescription", descriptionParameter)
     End Function
 
     Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer
@@ -262,35 +152,7 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("sp_upgraddiagrams")
     End Function
 
-    Public Overridable Function UpdateCategorie(nom As String, original_ID As Nullable(Of Integer), isNull_Nom As Nullable(Of Integer), original_Nom As String, iD As Nullable(Of Integer)) As ObjectResult(Of UpdateCategorie_Result)
-        Dim nomParameter As ObjectParameter = If(nom IsNot Nothing, New ObjectParameter("Nom", nom), New ObjectParameter("Nom", GetType(String)))
-
-        Dim original_IDParameter As ObjectParameter = If(original_ID.HasValue, New ObjectParameter("Original_ID", original_ID), New ObjectParameter("Original_ID", GetType(Integer)))
-
-        Dim isNull_NomParameter As ObjectParameter = If(isNull_Nom.HasValue, New ObjectParameter("IsNull_Nom", isNull_Nom), New ObjectParameter("IsNull_Nom", GetType(Integer)))
-
-        Dim original_NomParameter As ObjectParameter = If(original_Nom IsNot Nothing, New ObjectParameter("Original_Nom", original_Nom), New ObjectParameter("Original_Nom", GetType(String)))
-
-        Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of UpdateCategorie_Result)("UpdateCategorie", nomParameter, original_IDParameter, isNull_NomParameter, original_NomParameter, iDParameter)
-    End Function
-
-    Public Overridable Function UpdateDepartement(code As String, original_ID As Nullable(Of Integer), isNull_Code As Nullable(Of Integer), original_Code As String, iD As Nullable(Of Integer)) As ObjectResult(Of UpdateDepartement_Result)
-        Dim codeParameter As ObjectParameter = If(code IsNot Nothing, New ObjectParameter("Code", code), New ObjectParameter("Code", GetType(String)))
-
-        Dim original_IDParameter As ObjectParameter = If(original_ID.HasValue, New ObjectParameter("Original_ID", original_ID), New ObjectParameter("Original_ID", GetType(Integer)))
-
-        Dim isNull_CodeParameter As ObjectParameter = If(isNull_Code.HasValue, New ObjectParameter("IsNull_Code", isNull_Code), New ObjectParameter("IsNull_Code", GetType(Integer)))
-
-        Dim original_CodeParameter As ObjectParameter = If(original_Code IsNot Nothing, New ObjectParameter("Original_Code", original_Code), New ObjectParameter("Original_Code", GetType(String)))
-
-        Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of UpdateDepartement_Result)("UpdateDepartement", codeParameter, original_IDParameter, isNull_CodeParameter, original_CodeParameter, iDParameter)
-    End Function
-
-    Public Overridable Function UpdateInventaireComplet(iD As Nullable(Of Integer), codeProduit As String, description As String, emplacement As String, categorie As String, departement As String, fournisseurCode As String, fournisseurNom As String, prixVente As Nullable(Of Double), qt As Nullable(Of Integer)) As Integer
+    Public Overridable Function UpdateInventaireComplet(iD As Nullable(Of Integer), codeProduit As String, description As String, emplacement As String, categorie As String, departement As String, fournisseurCode As String, fournisseurNom As String, prixVente As Nullable(Of Double), prixAchat As Nullable(Of Double), qt As Nullable(Of Integer)) As Integer
         Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
 
         Dim codeProduitParameter As ObjectParameter = If(codeProduit IsNot Nothing, New ObjectParameter("CodeProduit", codeProduit), New ObjectParameter("CodeProduit", GetType(String)))
@@ -309,9 +171,11 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
 
         Dim prixVenteParameter As ObjectParameter = If(prixVente.HasValue, New ObjectParameter("PrixVente", prixVente), New ObjectParameter("PrixVente", GetType(Double)))
 
+        Dim prixAchatParameter As ObjectParameter = If(prixAchat.HasValue, New ObjectParameter("PrixAchat", prixAchat), New ObjectParameter("PrixAchat", GetType(Double)))
+
         Dim qtParameter As ObjectParameter = If(qt.HasValue, New ObjectParameter("Qt", qt), New ObjectParameter("Qt", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("UpdateInventaireComplet", iDParameter, codeProduitParameter, descriptionParameter, emplacementParameter, categorieParameter, departementParameter, fournisseurCodeParameter, fournisseurNomParameter, prixVenteParameter, qtParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("UpdateInventaireComplet", iDParameter, codeProduitParameter, descriptionParameter, emplacementParameter, categorieParameter, departementParameter, fournisseurCodeParameter, fournisseurNomParameter, prixVenteParameter, prixAchatParameter, qtParameter)
     End Function
 
 End Class
