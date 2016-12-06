@@ -31,7 +31,8 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 
 ### LinQ + factures ###
 
-	1 [ ] Réparer le DGV et les quantités
+	1 [ ] Vérifier pourquoi ce n'est pas les bons inventaires qui sont affichés
+	1 [x] Réparer le DGV et les quantités
 	1 [x] Vérifier qu'il y a une sélection avant d'envoyer vers la facture
 	1 [x] Adapter le DGV de factures à LinQ
 	1 [x] Adapter l'ajout d'éléments à la facture à LinQ

@@ -4,7 +4,6 @@ Option Explicit On
 Public Class FormNouvelleFacture
   Private ListeID As List(Of Integer)
   Private DataTableTrav As DataTableTravailleur
-  Private GUIFini As Boolean = False
 
   Private VerificateurQuantite As Boolean
 
@@ -23,62 +22,56 @@ Public Class FormNouvelleFacture
     ' On applique les RangeesSelectionnees au DataTable
     DataGridViewFacture.DataSource = DataTableTrav.GetDataInventaireFactureParID(ListeID)
 
-    If Not GUIFini Then
-      Me.AffichageColonnes()
-      GUIFini = True
-    End If
+    Me.AffichageColonnes()
 
     Me.QuantiteDefaut()
 
-    ' On calcule les totaux
-    ' CalculerTotaux()
+    Me.CalculerExtensions()
+
+    Me.CalculerTotaux()
   End Sub
 
   ' Méthode qui construit les colonnes du DataGridViewFacture
   Private Sub AffichageColonnes()
-    Dim ColonneQtVoulue, ColonneExtension, ColonneQtNouvelle As New DataGridViewTextBoxColumn()
-    DataGridViewFacture.Columns.Add(ColonneQtVoulue)
-    DataGridViewFacture.Columns.Add(ColonneExtension)
-    DataGridViewFacture.Columns.Add(ColonneQtNouvelle)
-
     With DataGridViewFacture
-      '.Columns(0).Visible = False ' ID
+      .Columns(0).Visible = False ' ID
 
-      '.Columns(5).DisplayIndex = 3
-      '.Columns(6).DisplayIndex = 5
+      .Columns(1).HeaderText = "Code produit"
+      .Columns(1).ReadOnly = True
 
-      .Columns(1).HeaderText = "1 Code de produit"
-      .Columns(2).HeaderText = "2 Description"
-      .Columns(3).HeaderText = "3 Prix de vente"
-      .Columns(4).HeaderText = "4 Quantité en inventaire"
+      .Columns(2).HeaderText = "Description"
+      .Columns(2).ReadOnly = True
 
-      .Columns(5).HeaderText = "5 Quantité"
-      .Columns(6).HeaderText = "6 Extension"
-      .Columns(7).HeaderText = "7 Nouvelle quantité"
+      .Columns(3).HeaderText = "Quantité"
+      .Columns(3).ReadOnly = False
 
-      .Columns(5).ReadOnly = False
+      .Columns(4).HeaderText = "Prix de vente"
+      .Columns(4).ReadOnly = True
+
+      .Columns(5).HeaderText = "Extension"
+      .Columns(5).ReadOnly = True
+
+      .Columns(6).HeaderText = "Quantité en inventaire"
       .Columns(6).ReadOnly = True
+
+      .Columns(7).HeaderText = "Nouvelle quantité"
       .Columns(7).ReadOnly = True
 
-      .Columns(5).DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Bold)
+      .Columns(3).DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Bold)
     End With
   End Sub
 
   ' Méthode qui met les quantités voulues à un (valeur par défaut)
   Private Sub QuantiteDefaut()
     For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
-      Try
-        Rangee.Cells(5).Value = 2
-      Catch ex As Exception
-        MsgBox(ex.Message)
-      End Try
+      Rangee.Cells(3).Value = 1
     Next
   End Sub
 
   Private Sub CalculerExtensions()
     For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
-      Rangee.Cells(6).Value = CDbl(Rangee.Cells(3).Value) * CDbl(Rangee.Cells(4).Value)
-      Rangee.Cells(7).Value = CInt(Rangee.Cells(6).Value) - CInt(Rangee.Cells(3).Value)
+      Rangee.Cells(5).Value = CDbl(Rangee.Cells(3).Value) * CDbl(Rangee.Cells(4).Value) ' Extension
+      Rangee.Cells(7).Value = CInt(Rangee.Cells(6).Value) - CInt(Rangee.Cells(3).Value) ' Nouvelle quantité
     Next
   End Sub
 
@@ -119,7 +112,7 @@ Public Class FormNouvelleFacture
     Dim DictQuantite As Dictionary(Of Integer, Integer) = New Dictionary(Of Integer, Integer)
 
     For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
-      DictQuantite.Add(CInt(Rangee.Cells(0).Value), CInt(Rangee.Cells(5).Value))
+      DictQuantite.Add(CInt(Rangee.Cells(0).Value), CInt(Rangee.Cells(3).Value))
     Next
 
     Return DictQuantite

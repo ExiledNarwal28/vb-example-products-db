@@ -36,17 +36,19 @@ Public Class DataTableTravailleur
   End Function
 
   Function GetDataInventaireFactureParID(ListID As List(Of Integer)) As IEnumerable(Of Object)
+    ' J'amène les champs réservés puisque j'ai besoin de colonnes de plus. Ils ne seront pas modifiés.
+
     Dim SelectQuery = From Tb_Inventaire In DBContexte.Tb_Inventaire _
                       Join Tb_Produit In DBContexte.Tb_Produit On Tb_Produit.ID Equals Tb_Inventaire.ID _
                       Where ListID.Contains(Tb_Inventaire.ID) _
-                      Select Tb_Inventaire.ID, _
+                      Select New With {Tb_Inventaire.ID, _
                       Tb_Produit.CodeProduit, _
                       Tb_Produit.Description, _
+                      Tb_Inventaire.R1, _
                       Tb_Inventaire.PrixVente, _
-                      Tb_Inventaire.Qt
-    ' Faire une table pour les champs qtvoulue, qtnouv et ext
-    ' Join les deux, send ca
-    ' Joue pis amuse toi
+                      Tb_Inventaire.R2, _
+                      Tb_Inventaire.Qt, _
+                      Tb_Inventaire.R3}
 
     Return SelectQuery.ToList()
   End Function
