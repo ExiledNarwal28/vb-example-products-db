@@ -37,7 +37,7 @@ Public Class FormInventaire
 
   Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
     FormNouvelleFacture.SetProduitID(ListeSelection)
-    FormNouvelleFacture.Show()
+    FormNouvelleFacture.ShowDialog()
   End Sub
 
   Private Sub ButtonAjoutItems_Click(sender As Object, e As EventArgs) Handles ButtonAjoutItems.Click
