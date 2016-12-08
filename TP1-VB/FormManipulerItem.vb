@@ -62,17 +62,6 @@ Public Class FormManipulerItem
     Me.Hide()
   End Sub
 
-  Private Function GetDernierItemId() As Integer
-    ' Source : http://stackoverflow.com/questions/11116445/find-the-maximum-value-of-a-vb-net-datatable
-
-    Dim dt As DataTable = DataTableTrav.ObtenirDataTable("Items")
-    Dim dv As DataView = dt.DefaultView
-
-    dv.Sort = dt.Columns(0).ColumnName + " DESC"
-
-    Return CInt(dv(0).Item(0)) + 1
-  End Function
-
   ' Méthode pour insérer à l'inventaire complet
   Private Sub InsertInventaireComplet()
     DataTableTrav.InsertInventaireComplet(
@@ -84,7 +73,8 @@ Public Class FormManipulerItem
       TextBoxItemAjoutFournCode.Text,
       TextBoxItemAjoutFournNom.Text,
       CDbl(TextBoxItemAjoutPrixV.Text),
-      CInt(TextBoxItemAjoutPrixV.Text))
+      CDbl(TextBoxItemAjoutPrixA.Text),
+      CInt(TextBoxItemAjoutQt.Text))
   End Sub
 
   ' Méthode pour modifier dans l'inventaire complet
@@ -99,12 +89,12 @@ Public Class FormManipulerItem
       TextBoxItemAjoutFournCode.Text,
       TextBoxItemAjoutFournNom.Text,
       CDbl(TextBoxItemAjoutPrixV.Text),
-      CInt(TextBoxItemAjoutPrixV.Text))
+      CDbl(TextBoxItemAjoutPrixA.Text),
+      CInt(TextBoxItemAjoutQt.Text))
   End Sub
 
+  ' Méthode pour ajouter un nouveau Datarow
   Private Function ModifierRangee() As Boolean
-    ' Méthode pour ajouter un nouveau Datarow
-    Dim dt As DataTable = DataTableTrav.ObtenirDataTable("Items")
 
     ' On s'assure que les modifications sont correctes
     If MsgBox(
@@ -151,7 +141,7 @@ Public Class FormManipulerItem
       TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur
       TextBoxItemAjoutCat.Text = .Catégorie
       TextBoxItemAjoutDep.Text = .Département
-      TextBoxItemAjoutPrixA.Text = "123,45"
+      TextBoxItemAjoutPrixA.Text = CStr(.Prix_d_achat)
       TextBoxItemAjoutPrixV.Text = CStr(.Prix_de_vente)
       TextBoxItemAjoutQt.Text = CStr(.Quantité)
     End With

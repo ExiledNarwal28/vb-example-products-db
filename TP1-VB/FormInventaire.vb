@@ -36,8 +36,8 @@ Public Class FormInventaire
   End Sub
 
   Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
-    FormNouvelleFacture.SetRangees(DataTableTrav.ObtenirRangees("Items", ListeSelection))
-    FormNouvelleFacture.Show()
+    FormNouvelleFacture.SetProduitID(ListeSelection)
+    FormNouvelleFacture.ShowDialog()
   End Sub
 
   Private Sub ButtonAjoutItems_Click(sender As Object, e As EventArgs) Handles ButtonAjoutItems.Click
@@ -124,7 +124,7 @@ Public Class FormInventaire
       DataGridViewItems.Refresh()
     Else
       ' Si l'utilisateur enlève sa recherche, alors la source est la table entière
-      DataGridViewItems.DataSource = DataTableTrav.ObtenirDataTable("Items")
+      ' DataGridViewItems.DataSource = DataTableTrav.ObtenirDataTable("Items")
       DataGridViewItems.Refresh()
     End If
 
@@ -182,7 +182,7 @@ Public Class FormInventaire
 
     ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
     With DataGridViewItems
-      .Columns(10).DisplayIndex = 0 ' Les checkboxs
+      .Columns(11).DisplayIndex = 0 ' Les checkboxs
 
       .Columns(0).Visible = False ' ID
       .Columns(1).HeaderText = "Code du produit"
@@ -193,8 +193,9 @@ Public Class FormInventaire
       .Columns(6).HeaderText = "Code fourn."
       .Columns(7).HeaderText = "Fournisseur"
       .Columns(8).HeaderText = "Prix vente"
-      .Columns(9).HeaderText = "Quantité"
-      .Columns(10).HeaderText = "" ' Les checkboxs
+      .Columns(9).HeaderText = "Prix d'achat"
+      .Columns(10).HeaderText = "Quantité"
+      .Columns(11).HeaderText = "" ' Les checkboxs
     End With
 
     ' Il faut mettre à jour de total des items
@@ -203,17 +204,17 @@ Public Class FormInventaire
 
   Private Sub ButtonSauvegarder_Click(sender As Object, e As EventArgs) Handles ButtonSauvegarder.Click
     ' TODO pour TP2 : il va falloir un bouton sauvegarder individuel pour chaque DataTable
-    DataTableTrav.EnregistrerDataTables()
+    DataTableTrav.Sauvegarder()
 
     MsgBox("Sauvegarde effectuée!")
   End Sub
 
+  ' Méthode lorsque le programme ferme
   Private Sub FormInventaire_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-    ' Méthode lorsque le programme ferme
     ' Source : https://msdn.microsoft.com/en-us/library/system.windows.forms.form.closing(v=vs.110).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-2
 
     ' On sauvegarde la base de données lorsqu'on quitte le programme, juste pour être certain
-    DataTableTrav.EnregistrerDataTables()
+    DataTableTrav.Sauvegarder()
   End Sub
 
   Private Sub EcrireTotalItems()

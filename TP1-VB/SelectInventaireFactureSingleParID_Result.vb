@@ -10,8 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class UpdateCategorie_Result
+Partial Public Class SelectInventaireFactureSingleParID_Result
     Public Property ID As Integer
-    Public Property Nom As String
+    Public Property Code_de_produit As String
+    Public Property Description As String
+    Public Property Prix_de_vente As Nullable(Of Double)
+    Public Property Quantité As Nullable(Of Integer)
 
 End Class
