@@ -297,7 +297,9 @@ Public Class FormInventaire
   End Sub
 
   Private Sub MettreAJourNbItems()
-    LabelItemsNb.Text = "Nombre d'items sélectionnés : " & ListeSelection.Count().ToString()
+    LabelItemsNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
+    LabelFacturesNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
+    LabelUtilisateursNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
   End Sub
 
   Private Sub MettreAJourCheckBox()
