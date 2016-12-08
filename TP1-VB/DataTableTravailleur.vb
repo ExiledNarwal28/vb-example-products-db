@@ -7,13 +7,13 @@ Imports System.Xml.Serialization
 Public Class DataTableTravailleur
   Private ItemsTable As DataTable
   ' Private DBContexte As COOPInventaireEntities
-  Private DBContexte As COOPInventaire_TP3_testsEntities
+  Private DBContexte As COOPInventaire_TP3_testsEntities2
 
   Public Sub New()
     ItemsTable = New DataTable("Items")
 
     Try
-      DBContexte = New COOPInventaire_TP3_testsEntities()
+      DBContexte = New COOPInventaire_TP3_testsEntities2()
     Catch ex As Exception
       ' TODO
     End Try
@@ -38,7 +38,20 @@ Public Class DataTableTravailleur
   Function GetDataInventaireFactureParID(ListeID As List(Of Integer)) As IEnumerable(Of Object)
     ' J'amène les champs réservés puisque j'ai besoin de colonnes de plus. Ils ne seront pas modifiés.
 
-    Dim SelectQuery = From Tb_Inventaire In DBContexte.Tb_Inventaire _
+    'Dim SelectQuery = From Tb_Inventaire In DBContexte.Tb_Inventaire _
+    '                  Join Tb_Produit In DBContexte.Tb_Produit On Tb_Produit.ID Equals Tb_Inventaire.ProduitID _
+    '                  Where ListeID.Contains(Tb_Inventaire.ID) _
+    '                  Select New With {Tb_Inventaire.ID, _
+    '                  Tb_Produit.CodeProduit, _
+    '                  Tb_Produit.Description, _
+    '                  Tb_Inventaire.R1, _
+    '                  Tb_Inventaire.PrixVente, _
+    '                  Tb_Inventaire.R2, _
+    '                  Tb_Inventaire.Qt, _
+    '                  Tb_Inventaire.R3}
+
+    'Return SelectQuery.ToList()
+    Return (From Tb_Inventaire In DBContexte.Tb_Inventaire _
                       Join Tb_Produit In DBContexte.Tb_Produit On Tb_Produit.ID Equals Tb_Inventaire.ProduitID _
                       Where ListeID.Contains(Tb_Inventaire.ID) _
                       Select New With {Tb_Inventaire.ID, _
@@ -48,9 +61,7 @@ Public Class DataTableTravailleur
                       Tb_Inventaire.PrixVente, _
                       Tb_Inventaire.R2, _
                       Tb_Inventaire.Qt, _
-                      Tb_Inventaire.R3}
-
-    Return SelectQuery.ToList()
+                      Tb_Inventaire.R3}).ToList()
   End Function
 
   ' Méthode pour insérer dans l'inventaire complet
