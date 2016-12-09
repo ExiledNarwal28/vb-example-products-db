@@ -238,6 +238,12 @@ Public Class FormInventaire
     ButtonSupprimerItems.Visible = ConnectionAdmin
     LabelItemsTotal.Visible = ConnectionAdmin
     TextBoxItemsTotal.Visible = ConnectionAdmin
+    ButtonAjoutFacture.Visible = ConnectionAdmin
+    ButtonModifierFacture.Visible = ConnectionAdmin
+    ButtonSupprimerFacture.Visible = ConnectionAdmin
+    ButtonAjoutUtilisateur.Visible = ConnectionAdmin
+    ButtonModifierUtilisateur.Visible = ConnectionAdmin
+    ButtonSupprimerUtilisateur.Visible = ConnectionAdmin
 
     ' On change l'affichage du bouton de connexion en fonction de si l'utilisateur est connecté
 
