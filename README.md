@@ -47,8 +47,10 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	2 [ ] Faire les procedures stockées d'insert
 	2 [ ] Faire les procedures stockées d'update
 	2 [ ] Faire les procedures stockées de delete
+	2 [x] Faire le tab des factures
 	2 [ ] Faire le DGV des factures
 	2 [ ] Faire l'ajout de factures
+	2 [ ] Faire le formulaire de manipulation de factures
 	2 [ ] Faire la modification de factures
 	2 [ ] Faire la suppresion de factures
 
@@ -59,7 +61,9 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [ ] Pouvoir choisir l'addresse du ConnectionString en se connectant
 	1 [ ] Lier la table Utilisateur avec les logins sur la base de données
 	1 [ ] Aller chercher les droits des utilisateurs
-	2 [ ] Faire le DGV des utilisateurs
+	2 [x] Construire le tab des utilisateurs
+	2 [x] Faire le DGV des utilisateurs
+	2 [ ] Faire le formulaire de manipulation d'utilisateur
 	2 [ ] Faire les procedures stockées de select d'utilisateur
 	2 [ ] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
 	2 [ ] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
