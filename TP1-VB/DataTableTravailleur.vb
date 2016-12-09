@@ -37,20 +37,6 @@ Public Class DataTableTravailleur
 
   Function GetDataInventaireFactureParID(ListeID As List(Of Integer)) As IEnumerable(Of Object)
     ' J'amène les champs réservés puisque j'ai besoin de colonnes de plus. Ils ne seront pas modifiés.
-
-    'Dim SelectQuery = From Tb_Inventaire In DBContexte.Tb_Inventaire _
-    '                  Join Tb_Produit In DBContexte.Tb_Produit On Tb_Produit.ID Equals Tb_Inventaire.ProduitID _
-    '                  Where ListeID.Contains(Tb_Inventaire.ID) _
-    '                  Select New With {Tb_Inventaire.ID, _
-    '                  Tb_Produit.CodeProduit, _
-    '                  Tb_Produit.Description, _
-    '                  Tb_Inventaire.R1, _
-    '                  Tb_Inventaire.PrixVente, _
-    '                  Tb_Inventaire.R2, _
-    '                  Tb_Inventaire.Qt, _
-    '                  Tb_Inventaire.R3}
-
-    'Return SelectQuery.ToList()
     Return (From Tb_Inventaire In DBContexte.Tb_Inventaire _
                       Join Tb_Produit In DBContexte.Tb_Produit On Tb_Produit.ID Equals Tb_Inventaire.ProduitID _
                       Where ListeID.Contains(Tb_Inventaire.ID) _
@@ -78,6 +64,31 @@ Public Class DataTableTravailleur
   Public Sub DeleteInventaireComplet(ByVal iD As Int32)
     DBContexte.DeleteInventaireComplet(iD)
     Me.Sauvegarder()
+  End Sub
+
+  Public Sub GetDataUtilisateur()
+
+  End Sub
+
+  Public Sub InsertUtilisateur(ByVal Prenom As String,
+                        ByVal Nom As String,
+                        ByVal Username As String,
+                        ByVal Courriel As String,
+                        ByVal Password As String,
+                        ByVal Droits As Int16)
+  End Sub
+
+  Public Sub UpdateUtilisateur(ByVal iD As Int32,
+                        ByVal Prenom As String,
+                        ByVal Nom As String,
+                        ByVal Username As String,
+                        ByVal Courriel As String,
+                        ByVal Password As String,
+                        ByVal Droits As Int16)
+  End Sub
+
+  Public Sub DeleteUtilisateur()
+
   End Sub
 
   Public Sub Sauvegarder()

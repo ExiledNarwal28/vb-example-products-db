@@ -22,9 +22,9 @@ Partial Class FormInventaire
   'Ne la modifiez pas à l'aide de l'éditeur de code.
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
-    Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-    Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-    Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+    Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+    Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+    Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
     Me.PageInventaire = New System.Windows.Forms.TabControl()
     Me.TabPageItems = New System.Windows.Forms.TabPage()
     Me.LabelItemsNb = New System.Windows.Forms.Label()
@@ -51,9 +51,17 @@ Partial Class FormInventaire
     Me.LabelRechItems = New System.Windows.Forms.Label()
     Me.DataGridViewItems = New System.Windows.Forms.DataGridView()
     Me.TabPage1 = New System.Windows.Forms.TabPage()
+    Me.ButtonSupprimerFacture = New System.Windows.Forms.Button()
+    Me.ButtonModifierFacture = New System.Windows.Forms.Button()
+    Me.ButtonAjoutFacture = New System.Windows.Forms.Button()
+    Me.ButtonFactureFacture = New System.Windows.Forms.Button()
     Me.LabelFacturesNb = New System.Windows.Forms.Label()
     Me.DataGridViewFactures = New System.Windows.Forms.DataGridView()
     Me.TabPage2 = New System.Windows.Forms.TabPage()
+    Me.ButtonSupprimerUtilisateur = New System.Windows.Forms.Button()
+    Me.ButtonModifierUtilisateur = New System.Windows.Forms.Button()
+    Me.ButtonAjoutUtilisateur = New System.Windows.Forms.Button()
+    Me.ButtonUtilisateurFacture = New System.Windows.Forms.Button()
     Me.LabelUtilisateursNb = New System.Windows.Forms.Label()
     Me.DataGridView2 = New System.Windows.Forms.DataGridView()
     Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -79,14 +87,6 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonConnexionAdmin = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
-    Me.ButtonFactureFacture = New System.Windows.Forms.Button()
-    Me.ButtonUtilisateurFacture = New System.Windows.Forms.Button()
-    Me.ButtonAjoutFacture = New System.Windows.Forms.Button()
-    Me.ButtonAjoutUtilisateur = New System.Windows.Forms.Button()
-    Me.ButtonModifierFacture = New System.Windows.Forms.Button()
-    Me.ButtonModifierUtilisateur = New System.Windows.Forms.Button()
-    Me.ButtonSupprimerFacture = New System.Windows.Forms.Button()
-    Me.ButtonSupprimerUtilisateur = New System.Windows.Forms.Button()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -369,14 +369,14 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DataGridViewItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-    DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-    DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-    DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-    DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-    DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-    Me.DataGridViewItems.DefaultCellStyle = DataGridViewCellStyle5
+    DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+    DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+    DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+    DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+    DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+    DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+    Me.DataGridViewItems.DefaultCellStyle = DataGridViewCellStyle1
     Me.DataGridViewItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewItems.Location = New System.Drawing.Point(160, 9)
     Me.DataGridViewItems.Name = "DataGridViewItems"
@@ -402,6 +402,53 @@ Partial Class FormInventaire
     Me.TabPage1.TabIndex = 1
     Me.TabPage1.Text = "Factures"
     '
+    'ButtonSupprimerFacture
+    '
+    Me.ButtonSupprimerFacture.BackColor = System.Drawing.Color.Crimson
+    Me.ButtonSupprimerFacture.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+    Me.ButtonSupprimerFacture.Location = New System.Drawing.Point(6, 93)
+    Me.ButtonSupprimerFacture.Name = "ButtonSupprimerFacture"
+    Me.ButtonSupprimerFacture.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonSupprimerFacture.TabIndex = 32
+    Me.ButtonSupprimerFacture.Text = "Supprimer"
+    Me.ButtonSupprimerFacture.UseVisualStyleBackColor = False
+    Me.ButtonSupprimerFacture.Visible = False
+    '
+    'ButtonModifierFacture
+    '
+    Me.ButtonModifierFacture.BackColor = System.Drawing.Color.DarkOrange
+    Me.ButtonModifierFacture.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+    Me.ButtonModifierFacture.Location = New System.Drawing.Point(6, 64)
+    Me.ButtonModifierFacture.Name = "ButtonModifierFacture"
+    Me.ButtonModifierFacture.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonModifierFacture.TabIndex = 31
+    Me.ButtonModifierFacture.Text = "Modifier"
+    Me.ButtonModifierFacture.UseVisualStyleBackColor = False
+    Me.ButtonModifierFacture.Visible = False
+    '
+    'ButtonAjoutFacture
+    '
+    Me.ButtonAjoutFacture.BackColor = System.Drawing.Color.SeaGreen
+    Me.ButtonAjoutFacture.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+    Me.ButtonAjoutFacture.Location = New System.Drawing.Point(6, 35)
+    Me.ButtonAjoutFacture.Name = "ButtonAjoutFacture"
+    Me.ButtonAjoutFacture.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonAjoutFacture.TabIndex = 30
+    Me.ButtonAjoutFacture.Text = "Ajouter"
+    Me.ButtonAjoutFacture.UseVisualStyleBackColor = False
+    Me.ButtonAjoutFacture.Visible = False
+    '
+    'ButtonFactureFacture
+    '
+    Me.ButtonFactureFacture.BackColor = System.Drawing.Color.SteelBlue
+    Me.ButtonFactureFacture.ForeColor = System.Drawing.SystemColors.ButtonFace
+    Me.ButtonFactureFacture.Location = New System.Drawing.Point(6, 6)
+    Me.ButtonFactureFacture.Name = "ButtonFactureFacture"
+    Me.ButtonFactureFacture.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonFactureFacture.TabIndex = 29
+    Me.ButtonFactureFacture.Text = "Nouvelle facture"
+    Me.ButtonFactureFacture.UseVisualStyleBackColor = False
+    '
     'LabelFacturesNb
     '
     Me.LabelFacturesNb.AutoSize = True
@@ -421,14 +468,14 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DataGridViewFactures.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridViewFactures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-    DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-    DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-    DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-    DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-    DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-    Me.DataGridViewFactures.DefaultCellStyle = DataGridViewCellStyle6
+    DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+    DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+    DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+    DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+    DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+    DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+    Me.DataGridViewFactures.DefaultCellStyle = DataGridViewCellStyle2
     Me.DataGridViewFactures.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewFactures.Location = New System.Drawing.Point(160, 9)
     Me.DataGridViewFactures.Name = "DataGridViewFactures"
@@ -454,6 +501,53 @@ Partial Class FormInventaire
     Me.TabPage2.TabIndex = 2
     Me.TabPage2.Text = "Utilisateurs"
     '
+    'ButtonSupprimerUtilisateur
+    '
+    Me.ButtonSupprimerUtilisateur.BackColor = System.Drawing.Color.Crimson
+    Me.ButtonSupprimerUtilisateur.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+    Me.ButtonSupprimerUtilisateur.Location = New System.Drawing.Point(6, 93)
+    Me.ButtonSupprimerUtilisateur.Name = "ButtonSupprimerUtilisateur"
+    Me.ButtonSupprimerUtilisateur.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonSupprimerUtilisateur.TabIndex = 32
+    Me.ButtonSupprimerUtilisateur.Text = "Supprimer"
+    Me.ButtonSupprimerUtilisateur.UseVisualStyleBackColor = False
+    Me.ButtonSupprimerUtilisateur.Visible = False
+    '
+    'ButtonModifierUtilisateur
+    '
+    Me.ButtonModifierUtilisateur.BackColor = System.Drawing.Color.DarkOrange
+    Me.ButtonModifierUtilisateur.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+    Me.ButtonModifierUtilisateur.Location = New System.Drawing.Point(6, 64)
+    Me.ButtonModifierUtilisateur.Name = "ButtonModifierUtilisateur"
+    Me.ButtonModifierUtilisateur.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonModifierUtilisateur.TabIndex = 31
+    Me.ButtonModifierUtilisateur.Text = "Modifier"
+    Me.ButtonModifierUtilisateur.UseVisualStyleBackColor = False
+    Me.ButtonModifierUtilisateur.Visible = False
+    '
+    'ButtonAjoutUtilisateur
+    '
+    Me.ButtonAjoutUtilisateur.BackColor = System.Drawing.Color.SeaGreen
+    Me.ButtonAjoutUtilisateur.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+    Me.ButtonAjoutUtilisateur.Location = New System.Drawing.Point(6, 35)
+    Me.ButtonAjoutUtilisateur.Name = "ButtonAjoutUtilisateur"
+    Me.ButtonAjoutUtilisateur.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonAjoutUtilisateur.TabIndex = 30
+    Me.ButtonAjoutUtilisateur.Text = "Ajouter"
+    Me.ButtonAjoutUtilisateur.UseVisualStyleBackColor = False
+    Me.ButtonAjoutUtilisateur.Visible = False
+    '
+    'ButtonUtilisateurFacture
+    '
+    Me.ButtonUtilisateurFacture.BackColor = System.Drawing.Color.SteelBlue
+    Me.ButtonUtilisateurFacture.ForeColor = System.Drawing.SystemColors.ButtonFace
+    Me.ButtonUtilisateurFacture.Location = New System.Drawing.Point(6, 6)
+    Me.ButtonUtilisateurFacture.Name = "ButtonUtilisateurFacture"
+    Me.ButtonUtilisateurFacture.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonUtilisateurFacture.TabIndex = 29
+    Me.ButtonUtilisateurFacture.Text = "Nouvelle facture"
+    Me.ButtonUtilisateurFacture.UseVisualStyleBackColor = False
+    '
     'LabelUtilisateursNb
     '
     Me.LabelUtilisateursNb.AutoSize = True
@@ -474,14 +568,14 @@ Partial Class FormInventaire
     Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
     Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.UtilisateurNom, Me.VoirInventaire, Me.AjoutInventaire, Me.ModifierInventaire, Me.SupprimerInventaire, Me.AdminInventaire, Me.VoirFacture, Me.AjoutFacture, Me.ModifierFacture, Me.SupprimerFacture, Me.VoirUtilisateur, Me.AjoutUtilisateur, Me.ModifierUtilisateur, Me.SupprimerUtilisateur})
-    DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-    DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-    DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-    DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-    DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-    DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-    Me.DataGridView2.DefaultCellStyle = DataGridViewCellStyle4
+    DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+    DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+    DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+    DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+    DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+    DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+    Me.DataGridView2.DefaultCellStyle = DataGridViewCellStyle3
     Me.DataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridView2.Location = New System.Drawing.Point(160, 9)
     Me.DataGridView2.Name = "DataGridView2"
@@ -664,100 +758,6 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.TabIndex = 8
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
-    '
-    'ButtonFactureFacture
-    '
-    Me.ButtonFactureFacture.BackColor = System.Drawing.Color.SteelBlue
-    Me.ButtonFactureFacture.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.ButtonFactureFacture.Location = New System.Drawing.Point(6, 6)
-    Me.ButtonFactureFacture.Name = "ButtonFactureFacture"
-    Me.ButtonFactureFacture.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonFactureFacture.TabIndex = 29
-    Me.ButtonFactureFacture.Text = "Nouvelle facture"
-    Me.ButtonFactureFacture.UseVisualStyleBackColor = False
-    '
-    'ButtonUtilisateurFacture
-    '
-    Me.ButtonUtilisateurFacture.BackColor = System.Drawing.Color.SteelBlue
-    Me.ButtonUtilisateurFacture.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.ButtonUtilisateurFacture.Location = New System.Drawing.Point(6, 6)
-    Me.ButtonUtilisateurFacture.Name = "ButtonUtilisateurFacture"
-    Me.ButtonUtilisateurFacture.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonUtilisateurFacture.TabIndex = 29
-    Me.ButtonUtilisateurFacture.Text = "Nouvelle facture"
-    Me.ButtonUtilisateurFacture.UseVisualStyleBackColor = False
-    '
-    'ButtonAjoutFacture
-    '
-    Me.ButtonAjoutFacture.BackColor = System.Drawing.Color.SeaGreen
-    Me.ButtonAjoutFacture.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-    Me.ButtonAjoutFacture.Location = New System.Drawing.Point(6, 35)
-    Me.ButtonAjoutFacture.Name = "ButtonAjoutFacture"
-    Me.ButtonAjoutFacture.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonAjoutFacture.TabIndex = 30
-    Me.ButtonAjoutFacture.Text = "Ajouter"
-    Me.ButtonAjoutFacture.UseVisualStyleBackColor = False
-    Me.ButtonAjoutFacture.Visible = False
-    '
-    'ButtonAjoutUtilisateur
-    '
-    Me.ButtonAjoutUtilisateur.BackColor = System.Drawing.Color.SeaGreen
-    Me.ButtonAjoutUtilisateur.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-    Me.ButtonAjoutUtilisateur.Location = New System.Drawing.Point(6, 35)
-    Me.ButtonAjoutUtilisateur.Name = "ButtonAjoutUtilisateur"
-    Me.ButtonAjoutUtilisateur.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonAjoutUtilisateur.TabIndex = 30
-    Me.ButtonAjoutUtilisateur.Text = "Ajouter"
-    Me.ButtonAjoutUtilisateur.UseVisualStyleBackColor = False
-    Me.ButtonAjoutUtilisateur.Visible = False
-    '
-    'ButtonModifierFacture
-    '
-    Me.ButtonModifierFacture.BackColor = System.Drawing.Color.DarkOrange
-    Me.ButtonModifierFacture.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-    Me.ButtonModifierFacture.Location = New System.Drawing.Point(6, 64)
-    Me.ButtonModifierFacture.Name = "ButtonModifierFacture"
-    Me.ButtonModifierFacture.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonModifierFacture.TabIndex = 31
-    Me.ButtonModifierFacture.Text = "Modifier"
-    Me.ButtonModifierFacture.UseVisualStyleBackColor = False
-    Me.ButtonModifierFacture.Visible = False
-    '
-    'ButtonModifierUtilisateur
-    '
-    Me.ButtonModifierUtilisateur.BackColor = System.Drawing.Color.DarkOrange
-    Me.ButtonModifierUtilisateur.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-    Me.ButtonModifierUtilisateur.Location = New System.Drawing.Point(6, 64)
-    Me.ButtonModifierUtilisateur.Name = "ButtonModifierUtilisateur"
-    Me.ButtonModifierUtilisateur.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonModifierUtilisateur.TabIndex = 31
-    Me.ButtonModifierUtilisateur.Text = "Modifier"
-    Me.ButtonModifierUtilisateur.UseVisualStyleBackColor = False
-    Me.ButtonModifierUtilisateur.Visible = False
-    '
-    'ButtonSupprimerFacture
-    '
-    Me.ButtonSupprimerFacture.BackColor = System.Drawing.Color.Crimson
-    Me.ButtonSupprimerFacture.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-    Me.ButtonSupprimerFacture.Location = New System.Drawing.Point(6, 93)
-    Me.ButtonSupprimerFacture.Name = "ButtonSupprimerFacture"
-    Me.ButtonSupprimerFacture.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonSupprimerFacture.TabIndex = 32
-    Me.ButtonSupprimerFacture.Text = "Supprimer"
-    Me.ButtonSupprimerFacture.UseVisualStyleBackColor = False
-    Me.ButtonSupprimerFacture.Visible = False
-    '
-    'ButtonSupprimerUtilisateur
-    '
-    Me.ButtonSupprimerUtilisateur.BackColor = System.Drawing.Color.Crimson
-    Me.ButtonSupprimerUtilisateur.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-    Me.ButtonSupprimerUtilisateur.Location = New System.Drawing.Point(6, 93)
-    Me.ButtonSupprimerUtilisateur.Name = "ButtonSupprimerUtilisateur"
-    Me.ButtonSupprimerUtilisateur.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonSupprimerUtilisateur.TabIndex = 32
-    Me.ButtonSupprimerUtilisateur.Text = "Supprimer"
-    Me.ButtonSupprimerUtilisateur.UseVisualStyleBackColor = False
-    Me.ButtonSupprimerUtilisateur.Visible = False
     '
     'FormInventaire
     '

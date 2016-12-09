@@ -22,6 +22,7 @@ Public Class FormInventaire
     DataTableTrav = New DataTableTravailleur
 
     FormManipulerItem = New FormManipulerItem(DataTableTrav)
+    FormManipulerUtilisateur = New FormManipulerUtilisateur(DataTableTrav)
     FormNouvelleFacture = New FormNouvelleFacture(DataTableTrav)
     FormConnexionAdmin = New FormConnexionAdmin
 
@@ -318,7 +319,13 @@ Public Class FormInventaire
   End Sub
 
   Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click
-    ' FormManipulerUtilisateur.SetFormulaireMode("Ajout")
+    FormManipulerUtilisateur.SetFormulaireMode("Ajout")
+    FormManipulerUtilisateur.ShowDialog()
+    ' FormManipulerUtilisateur.getData()
+  End Sub
+
+  Private Sub ButtonModifierUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonModifierUtilisateur.Click
+    FormManipulerUtilisateur.SetFormulaireMode("Modification")
     FormManipulerUtilisateur.ShowDialog()
     ' FormManipulerUtilisateur.getData()
   End Sub

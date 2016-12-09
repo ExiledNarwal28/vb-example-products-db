@@ -131,8 +131,6 @@ Public Class FormManipulerItem
   Private Sub RemplirChampsRangee()
     Dim Donnees As TP1_VB.SelectInventaireCompletSingle_Result = Me.DataTableTrav.GetDataInventaireCompletSingle(IDModif)
 
-    MsgBox(Donnees.ToString())
-
     With Donnees
       TextBoxItemAjoutCodeProduit.Text = .Code_de_produit
       TextBoxItemAjoutDesc.Text = .Description

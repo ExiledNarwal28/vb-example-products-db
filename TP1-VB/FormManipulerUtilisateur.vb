@@ -21,13 +21,13 @@ Public Class FormManipulerUtilisateur
     ' On change l'apparence du formulaire en fonction du mode du formulaire
     Select Case Me.FormulaireMode
       Case "Ajout"
-        Me.Text = "Ajout d'un item"
-        Me.ButtonItemsAjoutAction.Text = "Ajouter"
-        Me.ButtonItemsAjoutAction.BackColor = Color.SeaGreen
+        Me.Text = "Ajout d'un utilisateur"
+        Me.ButtonUtilisateurAjoutAction.Text = "Ajouter"
+        Me.ButtonUtilisateurAjoutAction.BackColor = Color.SeaGreen
       Case "Modification"
-        Me.Text = "Modification d'un item"
-        Me.ButtonItemsAjoutAction.Text = "Modifier"
-        Me.ButtonItemsAjoutAction.BackColor = Color.DarkOrange
+        Me.Text = "Modification d'un utilisateur"
+        Me.ButtonUtilisateurAjoutAction.Text = "Modifier"
+        Me.ButtonUtilisateurAjoutAction.BackColor = Color.DarkOrange
         If Not Me.IDModif = -1 Then
           Me.RemplirChampsRangee()
         End If
@@ -38,14 +38,14 @@ Public Class FormManipulerUtilisateur
     Me.IDModif = IDModif
   End Sub
 
-  Private Sub ButtonItemsAjoutAction_Click(sender As Object, e As EventArgs) Handles ButtonItemsAjoutAction.Click
+  Private Sub ButtonItemsAjoutAction_Click(sender As Object, e As EventArgs) Handles ButtonUtilisateurAjoutAction.Click
     ' Lorsque l'utilisateur clique sur ce bouton, on vérifie le contenu des champs et, si tout est ok, on construit un nouveau DataRow avec
 
     If VerifierChamp() Then
       ' On vérifie quel est le mode du formulaire
       Select Case Me.FormulaireMode
         Case "Ajout"
-          Me.InsertInventaireComplet()
+          Me.InsertUtilisateur()
           Me.Hide()
           Me.ViderFormulaire()
         Case "Modification"
@@ -57,41 +57,91 @@ Public Class FormManipulerUtilisateur
     End If
   End Sub
 
-  Private Sub ButtonItemsAjoutAnnuler_Click(sender As Object, e As EventArgs) Handles ButtonItemsAjoutAnnuler.Click
+  Private Sub ButtonItemsAjoutAnnuler_Click(sender As Object, e As EventArgs) Handles ButtonUtilisateurAjoutAnnuler.Click
     Me.ViderFormulaire()
     Me.Hide()
   End Sub
 
   ' Méthode pour insérer à l'inventaire complet
-  Private Sub InsertInventaireComplet()
-    DataTableTrav.InsertInventaireComplet(
-      TextBoxItemAjoutCodeProduit.Text,
-      TextBoxItemAjoutDesc.Text,
-      TextBoxItemAjoutEmp.Text,
-      TextBoxItemAjoutCat.Text,
-      TextBoxItemAjoutDep.Text,
-      TextBoxItemAjoutFournCode.Text,
-      TextBoxItemAjoutFournNom.Text,
-      CDbl(TextBoxItemAjoutPrixV.Text),
-      CDbl(TextBoxItemAjoutPrixA.Text),
-      CInt(TextBoxItemAjoutQt.Text))
+  Private Sub InsertUtilisateur()
+    DataTableTrav.InsertUtilisateur(
+      TextBoxUtilisateurAjoutNom.Text,
+      TextBoxUtilisateurAjoutPrenom.Text,
+      TextBoxUtilisateurAjoutUsername.Text,
+      TextBoxUtilisateurAjoutCourriel.Text,
+      TextBoxUtilisateurAjoutPassword.Text,
+      Me.GetDroits)
   End Sub
 
   ' Méthode pour modifier dans l'inventaire complet
-  Private Sub UpdateInventaireComplet()
-    DataTableTrav.UpdateInventaireComplet(
+  Private Sub UpdateUtilisateur()
+    DataTableTrav.UpdateUtilisateur(
       Me.IDModif,
-      TextBoxItemAjoutCodeProduit.Text,
-      TextBoxItemAjoutDesc.Text,
-      TextBoxItemAjoutEmp.Text,
-      TextBoxItemAjoutCat.Text,
-      TextBoxItemAjoutDep.Text,
-      TextBoxItemAjoutFournCode.Text,
-      TextBoxItemAjoutFournNom.Text,
-      CDbl(TextBoxItemAjoutPrixV.Text),
-      CDbl(TextBoxItemAjoutPrixA.Text),
-      CInt(TextBoxItemAjoutQt.Text))
+      TextBoxUtilisateurAjoutNom.Text,
+      TextBoxUtilisateurAjoutPrenom.Text,
+      TextBoxUtilisateurAjoutUsername.Text,
+      TextBoxUtilisateurAjoutCourriel.Text,
+      TextBoxUtilisateurAjoutPassword.Text,
+      Me.GetDroits)
   End Sub
+
+  Private Function GetDroits() As Int16
+    Dim Droits As Int16 = 0
+
+    If CheckBoxUtilisateurAjoutDroitVoirInventaire.Checked Then
+      Droits += VariablesGlobales.DROIT_INVENTAIRE_SELECT
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitAjoutInventaire.Checked Then
+      Droits += VariablesGlobales.DROIT_INVENTAIRE_INSERT
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitModifierInventaire.Checked Then
+      Droits += VariablesGlobales.DROIT_INVENTAIRE_UPDATE
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitSupprimerInventaire.Checked Then
+      Droits += VariablesGlobales.DROIT_INVENTAIRE_DELETE
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitAdminInventaire.Checked Then
+      Droits += VariablesGlobales.DROIT_INVENTAIRE_ADMIN
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitVoirFacture.Checked Then
+      Droits += VariablesGlobales.DROIT_FACTURE_SELECT
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitAjoutFacture.Checked Then
+      Droits += VariablesGlobales.DROIT_FACTURE_INSERT
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitModifierFacture.Checked Then
+      Droits += VariablesGlobales.DROIT_FACTURE_UPDATE
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitSupprimerFacture.Checked Then
+      Droits += VariablesGlobales.DROIT_FACTURE_DELETE
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Checked Then
+      Droits += VariablesGlobales.DROIT_UTILISATEUR_SELECT
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.Checked Then
+      Droits += VariablesGlobales.DROIT_UTILISATEUR_INSERT
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitModifierUtilisateur.Checked Then
+      Droits += VariablesGlobales.DROIT_UTILISATEUR_UPDATE
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Checked Then
+      Droits += VariablesGlobales.DROIT_UTILISATEUR_DELETE
+    End If
+
+    Return Droits
+  End Function
 
   ' Méthode pour ajouter un nouveau Datarow
   Private Function ModifierRangee() As Boolean
@@ -102,7 +152,7 @@ Public Class FormManipulerUtilisateur
           MsgBoxStyle.YesNo,
           "Attention!") = DialogResult.Yes Then
 
-      Me.UpdateInventaireComplet()
+      Me.UpdateUtilisateur()
 
       ' On retourne vrai, pour cacher le formulaire
       Return True
@@ -115,36 +165,42 @@ Public Class FormManipulerUtilisateur
   Private Sub ViderFormulaire()
     ' Méthode pour vider l'intégralité du formulaire
 
-    TextBoxItemAjoutCodeProduit.Text = ""
-    TextBoxItemAjoutDesc.Text = ""
-    TextBoxItemAjoutEmp.Text = ""
-    TextBoxItemAjoutCat.Text = ""
-    TextBoxItemAjoutFournCode.Text = ""
-    TextBoxItemAjoutDep.Text = ""
-    TextBoxItemAjoutFournNom.Text = ""
-    TextBoxItemAjoutPrixA.Text = ""
-    TextBoxItemAjoutPrixV.Text = ""
-    TextBoxItemAjoutQt.Text = ""
+    TextBoxUtilisateurAjoutNom.Text = ""
+    TextBoxUtilisateurAjoutPrenom.Text = ""
+    TextBoxUtilisateurAjoutUsername.Text = ""
+    TextBoxUtilisateurAjoutCourriel.Text = ""
+    TextBoxUtilisateurAjoutPassword.Text = ""
+    CheckBoxUtilisateurAjoutDroitVoirInventaire.Checked = False
+    CheckBoxUtilisateurAjoutDroitAjoutInventaire.Checked = False
+    CheckBoxUtilisateurAjoutDroitModifierInventaire.Checked = False
+    CheckBoxUtilisateurAjoutDroitSupprimerInventaire.Checked = False
+    CheckBoxUtilisateurAjoutDroitAdminInventaire.Checked = False
+    CheckBoxUtilisateurAjoutDroitVoirFacture.Checked = False
+    CheckBoxUtilisateurAjoutDroitAjoutFacture.Checked = False
+    CheckBoxUtilisateurAjoutDroitModifierFacture.Checked = False
+    CheckBoxUtilisateurAjoutDroitSupprimerFacture.Checked = False
+    CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Checked = False
+    CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.Checked = False
+    CheckBoxUtilisateurAjoutDroitModifierUtilisateur.Checked = False
+    CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Checked = False
   End Sub
 
   ' Méthode pour remplir l'intégralité du formulaire avec une rangée
   Private Sub RemplirChampsRangee()
-    Dim Donnees As TP1_VB.SelectInventaireCompletSingle_Result = Me.DataTableTrav.GetDataInventaireCompletSingle(IDModif)
+    ' Dim Donnees As TP1_VB.SelectInventaireCompletSingle_Result = Me.DataTableTrav.GetDataInventaireCompletSingle(IDModif)
 
-    MsgBox(Donnees.ToString())
-
-    With Donnees
-      TextBoxItemAjoutCodeProduit.Text = .Code_de_produit
-      TextBoxItemAjoutDesc.Text = .Description
-      TextBoxItemAjoutEmp.Text = .Emplacement
-      TextBoxItemAjoutFournNom.Text = .Nom_de_fournisseur
-      TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur
-      TextBoxItemAjoutCat.Text = .Catégorie
-      TextBoxItemAjoutDep.Text = .Département
-      TextBoxItemAjoutPrixA.Text = CStr(.Prix_d_achat)
-      TextBoxItemAjoutPrixV.Text = CStr(.Prix_de_vente)
-      TextBoxItemAjoutQt.Text = CStr(.Quantité)
-    End With
+    'With Donnees
+    '  TextBoxItemAjoutCodeProduit.Text = .Code_de_produit
+    '  TextBoxItemAjoutDesc.Text = .Description
+    '  TextBoxItemAjoutEmp.Text = .Emplacement
+    '  TextBoxItemAjoutFournNom.Text = .Nom_de_fournisseur
+    '  TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur
+    '  TextBoxItemAjoutCat.Text = .Catégorie
+    '  TextBoxItemAjoutDep.Text = .Département
+    '  TextBoxItemAjoutPrixA.Text = CStr(.Prix_d_achat)
+    '  TextBoxItemAjoutPrixV.Text = CStr(.Prix_de_vente)
+    '  TextBoxItemAjoutQt.Text = CStr(.Quantité)
+    'End With
   End Sub
 
   Private Function VerifierChamp() As Boolean
@@ -152,55 +208,28 @@ Public Class FormManipulerUtilisateur
 
     Dim Resultat As Boolean = True
 
-    If TextBoxItemAjoutCodeProduit.Text = "" Then
-      LabelItemAjoutCodeProduit.ForeColor = Color.Red
+    If TextBoxUtilisateurAjoutNom.Text = "" Then
+      LabelUtilisateurAjoutNom.ForeColor = Color.Red
       Resultat = False
     End If
 
-    If TextBoxItemAjoutDesc.Text = "" Then
-      LabelItemAjoutDesc.ForeColor = Color.Red
+    If TextBoxUtilisateurAjoutCourriel.Text = "" Then
+      LabelUtilisateurAjoutCourriel.ForeColor = Color.Red
       Resultat = False
     End If
 
-    If TextBoxItemAjoutEmp.Text = "" Then
-      LabelItemAjoutEmp.ForeColor = Color.Red
+    If TextBoxUtilisateurAjoutPrenom.Text = "" Then
+      LabelUtilisateurAjoutPrenom.ForeColor = Color.Red
       Resultat = False
     End If
 
-    If TextBoxItemAjoutFournNom.Text = "" Then
-      LabelItemAjoutFournNom.ForeColor = Color.Red
+    If TextBoxUtilisateurAjoutUsername.Text = "" Then
+      LabelUtilisateurAjoutUsername.ForeColor = Color.Red
       Resultat = False
     End If
 
-    If TextBoxItemAjoutFournCode.Text = "" Then
-      LabelItemAjoutFournCode.ForeColor = Color.Red
-      Resultat = False
-    End If
-
-    If TextBoxItemAjoutDep.Text = "" Then
-      LabelItemAjoutDepNom.ForeColor = Color.Red
-      Resultat = False
-    End If
-
-    If TextBoxItemAjoutCat.Text = "" Then
-      LabelItemAjoutCatNom.ForeColor = Color.Red
-      Resultat = False
-    End If
-
-    If Not IsNumeric(TextBoxItemAjoutPrixA.Text) Then
-      LabelItemAjoutPrixA.ForeColor = Color.Red
-      Resultat = False
-    End If
-
-    If Not IsNumeric(TextBoxItemAjoutPrixV.Text) Then
-      LabelItemAjoutPrixV.ForeColor = Color.Red
-      Resultat = False
-    End If
-
-    ' La valeur suivante est inutile, mais il est nécéssaire d'envoyer une valeur integer ByRef à Int32.TryParse()
-    Dim ItemAjoutQt As Integer
-    If TextBoxItemAjoutQt.Text = "" Or Not Int32.TryParse(TextBoxItemAjoutQt.Text, ItemAjoutQt) Then
-      LabelItemAjoutQt.ForeColor = Color.Red
+    If TextBoxUtilisateurAjoutPassword.Text = "" Then
+      LabelUtilisateurAjoutPassword.ForeColor = Color.Red
       Resultat = False
     End If
 
@@ -209,56 +238,31 @@ Public Class FormManipulerUtilisateur
 
   ' Méthode pour mettre les couleurs des labels à la couleur normale
   Private Sub LabelCouleurNormale()
-    LabelItemAjoutCatNom.ForeColor = Color.Black
-    LabelItemAjoutCodeProduit.ForeColor = Color.Black
-    LabelItemAjoutDepNom.ForeColor = Color.Black
-    LabelItemAjoutDesc.ForeColor = Color.Black
-    LabelItemAjoutEmp.ForeColor = Color.Black
-    LabelItemAjoutFournCode.ForeColor = Color.Black
-    LabelItemAjoutFournNom.ForeColor = Color.Black
-    LabelItemAjoutPrixA.ForeColor = Color.Black
-    LabelItemAjoutPrixV.ForeColor = Color.Black
-    LabelItemAjoutQt.ForeColor = Color.Black
+    LabelUtilisateurAjoutNom.ForeColor = Color.Black
+    LabelUtilisateurAjoutPrenom.ForeColor = Color.Black
+    LabelUtilisateurAjoutUsername.ForeColor = Color.Black
+    LabelUtilisateurAjoutCourriel.ForeColor = Color.Black
+    LabelUtilisateurAjoutPassword.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutCodeProduit_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutCodeProduit.TextChanged, TextBoxUtilisateurAjoutNom.TextChanged
-    LabelItemAjoutCodeProduit.ForeColor = Color.Black
+  Private Sub TextBoxUtilisateurAjoutNom_TextChanged(sender As Object, e As EventArgs) Handles TextBoxUtilisateurAjoutNom.TextChanged
+    LabelUtilisateurAjoutNom.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutDesc_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutDesc.TextChanged, TextBoxUtilisateurAjoutPrenom.TextChanged
-    LabelItemAjoutDesc.ForeColor = Color.Black
+  Private Sub TextBoxUtilisateurAjoutPrenom_TextChanged(sender As Object, e As EventArgs) Handles TextBoxUtilisateurAjoutPrenom.TextChanged
+    LabelUtilisateurAjoutPrenom.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutEmp_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutEmp.TextChanged, TextBoxUtilisateurAjoutUsername.TextChanged
-    LabelItemAjoutEmp.ForeColor = Color.Black
+  Private Sub TextBoxUtilisateurAjoutUsername_TextChanged(sender As Object, e As EventArgs) Handles TextBoxUtilisateurAjoutUsername.TextChanged
+    LabelUtilisateurAjoutUsername.ForeColor = Color.Black
   End Sub
 
-  Private Sub ComboBoxItemAjoutFournNom_SelectedIndexChanged(sender As Object, e As EventArgs)
-    LabelItemAjoutFournNom.ForeColor = Color.Black
+  Private Sub TextBoxUtilisateurAjoutCourriel_TextChanged(sender As Object, e As EventArgs) Handles TextBoxUtilisateurAjoutCourriel.TextChanged
+    LabelUtilisateurAjoutCourriel.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutFournCode_TextChanged(sender As Object, e As EventArgs)
-    LabelItemAjoutFournCode.ForeColor = Color.Black
-  End Sub
-
-  Private Sub ComboBoxItemAjoutDepNom_SelectedIndexChanged(sender As Object, e As EventArgs)
-    LabelItemAjoutDepNom.ForeColor = Color.Black
-  End Sub
-
-  Private Sub ComboBoxItemAjoutCatNom_SelectedIndexChanged(sender As Object, e As EventArgs)
-    LabelItemAjoutCatNom.ForeColor = Color.Black
-  End Sub
-
-  Private Sub TextBoxItemAjoutPrixA_TextChanged(sender As Object, e As EventArgs)
-    LabelItemAjoutPrixA.ForeColor = Color.Black
-  End Sub
-
-  Private Sub TextBoxItemAjoutPrixV_TextChanged(sender As Object, e As EventArgs)
-    LabelItemAjoutPrixV.ForeColor = Color.Black
-  End Sub
-
-  Private Sub TextBoxItemAjoutQt_TextChanged(sender As Object, e As EventArgs)
-    LabelItemAjoutQt.ForeColor = Color.Black
+  Private Sub TextBoxUtilisateurAjoutPassword_TextChanged(sender As Object, e As EventArgs) Handles TextBoxUtilisateurAjoutPassword.TextChanged
+    LabelUtilisateurAjoutPassword.ForeColor = Color.Black
   End Sub
 
   Private Sub FormAjoutItem_Closing(ByVal sender As Object,
