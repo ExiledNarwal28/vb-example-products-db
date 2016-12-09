@@ -12,6 +12,7 @@ Public Class FormInventaire
   Private DataTableTrav As DataTableTravailleur
 
   Private FormManipulerItem As FormManipulerItem
+  Private FormManipulerUtilisateur As FormManipulerUtilisateur
   Private FormNouvelleFacture As FormNouvelleFacture
   Private FormConnexionAdmin As FormConnexionAdmin
 
@@ -314,5 +315,11 @@ Public Class FormInventaire
     For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
       Rangee.Cells("item_chk").Value = ListeSelection.Contains(CInt(Rangee.Cells("item_id").Value))
     Next
+  End Sub
+
+  Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click
+    ' FormManipulerUtilisateur.SetFormulaireMode("Ajout")
+    FormManipulerUtilisateur.ShowDialog()
+    ' FormManipulerUtilisateur.getData()
   End Sub
 End Class

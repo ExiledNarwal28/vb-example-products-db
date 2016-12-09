@@ -1,6 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
-Public Class FormManipulerItem
+Public Class FormManipulerUtilisateur
   Private DataTableTrav As DataTableTravailleur
 
   Private FormulaireMode As String ' Ajout ou modifications
@@ -221,15 +221,15 @@ Public Class FormManipulerItem
     LabelItemAjoutQt.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutCodeProduit_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutCodeProduit.TextChanged
+  Private Sub TextBoxItemAjoutCodeProduit_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutCodeProduit.TextChanged, TextBoxUtilisateurAjoutNom.TextChanged
     LabelItemAjoutCodeProduit.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutDesc_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutDesc.TextChanged
+  Private Sub TextBoxItemAjoutDesc_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutDesc.TextChanged, TextBoxUtilisateurAjoutPrenom.TextChanged
     LabelItemAjoutDesc.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutEmp_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutEmp.TextChanged
+  Private Sub TextBoxItemAjoutEmp_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutEmp.TextChanged, TextBoxUtilisateurAjoutUsername.TextChanged
     LabelItemAjoutEmp.ForeColor = Color.Black
   End Sub
 
@@ -237,7 +237,7 @@ Public Class FormManipulerItem
     LabelItemAjoutFournNom.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutFournCode_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutFournCode.TextChanged
+  Private Sub TextBoxItemAjoutFournCode_TextChanged(sender As Object, e As EventArgs)
     LabelItemAjoutFournCode.ForeColor = Color.Black
   End Sub
 
@@ -249,15 +249,15 @@ Public Class FormManipulerItem
     LabelItemAjoutCatNom.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutPrixA_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutPrixA.TextChanged
+  Private Sub TextBoxItemAjoutPrixA_TextChanged(sender As Object, e As EventArgs)
     LabelItemAjoutPrixA.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutPrixV_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutPrixV.TextChanged
+  Private Sub TextBoxItemAjoutPrixV_TextChanged(sender As Object, e As EventArgs)
     LabelItemAjoutPrixV.ForeColor = Color.Black
   End Sub
 
-  Private Sub TextBoxItemAjoutQt_TextChanged(sender As Object, e As EventArgs) Handles TextBoxItemAjoutQt.TextChanged
+  Private Sub TextBoxItemAjoutQt_TextChanged(sender As Object, e As EventArgs)
     LabelItemAjoutQt.ForeColor = Color.Black
   End Sub
 

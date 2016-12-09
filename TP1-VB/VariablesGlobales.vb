@@ -23,9 +23,9 @@
   Public Shared ReadOnly DROIT_FACTURE_SELECT As Int16 = 32       ' Voir le tab facture et le DGV                           6   0000 0100 0000 0000
   Public Shared ReadOnly DROIT_FACTURE_UPDATE As Int16 = 64       ' Mettre à jour une facture                               7   0000 0010 0000 0000
   Public Shared ReadOnly DROIT_FACTURE_INSERT As Int16 = 128      ' Ajouter une facture (Contrôle de base)                  8   0000 0001 0000 0000
-  Public Shared ReadOnly DROIT_FACTURE_DELETE As Int16 = 256      ' Supprimer une facture                                   9   0000 0000 0100 0000
-  Public Shared ReadOnly DROIT_UTILISATEUR_SELECT As Int16 = 512  ' Voir le tab utilisateur et le DGV                       10  0000 0000 0010 0000
-  Public Shared ReadOnly DROIT_UTILISATEUR_UPDATE As Int16 = 1024 ' Mettre à jour un utilisateur                            11  0000 0000 0001 0000
-  Public Shared ReadOnly DROIT_UTILISATEUR_INSERT As Int16 = 2048 ' Ajouter un utilisateur                                  12  0000 0000 0000 1000
-  Public Shared ReadOnly DROIT_UTILISATEUR_DELETE As Int16 = 4096 ' Supprimer un utilisateur                                13  0000 0000 0000 0100
+  Public Shared ReadOnly DROIT_FACTURE_DELETE As Int16 = 256      ' Supprimer une facture                                   9   0000 0000 1000 0000
+  Public Shared ReadOnly DROIT_UTILISATEUR_SELECT As Int16 = 512  ' Voir le tab utilisateur et le DGV                       10  0000 0000 0100 0000
+  Public Shared ReadOnly DROIT_UTILISATEUR_UPDATE As Int16 = 1024 ' Mettre à jour un utilisateur                            11  0000 0000 0010 0000
+  Public Shared ReadOnly DROIT_UTILISATEUR_INSERT As Int16 = 2048 ' Ajouter un utilisateur                                  12  0000 0000 0001 0000
+  Public Shared ReadOnly DROIT_UTILISATEUR_DELETE As Int16 = 4096 ' Supprimer un utilisateur                                13  0000 0000 0000 1000
 End Class

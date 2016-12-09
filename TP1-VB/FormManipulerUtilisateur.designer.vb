@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormManipulerItem
+Partial Class FormManipulerUtilisateur
   Inherits System.Windows.Forms.Form
 
   'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -22,158 +22,154 @@ Partial Class FormManipulerItem
   'Ne la modifiez pas à l'aide de l'éditeur de code.
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
-    Me.LabelItemAjoutCodeProduit = New System.Windows.Forms.Label()
-    Me.TextBoxItemAjoutCodeProduit = New System.Windows.Forms.TextBox()
-    Me.TextBoxItemAjoutDesc = New System.Windows.Forms.TextBox()
-    Me.LabelItemAjoutDesc = New System.Windows.Forms.Label()
-    Me.TextBoxItemAjoutEmp = New System.Windows.Forms.TextBox()
-    Me.LabelItemAjoutEmp = New System.Windows.Forms.Label()
-    Me.LabelItemAjoutFournNom = New System.Windows.Forms.Label()
-    Me.LabelItemAjoutCatNom = New System.Windows.Forms.Label()
-    Me.LabelItemAjoutDepNom = New System.Windows.Forms.Label()
-    Me.TextBoxItemAjoutPrixA = New System.Windows.Forms.TextBox()
-    Me.LabelItemAjoutPrixA = New System.Windows.Forms.Label()
-    Me.TextBoxItemAjoutPrixV = New System.Windows.Forms.TextBox()
-    Me.LabelItemAjoutPrixV = New System.Windows.Forms.Label()
-    Me.TextBoxItemAjoutQt = New System.Windows.Forms.TextBox()
-    Me.LabelItemAjoutQt = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutNom = New System.Windows.Forms.Label()
+    Me.TextBoxUtilisateurAjoutNom = New System.Windows.Forms.TextBox()
+    Me.TextBoxUtilisateurAjoutPrenom = New System.Windows.Forms.TextBox()
+    Me.LabelUtilisateurAjoutPrenom = New System.Windows.Forms.Label()
+    Me.TextBoxUtilisateurAjoutUsername = New System.Windows.Forms.TextBox()
+    Me.LabelUtilisateurAjoutUsername = New System.Windows.Forms.Label()
+    Me.LabelUtilisateAjoutCourriel = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitInventaire = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroit = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitVoir = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitAjouter = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitModifier = New System.Windows.Forms.Label()
     Me.ButtonItemsAjoutAction = New System.Windows.Forms.Button()
     Me.ButtonItemsAjoutAnnuler = New System.Windows.Forms.Button()
-    Me.TextBoxItemAjoutFournCode = New System.Windows.Forms.TextBox()
-    Me.LabelItemAjoutFournCode = New System.Windows.Forms.Label()
-    Me.TextBoxItemAjoutFournNom = New System.Windows.Forms.TextBox()
-    Me.TextBoxItemAjoutDep = New System.Windows.Forms.TextBox()
-    Me.TextBoxItemAjoutCat = New System.Windows.Forms.TextBox()
+    Me.LabelItemAjoutPassword = New System.Windows.Forms.Label()
+    Me.TextBoxUtilisateurAjoutCourriel = New System.Windows.Forms.TextBox()
+    Me.LabelUtilisateurAjoutDroitSupprimer = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitFacture = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitUtilisateur = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitAdmin = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurAjoutDroitAdminInfo = New System.Windows.Forms.Label()
+    Me.CheckBoxUtilisateurAjoutDroitVoirInventaire = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitModifierInventaire = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitAdminInventaire = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitFacture = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitAjoutFacture = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitModifierFacture = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur = New System.Windows.Forms.CheckBox()
+    Me.TextBoxUtilisateurAjoutPassword = New System.Windows.Forms.TextBox()
     Me.SuspendLayout()
     '
-    'LabelItemAjoutCodeProduit
+    'LabelUtilisateurAjoutNom
     '
-    Me.LabelItemAjoutCodeProduit.AutoSize = True
-    Me.LabelItemAjoutCodeProduit.Location = New System.Drawing.Point(12, 9)
-    Me.LabelItemAjoutCodeProduit.Name = "LabelItemAjoutCodeProduit"
-    Me.LabelItemAjoutCodeProduit.Size = New System.Drawing.Size(91, 13)
-    Me.LabelItemAjoutCodeProduit.TabIndex = 0
-    Me.LabelItemAjoutCodeProduit.Text = "Code du produit : "
+    Me.LabelUtilisateurAjoutNom.AutoSize = True
+    Me.LabelUtilisateurAjoutNom.Location = New System.Drawing.Point(12, 9)
+    Me.LabelUtilisateurAjoutNom.Name = "LabelUtilisateurAjoutNom"
+    Me.LabelUtilisateurAjoutNom.Size = New System.Drawing.Size(38, 13)
+    Me.LabelUtilisateurAjoutNom.TabIndex = 0
+    Me.LabelUtilisateurAjoutNom.Text = "Nom : "
     '
-    'TextBoxItemAjoutCodeProduit
+    'TextBoxUtilisateurAjoutNom
     '
-    Me.TextBoxItemAjoutCodeProduit.Location = New System.Drawing.Point(109, 6)
-    Me.TextBoxItemAjoutCodeProduit.Name = "TextBoxItemAjoutCodeProduit"
-    Me.TextBoxItemAjoutCodeProduit.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutCodeProduit.TabIndex = 1
+    Me.TextBoxUtilisateurAjoutNom.Location = New System.Drawing.Point(109, 6)
+    Me.TextBoxUtilisateurAjoutNom.Name = "TextBoxUtilisateurAjoutNom"
+    Me.TextBoxUtilisateurAjoutNom.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxUtilisateurAjoutNom.TabIndex = 1
     '
-    'TextBoxItemAjoutDesc
+    'TextBoxUtilisateurAjoutPrenom
     '
-    Me.TextBoxItemAjoutDesc.Location = New System.Drawing.Point(109, 32)
-    Me.TextBoxItemAjoutDesc.Name = "TextBoxItemAjoutDesc"
-    Me.TextBoxItemAjoutDesc.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutDesc.TabIndex = 3
+    Me.TextBoxUtilisateurAjoutPrenom.Location = New System.Drawing.Point(109, 32)
+    Me.TextBoxUtilisateurAjoutPrenom.Name = "TextBoxUtilisateurAjoutPrenom"
+    Me.TextBoxUtilisateurAjoutPrenom.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxUtilisateurAjoutPrenom.TabIndex = 3
     '
-    'LabelItemAjoutDesc
+    'LabelUtilisateurAjoutPrenom
     '
-    Me.LabelItemAjoutDesc.AutoSize = True
-    Me.LabelItemAjoutDesc.Location = New System.Drawing.Point(12, 35)
-    Me.LabelItemAjoutDesc.Name = "LabelItemAjoutDesc"
-    Me.LabelItemAjoutDesc.Size = New System.Drawing.Size(69, 13)
-    Me.LabelItemAjoutDesc.TabIndex = 2
-    Me.LabelItemAjoutDesc.Text = "Description : "
+    Me.LabelUtilisateurAjoutPrenom.AutoSize = True
+    Me.LabelUtilisateurAjoutPrenom.Location = New System.Drawing.Point(12, 35)
+    Me.LabelUtilisateurAjoutPrenom.Name = "LabelUtilisateurAjoutPrenom"
+    Me.LabelUtilisateurAjoutPrenom.Size = New System.Drawing.Size(52, 13)
+    Me.LabelUtilisateurAjoutPrenom.TabIndex = 2
+    Me.LabelUtilisateurAjoutPrenom.Text = "Prénom : "
     '
-    'TextBoxItemAjoutEmp
+    'TextBoxUtilisateurAjoutUsername
     '
-    Me.TextBoxItemAjoutEmp.Location = New System.Drawing.Point(109, 58)
-    Me.TextBoxItemAjoutEmp.Name = "TextBoxItemAjoutEmp"
-    Me.TextBoxItemAjoutEmp.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutEmp.TabIndex = 5
+    Me.TextBoxUtilisateurAjoutUsername.Location = New System.Drawing.Point(109, 58)
+    Me.TextBoxUtilisateurAjoutUsername.Name = "TextBoxUtilisateurAjoutUsername"
+    Me.TextBoxUtilisateurAjoutUsername.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxUtilisateurAjoutUsername.TabIndex = 5
     '
-    'LabelItemAjoutEmp
+    'LabelUtilisateurAjoutUsername
     '
-    Me.LabelItemAjoutEmp.AutoSize = True
-    Me.LabelItemAjoutEmp.Location = New System.Drawing.Point(12, 61)
-    Me.LabelItemAjoutEmp.Name = "LabelItemAjoutEmp"
-    Me.LabelItemAjoutEmp.Size = New System.Drawing.Size(80, 13)
-    Me.LabelItemAjoutEmp.TabIndex = 4
-    Me.LabelItemAjoutEmp.Text = "Emplacement : "
+    Me.LabelUtilisateurAjoutUsername.AutoSize = True
+    Me.LabelUtilisateurAjoutUsername.Location = New System.Drawing.Point(12, 61)
+    Me.LabelUtilisateurAjoutUsername.Name = "LabelUtilisateurAjoutUsername"
+    Me.LabelUtilisateurAjoutUsername.Size = New System.Drawing.Size(93, 13)
+    Me.LabelUtilisateurAjoutUsername.TabIndex = 4
+    Me.LabelUtilisateurAjoutUsername.Text = "Nom d'utilisateur : "
     '
-    'LabelItemAjoutFournNom
+    'LabelUtilisateAjoutCourriel
     '
-    Me.LabelItemAjoutFournNom.AutoSize = True
-    Me.LabelItemAjoutFournNom.Location = New System.Drawing.Point(12, 87)
-    Me.LabelItemAjoutFournNom.Name = "LabelItemAjoutFournNom"
-    Me.LabelItemAjoutFournNom.Size = New System.Drawing.Size(70, 13)
-    Me.LabelItemAjoutFournNom.TabIndex = 6
-    Me.LabelItemAjoutFournNom.Text = "Fournisseur : "
+    Me.LabelUtilisateAjoutCourriel.AutoSize = True
+    Me.LabelUtilisateAjoutCourriel.Location = New System.Drawing.Point(12, 87)
+    Me.LabelUtilisateAjoutCourriel.Name = "LabelUtilisateAjoutCourriel"
+    Me.LabelUtilisateAjoutCourriel.Size = New System.Drawing.Size(51, 13)
+    Me.LabelUtilisateAjoutCourriel.TabIndex = 6
+    Me.LabelUtilisateAjoutCourriel.Text = "Courriel : "
     '
-    'LabelItemAjoutCatNom
+    'LabelUtilisateurAjoutDroitInventaire
     '
-    Me.LabelItemAjoutCatNom.AutoSize = True
-    Me.LabelItemAjoutCatNom.Location = New System.Drawing.Point(12, 168)
-    Me.LabelItemAjoutCatNom.Name = "LabelItemAjoutCatNom"
-    Me.LabelItemAjoutCatNom.Size = New System.Drawing.Size(61, 13)
-    Me.LabelItemAjoutCatNom.TabIndex = 8
-    Me.LabelItemAjoutCatNom.Text = "Catégorie : "
+    Me.LabelUtilisateurAjoutDroitInventaire.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitInventaire.Location = New System.Drawing.Point(91, 168)
+    Me.LabelUtilisateurAjoutDroitInventaire.Name = "LabelUtilisateurAjoutDroitInventaire"
+    Me.LabelUtilisateurAjoutDroitInventaire.Size = New System.Drawing.Size(54, 13)
+    Me.LabelUtilisateurAjoutDroitInventaire.TabIndex = 8
+    Me.LabelUtilisateurAjoutDroitInventaire.Text = "Inventaire"
     '
-    'LabelItemAjoutDepNom
+    'LabelUtilisateurAjoutDroit
     '
-    Me.LabelItemAjoutDepNom.AutoSize = True
-    Me.LabelItemAjoutDepNom.Location = New System.Drawing.Point(12, 140)
-    Me.LabelItemAjoutDepNom.Name = "LabelItemAjoutDepNom"
-    Me.LabelItemAjoutDepNom.Size = New System.Drawing.Size(77, 13)
-    Me.LabelItemAjoutDepNom.TabIndex = 10
-    Me.LabelItemAjoutDepNom.Text = "Département : "
+    Me.LabelUtilisateurAjoutDroit.AutoSize = True
+    Me.LabelUtilisateurAjoutDroit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    Me.LabelUtilisateurAjoutDroit.Location = New System.Drawing.Point(184, 135)
+    Me.LabelUtilisateurAjoutDroit.Name = "LabelUtilisateurAjoutDroit"
+    Me.LabelUtilisateurAjoutDroit.Size = New System.Drawing.Size(37, 13)
+    Me.LabelUtilisateurAjoutDroit.TabIndex = 10
+    Me.LabelUtilisateurAjoutDroit.Text = "Droits "
     '
-    'TextBoxItemAjoutPrixA
+    'LabelUtilisateurAjoutDroitVoir
     '
-    Me.TextBoxItemAjoutPrixA.Location = New System.Drawing.Point(109, 192)
-    Me.TextBoxItemAjoutPrixA.Name = "TextBoxItemAjoutPrixA"
-    Me.TextBoxItemAjoutPrixA.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutPrixA.TabIndex = 13
+    Me.LabelUtilisateurAjoutDroitVoir.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitVoir.Location = New System.Drawing.Point(12, 195)
+    Me.LabelUtilisateurAjoutDroitVoir.Name = "LabelUtilisateurAjoutDroitVoir"
+    Me.LabelUtilisateurAjoutDroitVoir.Size = New System.Drawing.Size(370, 13)
+    Me.LabelUtilisateurAjoutDroitVoir.TabIndex = 12
+    Me.LabelUtilisateurAjoutDroitVoir.Text = "Voir ............................................................................" & _
+    "......................................"
     '
-    'LabelItemAjoutPrixA
+    'LabelUtilisateurAjoutDroitAjouter
     '
-    Me.LabelItemAjoutPrixA.AutoSize = True
-    Me.LabelItemAjoutPrixA.Location = New System.Drawing.Point(12, 195)
-    Me.LabelItemAjoutPrixA.Name = "LabelItemAjoutPrixA"
-    Me.LabelItemAjoutPrixA.Size = New System.Drawing.Size(71, 13)
-    Me.LabelItemAjoutPrixA.TabIndex = 12
-    Me.LabelItemAjoutPrixA.Text = "Prix d'achat : "
+    Me.LabelUtilisateurAjoutDroitAjouter.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitAjouter.Location = New System.Drawing.Point(12, 221)
+    Me.LabelUtilisateurAjoutDroitAjouter.Name = "LabelUtilisateurAjoutDroitAjouter"
+    Me.LabelUtilisateurAjoutDroitAjouter.Size = New System.Drawing.Size(370, 13)
+    Me.LabelUtilisateurAjoutDroitAjouter.TabIndex = 14
+    Me.LabelUtilisateurAjoutDroitAjouter.Text = "Ajouter ........................................................................." & _
+    "...................................."
     '
-    'TextBoxItemAjoutPrixV
+    'LabelUtilisateurAjoutDroitModifier
     '
-    Me.TextBoxItemAjoutPrixV.Location = New System.Drawing.Point(109, 218)
-    Me.TextBoxItemAjoutPrixV.Name = "TextBoxItemAjoutPrixV"
-    Me.TextBoxItemAjoutPrixV.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutPrixV.TabIndex = 15
-    '
-    'LabelItemAjoutPrixV
-    '
-    Me.LabelItemAjoutPrixV.AutoSize = True
-    Me.LabelItemAjoutPrixV.Location = New System.Drawing.Point(12, 221)
-    Me.LabelItemAjoutPrixV.Name = "LabelItemAjoutPrixV"
-    Me.LabelItemAjoutPrixV.Size = New System.Drawing.Size(78, 13)
-    Me.LabelItemAjoutPrixV.TabIndex = 14
-    Me.LabelItemAjoutPrixV.Text = "Prix de vente : "
-    '
-    'TextBoxItemAjoutQt
-    '
-    Me.TextBoxItemAjoutQt.Location = New System.Drawing.Point(109, 244)
-    Me.TextBoxItemAjoutQt.Name = "TextBoxItemAjoutQt"
-    Me.TextBoxItemAjoutQt.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutQt.TabIndex = 17
-    '
-    'LabelItemAjoutQt
-    '
-    Me.LabelItemAjoutQt.AutoSize = True
-    Me.LabelItemAjoutQt.Location = New System.Drawing.Point(12, 247)
-    Me.LabelItemAjoutQt.Name = "LabelItemAjoutQt"
-    Me.LabelItemAjoutQt.Size = New System.Drawing.Size(56, 13)
-    Me.LabelItemAjoutQt.TabIndex = 16
-    Me.LabelItemAjoutQt.Text = "Quantité : "
+    Me.LabelUtilisateurAjoutDroitModifier.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitModifier.Location = New System.Drawing.Point(12, 247)
+    Me.LabelUtilisateurAjoutDroitModifier.Name = "LabelUtilisateurAjoutDroitModifier"
+    Me.LabelUtilisateurAjoutDroitModifier.Size = New System.Drawing.Size(371, 13)
+    Me.LabelUtilisateurAjoutDroitModifier.TabIndex = 16
+    Me.LabelUtilisateurAjoutDroitModifier.Text = "Modifier ........................................................................" & _
+    "...................................."
     '
     'ButtonItemsAjoutAction
     '
     Me.ButtonItemsAjoutAction.BackColor = System.Drawing.Color.SeaGreen
     Me.ButtonItemsAjoutAction.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.ButtonItemsAjoutAction.Location = New System.Drawing.Point(202, 270)
+    Me.ButtonItemsAjoutAction.Location = New System.Drawing.Point(202, 339)
     Me.ButtonItemsAjoutAction.Name = "ButtonItemsAjoutAction"
     Me.ButtonItemsAjoutAction.Size = New System.Drawing.Size(181, 23)
     Me.ButtonItemsAjoutAction.TabIndex = 18
@@ -184,103 +180,280 @@ Partial Class FormManipulerItem
     '
     Me.ButtonItemsAjoutAnnuler.BackColor = System.Drawing.Color.Crimson
     Me.ButtonItemsAjoutAnnuler.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.ButtonItemsAjoutAnnuler.Location = New System.Drawing.Point(15, 270)
+    Me.ButtonItemsAjoutAnnuler.Location = New System.Drawing.Point(15, 339)
     Me.ButtonItemsAjoutAnnuler.Name = "ButtonItemsAjoutAnnuler"
     Me.ButtonItemsAjoutAnnuler.Size = New System.Drawing.Size(181, 23)
     Me.ButtonItemsAjoutAnnuler.TabIndex = 19
     Me.ButtonItemsAjoutAnnuler.Text = "Annuler"
     Me.ButtonItemsAjoutAnnuler.UseVisualStyleBackColor = False
     '
-    'TextBoxItemAjoutFournCode
+    'LabelItemAjoutPassword
     '
-    Me.TextBoxItemAjoutFournCode.Location = New System.Drawing.Point(109, 112)
-    Me.TextBoxItemAjoutFournCode.Name = "TextBoxItemAjoutFournCode"
-    Me.TextBoxItemAjoutFournCode.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutFournCode.TabIndex = 21
+    Me.LabelItemAjoutPassword.AutoSize = True
+    Me.LabelItemAjoutPassword.Location = New System.Drawing.Point(12, 115)
+    Me.LabelItemAjoutPassword.Name = "LabelItemAjoutPassword"
+    Me.LabelItemAjoutPassword.Size = New System.Drawing.Size(80, 13)
+    Me.LabelItemAjoutPassword.TabIndex = 20
+    Me.LabelItemAjoutPassword.Text = "Mot de passe : "
     '
-    'LabelItemAjoutFournCode
+    'TextBoxUtilisateurAjoutCourriel
     '
-    Me.LabelItemAjoutFournCode.AutoSize = True
-    Me.LabelItemAjoutFournCode.Location = New System.Drawing.Point(12, 115)
-    Me.LabelItemAjoutFournCode.Name = "LabelItemAjoutFournCode"
-    Me.LabelItemAjoutFournCode.Size = New System.Drawing.Size(74, 13)
-    Me.LabelItemAjoutFournCode.TabIndex = 20
-    Me.LabelItemAjoutFournCode.Text = "Code Fourn. : "
+    Me.TextBoxUtilisateurAjoutCourriel.Location = New System.Drawing.Point(109, 86)
+    Me.TextBoxUtilisateurAjoutCourriel.Name = "TextBoxUtilisateurAjoutCourriel"
+    Me.TextBoxUtilisateurAjoutCourriel.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxUtilisateurAjoutCourriel.TabIndex = 22
     '
-    'TextBoxItemAjoutFournNom
+    'LabelUtilisateurAjoutDroitSupprimer
     '
-    Me.TextBoxItemAjoutFournNom.Location = New System.Drawing.Point(109, 86)
-    Me.TextBoxItemAjoutFournNom.Name = "TextBoxItemAjoutFournNom"
-    Me.TextBoxItemAjoutFournNom.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutFournNom.TabIndex = 22
+    Me.LabelUtilisateurAjoutDroitSupprimer.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitSupprimer.Location = New System.Drawing.Point(12, 273)
+    Me.LabelUtilisateurAjoutDroitSupprimer.Name = "LabelUtilisateurAjoutDroitSupprimer"
+    Me.LabelUtilisateurAjoutDroitSupprimer.Size = New System.Drawing.Size(372, 13)
+    Me.LabelUtilisateurAjoutDroitSupprimer.TabIndex = 23
+    Me.LabelUtilisateurAjoutDroitSupprimer.Text = "Supprimer ......................................................................." & _
+    ".................................."
     '
-    'TextBoxItemAjoutDep
+    'LabelUtilisateurAjoutDroitFacture
     '
-    Me.TextBoxItemAjoutDep.Location = New System.Drawing.Point(109, 138)
-    Me.TextBoxItemAjoutDep.Name = "TextBoxItemAjoutDep"
-    Me.TextBoxItemAjoutDep.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutDep.TabIndex = 23
+    Me.LabelUtilisateurAjoutDroitFacture.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitFacture.Location = New System.Drawing.Point(199, 168)
+    Me.LabelUtilisateurAjoutDroitFacture.Name = "LabelUtilisateurAjoutDroitFacture"
+    Me.LabelUtilisateurAjoutDroitFacture.Size = New System.Drawing.Size(43, 13)
+    Me.LabelUtilisateurAjoutDroitFacture.TabIndex = 24
+    Me.LabelUtilisateurAjoutDroitFacture.Text = "Facture"
     '
-    'TextBoxItemAjoutCat
+    'LabelUtilisateurAjoutDroitUtilisateur
     '
-    Me.TextBoxItemAjoutCat.Location = New System.Drawing.Point(109, 165)
-    Me.TextBoxItemAjoutCat.Name = "TextBoxItemAjoutCat"
-    Me.TextBoxItemAjoutCat.Size = New System.Drawing.Size(274, 20)
-    Me.TextBoxItemAjoutCat.TabIndex = 24
+    Me.LabelUtilisateurAjoutDroitUtilisateur.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitUtilisateur.Location = New System.Drawing.Point(302, 168)
+    Me.LabelUtilisateurAjoutDroitUtilisateur.Name = "LabelUtilisateurAjoutDroitUtilisateur"
+    Me.LabelUtilisateurAjoutDroitUtilisateur.Size = New System.Drawing.Size(53, 13)
+    Me.LabelUtilisateurAjoutDroitUtilisateur.TabIndex = 25
+    Me.LabelUtilisateurAjoutDroitUtilisateur.Text = "Utilisateur"
     '
-    'FormManipulerItem
+    'LabelUtilisateurAjoutDroitAdmin
+    '
+    Me.LabelUtilisateurAjoutDroitAdmin.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitAdmin.Location = New System.Drawing.Point(12, 299)
+    Me.LabelUtilisateurAjoutDroitAdmin.Name = "LabelUtilisateurAjoutDroitAdmin"
+    Me.LabelUtilisateurAjoutDroitAdmin.Size = New System.Drawing.Size(372, 13)
+    Me.LabelUtilisateurAjoutDroitAdmin.TabIndex = 26
+    Me.LabelUtilisateurAjoutDroitAdmin.Text = "Admin ..........................................................................." & _
+    "...................................."
+    '
+    'LabelUtilisateurAjoutDroitAdminInfo
+    '
+    Me.LabelUtilisateurAjoutDroitAdminInfo.AutoSize = True
+    Me.LabelUtilisateurAjoutDroitAdminInfo.Location = New System.Drawing.Point(22, 314)
+    Me.LabelUtilisateurAjoutDroitAdminInfo.Name = "LabelUtilisateurAjoutDroitAdminInfo"
+    Me.LabelUtilisateurAjoutDroitAdminInfo.Size = New System.Drawing.Size(321, 13)
+    Me.LabelUtilisateurAjoutDroitAdminInfo.TabIndex = 27
+    Me.LabelUtilisateurAjoutDroitAdminInfo.Text = "*Ceci permet de voir les estimations et le prix d'achat de l'inventaire"
+    '
+    'CheckBoxUtilisateurAjoutDroitVoirInventaire
+    '
+    Me.CheckBoxUtilisateurAjoutDroitVoirInventaire.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitVoirInventaire.Location = New System.Drawing.Point(109, 195)
+    Me.CheckBoxUtilisateurAjoutDroitVoirInventaire.Name = "CheckBoxUtilisateurAjoutDroitVoirInventaire"
+    Me.CheckBoxUtilisateurAjoutDroitVoirInventaire.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitVoirInventaire.TabIndex = 28
+    Me.CheckBoxUtilisateurAjoutDroitVoirInventaire.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitAjoutInventaire
+    '
+    Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire.Location = New System.Drawing.Point(109, 221)
+    Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire.Name = "CheckBoxUtilisateurAjoutDroitAjoutInventaire"
+    Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire.TabIndex = 29
+    Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitModifierInventaire
+    '
+    Me.CheckBoxUtilisateurAjoutDroitModifierInventaire.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitModifierInventaire.Location = New System.Drawing.Point(109, 247)
+    Me.CheckBoxUtilisateurAjoutDroitModifierInventaire.Name = "CheckBoxUtilisateurAjoutDroitModifierInventaire"
+    Me.CheckBoxUtilisateurAjoutDroitModifierInventaire.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitModifierInventaire.TabIndex = 30
+    Me.CheckBoxUtilisateurAjoutDroitModifierInventaire.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitSupprimerInventaire
+    '
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire.Location = New System.Drawing.Point(109, 273)
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire.Name = "CheckBoxUtilisateurAjoutDroitSupprimerInventaire"
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire.TabIndex = 31
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitAdminInventaire
+    '
+    Me.CheckBoxUtilisateurAjoutDroitAdminInventaire.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitAdminInventaire.Location = New System.Drawing.Point(109, 299)
+    Me.CheckBoxUtilisateurAjoutDroitAdminInventaire.Name = "CheckBoxUtilisateurAjoutDroitAdminInventaire"
+    Me.CheckBoxUtilisateurAjoutDroitAdminInventaire.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitAdminInventaire.TabIndex = 32
+    Me.CheckBoxUtilisateurAjoutDroitAdminInventaire.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitFacture
+    '
+    Me.CheckBoxUtilisateurAjoutDroitFacture.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitFacture.Location = New System.Drawing.Point(212, 195)
+    Me.CheckBoxUtilisateurAjoutDroitFacture.Name = "CheckBoxUtilisateurAjoutDroitFacture"
+    Me.CheckBoxUtilisateurAjoutDroitFacture.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitFacture.TabIndex = 33
+    Me.CheckBoxUtilisateurAjoutDroitFacture.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitAjoutFacture
+    '
+    Me.CheckBoxUtilisateurAjoutDroitAjoutFacture.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitAjoutFacture.Location = New System.Drawing.Point(212, 221)
+    Me.CheckBoxUtilisateurAjoutDroitAjoutFacture.Name = "CheckBoxUtilisateurAjoutDroitAjoutFacture"
+    Me.CheckBoxUtilisateurAjoutDroitAjoutFacture.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitAjoutFacture.TabIndex = 34
+    Me.CheckBoxUtilisateurAjoutDroitAjoutFacture.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitModifierFacture
+    '
+    Me.CheckBoxUtilisateurAjoutDroitModifierFacture.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitModifierFacture.Location = New System.Drawing.Point(212, 247)
+    Me.CheckBoxUtilisateurAjoutDroitModifierFacture.Name = "CheckBoxUtilisateurAjoutDroitModifierFacture"
+    Me.CheckBoxUtilisateurAjoutDroitModifierFacture.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitModifierFacture.TabIndex = 35
+    Me.CheckBoxUtilisateurAjoutDroitModifierFacture.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitSupprimerFacture
+    '
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture.Location = New System.Drawing.Point(212, 273)
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture.Name = "CheckBoxUtilisateurAjoutDroitSupprimerFacture"
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture.TabIndex = 36
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitVoirUtilisateur
+    '
+    Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Location = New System.Drawing.Point(322, 195)
+    Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Name = "CheckBoxUtilisateurAjoutDroitVoirUtilisateur"
+    Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur.TabIndex = 37
+    Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitAjoutUtilisateur
+    '
+    Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.Location = New System.Drawing.Point(322, 221)
+    Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.Name = "CheckBoxUtilisateurAjoutDroitAjoutUtilisateur"
+    Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.TabIndex = 38
+    Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitModifierUtilisateur
+    '
+    Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur.Location = New System.Drawing.Point(322, 247)
+    Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur.Name = "CheckBoxUtilisateurAjoutDroitModifierUtilisateur"
+    Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur.TabIndex = 39
+    Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur.UseVisualStyleBackColor = True
+    '
+    'CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur
+    '
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.AutoSize = True
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Location = New System.Drawing.Point(322, 273)
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Name = "CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur"
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Size = New System.Drawing.Size(15, 14)
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.TabIndex = 40
+    Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.UseVisualStyleBackColor = True
+    '
+    'TextBoxUtilisateurAjoutPassword
+    '
+    Me.TextBoxUtilisateurAjoutPassword.Location = New System.Drawing.Point(109, 112)
+    Me.TextBoxUtilisateurAjoutPassword.Name = "TextBoxUtilisateurAjoutPassword"
+    Me.TextBoxUtilisateurAjoutPassword.Size = New System.Drawing.Size(274, 20)
+    Me.TextBoxUtilisateurAjoutPassword.TabIndex = 41
+    Me.TextBoxUtilisateurAjoutPassword.UseSystemPasswordChar = True
+    '
+    'FormManipulerUtilisateur
     '
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
     Me.BackColor = System.Drawing.Color.PaleTurquoise
-    Me.ClientSize = New System.Drawing.Size(395, 298)
-    Me.Controls.Add(Me.TextBoxItemAjoutCat)
-    Me.Controls.Add(Me.TextBoxItemAjoutDep)
-    Me.Controls.Add(Me.TextBoxItemAjoutFournNom)
-    Me.Controls.Add(Me.TextBoxItemAjoutFournCode)
-    Me.Controls.Add(Me.LabelItemAjoutFournCode)
+    Me.ClientSize = New System.Drawing.Size(395, 368)
+    Me.Controls.Add(Me.TextBoxUtilisateurAjoutPassword)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitModifierUtilisateur)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitAjoutUtilisateur)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitVoirUtilisateur)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitSupprimerFacture)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitModifierFacture)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitAjoutFacture)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitFacture)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitAdminInventaire)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitSupprimerInventaire)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitModifierInventaire)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitAjoutInventaire)
+    Me.Controls.Add(Me.CheckBoxUtilisateurAjoutDroitVoirInventaire)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitAdminInfo)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitAdmin)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitUtilisateur)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitFacture)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitSupprimer)
+    Me.Controls.Add(Me.TextBoxUtilisateurAjoutCourriel)
+    Me.Controls.Add(Me.LabelItemAjoutPassword)
     Me.Controls.Add(Me.ButtonItemsAjoutAnnuler)
     Me.Controls.Add(Me.ButtonItemsAjoutAction)
-    Me.Controls.Add(Me.TextBoxItemAjoutQt)
-    Me.Controls.Add(Me.LabelItemAjoutQt)
-    Me.Controls.Add(Me.TextBoxItemAjoutPrixV)
-    Me.Controls.Add(Me.LabelItemAjoutPrixV)
-    Me.Controls.Add(Me.TextBoxItemAjoutPrixA)
-    Me.Controls.Add(Me.LabelItemAjoutPrixA)
-    Me.Controls.Add(Me.LabelItemAjoutDepNom)
-    Me.Controls.Add(Me.LabelItemAjoutCatNom)
-    Me.Controls.Add(Me.LabelItemAjoutFournNom)
-    Me.Controls.Add(Me.TextBoxItemAjoutEmp)
-    Me.Controls.Add(Me.LabelItemAjoutEmp)
-    Me.Controls.Add(Me.TextBoxItemAjoutDesc)
-    Me.Controls.Add(Me.LabelItemAjoutDesc)
-    Me.Controls.Add(Me.TextBoxItemAjoutCodeProduit)
-    Me.Controls.Add(Me.LabelItemAjoutCodeProduit)
-    Me.Name = "FormManipulerItem"
-    Me.Text = "Ajout d'un item"
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitModifier)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitAjouter)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitVoir)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroit)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutDroitInventaire)
+    Me.Controls.Add(Me.LabelUtilisateAjoutCourriel)
+    Me.Controls.Add(Me.TextBoxUtilisateurAjoutUsername)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutUsername)
+    Me.Controls.Add(Me.TextBoxUtilisateurAjoutPrenom)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutPrenom)
+    Me.Controls.Add(Me.TextBoxUtilisateurAjoutNom)
+    Me.Controls.Add(Me.LabelUtilisateurAjoutNom)
+    Me.Name = "FormManipulerUtilisateur"
+    Me.Text = "Ajout d'un utilisateur"
     Me.ResumeLayout(False)
     Me.PerformLayout()
 
   End Sub
-  Friend WithEvents LabelItemAjoutCodeProduit As System.Windows.Forms.Label
-  Friend WithEvents TextBoxItemAjoutCodeProduit As System.Windows.Forms.TextBox
-  Friend WithEvents TextBoxItemAjoutDesc As System.Windows.Forms.TextBox
-  Friend WithEvents LabelItemAjoutDesc As System.Windows.Forms.Label
-  Friend WithEvents TextBoxItemAjoutEmp As System.Windows.Forms.TextBox
-  Friend WithEvents LabelItemAjoutEmp As System.Windows.Forms.Label
-  Friend WithEvents LabelItemAjoutFournNom As System.Windows.Forms.Label
-  Friend WithEvents LabelItemAjoutCatNom As System.Windows.Forms.Label
-  Friend WithEvents LabelItemAjoutDepNom As System.Windows.Forms.Label
-  Friend WithEvents TextBoxItemAjoutPrixA As System.Windows.Forms.TextBox
-  Friend WithEvents LabelItemAjoutPrixA As System.Windows.Forms.Label
-  Friend WithEvents TextBoxItemAjoutPrixV As System.Windows.Forms.TextBox
-  Friend WithEvents LabelItemAjoutPrixV As System.Windows.Forms.Label
-  Friend WithEvents TextBoxItemAjoutQt As System.Windows.Forms.TextBox
-  Friend WithEvents LabelItemAjoutQt As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutNom As System.Windows.Forms.Label
+  Friend WithEvents TextBoxUtilisateurAjoutNom As System.Windows.Forms.TextBox
+  Friend WithEvents TextBoxUtilisateurAjoutPrenom As System.Windows.Forms.TextBox
+  Friend WithEvents LabelUtilisateurAjoutPrenom As System.Windows.Forms.Label
+  Friend WithEvents TextBoxUtilisateurAjoutUsername As System.Windows.Forms.TextBox
+  Friend WithEvents LabelUtilisateurAjoutUsername As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateAjoutCourriel As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitInventaire As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroit As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitVoir As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitAjouter As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitModifier As System.Windows.Forms.Label
   Friend WithEvents ButtonItemsAjoutAction As System.Windows.Forms.Button
   Friend WithEvents ButtonItemsAjoutAnnuler As System.Windows.Forms.Button
-  Friend WithEvents TextBoxItemAjoutFournCode As System.Windows.Forms.TextBox
-  Friend WithEvents LabelItemAjoutFournCode As System.Windows.Forms.Label
-  Friend WithEvents TextBoxItemAjoutFournNom As System.Windows.Forms.TextBox
-  Friend WithEvents TextBoxItemAjoutDep As System.Windows.Forms.TextBox
-  Friend WithEvents TextBoxItemAjoutCat As System.Windows.Forms.TextBox
+  Friend WithEvents LabelItemAjoutPassword As System.Windows.Forms.Label
+  Friend WithEvents TextBoxUtilisateurAjoutCourriel As System.Windows.Forms.TextBox
+  Friend WithEvents LabelUtilisateurAjoutDroitSupprimer As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitFacture As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitUtilisateur As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitAdmin As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurAjoutDroitAdminInfo As System.Windows.Forms.Label
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitVoirInventaire As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitAjoutInventaire As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitModifierInventaire As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitSupprimerInventaire As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitAdminInventaire As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitFacture As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitAjoutFacture As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitModifierFacture As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitSupprimerFacture As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitVoirUtilisateur As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitAjoutUtilisateur As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitModifierUtilisateur As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur As System.Windows.Forms.CheckBox
+  Friend WithEvents TextBoxUtilisateurAjoutPassword As System.Windows.Forms.TextBox
 End Class

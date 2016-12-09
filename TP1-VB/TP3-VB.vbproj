@@ -100,6 +100,12 @@
     <Compile Include="FormAffichageFacture.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormManipulerUtilisateur.designer.vb">
+      <DependentUpon>FormManipulerUtilisateur.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormManipulerUtilisateur.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormManipulerItem.designer.vb">
       <DependentUpon>FormManipulerItem.vb</DependentUpon>
     </Compile>
@@ -237,6 +243,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FormAffichageFacture.resx">
       <DependentUpon>FormAffichageFacture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManipulerUtilisateur.resx">
+      <DependentUpon>FormManipulerUtilisateur.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormManipulerItem.resx">
       <DependentUpon>FormManipulerItem.vb</DependentUpon>
