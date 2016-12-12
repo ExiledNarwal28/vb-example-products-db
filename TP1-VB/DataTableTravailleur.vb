@@ -76,6 +76,7 @@ Public Class DataTableTravailleur
                         ByVal Courriel As String,
                         ByVal Password As String,
                         ByVal Droits As Int16)
+    ' TODO
   End Sub
 
   Public Sub UpdateUtilisateur(ByVal iD As Int32,
@@ -85,10 +86,11 @@ Public Class DataTableTravailleur
                         ByVal Courriel As String,
                         ByVal Password As String,
                         ByVal Droits As Int16)
+    ' TODO
   End Sub
 
-  Public Sub DeleteUtilisateur()
-
+  Public Sub DeleteUtilisateur(ByVal iD As Int32)
+    ' TODO
   End Sub
 
   Public Sub Sauvegarder()
@@ -106,6 +108,10 @@ Public Class DataTableTravailleur
       DBContexte.ReduireQtInventaireComplet(Paire.Key, Paire.Value)
     Next
   End Sub
+
+  Public Function ConstruireDroits() As Int16
+    Return 1
+  End Function
 
   Public Function ObtenirDataViewRech(ByVal Recherche() As String, ByVal NomTable As String) As DataView
     ' Cette fonction retourne un DataView filtré en fonction de la table (chaque table est filtrée différement)
