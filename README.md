@@ -63,9 +63,9 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [ ] Aller chercher les droits des utilisateurs
 	2 [x] Construire le tab des utilisateurs
 	2 [x] Faire le DGV des utilisateurs
-	2 [ ] Faire le formulaire de manipulation d'utilisateur
+	2 [x] Faire le formulaire de manipulation d'utilisateur
 	2 [ ] Faire les procedures stockées de select d'utilisateur
-	2 [ ] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
+	2 [x] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
 	2 [ ] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
 	2 [ ] Avoir une procédure stockée pour le delete d'utilisateurs de la base de données
 	2 [ ] Faire marcher les procédures stockées avec les utilisateurs de la base de données + 

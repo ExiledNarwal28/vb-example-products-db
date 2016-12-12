@@ -170,13 +170,13 @@ Public Class FormManipulerUtilisateur
     TextBoxUtilisateurAjoutUsername.Text = ""
     TextBoxUtilisateurAjoutCourriel.Text = ""
     TextBoxUtilisateurAjoutPassword.Text = ""
-    CheckBoxUtilisateurAjoutDroitVoirInventaire.Checked = False
+    CheckBoxUtilisateurAjoutDroitVoirInventaire.Checked = True
     CheckBoxUtilisateurAjoutDroitAjoutInventaire.Checked = False
     CheckBoxUtilisateurAjoutDroitModifierInventaire.Checked = False
     CheckBoxUtilisateurAjoutDroitSupprimerInventaire.Checked = False
     CheckBoxUtilisateurAjoutDroitAdminInventaire.Checked = False
     CheckBoxUtilisateurAjoutDroitVoirFacture.Checked = False
-    CheckBoxUtilisateurAjoutDroitAjoutFacture.Checked = False
+    CheckBoxUtilisateurAjoutDroitAjoutFacture.Checked = True
     CheckBoxUtilisateurAjoutDroitModifierFacture.Checked = False
     CheckBoxUtilisateurAjoutDroitSupprimerFacture.Checked = False
     CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Checked = False
