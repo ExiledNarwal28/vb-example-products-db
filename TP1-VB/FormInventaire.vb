@@ -205,9 +205,7 @@ Public Class FormInventaire
   End Sub
 
   Private Sub ButtonSauvegarder_Click(sender As Object, e As EventArgs) Handles ButtonSauvegarder.Click
-    ' TODO pour TP2 : il va falloir un bouton sauvegarder individuel pour chaque DataTable
     DataTableTrav.Sauvegarder()
-
     MsgBox("Sauvegarde effectuée!")
   End Sub
 
