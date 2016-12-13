@@ -152,11 +152,11 @@ Partial Class FormInventaire
     Me.LabelItemsNb.TabIndex = 27
     Me.LabelItemsNb.Text = "Nombre d'items d'inventaire sélectionnés : 0"
     '
-    'CheckBoxItemsNb
+    'CheckBoxFiltreSelection
     '
     Me.CheckBoxFiltreSelection.AutoSize = True
     Me.CheckBoxFiltreSelection.Location = New System.Drawing.Point(9, 397)
-    Me.CheckBoxFiltreSelection.Name = "CheckBoxItemsNb"
+    Me.CheckBoxFiltreSelection.Name = "CheckBoxFiltreSelection"
     Me.CheckBoxFiltreSelection.Size = New System.Drawing.Size(113, 17)
     Me.CheckBoxFiltreSelection.TabIndex = 26
     Me.CheckBoxFiltreSelection.Text = "Items sélectionnés"

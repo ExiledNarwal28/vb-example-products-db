@@ -126,12 +126,12 @@ Public Class FormInventaire
         TextBoxRechItemsDep.Text,
         TextBoxRechItemsFourn.Text
       )
-      DataGridViewItems.Refresh()
     Else
       ' Si l'utilisateur enlève sa recherche, alors la source est la table entière
-      DataGridViewItems.Refresh()
+      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
     End If
 
+    MettreAJourSelection()
     EcrireTotalItems()
   End Sub
 
@@ -158,10 +158,11 @@ Public Class FormInventaire
     End If
 
     EcrireTotalItems()
+    MettreAJourSelection()
   End Sub
 
+  ' Méthode pour vider les champs de recherche
   Private Sub ViderItemsRecherche()
-    ' Méthode pour vider les champs de recherche
 
     TextBoxRechItemsCode.Text = String.Empty
     TextBoxRechItemsDesc.Text = String.Empty
@@ -269,23 +270,31 @@ Public Class FormInventaire
     AffichageAdmin()
   End Sub
 
+  ' Méthode pour sélectionner des items
   Private Sub DataGridViewItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewItems.CellContentClick
-    ' Méthode pour sélectionner des items
-    ' Source : http://stackoverflow.com/questions/1237829/datagridview-checkbox-column-value-and-functionality
-
     Dim dgv As DataGridView = DirectCast(sender, DataGridView)
 
     If ListeSelection.Contains(CInt(dgv.CurrentRow.Cells(0).Value)) Then
       ListeSelection.Remove(CInt(dgv.CurrentRow.Cells(0).Value))
-      dgv.CurrentRow.DefaultCellStyle.BackColor = Color.White
-      dgv.CurrentRow.DefaultCellStyle.ForeColor = Color.Black
     Else
       ListeSelection.Add(CInt(dgv.CurrentRow.Cells(0).Value))
-      dgv.CurrentRow.DefaultCellStyle.BackColor = SystemColors.Highlight
-      dgv.CurrentRow.DefaultCellStyle.ForeColor = Color.White
     End If
 
+    MettreAJourSelection()
     MettreAJourNbItems()
+  End Sub
+
+  ' Méthode pour mettre à jour l'affichage des items sélectionnés
+  Private Sub MettreAJourSelection()
+    For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
+      If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
+        Rangee.DefaultCellStyle.BackColor = SystemColors.Highlight
+        Rangee.DefaultCellStyle.ForeColor = SystemColors.HighlightText
+      Else
+        Rangee.DefaultCellStyle.BackColor = SystemColors.Window
+        Rangee.DefaultCellStyle.ForeColor = SystemColors.ControlText
+      End If
+    Next
   End Sub
 
   Private Sub MettreAJourNbItems()
@@ -297,12 +306,10 @@ Public Class FormInventaire
   Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click
     FormManipulerUtilisateur.SetFormulaireMode("Ajout")
     FormManipulerUtilisateur.ShowDialog()
-    ' FormManipulerUtilisateur.getData()
   End Sub
 
   Private Sub ButtonModifierUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonModifierUtilisateur.Click
     FormManipulerUtilisateur.SetFormulaireMode("Modification")
     FormManipulerUtilisateur.ShowDialog()
-    ' FormManipulerUtilisateur.getData()
   End Sub
 End Class
