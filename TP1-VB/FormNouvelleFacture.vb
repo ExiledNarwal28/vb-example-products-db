@@ -18,16 +18,20 @@ Public Class FormNouvelleFacture
   Public Sub SetProduitID(ByVal ListeID As List(Of Integer))
     ' Méthode pour remplir les rangées qui seront dans le DataTable avec ce qui était sélectionné dans l'inventaire
     Me.ListeID = ListeID
+    ' TODO : remove l'enumeration
+    Dim sResult As String = ""
 
+    For Each elem As String In ListeID
+      sResult &= elem & " "
+    Next
+
+    MsgBox(sResult)
     ' On applique les RangeesSelectionnees au DataTable
     DataGridViewFacture.DataSource = DataTableTrav.GetDataInventaireFactureParID(ListeID)
 
     Me.AffichageColonnes()
-
     Me.QuantiteDefaut()
-
     Me.CalculerExtensions()
-
     Me.CalculerTotaux()
   End Sub
 

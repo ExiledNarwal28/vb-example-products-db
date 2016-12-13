@@ -45,7 +45,7 @@ Public Class FormInventaire
   Private Sub ButtonAjoutItems_Click(sender As Object, e As EventArgs) Handles ButtonAjoutItems.Click
     FormManipulerItem.SetFormulaireMode("Ajout")
     FormManipulerItem.ShowDialog()
-    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+    Me.RafraichirDGVItems()
   End Sub
 
   Private Sub ButtonModifierItems_Click(sender As Object, e As EventArgs) Handles ButtonModifierItems.Click
@@ -56,7 +56,7 @@ Public Class FormInventaire
       FormManipulerItem.SetIDModif(ListeSelection.First)
       FormManipulerItem.SetFormulaireMode("Modification")
       FormManipulerItem.ShowDialog()
-      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+      Me.RafraichirDGVItems()
     Else
       If ListeSelection.Count < 1 Then
         MsgBox("Veuillez sélectionner une cellule de la table.")
@@ -84,11 +84,7 @@ Public Class FormInventaire
           Next
 
           ' Il faut ensuite tout enlever de la liste d'ids et mettre à jour l'interface
-          ListeSelection.Clear()
-
-          ' TODO : vérifier ça
-          MettreAJourNbItems()
-          MettreAJourCheckBox()
+          Me.RafraichirDGVItems()
         End If
       Catch ex As Exception
         MsgBox(ex.Message)
@@ -96,6 +92,16 @@ Public Class FormInventaire
     Else
       MsgBox("Veuillez sélectionner au moins une rangée de la table.")
     End If
+  End Sub
+
+  ' Méthode pour remettre à zéro la liste de sélection et tout ce qui vient avec
+  Private Sub RafraichirDGVItems()
+    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+
+    ListeSelection.Clear()
+
+    MettreAJourNbItems()
+    ' MettreAJourCheckBox()
   End Sub
 
   Private Sub TextBoxRechItems_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRechItemsCode.TextChanged,
@@ -131,7 +137,7 @@ Public Class FormInventaire
     End If
 
     EcrireTotalItems()
-    MettreAJourCheckbox()
+    ' MettreAJourCheckbox()
   End Sub
 
   Private Sub CheckBoxItemsNb_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxItemsNb.CheckedChanged
@@ -174,18 +180,8 @@ Public Class FormInventaire
   Private Sub AffichageInventaireCompletColonnes()
     ' Méthode pour configurer l'affichage des colonnes
 
-    ' Source : http://vb.net-informations.com/datagridview/vb.net_datagridview_checkbox.htm
-    ' Source : http://stackoverflow.com/questions/13338837/check-uncheck-a-checkbox-on-datagridview
-    Dim chk As New DataGridViewCheckBoxColumn()
-    DataGridViewItems.Columns.Add(chk)
-    chk.TrueValue = True
-    chk.FalseValue = False
-    chk.Name = "item_chk"
-
     ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
     With DataGridViewItems
-      .Columns(11).DisplayIndex = 0 ' Les checkboxs
-
       .Columns(0).Visible = False ' ID
       .Columns(1).HeaderText = "Code du produit"
       .Columns(2).HeaderText = "Description"
@@ -198,7 +194,6 @@ Public Class FormInventaire
       .Columns(9).HeaderText = "Prix d'achat"
       .Columns(9).Visible = VariablesGlobales.ADMIN_CONNECTION
       .Columns(10).HeaderText = "Quantité"
-      .Columns(11).HeaderText = "" ' Les checkboxs
     End With
 
     ' Il faut mettre à jour de total des items
@@ -285,20 +280,15 @@ Public Class FormInventaire
     ' Source : http://stackoverflow.com/questions/1237829/datagridview-checkbox-column-value-and-functionality
 
     Dim dgv As DataGridView = DirectCast(sender, DataGridView)
-    Dim chk As DataGridViewCheckBoxCell = New DataGridViewCheckBoxCell()
 
-    chk = CType(dgv.Rows(dgv.CurrentRow.Index).Cells("item_chk"), DataGridViewCheckBoxCell)
-
-    If chk.Value Is Nothing Then
-      chk.Value = False
-    End If
-
-    If CBool(chk.Value) Then
-      chk.Value = False
+    If ListeSelection.Contains(CInt(dgv.CurrentRow.Cells(0).Value)) Then
       ListeSelection.Remove(CInt(dgv.CurrentRow.Cells(0).Value))
+      dgv.CurrentRow.DefaultCellStyle.BackColor = Color.White
+      dgv.CurrentRow.DefaultCellStyle.ForeColor = Color.Black
     Else
-      chk.Value = True
       ListeSelection.Add(CInt(dgv.CurrentRow.Cells(0).Value))
+      dgv.CurrentRow.DefaultCellStyle.BackColor = SystemColors.Highlight
+      dgv.CurrentRow.DefaultCellStyle.ForeColor = Color.White
     End If
 
     MettreAJourNbItems()
@@ -314,7 +304,7 @@ Public Class FormInventaire
     ' Méthode qui s'assure que les checkbox sont cochés
 
     For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-      Rangee.Cells("item_chk").Value = ListeSelection.Contains(CInt(Rangee.Cells("item_id").Value))
+      Rangee.Cells(11).Value = ListeSelection.Contains(CInt(Rangee.Cells(0).Value))
     Next
   End Sub
 
