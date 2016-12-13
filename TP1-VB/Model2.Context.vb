@@ -218,4 +218,10 @@ Partial Public Class COOPInventaire_TP3_testsEntities2
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Integer))("SelectUtilisateurSingle", usernameParameter, passwordParameter)
     End Function
 
+    Public Overridable Function SelectUtilisateurDroitsSingle(iD As Nullable(Of Integer)) As ObjectResult(Of Nullable(Of Short))
+        Dim iDParameter As ObjectParameter = If(iD.HasValue, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Short))("SelectUtilisateurDroitsSingle", iDParameter)
+    End Function
+
 End Class

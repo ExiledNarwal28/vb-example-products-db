@@ -40,7 +40,9 @@ Public Class FormInventaire
     AffichageDroits()
   End Sub
 
-  Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
+  Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click,
+                                                                                ButtonFactureFacture.Click,
+                                                                                ButtonUtilisateurFacture.Click
     FormNouvelleFacture.SetProduitID(ListeSelection)
     FormNouvelleFacture.ShowDialog()
   End Sub
@@ -222,22 +224,27 @@ Public Class FormInventaire
     TextBoxItemsTotal.Text = CStr(Total) & " $"
   End Sub
 
+  ' On affiche les informations en fonction des droits de l'utilisateur connecté
   Private Sub AffichageDroits()
-    ' On affiche les informations en fonction des droits de l'utilisateur connecté
-
     'Dim ConnectionAdmin As Boolean = VariablesGlobales.ADMIN_CONNECTION
+    Dim droits As Short = DataTableTrav.GetDroits()
 
-    'ButtonAjoutItems.Visible = ConnectionAdmin
-    'ButtonModifierItems.Visible = ConnectionAdmin
-    'ButtonSupprimerItems.Visible = ConnectionAdmin
-    'LabelItemsTotal.Visible = ConnectionAdmin
-    'TextBoxItemsTotal.Visible = ConnectionAdmin
-    'ButtonAjoutFacture.Visible = ConnectionAdmin
-    'ButtonModifierFacture.Visible = ConnectionAdmin
-    'ButtonSupprimerFacture.Visible = ConnectionAdmin
-    'ButtonAjoutUtilisateur.Visible = ConnectionAdmin
-    'ButtonModifierUtilisateur.Visible = ConnectionAdmin
-    'ButtonSupprimerUtilisateur.Visible = ConnectionAdmin
+    ButtonModifierItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_UPDATE) <> 0
+    ButtonAjoutItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_INSERT) <> 0
+    ButtonSupprimerItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_DELETE) <> 0
+    LabelItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0
+    TextBoxItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0
+    ' TabPageItems
+
+    ButtonModifierFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_UPDATE) <> 0
+    ButtonAjoutFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
+    ButtonSupprimerFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_DELETE) <> 0
+    ' TabPageFactures
+
+    ButtonModifierUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0
+    ButtonAjoutUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0
+    ButtonSupprimerUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_DELETE) <> 0
+    ' TabPageUtilisateurs
   End Sub
 
   Private Sub ButtonDeconnection_Click(sender As Object, e As EventArgs) Handles ButtonDeconnection.Click

@@ -16,7 +16,7 @@ Public Class DataTableTravailleur
     Try
       DBContexte = New COOPInventaire_TP3_testsEntities2()
     Catch ex As Exception
-      ' TODO
+      MsgBox("Erreur de connection au serveur")
     End Try
   End Sub
 
@@ -44,6 +44,10 @@ Public Class DataTableTravailleur
 
   Public Function GetUtilisateurID() As Int32
     Return UtilisateurID
+  End Function
+
+  Public Function GetDroits() As Int16
+    Return CShort(DBContexte.SelectUtilisateurDroitsSingle(UtilisateurID).Single())
   End Function
 
   ' Méthode qui retourne une liste de DataRows pour remplir un DataGridView

@@ -432,6 +432,9 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
         <Function Name="SelectInventaireCompletSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SelectUtilisateurDroitsSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="SelectUtilisateurSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
@@ -1154,6 +1157,9 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SelectUtilisateurDroitsSingle" ReturnType="Collection(Int16)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SelectInventaireComplet_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -1501,6 +1507,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SelectUtilisateurSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurSingle" />
+          <FunctionImportMapping FunctionImportName="SelectUtilisateurDroitsSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurDroitsSingle" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
