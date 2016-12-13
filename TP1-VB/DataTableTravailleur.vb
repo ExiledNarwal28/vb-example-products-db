@@ -115,70 +115,19 @@ Public Class DataTableTravailleur
     Next
   End Sub
 
-  Public Function ObtenirDataViewRech(ByVal Recherche() As String, ByVal NomTable As String) As DataView
-    ' Cette fonction retourne un DataView filtré en fonction de la table (chaque table est filtrée différement)
-
-    ' Dim Table As DataTable = ObtenirDataTable(NomTable)
-    ' Dim dv As DataView = New DataView(Table)
-
-    If True Then ' Not Table Is Nothing Then
-      ' Source : http://vb.net-informations.com/datagridview/vb.net_datagridview_sort.htm
-      ' Source : http://stackoverflow.com/questions/1137020/filtering-dataview-with-multiple-columns
-      ' Source : http://www.codeproject.com/Questions/350692/How-to-use-Row-Filter-with-Like
-
-      Dim Filtre As String = ""
-
-      Select Case NomTable
-        Case "Items"
-          ' La recherche dans la table "Items" se fait par code de produit, par description, par emplacement, par nom de catégorie
-          ' Par nom de département ou par nom de fournisseur
-
-          For Index As Integer = 0 To 5
-            If Recherche(Index).Trim.Length > 0 Then
-              ' TOADD : un dictionnaire ou wtv serait mieux
-
-              ' Ceci est nécéssaire, car SQL haït le caractère : '
-              Recherche(Index) = Recherche(Index).Replace("'", "''")
-
-              Select Case Index
-                Case 0
-                  ' Code de produit
-                  ' Filtre &= Table.Columns(1).ColumnName & " LIKE '%" & Recherche(Index) & "%' AND "
-                Case 1
-                  ' Description
-                  ' Filtre &= Table.Columns(9).ColumnName & " LIKE '%" & Recherche(Index) & "%' AND "
-                Case 2
-                  ' Emplacement
-                  ' Filtre &= Table.Columns(10).ColumnName & " LIKE '%" & Recherche(Index) & "%' AND "
-                Case 3
-                  ' Nom de catégorie
-                  ' Filtre &= Table.Columns(3).ColumnName & " LIKE '%" & Recherche(Index) & "%' AND "
-                Case 4
-                  ' Nom de département
-                  ' Le département doit être écrit entièrement, pour des raisons de practicité
-                  ' Filtre &= Table.Columns(2).ColumnName & " = '" & Recherche(Index) & "' AND "
-                Case 5
-                  ' Nom de fournisseur
-                  ' Filtre &= Table.Columns(4).ColumnName & " LIKE '%" & Recherche(Index) & "%' AND "
-              End Select
-            End If
-          Next
-          ' On a pas à vérifier si le filtre est "", puisque c'est certain qu'il ne l'est pas.
-          Filtre = Filtre.Substring(0, Filtre.Length - 5)
-
-          ' dv.RowFilter = Filtre
-        Case Else
-          ' Le nom de la table est invalide
-          ' On ne veut donc rien retourner
-          ' dv = Nothing
-      End Select
-
-      ' On retourne le résultat
-      Return Nothing ' dv
-    End If
-
-    ' Si la Table n'est pas spécifiée, alors on ne retourne rien.
-    Return Nothing
+  ' Cette fonction retourne un DataView filtré
+  Public Function ObtenirDataViewRech(ByVal codeProduit As String,
+                                      ByVal description As String,
+                                      ByVal emplacement As String,
+                                      ByVal categorie As String,
+                                      ByVal departement As String,
+                                      ByVal fournisseur As String) As List(Of TP1_VB.SelectInventaireCompletFiltre_Result)
+    Return DBContexte.SelectInventaireCompletFiltre(codeProduit,
+                                                    description,
+                                                    emplacement,
+                                                    categorie,
+                                                    departement,
+                                                    fournisseur).ToList
   End Function
 
 End Class

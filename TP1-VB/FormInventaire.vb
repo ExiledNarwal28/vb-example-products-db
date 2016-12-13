@@ -101,7 +101,6 @@ Public Class FormInventaire
     ListeSelection.Clear()
 
     MettreAJourNbItems()
-    ' MettreAJourCheckBox()
   End Sub
 
   Private Sub TextBoxRechItems_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRechItemsCode.TextChanged,
@@ -110,8 +109,7 @@ Public Class FormInventaire
     ' Cette fonction filtre le DataGridView en fonction de ce qui est écrit dans les TextBox de recherche
     ' Il faut d'abord vérifier si les textboxs ont du texte
 
-    ' TOADD : Recherche et filtrage de sélection en même temps;
-    CheckBoxItemsNb.Checked = False
+    CheckBoxFiltreSelection.Checked = False
 
     Dim NombreCaracteres = TextBoxRechItemsCode.Text.Trim.Length + TextBoxRechItemsDesc.Text.Trim.Length +
       TextBoxRechItemsEmp.Text.Trim.Length + TextBoxRechItemsCat.Text.Trim.Length +
@@ -119,36 +117,30 @@ Public Class FormInventaire
 
     If NombreCaracteres > 0 Then
       ' On construit une tableau de String de la recherche
-      Dim Recherche() As String = {
+
+      DataGridViewItems.DataSource = DataTableTrav.ObtenirDataViewRech(
         TextBoxRechItemsCode.Text,
         TextBoxRechItemsDesc.Text,
         TextBoxRechItemsEmp.Text,
         TextBoxRechItemsCat.Text,
         TextBoxRechItemsDep.Text,
         TextBoxRechItemsFourn.Text
-      }
-
-      DataGridViewItems.DataSource = DataTableTrav.ObtenirDataViewRech(Recherche, "Items")
+      )
       DataGridViewItems.Refresh()
     Else
       ' Si l'utilisateur enlève sa recherche, alors la source est la table entière
-      ' DataGridViewItems.DataSource = DataTableTrav.ObtenirDataTable("Items")
       DataGridViewItems.Refresh()
     End If
 
     EcrireTotalItems()
-    ' MettreAJourCheckbox()
   End Sub
 
-  Private Sub CheckBoxItemsNb_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxItemsNb.CheckedChanged
-    ' Méthode pour filtrer le datagridview lorsqu'on appuie sur le checkbox
-
-    ' TOADD : Recherche et filtrage de sélection en même temps;
+  ' Méthode pour filtrer le datagridview lorsqu'on appuie sur le checkbox
+  Private Sub CheckBoxFiltreSelection_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxFiltreSelection.CheckedChanged
     ViderItemsRecherche()
 
-    If CheckBoxItemsNb.Checked Then
+    If CheckBoxFiltreSelection.Checked Then
       For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-        ' Un autre technique est de faire If ListeSelection.Contains(CInt(Rangee.Cells("item_id").Value)) Then
         If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
           Rangee.Visible = True
         Else
@@ -164,6 +156,8 @@ Public Class FormInventaire
         Rangee.Visible = True
       Next
     End If
+
+    EcrireTotalItems()
   End Sub
 
   Private Sub ViderItemsRecherche()
@@ -298,14 +292,6 @@ Public Class FormInventaire
     LabelItemsNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
     LabelFacturesNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
     LabelUtilisateursNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
-  End Sub
-
-  Private Sub MettreAJourCheckBox()
-    ' Méthode qui s'assure que les checkbox sont cochés
-
-    For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-      Rangee.Cells(11).Value = ListeSelection.Contains(CInt(Rangee.Cells(0).Value))
-    Next
   End Sub
 
   Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click

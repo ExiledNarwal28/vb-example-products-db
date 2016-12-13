@@ -28,6 +28,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [x] Vérifier pour les prix d'achats
 	3 [ ] Adapter filtres à LinQ
 	3 [x] Faire fonctionner le total d'inventaire
+	3 [ ] Bug de total d'inventaire quand on filtre seulement la sélection
 
 ### LinQ + factures ###
 

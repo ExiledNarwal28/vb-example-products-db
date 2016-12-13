@@ -28,7 +28,7 @@ Partial Class FormInventaire
     Me.PageInventaire = New System.Windows.Forms.TabControl()
     Me.TabPageItems = New System.Windows.Forms.TabPage()
     Me.LabelItemsNb = New System.Windows.Forms.Label()
-    Me.CheckBoxItemsNb = New System.Windows.Forms.CheckBox()
+    Me.CheckBoxFiltreSelection = New System.Windows.Forms.CheckBox()
     Me.TextBoxItemsTotal = New System.Windows.Forms.TextBox()
     Me.LabelItemsTotal = New System.Windows.Forms.Label()
     Me.LabelItemsFourn = New System.Windows.Forms.Label()
@@ -114,7 +114,7 @@ Partial Class FormInventaire
     '
     Me.TabPageItems.BackColor = System.Drawing.Color.Khaki
     Me.TabPageItems.Controls.Add(Me.LabelItemsNb)
-    Me.TabPageItems.Controls.Add(Me.CheckBoxItemsNb)
+    Me.TabPageItems.Controls.Add(Me.CheckBoxFiltreSelection)
     Me.TabPageItems.Controls.Add(Me.TextBoxItemsTotal)
     Me.TabPageItems.Controls.Add(Me.LabelItemsTotal)
     Me.TabPageItems.Controls.Add(Me.LabelItemsFourn)
@@ -154,13 +154,13 @@ Partial Class FormInventaire
     '
     'CheckBoxItemsNb
     '
-    Me.CheckBoxItemsNb.AutoSize = True
-    Me.CheckBoxItemsNb.Location = New System.Drawing.Point(9, 397)
-    Me.CheckBoxItemsNb.Name = "CheckBoxItemsNb"
-    Me.CheckBoxItemsNb.Size = New System.Drawing.Size(113, 17)
-    Me.CheckBoxItemsNb.TabIndex = 26
-    Me.CheckBoxItemsNb.Text = "Items sélectionnés"
-    Me.CheckBoxItemsNb.UseVisualStyleBackColor = True
+    Me.CheckBoxFiltreSelection.AutoSize = True
+    Me.CheckBoxFiltreSelection.Location = New System.Drawing.Point(9, 397)
+    Me.CheckBoxFiltreSelection.Name = "CheckBoxItemsNb"
+    Me.CheckBoxFiltreSelection.Size = New System.Drawing.Size(113, 17)
+    Me.CheckBoxFiltreSelection.TabIndex = 26
+    Me.CheckBoxFiltreSelection.Text = "Items sélectionnés"
+    Me.CheckBoxFiltreSelection.UseVisualStyleBackColor = True
     '
     'TextBoxItemsTotal
     '
@@ -851,7 +851,7 @@ Partial Class FormInventaire
   Friend WithEvents TextBoxRechItemsFourn As System.Windows.Forms.TextBox
   Friend WithEvents TextBoxItemsTotal As System.Windows.Forms.TextBox
   Friend WithEvents LabelItemsTotal As System.Windows.Forms.Label
-  Friend WithEvents CheckBoxItemsNb As System.Windows.Forms.CheckBox
+  Friend WithEvents CheckBoxFiltreSelection As System.Windows.Forms.CheckBox
   Friend WithEvents LabelItemsNb As System.Windows.Forms.Label
   Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
   Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
