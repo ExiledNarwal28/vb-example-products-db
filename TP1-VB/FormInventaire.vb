@@ -24,7 +24,7 @@ Public Class FormInventaire
     FormManipulerItem = New FormManipulerItem(DataTableTrav)
     FormManipulerUtilisateur = New FormManipulerUtilisateur(DataTableTrav)
     FormNouvelleFacture = New FormNouvelleFacture(DataTableTrav)
-    FormConnection = New FormConnection
+    FormConnection = New FormConnection(DataTableTrav)
 
     ListeSelection = New List(Of Integer)
 

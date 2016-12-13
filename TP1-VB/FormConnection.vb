@@ -2,16 +2,21 @@
 Option Explicit On
 
 Public Class FormConnection
+  Private DataTableTrav As DataTableTravailleur
+  Public Sub New(ByRef DataTableTrav As DataTableTravailleur)
+    InitializeComponent()
+
+    Me.DataTableTrav = DataTableTrav
+  End Sub
+
   Private Sub ButtonConnOK_Click(sender As Object, e As EventArgs) Handles ButtonConnOK.Click
     ' Bouton pour se connecter
 
-    If VerifierChamps() Then
-      ' VariablesGlobales.ADMIN_CONNECTION = True
-
+    If Connection() Then
       Me.ViderChamps()
       Me.Hide()
     Else
-      MsgBox("Nom d'utilisateur/Mot de passe incorrect!")
+      MsgBox("Informations incorrectes!")
     End If
   End Sub
 
@@ -22,18 +27,19 @@ Public Class FormConnection
     Me.Hide()
   End Sub
 
-  Private Function VerifierChamps() As Boolean
+  Private Function Connection() As Boolean
     ' Fonction pour vérifier si les champs sont corrects
 
-    ' Connecter l'utilisateur
-    ' Si ok -> true
-    ' Si pas ok -> false
+      ' Connecter l'utilisateur
+      ' Si ok -> true
+      ' Si pas ok -> false
+    Return DataTableTrav.Connection(TextBoxConnUtilisateur.Text,
+                                    TextBoxConnMDP.Text,
+                                    TextBoxConnAdresse.Text)
 
-    ' If TextBoxAdminUtilisateur.Text = VariablesGlobales.ADMIN_UTILISATEUR And TextBoxAdminMDP.Text = VariablesGlobales.ADMIN_MDP Then
-    '   Return True
-    ' End If
-
-    Return False
+      ' If TextBoxAdminUtilisateur.Text = VariablesGlobales.ADMIN_UTILISATEUR And TextBoxAdminMDP.Text = VariablesGlobales.ADMIN_MDP Then
+      '   Return True
+      ' End If
   End Function
 
   Private Sub ViderChamps()

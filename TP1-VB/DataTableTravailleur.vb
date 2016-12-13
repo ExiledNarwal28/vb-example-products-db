@@ -19,6 +19,13 @@ Public Class DataTableTravailleur
     End Try
   End Sub
 
+  ' Méthode pour connecter l'utilisateur à la base de données
+  Public Function Connection(ByVal Username As String,
+                             ByVal Password As String,
+                             ByVal Adresse As String) As Boolean
+    Dim lol As 
+  End Function
+
   ' Méthode qui retourne une liste de DataRows pour remplir un DataGridView
   Public Function GetDataInventaireComplet() As List(Of TP1_VB.SelectInventaireComplet_Result)
     Return DBContexte.SelectInventaireComplet.ToList
@@ -183,5 +190,4 @@ Public Class DataTableTravailleur
     ' Si la Table n'est pas spécifiée, alors on ne retourne rien.
     Return Nothing
   End Function
-
 End Class
