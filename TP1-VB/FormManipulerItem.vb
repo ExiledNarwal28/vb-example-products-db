@@ -10,7 +10,7 @@ Public Class FormManipulerItem
     InitializeComponent()
     Me.DataTableTrav = DataTableTrav
     Me.FormulaireMode = ""
-    Me.IDModif = -1
+    ' Me.IDModif = -1
   End Sub
 
   Public Sub SetFormulaireMode(ByVal Mode As String)

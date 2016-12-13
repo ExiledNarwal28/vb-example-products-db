@@ -421,8 +421,20 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
           <Parameter Name="Amount" Type="int" Mode="In" />
         </Function>
         <Function Name="SelectInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectInventaireCompletFiltre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodeProduit" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Emplacement" Type="nvarchar" Mode="In" />
+          <Parameter Name="Categorie" Type="nvarchar" Mode="In" />
+          <Parameter Name="Departement" Type="nvarchar" Mode="In" />
+          <Parameter Name="Fournisseur" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SelectInventaireCompletSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectUtilisateurSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -1130,6 +1142,18 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Prenom" Mode="In" Type="String" />
             <Parameter Name="Droits" Mode="In" Type="Int16" />
           </FunctionImport>
+          <FunctionImport Name="SelectInventaireCompletFiltre" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectInventaireCompletFiltre_Result)">
+            <Parameter Name="CodeProduit" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Emplacement" Mode="In" Type="String" />
+            <Parameter Name="Categorie" Mode="In" Type="String" />
+            <Parameter Name="Departement" Mode="In" Type="String" />
+            <Parameter Name="Fournisseur" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectUtilisateurSingle" ReturnType="Collection(Int32)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SelectInventaireComplet_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -1167,6 +1191,19 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SelectInventaireCompletFiltre_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code_de_produit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emplacement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Catégorie" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Département" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Code_de_fournisseur" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Nom_de_fournisseur" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
+          <Property Type="Double" Name="Prix_d_achat" Nullable="true" />
+          <Property Type="Int32" Name="Quantité" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1446,6 +1483,24 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="UpdateInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.UpdateInventaireComplet" />
           <FunctionImportMapping FunctionImportName="InsertUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertUtilisateur" />
+          <FunctionImportMapping FunctionImportName="SelectInventaireCompletFiltre" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectInventaireCompletFiltre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectInventaireCompletFiltre_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code_de_produit" ColumnName="Code de produit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+                <ScalarProperty Name="Catégorie" ColumnName="Catégorie" />
+                <ScalarProperty Name="Département" ColumnName="Département" />
+                <ScalarProperty Name="Code_de_fournisseur" ColumnName="Code de fournisseur" />
+                <ScalarProperty Name="Nom_de_fournisseur" ColumnName="Nom de fournisseur" />
+                <ScalarProperty Name="Prix_de_vente" ColumnName="Prix de vente" />
+                <ScalarProperty Name="Prix_d_achat" ColumnName="Prix d'achat" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectUtilisateurSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurSingle" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

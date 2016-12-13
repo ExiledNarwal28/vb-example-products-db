@@ -194,4 +194,28 @@ Partial Public Class COOPInventaire_TP3_testsEntities2
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("InsertUtilisateur", usernameParameter, passwordParameter, courrielParameter, nomParameter, prenomParameter, droitsParameter)
     End Function
 
+    Public Overridable Function SelectInventaireCompletFiltre(codeProduit As String, description As String, emplacement As String, categorie As String, departement As String, fournisseur As String) As ObjectResult(Of SelectInventaireCompletFiltre_Result)
+        Dim codeProduitParameter As ObjectParameter = If(codeProduit IsNot Nothing, New ObjectParameter("CodeProduit", codeProduit), New ObjectParameter("CodeProduit", GetType(String)))
+
+        Dim descriptionParameter As ObjectParameter = If(description IsNot Nothing, New ObjectParameter("Description", description), New ObjectParameter("Description", GetType(String)))
+
+        Dim emplacementParameter As ObjectParameter = If(emplacement IsNot Nothing, New ObjectParameter("Emplacement", emplacement), New ObjectParameter("Emplacement", GetType(String)))
+
+        Dim categorieParameter As ObjectParameter = If(categorie IsNot Nothing, New ObjectParameter("Categorie", categorie), New ObjectParameter("Categorie", GetType(String)))
+
+        Dim departementParameter As ObjectParameter = If(departement IsNot Nothing, New ObjectParameter("Departement", departement), New ObjectParameter("Departement", GetType(String)))
+
+        Dim fournisseurParameter As ObjectParameter = If(fournisseur IsNot Nothing, New ObjectParameter("Fournisseur", fournisseur), New ObjectParameter("Fournisseur", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireCompletFiltre_Result)("SelectInventaireCompletFiltre", codeProduitParameter, descriptionParameter, emplacementParameter, categorieParameter, departementParameter, fournisseurParameter)
+    End Function
+
+    Public Overridable Function SelectUtilisateurSingle(username As String, password As String) As ObjectResult(Of Nullable(Of Integer))
+        Dim usernameParameter As ObjectParameter = If(username IsNot Nothing, New ObjectParameter("Username", username), New ObjectParameter("Username", GetType(String)))
+
+        Dim passwordParameter As ObjectParameter = If(password IsNot Nothing, New ObjectParameter("Password", password), New ObjectParameter("Password", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Integer))("SelectUtilisateurSingle", usernameParameter, passwordParameter)
+    End Function
+
 End Class

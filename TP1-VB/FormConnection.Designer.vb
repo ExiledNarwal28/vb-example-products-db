@@ -28,40 +28,38 @@ Partial Class FormConnection
     Me.LabelConnMDP = New System.Windows.Forms.Label()
     Me.TextBoxConnUtilisateur = New System.Windows.Forms.TextBox()
     Me.LabelConnUtilisateur = New System.Windows.Forms.Label()
-    Me.TextBoxConnAdresse = New System.Windows.Forms.TextBox()
-    Me.LabelConnAdresse = New System.Windows.Forms.Label()
     Me.SuspendLayout()
     '
-    'ButtonItemsAdminAnnuler
+    'ButtonConnAnnuler
     '
     Me.ButtonConnAnnuler.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
     Me.ButtonConnAnnuler.BackColor = System.Drawing.Color.Crimson
     Me.ButtonConnAnnuler.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.ButtonConnAnnuler.Location = New System.Drawing.Point(13, 90)
-    Me.ButtonConnAnnuler.Name = "ButtonItemsAdminAnnuler"
+    Me.ButtonConnAnnuler.Location = New System.Drawing.Point(13, 64)
+    Me.ButtonConnAnnuler.Name = "ButtonConnAnnuler"
     Me.ButtonConnAnnuler.Size = New System.Drawing.Size(181, 23)
     Me.ButtonConnAnnuler.TabIndex = 25
     Me.ButtonConnAnnuler.Text = "Annuler"
     Me.ButtonConnAnnuler.UseVisualStyleBackColor = False
     '
-    'ButtonItemsAdminOK
+    'ButtonConnOK
     '
     Me.ButtonConnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.ButtonConnOK.BackColor = System.Drawing.Color.SeaGreen
     Me.ButtonConnOK.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.ButtonConnOK.Location = New System.Drawing.Point(195, 90)
-    Me.ButtonConnOK.Name = "ButtonItemsAdminOK"
+    Me.ButtonConnOK.Location = New System.Drawing.Point(195, 64)
+    Me.ButtonConnOK.Name = "ButtonConnOK"
     Me.ButtonConnOK.Size = New System.Drawing.Size(181, 23)
     Me.ButtonConnOK.TabIndex = 24
     Me.ButtonConnOK.Text = "Connexion"
     Me.ButtonConnOK.UseVisualStyleBackColor = False
     '
-    'TextBoxAdminMDP
+    'TextBoxConnMDP
     '
     Me.TextBoxConnMDP.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.TextBoxConnMDP.Location = New System.Drawing.Point(143, 38)
-    Me.TextBoxConnMDP.Name = "TextBoxAdminMDP"
+    Me.TextBoxConnMDP.Name = "TextBoxConnMDP"
     Me.TextBoxConnMDP.Size = New System.Drawing.Size(233, 20)
     Me.TextBoxConnMDP.TabIndex = 23
     Me.TextBoxConnMDP.UseSystemPasswordChar = True
@@ -77,12 +75,12 @@ Partial Class FormConnection
     Me.LabelConnMDP.TabIndex = 22
     Me.LabelConnMDP.Text = "Mot de passe : "
     '
-    'TextBoxAdminUtilisateur
+    'TextBoxConnUtilisateur
     '
     Me.TextBoxConnUtilisateur.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.TextBoxConnUtilisateur.Location = New System.Drawing.Point(143, 12)
-    Me.TextBoxConnUtilisateur.Name = "TextBoxAdminUtilisateur"
+    Me.TextBoxConnUtilisateur.Name = "TextBoxConnUtilisateur"
     Me.TextBoxConnUtilisateur.Size = New System.Drawing.Size(233, 20)
     Me.TextBoxConnUtilisateur.TabIndex = 21
     '
@@ -97,35 +95,12 @@ Partial Class FormConnection
     Me.LabelConnUtilisateur.TabIndex = 20
     Me.LabelConnUtilisateur.Text = "Nom d'utilisateur : "
     '
-    'TextBoxConnAdresse
-    '
-    Me.TextBoxConnAdresse.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-    Me.TextBoxConnAdresse.Location = New System.Drawing.Point(143, 64)
-    Me.TextBoxConnAdresse.Name = "TextBoxConnAdresse"
-    Me.TextBoxConnAdresse.Size = New System.Drawing.Size(233, 20)
-    Me.TextBoxConnAdresse.TabIndex = 27
-    Me.TextBoxConnAdresse.UseSystemPasswordChar = True
-    '
-    'LabelConnAdresse
-    '
-    Me.LabelConnAdresse.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-    Me.LabelConnAdresse.AutoSize = True
-    Me.LabelConnAdresse.Location = New System.Drawing.Point(10, 67)
-    Me.LabelConnAdresse.Name = "LabelConnAdresse"
-    Me.LabelConnAdresse.Size = New System.Drawing.Size(121, 13)
-    Me.LabelConnAdresse.TabIndex = 26
-    Me.LabelConnAdresse.Text = "Adresse de connexion : "
-    '
     'FormConnection
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
     Me.BackColor = System.Drawing.Color.Thistle
-    Me.ClientSize = New System.Drawing.Size(381, 115)
-    Me.Controls.Add(Me.TextBoxConnAdresse)
-    Me.Controls.Add(Me.LabelConnAdresse)
+    Me.ClientSize = New System.Drawing.Size(381, 89)
     Me.Controls.Add(Me.ButtonConnAnnuler)
     Me.Controls.Add(Me.ButtonConnOK)
     Me.Controls.Add(Me.TextBoxConnMDP)
@@ -144,6 +119,4 @@ Partial Class FormConnection
   Friend WithEvents LabelConnMDP As System.Windows.Forms.Label
   Friend WithEvents TextBoxConnUtilisateur As System.Windows.Forms.TextBox
   Friend WithEvents LabelConnUtilisateur As System.Windows.Forms.Label
-  Friend WithEvents TextBoxConnAdresse As System.Windows.Forms.TextBox
-  Friend WithEvents LabelConnAdresse As System.Windows.Forms.Label
 End Class

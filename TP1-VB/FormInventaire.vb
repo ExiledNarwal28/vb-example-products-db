@@ -48,7 +48,7 @@ Public Class FormInventaire
   Private Sub ButtonAjoutItems_Click(sender As Object, e As EventArgs) Handles ButtonAjoutItems.Click
     FormManipulerItem.SetFormulaireMode("Ajout")
     FormManipulerItem.ShowDialog()
-    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+    Me.RafraichirDGVItems()
   End Sub
 
   Private Sub ButtonModifierItems_Click(sender As Object, e As EventArgs) Handles ButtonModifierItems.Click
@@ -59,7 +59,7 @@ Public Class FormInventaire
       FormManipulerItem.SetIDModif(ListeSelection.First)
       FormManipulerItem.SetFormulaireMode("Modification")
       FormManipulerItem.ShowDialog()
-      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+      Me.RafraichirDGVItems()
     Else
       If ListeSelection.Count < 1 Then
         MsgBox("Veuillez sélectionner une cellule de la table.")
@@ -87,11 +87,7 @@ Public Class FormInventaire
           Next
 
           ' Il faut ensuite tout enlever de la liste d'ids et mettre à jour l'interface
-          ListeSelection.Clear()
-
-          ' TODO : vérifier ça
-          MettreAJourNbItems()
-          MettreAJourCheckBox()
+          Me.RafraichirDGVItems()
         End If
       Catch ex As Exception
         MsgBox(ex.Message)
@@ -101,14 +97,22 @@ Public Class FormInventaire
     End If
   End Sub
 
+  ' Méthode pour remettre à zéro la liste de sélection et tout ce qui vient avec
+  Private Sub RafraichirDGVItems()
+    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+
+    ListeSelection.Clear()
+
+    MettreAJourNbItems()
+  End Sub
+
   Private Sub TextBoxRechItems_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRechItemsCode.TextChanged,
     TextBoxRechItemsDesc.TextChanged, TextBoxRechItemsEmp.TextChanged, TextBoxRechItemsCat.TextChanged,
     TextBoxRechItemsDep.TextChanged, TextBoxRechItemsFourn.TextChanged
     ' Cette fonction filtre le DataGridView en fonction de ce qui est écrit dans les TextBox de recherche
     ' Il faut d'abord vérifier si les textboxs ont du texte
 
-    ' TOADD : Recherche et filtrage de sélection en même temps;
-    CheckBoxItemsNb.Checked = False
+    CheckBoxFiltreSelection.Checked = False
 
     Dim NombreCaracteres = TextBoxRechItemsCode.Text.Trim.Length + TextBoxRechItemsDesc.Text.Trim.Length +
       TextBoxRechItemsEmp.Text.Trim.Length + TextBoxRechItemsCat.Text.Trim.Length +
@@ -116,37 +120,31 @@ Public Class FormInventaire
 
     If NombreCaracteres > 0 Then
       ' On construit une tableau de String de la recherche
-      Dim Recherche() As String = {
+
+      DataGridViewItems.DataSource = DataTableTrav.ObtenirDataViewRech(
         TextBoxRechItemsCode.Text,
         TextBoxRechItemsDesc.Text,
         TextBoxRechItemsEmp.Text,
         TextBoxRechItemsCat.Text,
         TextBoxRechItemsDep.Text,
         TextBoxRechItemsFourn.Text
-      }
-
-      DataGridViewItems.DataSource = DataTableTrav.ObtenirDataViewRech(Recherche, "Items")
-      DataGridViewItems.Refresh()
+      )
     Else
       ' Si l'utilisateur enlève sa recherche, alors la source est la table entière
-      ' DataGridViewItems.DataSource = DataTableTrav.ObtenirDataTable("Items")
-      DataGridViewItems.Refresh()
+      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
     End If
 
+    MettreAJourSelection()
     EcrireTotalItems()
-    MettreAJourCheckbox()
   End Sub
 
-  Private Sub CheckBoxItemsNb_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxItemsNb.CheckedChanged
-    ' Méthode pour filtrer le datagridview lorsqu'on appuie sur le checkbox
-
-    ' TOADD : Recherche et filtrage de sélection en même temps;
+  ' Méthode pour filtrer le datagridview lorsqu'on appuie sur le checkbox
+  Private Sub CheckBoxFiltreSelection_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxFiltreSelection.CheckedChanged
     ViderItemsRecherche()
 
-    If CheckBoxItemsNb.Checked Then
+    If CheckBoxFiltreSelection.Checked Then
       For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-        ' Un autre technique est de faire If ListeSelection.Contains(CInt(Rangee.Cells("item_id").Value)) Then
-        If CBool(Rangee.Cells("item_chk").Value) = True Then
+        If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
           Rangee.Visible = True
         Else
           Try
@@ -161,10 +159,13 @@ Public Class FormInventaire
         Rangee.Visible = True
       Next
     End If
+
+    EcrireTotalItems()
+    MettreAJourSelection()
   End Sub
 
+  ' Méthode pour vider les champs de recherche
   Private Sub ViderItemsRecherche()
-    ' Méthode pour vider les champs de recherche
 
     TextBoxRechItemsCode.Text = String.Empty
     TextBoxRechItemsDesc.Text = String.Empty
@@ -177,18 +178,8 @@ Public Class FormInventaire
   Private Sub AffichageInventaireCompletColonnes()
     ' Méthode pour configurer l'affichage des colonnes
 
-    ' Source : http://vb.net-informations.com/datagridview/vb.net_datagridview_checkbox.htm
-    ' Source : http://stackoverflow.com/questions/13338837/check-uncheck-a-checkbox-on-datagridview
-    Dim chk As New DataGridViewCheckBoxColumn()
-    DataGridViewItems.Columns.Add(chk)
-    chk.TrueValue = True
-    chk.FalseValue = False
-    chk.Name = "item_chk"
-
     ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
     With DataGridViewItems
-      .Columns(11).DisplayIndex = 0 ' Les checkboxs
-
       .Columns(0).Visible = False ' ID
       .Columns(1).HeaderText = "Code du produit"
       .Columns(2).HeaderText = "Description"
@@ -199,8 +190,8 @@ Public Class FormInventaire
       .Columns(7).HeaderText = "Fournisseur"
       .Columns(8).HeaderText = "Prix vente"
       .Columns(9).HeaderText = "Prix d'achat"
+      ' .Columns(9).Visible = VariablesGlobales.ADMIN_CONNECTION
       .Columns(10).HeaderText = "Quantité"
-      .Columns(11).HeaderText = "" ' Les checkboxs
     End With
 
     ' Il faut mettre à jour de total des items
@@ -208,9 +199,7 @@ Public Class FormInventaire
   End Sub
 
   Private Sub ButtonSauvegarder_Click(sender As Object, e As EventArgs) Handles ButtonSauvegarder.Click
-    ' TODO pour TP2 : il va falloir un bouton sauvegarder individuel pour chaque DataTable
     DataTableTrav.Sauvegarder()
-
     MsgBox("Sauvegarde effectuée!")
   End Sub
 
@@ -227,7 +216,7 @@ Public Class FormInventaire
 
     For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
       ' Puisque Option Strict est à on, je n'ai pas le choix de convertir mes valeurs
-      Total += Convert.ToDouble(Rangee.Cells("item_prix_achat").Value) * Convert.ToInt32(Rangee.Cells("item_qt").Value)
+      Total += Convert.ToDouble(Rangee.Cells(8).Value) * Convert.ToInt32(Rangee.Cells(10).Value)
     Next
 
     TextBoxItemsTotal.Text = CStr(Total) & " $"
@@ -251,34 +240,36 @@ Public Class FormInventaire
     'ButtonSupprimerUtilisateur.Visible = ConnectionAdmin
   End Sub
 
-  Private Sub ButtonConnexionAdmin_Click(sender As Object, e As EventArgs) Handles ButtonDeconnection.Click
+  Private Sub ButtonDeconnection_Click(sender As Object, e As EventArgs) Handles ButtonDeconnection.Click
+    DataTableTrav.Deconnection()
     ConnexionObligatoire()
-    ' TODO enlever ça?
-    ' AffichageAdmin()
   End Sub
 
+  ' Méthode pour sélectionner des items
   Private Sub DataGridViewItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewItems.CellContentClick
-    ' Méthode pour sélectionner des items
-    ' Source : http://stackoverflow.com/questions/1237829/datagridview-checkbox-column-value-and-functionality
-
     Dim dgv As DataGridView = DirectCast(sender, DataGridView)
-    Dim chk As DataGridViewCheckBoxCell = New DataGridViewCheckBoxCell()
 
-    chk = CType(dgv.Rows(dgv.CurrentRow.Index).Cells("item_chk"), DataGridViewCheckBoxCell)
-
-    If chk.Value Is Nothing Then
-      chk.Value = False
-    End If
-
-    If CBool(chk.Value) Then
-      chk.Value = False
+    If ListeSelection.Contains(CInt(dgv.CurrentRow.Cells(0).Value)) Then
       ListeSelection.Remove(CInt(dgv.CurrentRow.Cells(0).Value))
     Else
-      chk.Value = True
       ListeSelection.Add(CInt(dgv.CurrentRow.Cells(0).Value))
     End If
 
+    MettreAJourSelection()
     MettreAJourNbItems()
+  End Sub
+
+  ' Méthode pour mettre à jour l'affichage des items sélectionnés
+  Private Sub MettreAJourSelection()
+    For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
+      If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
+        Rangee.DefaultCellStyle.BackColor = SystemColors.Highlight
+        Rangee.DefaultCellStyle.ForeColor = SystemColors.HighlightText
+      Else
+        Rangee.DefaultCellStyle.BackColor = SystemColors.Window
+        Rangee.DefaultCellStyle.ForeColor = SystemColors.ControlText
+      End If
+    Next
   End Sub
 
   Private Sub MettreAJourNbItems()
@@ -287,24 +278,14 @@ Public Class FormInventaire
     LabelUtilisateursNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
   End Sub
 
-  Private Sub MettreAJourCheckBox()
-    ' Méthode qui s'assure que les checkbox sont cochés
-
-    For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-      Rangee.Cells("item_chk").Value = ListeSelection.Contains(CInt(Rangee.Cells("item_id").Value))
-    Next
-  End Sub
-
   Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click
     FormManipulerUtilisateur.SetFormulaireMode("Ajout")
     FormManipulerUtilisateur.ShowDialog()
-    ' FormManipulerUtilisateur.getData()
   End Sub
 
   Private Sub ButtonModifierUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonModifierUtilisateur.Click
     FormManipulerUtilisateur.SetFormulaireMode("Modification")
     FormManipulerUtilisateur.ShowDialog()
-    ' FormManipulerUtilisateur.getData()
   End Sub
 
   Private Sub ConnexionObligatoire()
