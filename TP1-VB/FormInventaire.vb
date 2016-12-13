@@ -17,6 +17,7 @@ Public Class FormInventaire
   Private FormConnection As FormConnection
 
   Private ListeSelection As List(Of Integer)
+  Private TabPagesCachees As List(Of TabPage) ' Pour la gestion de droits, voir AffichageDroits()
 
   Private Sub FormInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     DataTableTrav = New DataTableTravailleur
@@ -27,6 +28,7 @@ Public Class FormInventaire
     FormConnection = New FormConnection(DataTableTrav)
 
     ListeSelection = New List(Of Integer)
+    TabPagesCachees = New List(Of TabPage)
 
     Me.Hide()
     FormConnection.ShowDialog()
@@ -226,7 +228,6 @@ Public Class FormInventaire
 
   ' On affiche les informations en fonction des droits de l'utilisateur connecté
   Private Sub AffichageDroits()
-    'Dim ConnectionAdmin As Boolean = VariablesGlobales.ADMIN_CONNECTION
     Dim droits As Short = DataTableTrav.GetDroits()
 
     ButtonModifierItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_UPDATE) <> 0
@@ -234,17 +235,47 @@ Public Class FormInventaire
     ButtonSupprimerItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_DELETE) <> 0
     LabelItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0
     TextBoxItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0
-    ' TabPageItems
+
+    ' Source : http://stackoverflow.com/questions/552579/how-to-hide-tabpage-from-tabcontrol#552588
+    If (droits And VariablesGlobales.DROIT_INVENTAIRE_SELECT) <> 0 Then
+      If Not PageInventaire.TabPages.Contains(TabPageItems) Then
+        PageInventaire.TabPages.Add(TabPageItems)
+      End If
+    Else
+      If PageInventaire.TabPages.Contains(TabPageItems) Then
+        PageInventaire.TabPages.Remove(TabPageItems)
+      End If
+    End If
 
     ButtonModifierFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_UPDATE) <> 0
     ButtonAjoutFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
     ButtonSupprimerFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_DELETE) <> 0
-    ' TabPageFactures
+
+    ' Source : http://stackoverflow.com/questions/552579/how-to-hide-tabpage-from-tabcontrol#552588
+    If (droits And VariablesGlobales.DROIT_FACTURE_SELECT) <> 0 Then
+      If Not PageInventaire.TabPages.Contains(TabPageFactures) Then
+        PageInventaire.TabPages.Add(TabPageFactures)
+      End If
+    Else
+      If PageInventaire.TabPages.Contains(TabPageFactures) Then
+        PageInventaire.TabPages.Remove(TabPageFactures)
+      End If
+    End If
 
     ButtonModifierUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0
     ButtonAjoutUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0
     ButtonSupprimerUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_DELETE) <> 0
-    ' TabPageUtilisateurs
+
+    ' Source : http://stackoverflow.com/questions/552579/how-to-hide-tabpage-from-tabcontrol#552588
+    If (droits And VariablesGlobales.DROIT_UTILISATEUR_SELECT) <> 0 Then
+      If Not PageInventaire.TabPages.Contains(TabPageUtilisateurs) Then
+        PageInventaire.TabPages.Add(TabPageUtilisateurs)
+      End If
+    Else
+      If PageInventaire.TabPages.Contains(TabPageUtilisateurs) Then
+        PageInventaire.TabPages.Remove(TabPageUtilisateurs)
+      End If
+    End If
   End Sub
 
   Private Sub ButtonDeconnection_Click(sender As Object, e As EventArgs) Handles ButtonDeconnection.Click

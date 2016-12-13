@@ -50,14 +50,14 @@ Partial Class FormInventaire
     Me.TextBoxRechItemsCode = New System.Windows.Forms.TextBox()
     Me.LabelRechItems = New System.Windows.Forms.Label()
     Me.DataGridViewItems = New System.Windows.Forms.DataGridView()
-    Me.TabPage1 = New System.Windows.Forms.TabPage()
+    Me.TabPageFactures = New System.Windows.Forms.TabPage()
     Me.ButtonSupprimerFacture = New System.Windows.Forms.Button()
     Me.ButtonModifierFacture = New System.Windows.Forms.Button()
     Me.ButtonAjoutFacture = New System.Windows.Forms.Button()
     Me.ButtonFactureFacture = New System.Windows.Forms.Button()
     Me.LabelFacturesNb = New System.Windows.Forms.Label()
     Me.DataGridViewFactures = New System.Windows.Forms.DataGridView()
-    Me.TabPage2 = New System.Windows.Forms.TabPage()
+    Me.TabPageUtilisateurs = New System.Windows.Forms.TabPage()
     Me.ButtonSupprimerUtilisateur = New System.Windows.Forms.Button()
     Me.ButtonModifierUtilisateur = New System.Windows.Forms.Button()
     Me.ButtonAjoutUtilisateur = New System.Windows.Forms.Button()
@@ -90,9 +90,9 @@ Partial Class FormInventaire
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
-    Me.TabPage1.SuspendLayout()
+    Me.TabPageFactures.SuspendLayout()
     CType(Me.DataGridViewFactures, System.ComponentModel.ISupportInitialize).BeginInit()
-    Me.TabPage2.SuspendLayout()
+    Me.TabPageUtilisateurs.SuspendLayout()
     CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
@@ -102,8 +102,8 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.PageInventaire.Controls.Add(Me.TabPageItems)
-    Me.PageInventaire.Controls.Add(Me.TabPage1)
-    Me.PageInventaire.Controls.Add(Me.TabPage2)
+    Me.PageInventaire.Controls.Add(Me.TabPageFactures)
+    Me.PageInventaire.Controls.Add(Me.TabPageUtilisateurs)
     Me.PageInventaire.Location = New System.Drawing.Point(12, 12)
     Me.PageInventaire.Name = "PageInventaire"
     Me.PageInventaire.SelectedIndex = 0
@@ -387,21 +387,21 @@ Partial Class FormInventaire
     Me.DataGridViewItems.Size = New System.Drawing.Size(843, 475)
     Me.DataGridViewItems.TabIndex = 0
     '
-    'TabPage1
+    'TabPageFactures
     '
-    Me.TabPage1.BackColor = System.Drawing.Color.Khaki
-    Me.TabPage1.Controls.Add(Me.ButtonSupprimerFacture)
-    Me.TabPage1.Controls.Add(Me.ButtonModifierFacture)
-    Me.TabPage1.Controls.Add(Me.ButtonAjoutFacture)
-    Me.TabPage1.Controls.Add(Me.ButtonFactureFacture)
-    Me.TabPage1.Controls.Add(Me.LabelFacturesNb)
-    Me.TabPage1.Controls.Add(Me.DataGridViewFactures)
-    Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-    Me.TabPage1.Name = "TabPage1"
-    Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-    Me.TabPage1.Size = New System.Drawing.Size(1009, 508)
-    Me.TabPage1.TabIndex = 1
-    Me.TabPage1.Text = "Factures"
+    Me.TabPageFactures.BackColor = System.Drawing.Color.Khaki
+    Me.TabPageFactures.Controls.Add(Me.ButtonSupprimerFacture)
+    Me.TabPageFactures.Controls.Add(Me.ButtonModifierFacture)
+    Me.TabPageFactures.Controls.Add(Me.ButtonAjoutFacture)
+    Me.TabPageFactures.Controls.Add(Me.ButtonFactureFacture)
+    Me.TabPageFactures.Controls.Add(Me.LabelFacturesNb)
+    Me.TabPageFactures.Controls.Add(Me.DataGridViewFactures)
+    Me.TabPageFactures.Location = New System.Drawing.Point(4, 22)
+    Me.TabPageFactures.Name = "TabPageFactures"
+    Me.TabPageFactures.Padding = New System.Windows.Forms.Padding(3)
+    Me.TabPageFactures.Size = New System.Drawing.Size(1009, 508)
+    Me.TabPageFactures.TabIndex = 1
+    Me.TabPageFactures.Text = "Factures"
     '
     'ButtonSupprimerFacture
     '
@@ -486,21 +486,21 @@ Partial Class FormInventaire
     Me.DataGridViewFactures.Size = New System.Drawing.Size(843, 475)
     Me.DataGridViewFactures.TabIndex = 1
     '
-    'TabPage2
+    'TabPageUtilisateurs
     '
-    Me.TabPage2.BackColor = System.Drawing.Color.Khaki
-    Me.TabPage2.Controls.Add(Me.ButtonSupprimerUtilisateur)
-    Me.TabPage2.Controls.Add(Me.ButtonModifierUtilisateur)
-    Me.TabPage2.Controls.Add(Me.ButtonAjoutUtilisateur)
-    Me.TabPage2.Controls.Add(Me.ButtonUtilisateurFacture)
-    Me.TabPage2.Controls.Add(Me.LabelUtilisateursNb)
-    Me.TabPage2.Controls.Add(Me.DataGridView2)
-    Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-    Me.TabPage2.Name = "TabPage2"
-    Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-    Me.TabPage2.Size = New System.Drawing.Size(1009, 508)
-    Me.TabPage2.TabIndex = 2
-    Me.TabPage2.Text = "Utilisateurs"
+    Me.TabPageUtilisateurs.BackColor = System.Drawing.Color.Khaki
+    Me.TabPageUtilisateurs.Controls.Add(Me.ButtonSupprimerUtilisateur)
+    Me.TabPageUtilisateurs.Controls.Add(Me.ButtonModifierUtilisateur)
+    Me.TabPageUtilisateurs.Controls.Add(Me.ButtonAjoutUtilisateur)
+    Me.TabPageUtilisateurs.Controls.Add(Me.ButtonUtilisateurFacture)
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateursNb)
+    Me.TabPageUtilisateurs.Controls.Add(Me.DataGridView2)
+    Me.TabPageUtilisateurs.Location = New System.Drawing.Point(4, 22)
+    Me.TabPageUtilisateurs.Name = "TabPageUtilisateurs"
+    Me.TabPageUtilisateurs.Padding = New System.Windows.Forms.Padding(3)
+    Me.TabPageUtilisateurs.Size = New System.Drawing.Size(1009, 508)
+    Me.TabPageUtilisateurs.TabIndex = 2
+    Me.TabPageUtilisateurs.Text = "Utilisateurs"
     '
     'ButtonSupprimerUtilisateur
     '
@@ -736,13 +736,13 @@ Partial Class FormInventaire
     Me.no_fact.HeaderText = "No"
     Me.no_fact.Name = "no_fact"
     '
-    'ButtonConnexionAdmin
+    'ButtonDeconnection
     '
     Me.ButtonDeconnection.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.ButtonDeconnection.BackColor = System.Drawing.Color.Coral
     Me.ButtonDeconnection.ForeColor = System.Drawing.SystemColors.Control
     Me.ButtonDeconnection.Location = New System.Drawing.Point(874, 552)
-    Me.ButtonDeconnection.Name = "ButtonConnexionAdmin"
+    Me.ButtonDeconnection.Name = "ButtonDeconnection"
     Me.ButtonDeconnection.Size = New System.Drawing.Size(145, 23)
     Me.ButtonDeconnection.TabIndex = 6
     Me.ButtonDeconnection.Text = "Déconnexion"
@@ -776,11 +776,11 @@ Partial Class FormInventaire
     Me.TabPageItems.ResumeLayout(False)
     Me.TabPageItems.PerformLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).EndInit()
-    Me.TabPage1.ResumeLayout(False)
-    Me.TabPage1.PerformLayout()
+    Me.TabPageFactures.ResumeLayout(False)
+    Me.TabPageFactures.PerformLayout()
     CType(Me.DataGridViewFactures, System.ComponentModel.ISupportInitialize).EndInit()
-    Me.TabPage2.ResumeLayout(False)
-    Me.TabPage2.PerformLayout()
+    Me.TabPageUtilisateurs.ResumeLayout(False)
+    Me.TabPageUtilisateurs.PerformLayout()
     CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
 
@@ -853,8 +853,8 @@ Partial Class FormInventaire
   Friend WithEvents LabelItemsTotal As System.Windows.Forms.Label
   Friend WithEvents CheckBoxFiltreSelection As System.Windows.Forms.CheckBox
   Friend WithEvents LabelItemsNb As System.Windows.Forms.Label
-  Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-  Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+  Friend WithEvents TabPageFactures As System.Windows.Forms.TabPage
+  Friend WithEvents TabPageUtilisateurs As System.Windows.Forms.TabPage
   Friend WithEvents DataGridViewFactures As System.Windows.Forms.DataGridView
   Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
   Friend WithEvents LabelFacturesNb As System.Windows.Forms.Label
