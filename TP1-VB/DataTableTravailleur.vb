@@ -71,27 +71,30 @@ Public Class DataTableTravailleur
   End Sub
 
   Public Sub InsertUtilisateur(ByVal Prenom As String,
-                        ByVal Nom As String,
-                        ByVal Username As String,
-                        ByVal Courriel As String,
-                        ByVal Password As String,
-                        ByVal Droits As Int16)
+                               ByVal Nom As String,
+                               ByVal Username As String,
+                               ByVal Courriel As String,
+                               ByVal Password As String,
+                               ByVal Droits As Int16)
+
     DBContexte.InsertUtilisateur(Username,
                                  Password,
                                  Courriel,
                                  Nom,
                                  Prenom,
                                  Droits)
+
     Me.Sauvegarder()
+
   End Sub
 
   Public Sub UpdateUtilisateur(ByVal iD As Int32,
-                        ByVal Prenom As String,
-                        ByVal Nom As String,
-                        ByVal Username As String,
-                        ByVal Courriel As String,
-                        ByVal Password As String,
-                        ByVal Droits As Int16)
+                               ByVal Prenom As String,
+                               ByVal Nom As String,
+                               ByVal Username As String,
+                               ByVal Courriel As String,
+                               ByVal Password As String,
+                               ByVal Droits As Int16)
     ' TODO
   End Sub
 

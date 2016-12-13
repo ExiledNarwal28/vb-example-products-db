@@ -1,7 +1,7 @@
 ﻿Public Class VariablesGlobales
-  Public Shared ADMIN_CONNECTION As Boolean = False
-  Public Shared ReadOnly ADMIN_UTILISATEUR As String = "admin"
-  Public Shared ReadOnly ADMIN_MDP As String = "4242"
+  ' Public Shared ADMIN_CONNECTION As Boolean = False
+  ' Public Shared ReadOnly ADMIN_UTILISATEUR As String = "admin"
+  ' Public Shared ReadOnly ADMIN_MDP As String = "4242"
 
   Public Shared ReadOnly TPS_VALEUR As Double = 0.05
   Public Shared ReadOnly TVQ_VALEUR As Double = 0.09975

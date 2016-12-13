@@ -112,10 +112,10 @@
     <Compile Include="FormManipulerItem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConnexionAdmin.Designer.vb">
-      <DependentUpon>FormConnexionAdmin.vb</DependentUpon>
+    <Compile Include="FormConnection.Designer.vb">
+      <DependentUpon>FormConnection.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormConnexionAdmin.vb">
+    <Compile Include="FormConnection.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormInventaire.designer.vb">
@@ -250,8 +250,8 @@
     <EmbeddedResource Include="FormManipulerItem.resx">
       <DependentUpon>FormManipulerItem.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConnexionAdmin.resx">
-      <DependentUpon>FormConnexionAdmin.vb</DependentUpon>
+    <EmbeddedResource Include="FormConnection.resx">
+      <DependentUpon>FormConnection.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInventaire.resx">
       <DependentUpon>FormInventaire.vb</DependentUpon>

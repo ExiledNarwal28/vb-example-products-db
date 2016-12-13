@@ -14,7 +14,7 @@ Public Class FormInventaire
   Private FormManipulerItem As FormManipulerItem
   Private FormManipulerUtilisateur As FormManipulerUtilisateur
   Private FormNouvelleFacture As FormNouvelleFacture
-  Private FormConnexionAdmin As FormConnexionAdmin
+  Private FormConnection As FormConnection
 
   Private ListeSelection As List(Of Integer)
 
@@ -24,9 +24,12 @@ Public Class FormInventaire
     FormManipulerItem = New FormManipulerItem(DataTableTrav)
     FormManipulerUtilisateur = New FormManipulerUtilisateur(DataTableTrav)
     FormNouvelleFacture = New FormNouvelleFacture(DataTableTrav)
-    FormConnexionAdmin = New FormConnexionAdmin
+    FormConnection = New FormConnection
 
     ListeSelection = New List(Of Integer)
+
+    Me.Hide()
+    FormConnection.ShowDialog()
 
     DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
     DataGridViewItems.Refresh()
@@ -34,7 +37,7 @@ Public Class FormInventaire
 
     MettreAJourNbItems()
 
-    AffichageAdmin()
+    AffichageDroits()
   End Sub
 
   Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
@@ -230,54 +233,28 @@ Public Class FormInventaire
     TextBoxItemsTotal.Text = CStr(Total) & " $"
   End Sub
 
-  Private Sub AffichageAdmin()
-    ' On affiche les informations d'administrateur en fonction de s'il est connecté
+  Private Sub AffichageDroits()
+    ' On affiche les informations en fonction des droits de l'utilisateur connecté
 
-    Dim ConnectionAdmin As Boolean = VariablesGlobales.ADMIN_CONNECTION
+    'Dim ConnectionAdmin As Boolean = VariablesGlobales.ADMIN_CONNECTION
 
-    ButtonAjoutItems.Visible = ConnectionAdmin
-    ButtonModifierItems.Visible = ConnectionAdmin
-    ButtonSupprimerItems.Visible = ConnectionAdmin
-    LabelItemsTotal.Visible = ConnectionAdmin
-    TextBoxItemsTotal.Visible = ConnectionAdmin
-    ButtonAjoutFacture.Visible = ConnectionAdmin
-    ButtonModifierFacture.Visible = ConnectionAdmin
-    ButtonSupprimerFacture.Visible = ConnectionAdmin
-    ButtonAjoutUtilisateur.Visible = ConnectionAdmin
-    ButtonModifierUtilisateur.Visible = ConnectionAdmin
-    ButtonSupprimerUtilisateur.Visible = ConnectionAdmin
-
-    ' On change l'affichage du bouton de connexion en fonction de si l'utilisateur est connecté
-
-    If ConnectionAdmin Then
-      ' Si l'utilisateur est déjà connecté
-      ButtonConnexionAdmin.Text = "Déconnexion (admin)"
-      ButtonConnexionAdmin.BackColor = Color.Black
-    Else
-      ' Si l'utilisateur n'est pas connecté
-      ButtonConnexionAdmin.Text = "Connexion (admin)"
-      ButtonConnexionAdmin.BackColor = Color.Coral
-    End If
-
+    'ButtonAjoutItems.Visible = ConnectionAdmin
+    'ButtonModifierItems.Visible = ConnectionAdmin
+    'ButtonSupprimerItems.Visible = ConnectionAdmin
+    'LabelItemsTotal.Visible = ConnectionAdmin
+    'TextBoxItemsTotal.Visible = ConnectionAdmin
+    'ButtonAjoutFacture.Visible = ConnectionAdmin
+    'ButtonModifierFacture.Visible = ConnectionAdmin
+    'ButtonSupprimerFacture.Visible = ConnectionAdmin
+    'ButtonAjoutUtilisateur.Visible = ConnectionAdmin
+    'ButtonModifierUtilisateur.Visible = ConnectionAdmin
+    'ButtonSupprimerUtilisateur.Visible = ConnectionAdmin
   End Sub
 
-  Private Sub ButtonConnexionAdmin_Click(sender As Object, e As EventArgs) Handles ButtonConnexionAdmin.Click
-    If VariablesGlobales.ADMIN_CONNECTION Then
-      ' Si l'utilisateur est déjà connecté
-      If MsgBox(
-          "Voulez-vous vraiment vous déconnecter de l'interface d'administrateur?",
-          MsgBoxStyle.YesNo,
-          "Attention!") = DialogResult.Yes Then
-
-        ' Si l'utilisateur répond positivement, on le déconnecte.
-        VariablesGlobales.ADMIN_CONNECTION = False
-      End If
-    Else
-      ' Si l'utilisateur n'est pas connecté
-      FormConnexionAdmin.ShowDialog()
-    End If
-
-    AffichageAdmin()
+  Private Sub ButtonConnexionAdmin_Click(sender As Object, e As EventArgs) Handles ButtonDeconnection.Click
+    ConnexionObligatoire()
+    ' TODO enlever ça?
+    ' AffichageAdmin()
   End Sub
 
   Private Sub DataGridViewItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewItems.CellContentClick
@@ -328,5 +305,12 @@ Public Class FormInventaire
     FormManipulerUtilisateur.SetFormulaireMode("Modification")
     FormManipulerUtilisateur.ShowDialog()
     ' FormManipulerUtilisateur.getData()
+  End Sub
+
+  Private Sub ConnexionObligatoire()
+    Me.Hide()
+    FormConnection.ShowDialog()
+    AffichageDroits()
+    Me.Show()
   End Sub
 End Class

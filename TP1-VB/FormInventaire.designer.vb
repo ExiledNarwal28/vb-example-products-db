@@ -85,7 +85,7 @@ Partial Class FormInventaire
     Me.code_etu = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.Date_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
-    Me.ButtonConnexionAdmin = New System.Windows.Forms.Button()
+    Me.ButtonDeconnection = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
@@ -737,15 +737,15 @@ Partial Class FormInventaire
     '
     'ButtonConnexionAdmin
     '
-    Me.ButtonConnexionAdmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-    Me.ButtonConnexionAdmin.BackColor = System.Drawing.Color.Coral
-    Me.ButtonConnexionAdmin.ForeColor = System.Drawing.SystemColors.Control
-    Me.ButtonConnexionAdmin.Location = New System.Drawing.Point(874, 552)
-    Me.ButtonConnexionAdmin.Name = "ButtonConnexionAdmin"
-    Me.ButtonConnexionAdmin.Size = New System.Drawing.Size(145, 23)
-    Me.ButtonConnexionAdmin.TabIndex = 6
-    Me.ButtonConnexionAdmin.Text = "Connexion (admin)"
-    Me.ButtonConnexionAdmin.UseVisualStyleBackColor = False
+    Me.ButtonDeconnection.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+    Me.ButtonDeconnection.BackColor = System.Drawing.Color.Coral
+    Me.ButtonDeconnection.ForeColor = System.Drawing.SystemColors.Control
+    Me.ButtonDeconnection.Location = New System.Drawing.Point(874, 552)
+    Me.ButtonDeconnection.Name = "ButtonConnexionAdmin"
+    Me.ButtonDeconnection.Size = New System.Drawing.Size(145, 23)
+    Me.ButtonDeconnection.TabIndex = 6
+    Me.ButtonDeconnection.Text = "Déconnexion"
+    Me.ButtonDeconnection.UseVisualStyleBackColor = False
     '
     'ButtonSauvegarder
     '
@@ -766,7 +766,7 @@ Partial Class FormInventaire
     Me.BackColor = System.Drawing.Color.Pink
     Me.ClientSize = New System.Drawing.Size(1041, 587)
     Me.Controls.Add(Me.ButtonSauvegarder)
-    Me.Controls.Add(Me.ButtonConnexionAdmin)
+    Me.Controls.Add(Me.ButtonDeconnection)
     Me.Controls.Add(Me.PageInventaire)
     Me.MinimumSize = New System.Drawing.Size(365, 441)
     Me.Name = "FormInventaire"
@@ -833,7 +833,7 @@ Partial Class FormInventaire
   Friend WithEvents Date_fact As System.Windows.Forms.DataGridViewTextBoxColumn
   Friend WithEvents no_fact As System.Windows.Forms.DataGridViewTextBoxColumn
   Friend WithEvents ButtonAjoutItems As System.Windows.Forms.Button
-  Friend WithEvents ButtonConnexionAdmin As System.Windows.Forms.Button
+  Friend WithEvents ButtonDeconnection As System.Windows.Forms.Button
   Friend WithEvents ButtonSauvegarder As System.Windows.Forms.Button
   Friend WithEvents ButtonSupprimerItems As System.Windows.Forms.Button
   Friend WithEvents ButtonModifierItems As System.Windows.Forms.Button
