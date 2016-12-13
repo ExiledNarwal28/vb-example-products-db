@@ -196,6 +196,7 @@ Public Class FormInventaire
       .Columns(7).HeaderText = "Fournisseur"
       .Columns(8).HeaderText = "Prix vente"
       .Columns(9).HeaderText = "Prix d'achat"
+      .Columns(9).Visible = VariablesGlobales.ADMIN_CONNECTION
       .Columns(10).HeaderText = "Quantité"
       .Columns(11).HeaderText = "" ' Les checkboxs
     End With
@@ -245,8 +246,10 @@ Public Class FormInventaire
     ButtonModifierUtilisateur.Visible = ConnectionAdmin
     ButtonSupprimerUtilisateur.Visible = ConnectionAdmin
 
-    ' On change l'affichage du bouton de connexion en fonction de si l'utilisateur est connecté
+    ' Le prix d'achat
+    DataGridViewItems.Columns(9).Visible = ConnectionAdmin
 
+    ' On change l'affichage du bouton de connexion en fonction de si l'utilisateur est connecté
     If ConnectionAdmin Then
       ' Si l'utilisateur est déjà connecté
       ButtonConnexionAdmin.Text = "Déconnexion (admin)"
@@ -256,7 +259,6 @@ Public Class FormInventaire
       ButtonConnexionAdmin.Text = "Connexion (admin)"
       ButtonConnexionAdmin.BackColor = Color.Coral
     End If
-
   End Sub
 
   Private Sub ButtonConnexionAdmin_Click(sender As Object, e As EventArgs) Handles ButtonConnexionAdmin.Click
