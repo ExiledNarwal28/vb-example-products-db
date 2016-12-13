@@ -149,7 +149,7 @@ Public Class FormInventaire
     If CheckBoxItemsNb.Checked Then
       For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
         ' Un autre technique est de faire If ListeSelection.Contains(CInt(Rangee.Cells("item_id").Value)) Then
-        If CBool(Rangee.Cells("item_chk").Value) = True Then
+        If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
           Rangee.Visible = True
         Else
           Try
@@ -218,7 +218,7 @@ Public Class FormInventaire
 
     For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
       ' Puisque Option Strict est à on, je n'ai pas le choix de convertir mes valeurs
-      Total += Convert.ToDouble(Rangee.Cells("item_prix_achat").Value) * Convert.ToInt32(Rangee.Cells("item_qt").Value)
+      Total += Convert.ToDouble(Rangee.Cells(8).Value) * Convert.ToInt32(Rangee.Cells(10).Value)
     Next
 
     TextBoxItemsTotal.Text = CStr(Total) & " $"

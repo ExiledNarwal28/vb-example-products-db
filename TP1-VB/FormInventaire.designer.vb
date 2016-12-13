@@ -379,6 +379,7 @@ Partial Class FormInventaire
     Me.DataGridViewItems.DefaultCellStyle = DataGridViewCellStyle1
     Me.DataGridViewItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewItems.Location = New System.Drawing.Point(160, 9)
+    Me.DataGridViewItems.MultiSelect = False
     Me.DataGridViewItems.Name = "DataGridViewItems"
     Me.DataGridViewItems.ReadOnly = True
     Me.DataGridViewItems.RowHeadersVisible = False
