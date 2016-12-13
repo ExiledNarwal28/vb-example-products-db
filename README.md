@@ -59,7 +59,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [ ] Faire en sorte que le login est pour un utilisateur de la base de données
 	1 [ ] Demander une connexion au départ du programme
 	1 [ ] Pouvoir choisir l'addresse du ConnectionString en se connectant
-	1 [ ] Lier la table Utilisateur avec les logins sur la base de données
+	1 [x] Lier la table Utilisateur avec les logins sur la base de données
 	1 [ ] Aller chercher les droits des utilisateurs
 	2 [x] Construire le tab des utilisateurs
 	2 [x] Faire le DGV des utilisateurs
