@@ -66,7 +66,6 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonDeconnection = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
-    Me.LabelUtilisateursNb = New System.Windows.Forms.Label()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -408,7 +407,6 @@ Partial Class FormInventaire
     'TabPageUtilisateurs
     '
     Me.TabPageUtilisateurs.BackColor = System.Drawing.Color.Khaki
-    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateursNb)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonUtilisateurAide)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonSupprimerUtilisateur)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonModifierUtilisateur)
@@ -486,6 +484,7 @@ Partial Class FormInventaire
     Me.DataGridViewUtilisateurs.DefaultCellStyle = DataGridViewCellStyle3
     Me.DataGridViewUtilisateurs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewUtilisateurs.Location = New System.Drawing.Point(160, 9)
+    Me.DataGridViewUtilisateurs.MultiSelect = False
     Me.DataGridViewUtilisateurs.Name = "DataGridViewUtilisateurs"
     Me.DataGridViewUtilisateurs.ReadOnly = True
     Me.DataGridViewUtilisateurs.RowHeadersVisible = False
@@ -547,15 +546,6 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
     '
-    'LabelUtilisateursNb
-    '
-    Me.LabelUtilisateursNb.AutoSize = True
-    Me.LabelUtilisateursNb.Location = New System.Drawing.Point(160, 489)
-    Me.LabelUtilisateursNb.Name = "LabelUtilisateursNb"
-    Me.LabelUtilisateursNb.Size = New System.Drawing.Size(181, 13)
-    Me.LabelUtilisateursNb.TabIndex = 34
-    Me.LabelUtilisateursNb.Text = "Nombre d'utilisateurs sélectionnés : 0"
-    '
     'FormInventaire
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -575,7 +565,6 @@ Partial Class FormInventaire
     Me.TabPageFactures.ResumeLayout(False)
     CType(Me.DataGridViewFactures, System.ComponentModel.ISupportInitialize).EndInit()
     Me.TabPageUtilisateurs.ResumeLayout(False)
-    Me.TabPageUtilisateurs.PerformLayout()
     CType(Me.DataGridViewUtilisateurs, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
 
@@ -656,6 +645,5 @@ Partial Class FormInventaire
   Friend WithEvents ButtonModifierUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonAjoutUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonUtilisateurAide As System.Windows.Forms.Button
-  Friend WithEvents LabelUtilisateursNb As System.Windows.Forms.Label
 
 End Class

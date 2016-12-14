@@ -143,7 +143,20 @@ Public Class FormInventaire
   End Sub
 
   Private Sub MettreAJourUtilisateurDGVDroits()
-    ' TODO
+    Dim droits As Int16 = 0
+    Try
+      For Each Rangee As DataGridViewRow In DataGridViewUtilisateurs.Rows
+        droits = CShort(Rangee.Cells(1).Value) ' Colonne des droits
+
+        Rangee.Cells(6).Value = (droits And VariablesGlobales.DROIT_INVENTAIRE_SELECT) <> 0
+        Rangee.Cells(9).Style.BackColor = Color.Green
+        MsgBox("lol")
+
+        droits = 0
+      Next
+    Catch ex As Exception
+      MsgBox(ex.Message)
+    End Try
   End Sub
 
   ' ---> Évênements : Général
