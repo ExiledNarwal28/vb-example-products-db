@@ -95,8 +95,6 @@ Public Class FormInventaire
   ' Méthode pour écrire le nombre d'items dans la sélection
   Private Sub MettreAJourNbItems()
     LabelItemsNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
-    LabelFacturesNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
-    LabelUtilisateursNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
   End Sub
 
   ' ---> DataGridViews : Rafraichissement et mise à jour
@@ -210,9 +208,7 @@ Public Class FormInventaire
   ' ---> Évênements : Boutons de factures
 
   ' Évênement pour ajouter une facture
-  Private Sub ButtonFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click,
-                                                                                ButtonFactureFacture.Click,
-                                                                                ButtonUtilisateurFacture.Click
+  Private Sub ButtonFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
     FormNouvelleFacture.SetProduitID(ListeSelection)
     FormNouvelleFacture.ShowDialog()
   End Sub
@@ -330,10 +326,8 @@ Public Class FormInventaire
     ButtonAjoutItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_INSERT) <> 0
     ButtonSupprimerItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_DELETE) <> 0
 
-    ' Les boutons de factures (3 boutons d'ajout)
+    ' Le bouton de factures
     ButtonItemFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
-    ButtonFactureFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
-    ButtonUtilisateurFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
 
     ' Les boutons d'utilisateurs
     ' Un utilisateur peut voir le bouton de modification s'il peut modifier les informations (UPDATE) ou les droits (ADMIN)
