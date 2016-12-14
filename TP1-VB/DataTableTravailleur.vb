@@ -26,7 +26,7 @@ Public Class DataTableTravailleur
 
     ' TODO : Ce try catch est actuellement ma seule solution à une erreur étrange...
     Try
-      UtilisateurID = CInt(DBContexte.SelectUtilisateurSingle(Username, Password).Single())
+      UtilisateurID = CInt(DBContexte.SelectUtilisateurIDSingle(Username, Password).Single())
     Catch ex As Exception
       ' MsgBox(ex.Message)
     End Try

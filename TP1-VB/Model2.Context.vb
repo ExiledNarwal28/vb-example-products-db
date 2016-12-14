@@ -224,4 +224,16 @@ Partial Public Class COOPInventaire_TP3_testsEntities2
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Short))("SelectUtilisateurDroitsSingle", iDParameter)
     End Function
 
+    Public Overridable Function SelectUtilisateur() As ObjectResult(Of SelectUtilisateur_Result)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectUtilisateur_Result)("SelectUtilisateur")
+    End Function
+
+    Public Overridable Function SelectUtilisateurIDSingle(username As String, password As String) As ObjectResult(Of Nullable(Of Integer))
+        Dim usernameParameter As ObjectParameter = If(username IsNot Nothing, New ObjectParameter("Username", username), New ObjectParameter("Username", GetType(String)))
+
+        Dim passwordParameter As ObjectParameter = If(password IsNot Nothing, New ObjectParameter("Password", password), New ObjectParameter("Password", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Integer))("SelectUtilisateurIDSingle", usernameParameter, passwordParameter)
+    End Function
+
 End Class

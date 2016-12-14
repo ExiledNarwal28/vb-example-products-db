@@ -432,10 +432,11 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
         <Function Name="SelectInventaireCompletSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SelectUtilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SelectUtilisateurDroitsSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
-        <Function Name="SelectUtilisateurSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SelectUtilisateurIDSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
@@ -1158,7 +1159,12 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SelectUtilisateurDroitsSingle" ReturnType="Collection(Int16)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectUtilisateur" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateur_Result)" />
+          <FunctionImport Name="SelectUtilisateurIDSingle" ReturnType="Collection(Int32)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SelectInventaireComplet_Result">
@@ -1210,6 +1216,12 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="Double" Name="Prix_de_vente" Nullable="true" />
           <Property Type="Double" Name="Prix_d_achat" Nullable="true" />
           <Property Type="Int32" Name="Quantité" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectUtilisateur_Result">
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prénom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nom_d_utilisateur" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Courriel" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1506,8 +1518,18 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SelectUtilisateurSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurSingle" />
           <FunctionImportMapping FunctionImportName="SelectUtilisateurDroitsSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurDroitsSingle" />
+          <FunctionImportMapping FunctionImportName="SelectUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateur">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectUtilisateur_Result">
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prénom" ColumnName="Prénom" />
+                <ScalarProperty Name="Nom_d_utilisateur" ColumnName="Nom d'utilisateur" />
+                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectUtilisateurIDSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurIDSingle" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
