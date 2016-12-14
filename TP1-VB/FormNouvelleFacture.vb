@@ -141,6 +141,9 @@ Public Class FormNouvelleFacture
         ' Enlever les quantités de l'inventaire
         DataTableTrav.EnleverQuantite(ConstruireDictionnaireQuantites())
 
+        ' On enregistre la facture
+        DataTableTrav.InsertFacture(TextBoxFactureCodeEtu.Text, ConstruireDictionnaireQuantites())
+
         ' On instancie un formulaire pour l'affichage de la facture. Ceci demande aussi à l'utilisateur s'il veut l'imprimer.
         Dim FormAffichageFacture As FormAffichageFacture = New FormAffichageFacture(Me.DataGridViewFacture, GetTotaux(), TextBoxFactureCodeEtu.Text, RichTextBoxComm.Text)
 

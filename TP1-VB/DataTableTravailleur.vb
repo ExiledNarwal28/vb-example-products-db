@@ -195,6 +195,12 @@ Public Class DataTableTravailleur
 
   ' ---> Factures
 
+  ' Méthode pour afficher les factures
+  Public Function GetDataFacture() As List(Of TP1_VB.SelectFacture_Result)
+    Return DBContexte.SelectFacture().ToList()
+  End Function
+
+
   ' Méthode pour insérer une facture
   Public Sub InsertFacture(ByVal NoEtu As String,
                            ByVal DictQuantites As Dictionary(Of Integer, Integer))

@@ -54,14 +54,24 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("DeleteUtilisateur", iDParameter)
     End Function
 
-    Public Overridable Function InsertFacture(membreID As Nullable(Of Integer), [date] As Nullable(Of Date), noEtudiant As String) As ObjectResult(Of Nullable(Of Decimal))
-        Dim membreIDParameter As ObjectParameter = If(membreID.HasValue, New ObjectParameter("MembreID", membreID), New ObjectParameter("MembreID", GetType(Integer)))
+    Public Overridable Function InsertFacture(utilisateurID As Nullable(Of Integer), [date] As Nullable(Of Date), noEtudiant As String) As ObjectResult(Of Nullable(Of Decimal))
+        Dim utilisateurIDParameter As ObjectParameter = If(utilisateurID.HasValue, New ObjectParameter("UtilisateurID", utilisateurID), New ObjectParameter("UtilisateurID", GetType(Integer)))
 
         Dim dateParameter As ObjectParameter = If([date].HasValue, New ObjectParameter("Date", [date]), New ObjectParameter("Date", GetType(Date)))
 
         Dim noEtudiantParameter As ObjectParameter = If(noEtudiant IsNot Nothing, New ObjectParameter("NoEtudiant", noEtudiant), New ObjectParameter("NoEtudiant", GetType(String)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Decimal))("InsertFacture", membreIDParameter, dateParameter, noEtudiantParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Decimal))("InsertFacture", utilisateurIDParameter, dateParameter, noEtudiantParameter)
+    End Function
+
+    Public Overridable Function InsertFactureItem(factureID As Nullable(Of Integer), inventaireID As Nullable(Of Integer), qt As Nullable(Of Integer)) As ObjectResult(Of Nullable(Of Decimal))
+        Dim factureIDParameter As ObjectParameter = If(factureID.HasValue, New ObjectParameter("FactureID", factureID), New ObjectParameter("FactureID", GetType(Integer)))
+
+        Dim inventaireIDParameter As ObjectParameter = If(inventaireID.HasValue, New ObjectParameter("InventaireID", inventaireID), New ObjectParameter("InventaireID", GetType(Integer)))
+
+        Dim qtParameter As ObjectParameter = If(qt.HasValue, New ObjectParameter("Qt", qt), New ObjectParameter("Qt", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Decimal))("InsertFactureItem", factureIDParameter, inventaireIDParameter, qtParameter)
     End Function
 
     Public Overridable Function InsertInventaireComplet(codeProduit As String, description As String, emplacement As String, categorie As String, departement As String, fournisseurCode As String, fournisseurNom As String, prixVente As Nullable(Of Double), prixAchat As Nullable(Of Double), qt As Nullable(Of Integer)) As Integer
@@ -126,6 +136,10 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Dim amountParameter As ObjectParameter = If(amount.HasValue, New ObjectParameter("Amount", amount), New ObjectParameter("Amount", GetType(Integer)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("ReduireQtInventaireComplet", iDParameter, amountParameter)
+    End Function
+
+    Public Overridable Function SelectFacture() As ObjectResult(Of SelectFacture_Result)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFacture_Result)("SelectFacture")
     End Function
 
     Public Overridable Function SelectInventaireComplet() As ObjectResult(Of SelectInventaireComplet_Result)
@@ -294,16 +308,6 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Dim droitsParameter As ObjectParameter = If(droits.HasValue, New ObjectParameter("Droits", droits), New ObjectParameter("Droits", GetType(Short)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("UpdateUtilisateur", iDParameter, usernameParameter, passwordParameter, courrielParameter, nomParameter, prenomParameter, droitsParameter)
-    End Function
-
-    Public Overridable Function InsertFactureItem(factureID As Nullable(Of Integer), inventaireID As Nullable(Of Integer), qt As Nullable(Of Integer)) As ObjectResult(Of Nullable(Of Decimal))
-        Dim factureIDParameter As ObjectParameter = If(factureID.HasValue, New ObjectParameter("FactureID", factureID), New ObjectParameter("FactureID", GetType(Integer)))
-
-        Dim inventaireIDParameter As ObjectParameter = If(inventaireID.HasValue, New ObjectParameter("InventaireID", inventaireID), New ObjectParameter("InventaireID", GetType(Integer)))
-
-        Dim qtParameter As ObjectParameter = If(qt.HasValue, New ObjectParameter("Qt", qt), New ObjectParameter("Qt", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Decimal))("InsertFactureItem", factureIDParameter, inventaireIDParameter, qtParameter)
     End Function
 
 End Class

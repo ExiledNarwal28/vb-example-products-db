@@ -41,6 +41,10 @@ Public Class FormInventaire
     DataGridViewUtilisateurs.Refresh()
     AffichageUtilisateurColonnes()
 
+    DataGridViewFactures.DataSource = DataTableTrav.GetDataFacture()
+    DataGridViewFactures.Refresh()
+    AffichageFactureColonnes()
+
     MettreAJourNbItems()
 
     AffichageDroits()
@@ -81,6 +85,17 @@ Public Class FormInventaire
     End With
   End Sub
 
+  ' Méthode pour configurer l'affichage des colonnes de factures
+  Private Sub AffichageFactureColonnes()
+    ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
+    With DataGridViewFactures
+      .Columns(0).HeaderText = "No. Facture"
+      .Columns(1).HeaderText = "Utilisateur"
+      .Columns(2).HeaderText = "Date"
+      .Columns(3).HeaderText = "No. Étudiant"
+    End With
+  End Sub
+
   ' ---> DataGridViews : Sélection
 
   ' Méthode pour mettre à jour l'affichage des items sélectionnés
@@ -113,6 +128,10 @@ Public Class FormInventaire
     CheckBoxFiltreSelection.Checked = False
 
     MettreAJourNbItems()
+  End Sub
+
+  Private Sub RafraichirDGVFactures()
+    DataGridViewFactures.DataSource = DataTableTrav.GetDataFacture()
   End Sub
 
   ' ---> Évênements : Général
@@ -215,6 +234,7 @@ Public Class FormInventaire
     FormNouvelleFacture.SetProduitID(ListeSelection)
     FormNouvelleFacture.ShowDialog()
     Me.RafraichirDGVItems()
+    Me.RafraichirDGVFactures()
   End Sub
 
   ' ---> Évênements : Boutons d'utilisateurs
