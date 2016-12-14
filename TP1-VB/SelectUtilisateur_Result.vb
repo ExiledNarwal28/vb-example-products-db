@@ -11,9 +11,11 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class SelectUtilisateur_Result
+    Public Property ID As Integer
+    Public Property Droits As Nullable(Of Short)
     Public Property Nom As String
-    Public Property Prénom As String
-    Public Property Nom_d_utilisateur As String
+    Public Property Prenom As String
+    Public Property Username As String
     Public Property Courriel As String
 
 End Class

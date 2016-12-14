@@ -22,9 +22,9 @@ Partial Class FormInventaire
   'Ne la modifiez pas à l'aide de l'éditeur de code.
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
-    Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-    Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-    Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+    Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+    Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+    Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
     Me.PageInventaire = New System.Windows.Forms.TabControl()
     Me.TabPageItems = New System.Windows.Forms.TabPage()
     Me.LabelItemsNb = New System.Windows.Forms.Label()
@@ -66,6 +66,7 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonDeconnection = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
+    Me.LabelUtilisateursNb = New System.Windows.Forms.Label()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -348,14 +349,14 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DataGridViewItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-    DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-    DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-    DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-    DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-    DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-    Me.DataGridViewItems.DefaultCellStyle = DataGridViewCellStyle9
+    DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+    DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+    DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+    DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+    DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+    DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+    Me.DataGridViewItems.DefaultCellStyle = DataGridViewCellStyle1
     Me.DataGridViewItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewItems.Location = New System.Drawing.Point(160, 9)
     Me.DataGridViewItems.MultiSelect = False
@@ -387,14 +388,14 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DataGridViewFactures.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridViewFactures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-    DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-    DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-    DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-    DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-    DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-    Me.DataGridViewFactures.DefaultCellStyle = DataGridViewCellStyle7
+    DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+    DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+    DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+    DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+    DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+    DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+    Me.DataGridViewFactures.DefaultCellStyle = DataGridViewCellStyle2
     Me.DataGridViewFactures.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewFactures.Location = New System.Drawing.Point(160, 9)
     Me.DataGridViewFactures.Name = "DataGridViewFactures"
@@ -407,6 +408,7 @@ Partial Class FormInventaire
     'TabPageUtilisateurs
     '
     Me.TabPageUtilisateurs.BackColor = System.Drawing.Color.Khaki
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateursNb)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonUtilisateurAide)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonSupprimerUtilisateur)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonModifierUtilisateur)
@@ -474,14 +476,14 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DataGridViewUtilisateurs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridViewUtilisateurs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-    DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-    DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-    DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-    DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-    DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-    Me.DataGridViewUtilisateurs.DefaultCellStyle = DataGridViewCellStyle8
+    DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+    DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+    DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+    DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+    DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+    DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+    Me.DataGridViewUtilisateurs.DefaultCellStyle = DataGridViewCellStyle3
     Me.DataGridViewUtilisateurs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
     Me.DataGridViewUtilisateurs.Location = New System.Drawing.Point(160, 9)
     Me.DataGridViewUtilisateurs.Name = "DataGridViewUtilisateurs"
@@ -545,6 +547,15 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
     '
+    'LabelUtilisateursNb
+    '
+    Me.LabelUtilisateursNb.AutoSize = True
+    Me.LabelUtilisateursNb.Location = New System.Drawing.Point(160, 489)
+    Me.LabelUtilisateursNb.Name = "LabelUtilisateursNb"
+    Me.LabelUtilisateursNb.Size = New System.Drawing.Size(181, 13)
+    Me.LabelUtilisateursNb.TabIndex = 34
+    Me.LabelUtilisateursNb.Text = "Nombre d'utilisateurs sélectionnés : 0"
+    '
     'FormInventaire
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -564,6 +575,7 @@ Partial Class FormInventaire
     Me.TabPageFactures.ResumeLayout(False)
     CType(Me.DataGridViewFactures, System.ComponentModel.ISupportInitialize).EndInit()
     Me.TabPageUtilisateurs.ResumeLayout(False)
+    Me.TabPageUtilisateurs.PerformLayout()
     CType(Me.DataGridViewUtilisateurs, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
 
@@ -644,5 +656,6 @@ Partial Class FormInventaire
   Friend WithEvents ButtonModifierUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonAjoutUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonUtilisateurAide As System.Windows.Forms.Button
+  Friend WithEvents LabelUtilisateursNb As System.Windows.Forms.Label
 
 End Class

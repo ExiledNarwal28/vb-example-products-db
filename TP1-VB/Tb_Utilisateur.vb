@@ -18,8 +18,8 @@ Partial Public Class Tb_Utilisateur
     Public Property Username As String
     Public Property Courriel As String
     Public Property Password As String
-    Public Property R2 As String
     Public Property Droits As Nullable(Of Short)
+    Public Property R2 As String
 
     Public Overridable Property Tb_Commande As ICollection(Of Tb_Commande) = New HashSet(Of Tb_Commande)
     Public Overridable Property Tb_Facture As ICollection(Of Tb_Facture) = New HashSet(Of Tb_Facture)

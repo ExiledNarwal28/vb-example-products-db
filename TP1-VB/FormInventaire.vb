@@ -52,7 +52,6 @@ Public Class FormInventaire
 
   ' Méthode pour configurer l'affichage des colonnes d'inventaire
   Private Sub AffichageInventaireCompletColonnes()
-
     ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
     With DataGridViewItems
       .Columns(0).Visible = False ' ID
@@ -74,7 +73,42 @@ Public Class FormInventaire
 
   ' Méthode pour configurer l'affichage des colonnes d'utilisateur
   Private Sub AffichageUtilisateurColonnes()
-    ' TODO
+    ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
+    With DataGridViewUtilisateurs
+      .Columns(0).Visible = False ' ID
+      .Columns(1).Visible = False ' Droits
+      .Columns(2).HeaderText = "Nom"
+      .Columns(3).HeaderText = "Prénom"
+      .Columns(4).HeaderText = "Nom d'utilisateur"
+      .Columns(5).HeaderText = "Courriel"
+
+      ' On ajoute les colonnes de droits
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+      .Columns.Add(New DataGridViewCheckBoxColumn())
+
+      ' On renomme les colonnes de droits
+      .Columns(6).HeaderText = "I-V"
+      .Columns(7).HeaderText = "I-I"
+      .Columns(8).HeaderText = "I-M"
+      .Columns(9).HeaderText = "I-S"
+      .Columns(10).HeaderText = "I-A"
+      .Columns(11).HeaderText = "F-V"
+      .Columns(11).HeaderText = "F-I"
+      .Columns(12).HeaderText = "U-V"
+      .Columns(13).HeaderText = "U-I"
+      .Columns(14).HeaderText = "U-M"
+      .Columns(15).HeaderText = "U-S"
+      .Columns(16).HeaderText = "U-A"
+    End With
   End Sub
 
   ' ---> DataGridViews : Sélection

@@ -8,13 +8,13 @@ Public Class DataTableTravailleur
   Private UtilisateurID As Int32
 
   ' Private DBContexte As COOPInventaireEntities
-  Private DBContexte As COOPInventaire_TP3_testsEntities2
+  Private DBContexte As COOPInventaire_TP3_testsEntities3
 
   Public Sub New()
     UtilisateurID = Nothing ' = Aucun utilisateur
 
     Try
-      DBContexte = New COOPInventaire_TP3_testsEntities2()
+      DBContexte = New COOPInventaire_TP3_testsEntities3()
     Catch ex As Exception
       MsgBox("Erreur de connection au serveur")
     End Try
