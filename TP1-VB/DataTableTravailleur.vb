@@ -182,6 +182,17 @@ Public Class DataTableTravailleur
     Me.Sauvegarder()
   End Sub
 
+  ' Cette fonction retourne des données d'inventaire filtré
+  Public Function GetDataUtilisateurFiltre(ByVal Nom As String,
+                                           ByVal Prenom As String,
+                                           ByVal Courriel As String,
+                                           ByVal Username As String) As List(Of TP1_VB.SelectUtilisateurFiltre_Result)
+    Return DBContexte.SelectUtilisateurFiltre(Username,
+                                              Courriel,
+                                              Nom,
+                                              Prenom).ToList
+  End Function
+
   ' ---> Autre
 
   Public Sub Sauvegarder()

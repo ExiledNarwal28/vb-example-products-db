@@ -274,4 +274,16 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("UpdateUtilisateur", iDParameter, usernameParameter, passwordParameter, courrielParameter, nomParameter, prenomParameter, droitsParameter)
     End Function
 
+    Public Overridable Function SelectUtilisateurFiltre(username As String, courriel As String, nom As String, prenom As String) As ObjectResult(Of SelectUtilisateurFiltre_Result)
+        Dim usernameParameter As ObjectParameter = If(username IsNot Nothing, New ObjectParameter("Username", username), New ObjectParameter("Username", GetType(String)))
+
+        Dim courrielParameter As ObjectParameter = If(courriel IsNot Nothing, New ObjectParameter("Courriel", courriel), New ObjectParameter("Courriel", GetType(String)))
+
+        Dim nomParameter As ObjectParameter = If(nom IsNot Nothing, New ObjectParameter("Nom", nom), New ObjectParameter("Nom", GetType(String)))
+
+        Dim prenomParameter As ObjectParameter = If(prenom IsNot Nothing, New ObjectParameter("Prenom", prenom), New ObjectParameter("Prenom", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectUtilisateurFiltre_Result)("SelectUtilisateurFiltre", usernameParameter, courrielParameter, nomParameter, prenomParameter)
+    End Function
+
 End Class

@@ -76,8 +76,8 @@ Public Class FormManipulerUtilisateur
   Private Sub UpdateUtilisateur()
     DataTableTrav.UpdateUtilisateur(
       Me.IDModif,
-      TextBoxUtilisateurAjoutNom.Text,
       TextBoxUtilisateurAjoutPrenom.Text,
+      TextBoxUtilisateurAjoutNom.Text,
       TextBoxUtilisateurAjoutUsername.Text,
       TextBoxUtilisateurAjoutCourriel.Text,
       TextBoxUtilisateurAjoutPassword.Text,

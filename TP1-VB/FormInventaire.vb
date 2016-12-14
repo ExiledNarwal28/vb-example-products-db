@@ -259,7 +259,7 @@ Public Class FormInventaire
 
   ' ---> Évênements : Recherche/Filtre
 
-  ' Évênement qui filtre le DataGridView en fonction de ce qui est écrit dans les TextBox de recherche
+  ' Évênement qui filtre le DataGridView d'inventaire en fonction de ce qui est écrit dans les TextBox de recherche
   Private Sub TextBoxRechItems_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRechItemsCode.TextChanged,
     TextBoxRechItemsDesc.TextChanged, TextBoxRechItemsEmp.TextChanged, TextBoxRechItemsCat.TextChanged,
     TextBoxRechItemsDep.TextChanged, TextBoxRechItemsFourn.TextChanged
@@ -272,8 +272,6 @@ Public Class FormInventaire
       TextBoxRechItemsDep.Text.Trim.Length + TextBoxRechItemsFourn.Text.Trim.Length
 
     If NombreCaracteres > 0 Then
-      ' On construit une tableau de String de la recherche
-
       DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireCompletFiltre(
         TextBoxRechItemsCode.Text,
         TextBoxRechItemsDesc.Text,
@@ -317,6 +315,25 @@ Public Class FormInventaire
     MettreAJourItemSelection()
   End Sub
 
+  ' Évênement qui filtre le DataGridView d'utilisateur en fonction de ce qui est écrit dans les TextBox de recherche
+  Private Sub TextBoxRechUtilisateur_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRechUtilisateurNom.TextChanged,
+    TextBoxRechUtilisateurPrenom.TextChanged, TextBoxRechUtilisateurCourriel.TextChanged, TextBoxRechUtilisateurUsername.TextChanged
+    ' Il faut d'abord vérifier si les textboxs ont du texte
+
+    Dim NombreCaracteres = TextBoxRechUtilisateurNom.Text.Trim.Length + TextBoxRechUtilisateurPrenom.Text.Trim.Length +
+      TextBoxRechUtilisateurCourriel.Text.Trim.Length + TextBoxRechUtilisateurUsername.Text.Trim.Length
+
+    If NombreCaracteres > 0 Then
+      DataGridViewUtilisateurs.DataSource = DataTableTrav.GetDataUtilisateurFiltre(TextBoxRechUtilisateurNom.Text,
+                                                                                   TextBoxRechUtilisateurPrenom.Text,
+                                                                                   TextBoxRechUtilisateurCourriel.Text,
+                                                                                   TextBoxRechUtilisateurUsername.Text)
+    Else
+      ' Si l'utilisateur enlève sa recherche, alors la source est la table entière
+      DataGridViewUtilisateurs.DataSource = DataTableTrav.GetDataUtilisateur()
+    End If
+  End Sub
+
   ' ---> Affichage général
 
   ' Méthode pour écrire le total du montant des items affichés
@@ -358,6 +375,8 @@ Public Class FormInventaire
     FormManipulerUtilisateur.PanelUtilisateurAjoutInformation.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0 _
                                                                         Or (droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0
     FormManipulerUtilisateur.PanelUtilisateurAjoutDroit.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_ADMIN) <> 0
+
+    LabelUtilisateurDroitInstructions.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_ADMIN) <> 0
 
     ' Les controles d'administrateur d'inventaire
     LabelItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0

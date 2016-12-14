@@ -53,6 +53,7 @@ Partial Class FormInventaire
     Me.TabPageFactures = New System.Windows.Forms.TabPage()
     Me.DataGridViewFactures = New System.Windows.Forms.DataGridView()
     Me.TabPageUtilisateurs = New System.Windows.Forms.TabPage()
+    Me.LabelUtilisateurDroitInstructions = New System.Windows.Forms.Label()
     Me.ButtonSupprimerUtilisateur = New System.Windows.Forms.Button()
     Me.ButtonModifierUtilisateur = New System.Windows.Forms.Button()
     Me.ButtonAjoutUtilisateur = New System.Windows.Forms.Button()
@@ -65,7 +66,15 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonDeconnection = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
-    Me.LabelUtilisateurDroitInstructions = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurRecherche = New System.Windows.Forms.Label()
+    Me.LabelUtilisateurNom = New System.Windows.Forms.Label()
+    Me.TextBoxRechUtilisateurNom = New System.Windows.Forms.TextBox()
+    Me.LabelUtilisateurPrenom = New System.Windows.Forms.Label()
+    Me.TextBoxRechUtilisateurPrenom = New System.Windows.Forms.TextBox()
+    Me.LabelUtilisateurCourriel = New System.Windows.Forms.Label()
+    Me.TextBoxRechUtilisateurCourriel = New System.Windows.Forms.TextBox()
+    Me.LabelUtilisateurUsername = New System.Windows.Forms.Label()
+    Me.TextBoxRechUtilisateurUsername = New System.Windows.Forms.TextBox()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -167,7 +176,7 @@ Partial Class FormInventaire
     '
     Me.LabelItemsFourn.Anchor = System.Windows.Forms.AnchorStyles.Left
     Me.LabelItemsFourn.AutoSize = True
-    Me.LabelItemsFourn.Location = New System.Drawing.Point(6, 355)
+    Me.LabelItemsFourn.Location = New System.Drawing.Point(6, 347)
     Me.LabelItemsFourn.Name = "LabelItemsFourn"
     Me.LabelItemsFourn.Size = New System.Drawing.Size(61, 13)
     Me.LabelItemsFourn.TabIndex = 22
@@ -176,7 +185,7 @@ Partial Class FormInventaire
     'TextBoxRechItemsFourn
     '
     Me.TextBoxRechItemsFourn.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechItemsFourn.Location = New System.Drawing.Point(9, 371)
+    Me.TextBoxRechItemsFourn.Location = New System.Drawing.Point(9, 363)
     Me.TextBoxRechItemsFourn.Name = "TextBoxRechItemsFourn"
     Me.TextBoxRechItemsFourn.Size = New System.Drawing.Size(145, 20)
     Me.TextBoxRechItemsFourn.TabIndex = 21
@@ -203,7 +212,7 @@ Partial Class FormInventaire
     '
     Me.LabelItemsEmp.Anchor = System.Windows.Forms.AnchorStyles.Left
     Me.LabelItemsEmp.AutoSize = True
-    Me.LabelItemsEmp.Location = New System.Drawing.Point(6, 225)
+    Me.LabelItemsEmp.Location = New System.Drawing.Point(6, 224)
     Me.LabelItemsEmp.Name = "LabelItemsEmp"
     Me.LabelItemsEmp.Size = New System.Drawing.Size(71, 13)
     Me.LabelItemsEmp.TabIndex = 18
@@ -212,7 +221,7 @@ Partial Class FormInventaire
     'TextBoxRechItemsEmp
     '
     Me.TextBoxRechItemsEmp.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechItemsEmp.Location = New System.Drawing.Point(9, 241)
+    Me.TextBoxRechItemsEmp.Location = New System.Drawing.Point(9, 240)
     Me.TextBoxRechItemsEmp.Name = "TextBoxRechItemsEmp"
     Me.TextBoxRechItemsEmp.Size = New System.Drawing.Size(145, 20)
     Me.TextBoxRechItemsEmp.TabIndex = 17
@@ -221,7 +230,7 @@ Partial Class FormInventaire
     '
     Me.LabelItemsCat.Anchor = System.Windows.Forms.AnchorStyles.Left
     Me.LabelItemsCat.AutoSize = True
-    Me.LabelItemsCat.Location = New System.Drawing.Point(6, 270)
+    Me.LabelItemsCat.Location = New System.Drawing.Point(6, 265)
     Me.LabelItemsCat.Name = "LabelItemsCat"
     Me.LabelItemsCat.Size = New System.Drawing.Size(52, 13)
     Me.LabelItemsCat.TabIndex = 16
@@ -230,7 +239,7 @@ Partial Class FormInventaire
     'TextBoxRechItemsCat
     '
     Me.TextBoxRechItemsCat.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechItemsCat.Location = New System.Drawing.Point(9, 286)
+    Me.TextBoxRechItemsCat.Location = New System.Drawing.Point(9, 281)
     Me.TextBoxRechItemsCat.Name = "TextBoxRechItemsCat"
     Me.TextBoxRechItemsCat.Size = New System.Drawing.Size(145, 20)
     Me.TextBoxRechItemsCat.TabIndex = 15
@@ -239,7 +248,7 @@ Partial Class FormInventaire
     '
     Me.LabelItemsDep.Anchor = System.Windows.Forms.AnchorStyles.Left
     Me.LabelItemsDep.AutoSize = True
-    Me.LabelItemsDep.Location = New System.Drawing.Point(6, 313)
+    Me.LabelItemsDep.Location = New System.Drawing.Point(6, 306)
     Me.LabelItemsDep.Name = "LabelItemsDep"
     Me.LabelItemsDep.Size = New System.Drawing.Size(68, 13)
     Me.LabelItemsDep.TabIndex = 14
@@ -248,7 +257,7 @@ Partial Class FormInventaire
     'TextBoxRechItemsDep
     '
     Me.TextBoxRechItemsDep.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechItemsDep.Location = New System.Drawing.Point(9, 329)
+    Me.TextBoxRechItemsDep.Location = New System.Drawing.Point(9, 322)
     Me.TextBoxRechItemsDep.Name = "TextBoxRechItemsDep"
     Me.TextBoxRechItemsDep.Size = New System.Drawing.Size(145, 20)
     Me.TextBoxRechItemsDep.TabIndex = 13
@@ -407,6 +416,15 @@ Partial Class FormInventaire
     'TabPageUtilisateurs
     '
     Me.TabPageUtilisateurs.BackColor = System.Drawing.Color.Khaki
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateurUsername)
+    Me.TabPageUtilisateurs.Controls.Add(Me.TextBoxRechUtilisateurUsername)
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateurCourriel)
+    Me.TabPageUtilisateurs.Controls.Add(Me.TextBoxRechUtilisateurCourriel)
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateurPrenom)
+    Me.TabPageUtilisateurs.Controls.Add(Me.TextBoxRechUtilisateurPrenom)
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateurNom)
+    Me.TabPageUtilisateurs.Controls.Add(Me.TextBoxRechUtilisateurNom)
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateurRecherche)
     Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateurDroitInstructions)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonSupprimerUtilisateur)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonModifierUtilisateur)
@@ -418,6 +436,15 @@ Partial Class FormInventaire
     Me.TabPageUtilisateurs.Size = New System.Drawing.Size(1009, 508)
     Me.TabPageUtilisateurs.TabIndex = 2
     Me.TabPageUtilisateurs.Text = "Utilisateurs"
+    '
+    'LabelUtilisateurDroitInstructions
+    '
+    Me.LabelUtilisateurDroitInstructions.AutoSize = True
+    Me.LabelUtilisateurDroitInstructions.Location = New System.Drawing.Point(160, 489)
+    Me.LabelUtilisateurDroitInstructions.Name = "LabelUtilisateurDroitInstructions"
+    Me.LabelUtilisateurDroitInstructions.Size = New System.Drawing.Size(336, 13)
+    Me.LabelUtilisateurDroitInstructions.TabIndex = 33
+    Me.LabelUtilisateurDroitInstructions.Text = "* Pour voir les droits d'un utilisateur, sélectionnez-le et faites ""Modifier"""
     '
     'ButtonSupprimerUtilisateur
     '
@@ -537,14 +564,92 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
     '
-    'LabelUtilisateurDroitInstructions
+    'LabelUtilisateurRecherche
     '
-    Me.LabelUtilisateurDroitInstructions.AutoSize = True
-    Me.LabelUtilisateurDroitInstructions.Location = New System.Drawing.Point(160, 489)
-    Me.LabelUtilisateurDroitInstructions.Name = "LabelUtilisateurDroitInstructions"
-    Me.LabelUtilisateurDroitInstructions.Size = New System.Drawing.Size(336, 13)
-    Me.LabelUtilisateurDroitInstructions.TabIndex = 33
-    Me.LabelUtilisateurDroitInstructions.Text = "* Pour voir les droits d'un utilisateur, sélectionnez-le et faites ""Modifier"""
+    Me.LabelUtilisateurRecherche.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelUtilisateurRecherche.AutoSize = True
+    Me.LabelUtilisateurRecherche.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    Me.LabelUtilisateurRecherche.Location = New System.Drawing.Point(50, 122)
+    Me.LabelUtilisateurRecherche.Name = "LabelUtilisateurRecherche"
+    Me.LabelUtilisateurRecherche.Size = New System.Drawing.Size(60, 13)
+    Me.LabelUtilisateurRecherche.TabIndex = 34
+    Me.LabelUtilisateurRecherche.Text = "Recherche"
+    '
+    'LabelUtilisateurNom
+    '
+    Me.LabelUtilisateurNom.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelUtilisateurNom.AutoSize = True
+    Me.LabelUtilisateurNom.Location = New System.Drawing.Point(6, 142)
+    Me.LabelUtilisateurNom.Name = "LabelUtilisateurNom"
+    Me.LabelUtilisateurNom.Size = New System.Drawing.Size(29, 13)
+    Me.LabelUtilisateurNom.TabIndex = 36
+    Me.LabelUtilisateurNom.Text = "Nom"
+    '
+    'TextBoxRechUtilisateurNom
+    '
+    Me.TextBoxRechUtilisateurNom.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechUtilisateurNom.Location = New System.Drawing.Point(9, 158)
+    Me.TextBoxRechUtilisateurNom.Name = "TextBoxRechUtilisateurNom"
+    Me.TextBoxRechUtilisateurNom.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechUtilisateurNom.TabIndex = 35
+    Me.TextBoxRechUtilisateurNom.Tag = ""
+    '
+    'LabelUtilisateurPrenom
+    '
+    Me.LabelUtilisateurPrenom.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelUtilisateurPrenom.AutoSize = True
+    Me.LabelUtilisateurPrenom.Location = New System.Drawing.Point(6, 183)
+    Me.LabelUtilisateurPrenom.Name = "LabelUtilisateurPrenom"
+    Me.LabelUtilisateurPrenom.Size = New System.Drawing.Size(43, 13)
+    Me.LabelUtilisateurPrenom.TabIndex = 38
+    Me.LabelUtilisateurPrenom.Text = "Prénom"
+    '
+    'TextBoxRechUtilisateurPrenom
+    '
+    Me.TextBoxRechUtilisateurPrenom.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechUtilisateurPrenom.Location = New System.Drawing.Point(9, 199)
+    Me.TextBoxRechUtilisateurPrenom.Name = "TextBoxRechUtilisateurPrenom"
+    Me.TextBoxRechUtilisateurPrenom.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechUtilisateurPrenom.TabIndex = 37
+    Me.TextBoxRechUtilisateurPrenom.Tag = ""
+    '
+    'LabelUtilisateurCourriel
+    '
+    Me.LabelUtilisateurCourriel.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelUtilisateurCourriel.AutoSize = True
+    Me.LabelUtilisateurCourriel.Location = New System.Drawing.Point(6, 224)
+    Me.LabelUtilisateurCourriel.Name = "LabelUtilisateurCourriel"
+    Me.LabelUtilisateurCourriel.Size = New System.Drawing.Size(42, 13)
+    Me.LabelUtilisateurCourriel.TabIndex = 40
+    Me.LabelUtilisateurCourriel.Text = "Courriel"
+    '
+    'TextBoxRechUtilisateurCourriel
+    '
+    Me.TextBoxRechUtilisateurCourriel.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechUtilisateurCourriel.Location = New System.Drawing.Point(9, 240)
+    Me.TextBoxRechUtilisateurCourriel.Name = "TextBoxRechUtilisateurCourriel"
+    Me.TextBoxRechUtilisateurCourriel.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechUtilisateurCourriel.TabIndex = 39
+    Me.TextBoxRechUtilisateurCourriel.Tag = ""
+    '
+    'LabelUtilisateurUsername
+    '
+    Me.LabelUtilisateurUsername.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelUtilisateurUsername.AutoSize = True
+    Me.LabelUtilisateurUsername.Location = New System.Drawing.Point(6, 265)
+    Me.LabelUtilisateurUsername.Name = "LabelUtilisateurUsername"
+    Me.LabelUtilisateurUsername.Size = New System.Drawing.Size(84, 13)
+    Me.LabelUtilisateurUsername.TabIndex = 42
+    Me.LabelUtilisateurUsername.Text = "Nom d'utilisateur"
+    '
+    'TextBoxRechUtilisateurUsername
+    '
+    Me.TextBoxRechUtilisateurUsername.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechUtilisateurUsername.Location = New System.Drawing.Point(9, 281)
+    Me.TextBoxRechUtilisateurUsername.Name = "TextBoxRechUtilisateurUsername"
+    Me.TextBoxRechUtilisateurUsername.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechUtilisateurUsername.TabIndex = 41
+    Me.TextBoxRechUtilisateurUsername.Tag = ""
     '
     'FormInventaire
     '
@@ -646,5 +751,14 @@ Partial Class FormInventaire
   Friend WithEvents ButtonModifierUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonAjoutUtilisateur As System.Windows.Forms.Button
   Friend WithEvents LabelUtilisateurDroitInstructions As System.Windows.Forms.Label
+  Friend WithEvents LabelUtilisateurUsername As System.Windows.Forms.Label
+  Friend WithEvents TextBoxRechUtilisateurUsername As System.Windows.Forms.TextBox
+  Friend WithEvents LabelUtilisateurCourriel As System.Windows.Forms.Label
+  Friend WithEvents TextBoxRechUtilisateurCourriel As System.Windows.Forms.TextBox
+  Friend WithEvents LabelUtilisateurPrenom As System.Windows.Forms.Label
+  Friend WithEvents TextBoxRechUtilisateurPrenom As System.Windows.Forms.TextBox
+  Friend WithEvents LabelUtilisateurNom As System.Windows.Forms.Label
+  Friend WithEvents TextBoxRechUtilisateurNom As System.Windows.Forms.TextBox
+  Friend WithEvents LabelUtilisateurRecherche As System.Windows.Forms.Label
 
 End Class
