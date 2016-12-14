@@ -8,12 +8,12 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 
 ###Ce que je n'ai pas eu le temps d'ajouter (features)###
 	L'inventaire ne devrait pas avoir à aller chercher les données quand on annule l'ajout/la modification
+	Les utilisateurs ne sont pas liés à un utilisateur SQL Server 2014. Les droits et l'identification sont parfaitement fonctionnel
 
 ###Ce que je n'ai pas eu le temps de règler (bugs)###
 	(Rien)
 
 ###Ce que je n'ai pas eu à regler (vieux bugs/features du TP1 qui ne nécéssitent pas de correction)###
-	Le formulaire FormAjoutItem construit lui-même un datarow et l'envoie dans le DataTable Items. Il faudrait que ce soit gèrer entièrement par DataTableTravailleur.
 	Faire marcher le filtre des items sélectionnés et la recherche en même temps
 	S'il y a trop d'items dans la facture et que le formulaire d'affichage de facture dépasse l'écran, l'impression ne comportera pas la page au complet (parce que je me sers d'une capture d'écran pour l'impression)
 
@@ -26,9 +26,9 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [x] Adapter Update à LinQ
 	1 [x] Adapter Delete à LinQ
 	1 [x] Vérifier pour les prix d'achats
-	3 [ ] Adapter filtres à LinQ
+	3 [x] Adapter filtres à LinQ
 	3 [x] Faire fonctionner le total d'inventaire
-	3 [ ] Bug de total d'inventaire quand on filtre seulement la sélection
+	4 [ ] Bug de total d'inventaire quand on filtre seulement la sélection
 
 ### LinQ + factures ###
 
@@ -61,21 +61,20 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	2 [x] Demander une connexion au départ du programme
 	2 [D] Pouvoir choisir l'addresse du ConnectionString en se connectant
 	2 [x] Lier la table Utilisateur avec les logins sur la base de données
-	2 [ ] Aller chercher les droits des utilisateurs
+	2 [x] Aller chercher les droits des utilisateurs
 	3 [x] Construire le tab des utilisateurs
-	3 [x] Faire le DGV des utilisateurs
+	3 [ ] Faire le DGV des utilisateurs
 	3 [x] Faire le formulaire de manipulation d'utilisateur
 	3 [ ] Faire les procedures stockées de select d'utilisateur
 	3 [x] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
 	3 [ ] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
 	3 [ ] Avoir une procédure stockée pour le delete d'utilisateurs de la base de données
-	3 [ ] Faire marcher les procédures stockées avec les utilisateurs de la base de données + 
 
 ### Gestion de droits ###
 
 	2 [ ] Faire les procedures stockées de select d'utilisateur + des droits (au besoin)
 	2 [ ] Faire les procedures stockées d'update d'utilisateur + des droits (au besoin)
-	3 [ ] Pouvoir se déconnnecter
+	3 [x] Pouvoir se déconnnecter
 
 ### Application des droits ###
 
