@@ -40,7 +40,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [x] Faire fonctionner la facture comme au TP1 avec LinQ
 	2 [x] Baisser l'inventaire des factures avec LinQ
 	3 [x] Faire fonctionner l'impression comme au TP1 avec LinQ
-	3 [ ] Bug de total de facture
+	3 [x] Bug de total de facture
 
 ### Tab des factures ###
 	

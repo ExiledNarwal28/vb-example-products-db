@@ -78,7 +78,7 @@ Public Class FormNouvelleFacture
     Dim soustotal As Double = 0
 
     For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
-      soustotal += CDbl(Rangee.Cells(6).Value)
+      soustotal += CDbl(Rangee.Cells(5).Value)
     Next
 
     TextBoxFactureSousTotal.Text = CStr(Math.Round(soustotal, 2)) & " $"
