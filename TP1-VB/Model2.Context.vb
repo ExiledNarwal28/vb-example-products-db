@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class COOPInventaire_TP3_testsEntities3
+Partial Public Class COOPInventaire_TP3_testsEntities1
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=COOPInventaire_TP3_testsEntities3")
+        MyBase.New("name=COOPInventaire_TP3_testsEntities1")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)

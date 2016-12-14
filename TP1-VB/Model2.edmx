@@ -992,7 +992,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="COOPInventaire_TP3_testsEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="COOPInventaire_TP3_testsEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tb_Categorie" EntityType="Self.Tb_Categorie" />
           <EntitySet Name="Tb_Commande" EntityType="Self.Tb_Commande" />
@@ -1205,7 +1205,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
         </ComplexType>
         <ComplexType Name="SelectUtilisateur_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int16" Name="Droits" Nullable="true" />
           <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
@@ -1227,7 +1226,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="COOPInventaire_TP3_testsModel1StoreContainer" CdmEntityContainer="COOPInventaire_TP3_testsEntities3">
+        <EntityContainerMapping StorageEntityContainer="COOPInventaire_TP3_testsModel1StoreContainer" CdmEntityContainer="COOPInventaire_TP3_testsEntities1">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="COOPInventaire_TP3_testsModel1.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1496,7 +1495,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <ResultMapping>
               <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectUtilisateur_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Droits" ColumnName="Droits" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />
                 <ScalarProperty Name="Username" ColumnName="Username" />

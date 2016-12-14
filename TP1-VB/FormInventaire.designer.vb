@@ -53,7 +53,6 @@ Partial Class FormInventaire
     Me.TabPageFactures = New System.Windows.Forms.TabPage()
     Me.DataGridViewFactures = New System.Windows.Forms.DataGridView()
     Me.TabPageUtilisateurs = New System.Windows.Forms.TabPage()
-    Me.ButtonUtilisateurAide = New System.Windows.Forms.Button()
     Me.ButtonSupprimerUtilisateur = New System.Windows.Forms.Button()
     Me.ButtonModifierUtilisateur = New System.Windows.Forms.Button()
     Me.ButtonAjoutUtilisateur = New System.Windows.Forms.Button()
@@ -66,6 +65,7 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonDeconnection = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
+    Me.LabelUtilisateurDroitInstructions = New System.Windows.Forms.Label()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -407,7 +407,7 @@ Partial Class FormInventaire
     'TabPageUtilisateurs
     '
     Me.TabPageUtilisateurs.BackColor = System.Drawing.Color.Khaki
-    Me.TabPageUtilisateurs.Controls.Add(Me.ButtonUtilisateurAide)
+    Me.TabPageUtilisateurs.Controls.Add(Me.LabelUtilisateurDroitInstructions)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonSupprimerUtilisateur)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonModifierUtilisateur)
     Me.TabPageUtilisateurs.Controls.Add(Me.ButtonAjoutUtilisateur)
@@ -418,15 +418,6 @@ Partial Class FormInventaire
     Me.TabPageUtilisateurs.Size = New System.Drawing.Size(1009, 508)
     Me.TabPageUtilisateurs.TabIndex = 2
     Me.TabPageUtilisateurs.Text = "Utilisateurs"
-    '
-    'ButtonUtilisateurAide
-    '
-    Me.ButtonUtilisateurAide.Location = New System.Drawing.Point(980, 484)
-    Me.ButtonUtilisateurAide.Name = "ButtonUtilisateurAide"
-    Me.ButtonUtilisateurAide.Size = New System.Drawing.Size(23, 23)
-    Me.ButtonUtilisateurAide.TabIndex = 33
-    Me.ButtonUtilisateurAide.Text = "?"
-    Me.ButtonUtilisateurAide.UseVisualStyleBackColor = True
     '
     'ButtonSupprimerUtilisateur
     '
@@ -546,6 +537,15 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
     '
+    'LabelUtilisateurDroitInstructions
+    '
+    Me.LabelUtilisateurDroitInstructions.AutoSize = True
+    Me.LabelUtilisateurDroitInstructions.Location = New System.Drawing.Point(160, 489)
+    Me.LabelUtilisateurDroitInstructions.Name = "LabelUtilisateurDroitInstructions"
+    Me.LabelUtilisateurDroitInstructions.Size = New System.Drawing.Size(336, 13)
+    Me.LabelUtilisateurDroitInstructions.TabIndex = 33
+    Me.LabelUtilisateurDroitInstructions.Text = "* Pour voir les droits d'un utilisateur, sélectionnez-le et faites ""Modifier"""
+    '
     'FormInventaire
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -565,6 +565,7 @@ Partial Class FormInventaire
     Me.TabPageFactures.ResumeLayout(False)
     CType(Me.DataGridViewFactures, System.ComponentModel.ISupportInitialize).EndInit()
     Me.TabPageUtilisateurs.ResumeLayout(False)
+    Me.TabPageUtilisateurs.PerformLayout()
     CType(Me.DataGridViewUtilisateurs, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
 
@@ -644,6 +645,6 @@ Partial Class FormInventaire
   Friend WithEvents ButtonSupprimerUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonModifierUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonAjoutUtilisateur As System.Windows.Forms.Button
-  Friend WithEvents ButtonUtilisateurAide As System.Windows.Forms.Button
+  Friend WithEvents LabelUtilisateurDroitInstructions As System.Windows.Forms.Label
 
 End Class

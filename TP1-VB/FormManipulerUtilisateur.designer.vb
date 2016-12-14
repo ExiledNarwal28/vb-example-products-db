@@ -246,9 +246,9 @@ Partial Class FormManipulerUtilisateur
     Me.LabelUtilisateurAjoutDroitAdminInfo.AutoSize = True
     Me.LabelUtilisateurAjoutDroitAdminInfo.Location = New System.Drawing.Point(13, 179)
     Me.LabelUtilisateurAjoutDroitAdminInfo.Name = "LabelUtilisateurAjoutDroitAdminInfo"
-    Me.LabelUtilisateurAjoutDroitAdminInfo.Size = New System.Drawing.Size(321, 13)
+    Me.LabelUtilisateurAjoutDroitAdminInfo.Size = New System.Drawing.Size(324, 13)
     Me.LabelUtilisateurAjoutDroitAdminInfo.TabIndex = 27
-    Me.LabelUtilisateurAjoutDroitAdminInfo.Text = "*Ceci permet de voir les estimations et le prix d'achat de l'inventaire"
+    Me.LabelUtilisateurAjoutDroitAdminInfo.Text = "* Ceci permet de voir les estimations et le prix d'achat de l'inventaire"
     '
     'CheckBoxUtilisateurAjoutDroitVoirInventaire
     '
@@ -366,9 +366,9 @@ Partial Class FormManipulerUtilisateur
     Me.LabelUtilisateurAjoutDroitAdminInfo2.AutoSize = True
     Me.LabelUtilisateurAjoutDroitAdminInfo2.Location = New System.Drawing.Point(13, 192)
     Me.LabelUtilisateurAjoutDroitAdminInfo2.Name = "LabelUtilisateurAjoutDroitAdminInfo2"
-    Me.LabelUtilisateurAjoutDroitAdminInfo2.Size = New System.Drawing.Size(210, 13)
+    Me.LabelUtilisateurAjoutDroitAdminInfo2.Size = New System.Drawing.Size(213, 13)
     Me.LabelUtilisateurAjoutDroitAdminInfo2.TabIndex = 42
-    Me.LabelUtilisateurAjoutDroitAdminInfo2.Text = "  et/ou de changer les droits d'un utilisateur"
+    Me.LabelUtilisateurAjoutDroitAdminInfo2.Text = "   et/ou de changer les droits d'un utilisateur"
     '
     'CheckBoxUtilisateurAjoutDroitAdminUtilisateur
     '

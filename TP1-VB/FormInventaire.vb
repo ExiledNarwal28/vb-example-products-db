@@ -43,8 +43,6 @@ Public Class FormInventaire
 
     MettreAJourNbItems()
 
-    MettreAJourUtilisateurDGVDroits()
-
     AffichageDroits()
   End Sub
 
@@ -76,38 +74,10 @@ Public Class FormInventaire
     ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
     With DataGridViewUtilisateurs
       .Columns(0).Visible = False ' ID
-      .Columns(1).Visible = False ' Droits
-      .Columns(2).HeaderText = "Nom"
-      .Columns(3).HeaderText = "Prénom"
-      .Columns(4).HeaderText = "Nom d'utilisateur"
-      .Columns(5).HeaderText = "Courriel"
-
-      ' On ajoute les colonnes de droits
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-      .Columns.Add(New DataGridViewCheckBoxColumn())
-
-      ' On renomme les colonnes de droits
-      .Columns(6).HeaderText = "I-V"
-      .Columns(7).HeaderText = "I-I"
-      .Columns(8).HeaderText = "I-M"
-      .Columns(9).HeaderText = "I-S"
-      .Columns(10).HeaderText = "I-A"
-      .Columns(11).HeaderText = "F-V"
-      .Columns(11).HeaderText = "F-I"
-      .Columns(12).HeaderText = "U-V"
-      .Columns(13).HeaderText = "U-I"
-      .Columns(14).HeaderText = "U-M"
-      .Columns(15).HeaderText = "U-S"
-      .Columns(16).HeaderText = "U-A"
+      .Columns(1).HeaderText = "Nom"
+      .Columns(2).HeaderText = "Prénom"
+      .Columns(3).HeaderText = "Nom d'utilisateur"
+      .Columns(4).HeaderText = "Courriel"
     End With
   End Sub
 
@@ -140,23 +110,6 @@ Public Class FormInventaire
     ListeSelection.Clear()
 
     MettreAJourNbItems()
-  End Sub
-
-  Private Sub MettreAJourUtilisateurDGVDroits()
-    Dim droits As Int16 = 0
-    Try
-      For Each Rangee As DataGridViewRow In DataGridViewUtilisateurs.Rows
-        droits = CShort(Rangee.Cells(1).Value) ' Colonne des droits
-
-        Rangee.Cells(6).Value = (droits And VariablesGlobales.DROIT_INVENTAIRE_SELECT) <> 0
-        Rangee.Cells(9).Style.BackColor = Color.Green
-        MsgBox("lol")
-
-        droits = 0
-      Next
-    Catch ex As Exception
-      MsgBox(ex.Message)
-    End Try
   End Sub
 
   ' ---> Évênements : Général
@@ -275,7 +228,7 @@ Public Class FormInventaire
   End Sub
 
   ' Aide pour l'utilisateur
-  Private Sub ButtonUtilisateurAide_Click(sender As Object, e As EventArgs) Handles ButtonUtilisateurAide.Click
+  Private Sub ButtonUtilisateurAide_Click(sender As Object, e As EventArgs)
     MsgBox("I-V : Inventaire - Voir" & vbNewLine & _
            "I-I : Inventaire - Insérer (ajouter)" & vbNewLine & _
            "I-M : Inventaire - Modifier" & vbNewLine & _
