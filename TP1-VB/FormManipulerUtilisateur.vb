@@ -116,14 +116,6 @@ Public Class FormManipulerUtilisateur
       Droits += VariablesGlobales.DROIT_FACTURE_INSERT
     End If
 
-    If CheckBoxUtilisateurAjoutDroitModifierFacture.Checked Then
-      Droits += VariablesGlobales.DROIT_FACTURE_UPDATE
-    End If
-
-    If CheckBoxUtilisateurAjoutDroitSupprimerFacture.Checked Then
-      Droits += VariablesGlobales.DROIT_FACTURE_DELETE
-    End If
-
     If CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Checked Then
       Droits += VariablesGlobales.DROIT_UTILISATEUR_SELECT
     End If
@@ -138,6 +130,10 @@ Public Class FormManipulerUtilisateur
 
     If CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Checked Then
       Droits += VariablesGlobales.DROIT_UTILISATEUR_DELETE
+    End If
+
+    If CheckBoxUtilisateurAjoutDroitAdminUtilisateur.Checked Then
+      Droits += VariablesGlobales.DROIT_UTILISATEUR_ADMIN
     End If
 
     Return Droits
@@ -177,12 +173,11 @@ Public Class FormManipulerUtilisateur
     CheckBoxUtilisateurAjoutDroitAdminInventaire.Checked = False
     CheckBoxUtilisateurAjoutDroitVoirFacture.Checked = False
     CheckBoxUtilisateurAjoutDroitAjoutFacture.Checked = True
-    CheckBoxUtilisateurAjoutDroitModifierFacture.Checked = False
-    CheckBoxUtilisateurAjoutDroitSupprimerFacture.Checked = False
     CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Checked = False
     CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.Checked = False
     CheckBoxUtilisateurAjoutDroitModifierUtilisateur.Checked = False
     CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Checked = False
+    CheckBoxUtilisateurAjoutDroitAdminUtilisateur.Checked = False
   End Sub
 
   ' Méthode pour remplir l'intégralité du formulaire avec une rangée

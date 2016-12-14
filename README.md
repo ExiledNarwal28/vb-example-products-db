@@ -79,20 +79,20 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 
 ### Application des droits ###
 
-	2 [ ] Mettre les droits dans les variables globales
-	3 [ ] Faire le bit 1 - Utilisateur Select (Permet le DGV + le Tab)
-	3 [ ] Faire le bit 2 - Utilisateur Insert (Permet le bouton)
-	3 [ ] Faire le bit 4 - Utilisateur Update infos (Permet le bouton)
-	3 [ ] Faire le bit 8 - Utilisateur Delete (Permet le bouton)
-	3 [ ] Faire le bit 16 - Utilisateur Update droits (Change le DGV)
-	3 [ ] Faire le bit 32 - Inventaire Select (Permet le DGV +  le Tab) (Ne pourra pas produire de factures)
-	3 [ ] Faire le bit 64 - Inventaire Insert (Permet le bouton)
-	3 [ ] Faire le bit 128 - Inventaire Update (Permet le bouton)
-	3 [ ] Faire le bit 256 - Inventaire Delete (Permet le bouton)
-	3 [ ] Faire le bit 512 - Inventaire Admin (Permet le Textbox d'estimations + prix achat)
-	3 [ ] Faire le bit 1024 - Factures Select (Permet le DGV + le Tab)
-	3 [ ] Faire le bit 2048 - Factures Insert (Permet le bouton)
-	3 [ ] Faire le bit 4096 - Factures Update (Permet le bouton)
+	2 [x] Mettre les droits dans les variables globales
+	3 [x] Faire le bit - Utilisateur Select (Permet le DGV + le Tab)
+	3 [x] Faire le bit - Utilisateur Insert (Permet le bouton)
+	3 [x] Faire le bit - Utilisateur Update (Permet le bouton)
+	3 [x] Faire le bit - Utilisateur Delete (Permet le bouton)
+	3 [x] Faire le bit - Inventaire Select (Permet le DGV +  le Tab)
+	3 [x] Faire le bit - Inventaire Insert (Permet le bouton)
+	3 [x] Faire le bit - Inventaire Update (Permet le bouton)
+	3 [x] Faire le bit - Inventaire Delete (Permet le bouton)
+	3 [x] Faire le bit - Inventaire Admin (Permet le Textbox d'estimations + prix achat)
+	3 [x] Faire le bit - Factures Select (Permet le DGV + le Tab)
+	3 [x] Faire le bit - Factures Insert (Permet le bouton)
+	3 [x] Faire le bit - Factures Update (Permet le bouton)
+	3 [x] Faire le bit - Factures Delete (Permet le bouton)
 
 ### Autre ###
 	

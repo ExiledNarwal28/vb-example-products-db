@@ -194,7 +194,6 @@ Public Class FormInventaire
       .Columns(7).HeaderText = "Fournisseur"
       .Columns(8).HeaderText = "Prix vente"
       .Columns(9).HeaderText = "Prix d'achat"
-      ' .Columns(9).Visible = VariablesGlobales.ADMIN_CONNECTION
       .Columns(10).HeaderText = "Quantité"
     End With
 
@@ -230,12 +229,44 @@ Public Class FormInventaire
   Private Sub AffichageDroits()
     Dim droits As Short = DataTableTrav.GetDroits()
 
+    ' Les boutons de l'inventaire
     ButtonModifierItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_UPDATE) <> 0
     ButtonAjoutItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_INSERT) <> 0
     ButtonSupprimerItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_DELETE) <> 0
+
+    ' Les boutons de factures (3 boutons d'ajout)
+    ButtonItemFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
+    ButtonFactureFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
+    ButtonUtilisateurFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
+
+    ' Les boutons d'utilisateurs
+    ' Un utilisateur peut voir le bouton de modification s'il peut modifier les informations (UPDATE) ou les droits (ADMIN)
+    ' Idem pour l'ajout (INSERT)
+    ButtonModifierUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0 _
+                                        Or (droits And VariablesGlobales.DROIT_UTILISATEUR_ADMIN) <> 0
+    ButtonAjoutUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0 _
+                                        Or (droits And VariablesGlobales.DROIT_UTILISATEUR_ADMIN) <> 0
+    ButtonSupprimerUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_DELETE) <> 0
+
+    ' Les panneaux pour l'ajout/la modification d'utilisateurs
+    ' Un utilisateur peut modifier les informations s'il peut UPDATE ou INSERT
+    ' Un utilisateur peut changer des droits s'il est ADMIN
+    FormManipulerUtilisateur.PanelUtilisateurAjoutInformation.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0 _
+                                                                        Or (droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0
+    FormManipulerUtilisateur.PanelUtilisateurAjoutDroit.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_ADMIN) <> 0
+    FormManipulerUtilisateur.PanelUtilisateurAjoutDroit.Visible = False
+
+    ' Les controles d'administrateur d'inventaire
     LabelItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0
     TextBoxItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0
+    DataGridViewItems.Columns(9).Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0 ' Le prix d'achat
 
+    ' Les datagridviews
+    DataGridViewItems.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_SELECT) <> 0
+    DataGridViewFactures.Visible = (droits And VariablesGlobales.DROIT_FACTURE_SELECT) <> 0
+    DataGridViewUtilisateurs.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_SELECT) <> 0
+
+    ' Les tabs (TabPages)
     ' Source : http://stackoverflow.com/questions/552579/how-to-hide-tabpage-from-tabcontrol#552588
     If (droits And VariablesGlobales.DROIT_INVENTAIRE_SELECT) <> 0 Then
       If Not PageInventaire.TabPages.Contains(TabPageItems) Then
@@ -247,11 +278,6 @@ Public Class FormInventaire
       End If
     End If
 
-    ButtonModifierFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_UPDATE) <> 0
-    ButtonAjoutFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0
-    ButtonSupprimerFacture.Visible = (droits And VariablesGlobales.DROIT_FACTURE_DELETE) <> 0
-
-    ' Source : http://stackoverflow.com/questions/552579/how-to-hide-tabpage-from-tabcontrol#552588
     If (droits And VariablesGlobales.DROIT_FACTURE_SELECT) <> 0 Then
       If Not PageInventaire.TabPages.Contains(TabPageFactures) Then
         PageInventaire.TabPages.Add(TabPageFactures)
@@ -262,11 +288,6 @@ Public Class FormInventaire
       End If
     End If
 
-    ButtonModifierUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0
-    ButtonAjoutUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0
-    ButtonSupprimerUtilisateur.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_DELETE) <> 0
-
-    ' Source : http://stackoverflow.com/questions/552579/how-to-hide-tabpage-from-tabcontrol#552588
     If (droits And VariablesGlobales.DROIT_UTILISATEUR_SELECT) <> 0 Then
       If Not PageInventaire.TabPages.Contains(TabPageUtilisateurs) Then
         PageInventaire.TabPages.Add(TabPageUtilisateurs)
