@@ -10,7 +10,6 @@ Public Class FormManipulerUtilisateur
     InitializeComponent()
     Me.DataTableTrav = DataTableTrav
     Me.FormulaireMode = ""
-    Me.IDModif = -1
   End Sub
 
   Public Sub SetFormulaireMode(ByVal Mode As String)
@@ -28,7 +27,7 @@ Public Class FormManipulerUtilisateur
         Me.Text = "Modification d'un utilisateur"
         Me.ButtonUtilisateurAjoutAction.Text = "Modifier"
         Me.ButtonUtilisateurAjoutAction.BackColor = Color.DarkOrange
-        If Not Me.IDModif = -1 Then
+        If Not Me.IDModif = Nothing Then
           Me.RemplirChampsRangee()
         End If
     End Select
@@ -62,7 +61,7 @@ Public Class FormManipulerUtilisateur
     Me.Hide()
   End Sub
 
-  ' Méthode pour insérer à l'inventaire complet
+  ' Méthode pour insérer l'utilisateur
   Private Sub InsertUtilisateur()
     DataTableTrav.InsertUtilisateur(
       TextBoxUtilisateurAjoutNom.Text,
@@ -73,7 +72,7 @@ Public Class FormManipulerUtilisateur
       Me.GetDroits)
   End Sub
 
-  ' Méthode pour modifier dans l'inventaire complet
+  ' Méthode pour modifier l'utilisateur
   Private Sub UpdateUtilisateur()
     DataTableTrav.UpdateUtilisateur(
       Me.IDModif,
@@ -182,20 +181,28 @@ Public Class FormManipulerUtilisateur
 
   ' Méthode pour remplir l'intégralité du formulaire avec une rangée
   Private Sub RemplirChampsRangee()
-    ' Dim Donnees As TP1_VB.SelectInventaireCompletSingle_Result = Me.DataTableTrav.GetDataInventaireCompletSingle(IDModif)
+    Dim Donnees As TP1_VB.SelectUtilisateurSingle_Result = Me.DataTableTrav.GetDataUtilisateurSingle(IDModif)
 
-    'With Donnees
-    '  TextBoxItemAjoutCodeProduit.Text = .Code_de_produit
-    '  TextBoxItemAjoutDesc.Text = .Description
-    '  TextBoxItemAjoutEmp.Text = .Emplacement
-    '  TextBoxItemAjoutFournNom.Text = .Nom_de_fournisseur
-    '  TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur
-    '  TextBoxItemAjoutCat.Text = .Catégorie
-    '  TextBoxItemAjoutDep.Text = .Département
-    '  TextBoxItemAjoutPrixA.Text = CStr(.Prix_d_achat)
-    '  TextBoxItemAjoutPrixV.Text = CStr(.Prix_de_vente)
-    '  TextBoxItemAjoutQt.Text = CStr(.Quantité)
-    'End With
+    With Donnees
+      TextBoxUtilisateurAjoutNom.Text = .Nom.Trim()
+      TextBoxUtilisateurAjoutPrenom.Text = .Prenom.Trim()
+      TextBoxUtilisateurAjoutCourriel.Text = .Courriel.Trim()
+      TextBoxUtilisateurAjoutPassword.Text = .Password.Trim()
+      TextBoxUtilisateurAjoutUsername.Text = .Username.Trim()
+
+      CheckBoxUtilisateurAjoutDroitVoirInventaire.Checked = CBool((.Droits And VariablesGlobales.DROIT_INVENTAIRE_SELECT) <> 0)
+      CheckBoxUtilisateurAjoutDroitAjoutInventaire.Checked = CBool((.Droits And VariablesGlobales.DROIT_INVENTAIRE_INSERT) <> 0)
+      CheckBoxUtilisateurAjoutDroitModifierInventaire.Checked = CBool((.Droits And VariablesGlobales.DROIT_INVENTAIRE_UPDATE) <> 0)
+      CheckBoxUtilisateurAjoutDroitSupprimerInventaire.Checked = CBool((.Droits And VariablesGlobales.DROIT_INVENTAIRE_DELETE) <> 0)
+      CheckBoxUtilisateurAjoutDroitAdminInventaire.Checked = CBool((.Droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0)
+      CheckBoxUtilisateurAjoutDroitVoirFacture.Checked = CBool((.Droits And VariablesGlobales.DROIT_FACTURE_SELECT) <> 0)
+      CheckBoxUtilisateurAjoutDroitAjoutFacture.Checked = CBool((.Droits And VariablesGlobales.DROIT_FACTURE_INSERT) <> 0)
+      CheckBoxUtilisateurAjoutDroitVoirUtilisateur.Checked = CBool((.Droits And VariablesGlobales.DROIT_UTILISATEUR_SELECT) <> 0)
+      CheckBoxUtilisateurAjoutDroitAjoutUtilisateur.Checked = CBool((.Droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0)
+      CheckBoxUtilisateurAjoutDroitModifierUtilisateur.Checked = CBool((.Droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0)
+      CheckBoxUtilisateurAjoutDroitSupprimerUtilisateur.Checked = CBool((.Droits And VariablesGlobales.DROIT_UTILISATEUR_DELETE) <> 0)
+      CheckBoxUtilisateurAjoutDroitAdminUtilisateur.Checked = CBool((.Droits And VariablesGlobales.DROIT_UTILISATEUR_ADMIN) <> 0)
+    End With
   End Sub
 
   Private Function VerifierChamp() As Boolean

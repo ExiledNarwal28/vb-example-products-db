@@ -38,9 +38,9 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [ ] Adapter le DGV de factures à LinQ
 	1 [x] Adapter l'ajout d'éléments à la facture à LinQ
 	1 [x] Faire fonctionner la facture comme au TP1 avec LinQ
-	2 [ ] Baisser l'inventaire des factures avec LinQ
+	2 [ ] Baisser l'inventaire des factures avec LinQ - VÉRIFIER
 	2 [ ] Ajouter les factures à la base de données lors de la création
-	3 [ ] Faire fonctionner l'impression comme au TP1 avec LinQ
+	3 [x] Faire fonctionner l'impression comme au TP1 avec LinQ
 
 ### Tab des factures ###
 	
@@ -64,14 +64,12 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	2 [x] Lier la table Utilisateur avec les logins sur la base de données
 	2 [x] Aller chercher les droits des utilisateurs
 	3 [x] Construire le tab des utilisateurs
-	3 [ ] Faire le DGV des utilisateurs
+	3 [x] Faire le DGV des utilisateurs
 	3 [x] Faire le formulaire de manipulation d'utilisateur
 	3 [x] Faire les procedures stockées de select d'utilisateur
 	3 [x] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
-	3 [ ] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
-	3 [ ] Avoir une procédure stockée pour le delete d'utilisateurs de la base de données
-	4 [ ] Update droits à l'instanciation
-	4 [ ] Update droits à l'ajout/modification
+	3 [x] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
+	3 [x] Avoir une procédure stockée pour le delete d'utilisateurs de la base de données
 	5 [ ] Filtrage par Nom
 	5 [ ] Filtrage par Prenom
 	5 [ ] Filtrage par Username
@@ -105,6 +103,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [ ] Supprimer les fichiers du TP1
 	1 [ ] Renommer README.md en LISEZMOI.md
 	1 [ ] Vérifier les TODO dans le programme
+	5 [ ] Règler les anchors
 
 ## Historiques des versions de LISEZMOI.md ##
 

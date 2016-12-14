@@ -10,7 +10,6 @@ Public Class FormManipulerItem
     InitializeComponent()
     Me.DataTableTrav = DataTableTrav
     Me.FormulaireMode = ""
-    ' Me.IDModif = -1
   End Sub
 
   Public Sub SetFormulaireMode(ByVal Mode As String)
@@ -28,7 +27,7 @@ Public Class FormManipulerItem
         Me.Text = "Modification d'un item"
         Me.ButtonItemsAjoutAction.Text = "Modifier"
         Me.ButtonItemsAjoutAction.BackColor = Color.DarkOrange
-        If Not Me.IDModif = -1 Then
+        If Not Me.IDModif = Nothing Then
           Me.RemplirChampsRangee()
         End If
     End Select

@@ -130,6 +130,17 @@ Public Class DataTableTravailleur
     Return DBContexte.SelectUtilisateur().ToList()
   End Function
 
+  ' Méthode qui retourne un seul DataRow avec son Id
+  Public Function GetDataUtilisateurSingle(ByVal iD As Int32) As TP1_VB.SelectUtilisateurSingle_Result
+    ' Try catch au cas où la base de données serait corrompue et que 2 utilisateurs auraient le même ID
+    Try
+      Return DBContexte.SelectUtilisateurSingle(iD).Single()
+    Catch ex As Exception
+      MsgBox(ex.Message)
+      Return Nothing
+    End Try
+  End Function
+
   Public Sub InsertUtilisateur(ByVal Prenom As String,
                                ByVal Nom As String,
                                ByVal Username As String,
@@ -145,7 +156,6 @@ Public Class DataTableTravailleur
                                  Droits)
 
     Me.Sauvegarder()
-
   End Sub
 
   Public Sub UpdateUtilisateur(ByVal iD As Int32,
@@ -155,11 +165,21 @@ Public Class DataTableTravailleur
                                ByVal Courriel As String,
                                ByVal Password As String,
                                ByVal Droits As Int16)
-    ' TODO
+
+    DBContexte.UpdateUtilisateur(iD,
+                                 Username,
+                                 Password,
+                                 Courriel,
+                                 Nom,
+                                 Prenom,
+                                 Droits)
+
+    Me.Sauvegarder()
   End Sub
 
   Public Sub DeleteUtilisateur(ByVal iD As Int32)
-    ' TODO
+    DBContexte.DeleteUtilisateur(iD)
+    Me.Sauvegarder()
   End Sub
 
   ' ---> Autre

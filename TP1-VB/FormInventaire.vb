@@ -109,6 +109,9 @@ Public Class FormInventaire
 
     ListeSelection.Clear()
 
+    ViderItemsRecherche()
+    CheckBoxFiltreSelection.Checked = False
+
     MettreAJourNbItems()
   End Sub
 
@@ -219,12 +222,23 @@ Public Class FormInventaire
   Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click
     FormManipulerUtilisateur.SetFormulaireMode("Ajout")
     FormManipulerUtilisateur.ShowDialog()
+
+    DataGridViewUtilisateurs.DataSource = DataTableTrav.GetDataUtilisateur()
   End Sub
 
   ' Évênement pour modifier un utilisateur
   Private Sub ButtonModifierUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonModifierUtilisateur.Click
-    FormManipulerUtilisateur.SetFormulaireMode("Modification")
-    FormManipulerUtilisateur.ShowDialog()
+    If Not DataGridViewUtilisateurs.SelectedRows(0) Is Nothing Then
+      ' On envoie le ID à Modifier
+      FormManipulerUtilisateur.SetIDModif(CInt(DataGridViewUtilisateurs.SelectedRows(0).Cells(0).Value))
+
+      FormManipulerUtilisateur.SetFormulaireMode("Modification")
+      FormManipulerUtilisateur.ShowDialog()
+
+      DataGridViewUtilisateurs.DataSource = DataTableTrav.GetDataUtilisateur()
+    Else
+      MsgBox("Vous devez sélectionner un utilisateur.")
+    End If
   End Sub
 
   ' Aide pour l'utilisateur
@@ -344,7 +358,6 @@ Public Class FormInventaire
     FormManipulerUtilisateur.PanelUtilisateurAjoutInformation.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_UPDATE) <> 0 _
                                                                         Or (droits And VariablesGlobales.DROIT_UTILISATEUR_INSERT) <> 0
     FormManipulerUtilisateur.PanelUtilisateurAjoutDroit.Visible = (droits And VariablesGlobales.DROIT_UTILISATEUR_ADMIN) <> 0
-    FormManipulerUtilisateur.PanelUtilisateurAjoutDroit.Visible = False
 
     ' Les controles d'administrateur d'inventaire
     LabelItemsTotal.Visible = (droits And VariablesGlobales.DROIT_INVENTAIRE_ADMIN) <> 0

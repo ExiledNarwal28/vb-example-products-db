@@ -395,6 +395,9 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
         <Function Name="DeleteInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="DeleteUtilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="InsertInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodeProduit" Type="nchar" Mode="In" />
@@ -409,6 +412,14 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
           <Parameter Name="Qt" Type="int" Mode="In" />
         </Function>
         <Function Name="InsertUtilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Courriel" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nom" Type="nvarchar" Mode="In" />
+          <Parameter Name="Prenom" Type="nvarchar" Mode="In" />
+          <Parameter Name="Droits" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="InsertUtilisateurVieux" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
           <Parameter Name="Courriel" Type="nvarchar" Mode="In" />
@@ -439,6 +450,9 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
         <Function Name="SelectUtilisateurIDSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SelectUtilisateurSingle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -482,6 +496,15 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
           <Parameter Name="PrixVente" Type="float" Mode="In" />
           <Parameter Name="PrixAchat" Type="float" Mode="In" />
           <Parameter Name="Qt" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateUtilisateur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Courriel" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nom" Type="nvarchar" Mode="In" />
+          <Parameter Name="Prenom" Type="nvarchar" Mode="In" />
+          <Parameter Name="Droits" Type="smallint" Mode="In" />
         </Function>
         <EntityContainer Name="COOPInventaire_TP3_testsModel1StoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -1076,6 +1099,9 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImport Name="DeleteInventaireComplet">
             <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="DeleteUtilisateur">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="InsertInventaireComplet">
             <Parameter Name="CodeProduit" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
@@ -1089,6 +1115,14 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Qt" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="InsertUtilisateur">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Courriel" Mode="In" Type="String" />
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="Prenom" Mode="In" Type="String" />
+            <Parameter Name="Droits" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="InsertUtilisateurVieux">
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
             <Parameter Name="Courriel" Mode="In" Type="String" />
@@ -1119,6 +1153,9 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImport Name="SelectUtilisateurIDSingle" ReturnType="Collection(Int32)">
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectUtilisateurSingle" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateurSingle_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1162,6 +1199,15 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="PrixVente" Mode="In" Type="Double" />
             <Parameter Name="PrixAchat" Mode="In" Type="Double" />
             <Parameter Name="Qt" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUtilisateur">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Courriel" Mode="In" Type="String" />
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="Prenom" Mode="In" Type="String" />
+            <Parameter Name="Droits" Mode="In" Type="Int16" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SelectInventaireComplet_Result">
@@ -1209,6 +1255,15 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
           <Property Type="String" Name="Courriel" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectUtilisateurSingle_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Courriel" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="Droits" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1437,8 +1492,10 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DeleteInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.DeleteInventaireComplet" />
+          <FunctionImportMapping FunctionImportName="DeleteUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.DeleteUtilisateur" />
           <FunctionImportMapping FunctionImportName="InsertInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertInventaireComplet" />
           <FunctionImportMapping FunctionImportName="InsertUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertUtilisateur" />
+          <FunctionImportMapping FunctionImportName="InsertUtilisateurVieux" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertUtilisateurVieux" />
           <FunctionImportMapping FunctionImportName="ReduireQtInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.ReduireQtInventaireComplet" />
           <FunctionImportMapping FunctionImportName="SelectInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectInventaireComplet">
             <ResultMapping>
@@ -1504,6 +1561,19 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SelectUtilisateurDroitsSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurDroitsSingle" />
           <FunctionImportMapping FunctionImportName="SelectUtilisateurIDSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurIDSingle" />
+          <FunctionImportMapping FunctionImportName="SelectUtilisateurSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurSingle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectUtilisateurSingle_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Droits" ColumnName="Droits" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_dropdiagram" />
@@ -1529,6 +1599,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="UpdateInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.UpdateInventaireComplet" />
+          <FunctionImportMapping FunctionImportName="UpdateUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.UpdateUtilisateur" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
