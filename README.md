@@ -54,6 +54,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	2 [ ] Faire le formulaire de manipulation de factures
 	2 [ ] Faire la modification de factures
 	2 [ ] Faire la suppresion de factures
+	5 [ ] Filtrage par ? (TODO)
 
 ### Utilisateurs de la base de données ###
 
@@ -65,10 +66,16 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	3 [x] Construire le tab des utilisateurs
 	3 [ ] Faire le DGV des utilisateurs
 	3 [x] Faire le formulaire de manipulation d'utilisateur
-	3 [ ] Faire les procedures stockées de select d'utilisateur
+	3 [x] Faire les procedures stockées de select d'utilisateur
 	3 [x] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
 	3 [ ] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
 	3 [ ] Avoir une procédure stockée pour le delete d'utilisateurs de la base de données
+	4 [ ] Update droits à l'instanciation
+	4 [ ] Update droits à l'ajout/modification
+	5 [ ] Filtrage par Nom
+	5 [ ] Filtrage par Prenom
+	5 [ ] Filtrage par Username
+	5 [ ] Filtrage par Courriel
 
 ### Gestion de droits ###
 

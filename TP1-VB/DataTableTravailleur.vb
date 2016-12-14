@@ -20,6 +20,8 @@ Public Class DataTableTravailleur
     End Try
   End Sub
 
+  ' ---> Connection et utilisateur actuel
+
   ' Méthode pour connecter l'utilisateur à la base de données
   Public Function Connection(ByVal Username As String,
                              ByVal Password As String) As Boolean
@@ -49,6 +51,8 @@ Public Class DataTableTravailleur
   Public Function GetDroits() As Int16
     Return CShort(DBContexte.SelectUtilisateurDroitsSingle(UtilisateurID).Single())
   End Function
+
+  ' ---> Inventaire
 
   ' Méthode qui retourne une liste de DataRows pour remplir un DataGridView
   Public Function GetDataInventaireComplet() As List(Of TP1_VB.SelectInventaireComplet_Result)
@@ -97,9 +101,34 @@ Public Class DataTableTravailleur
     Me.Sauvegarder()
   End Sub
 
-  Public Sub GetDataUtilisateur()
-
+  ' Méthode qui recoit un dictionnaire d'item_id et d'item_qt pour enlever des items de l'inventaire
+  Public Sub EnleverQuantite(ByVal DictQuantites As Dictionary(Of Integer, Integer))
+    ' Source : http://stackoverflow.com/questions/18628917/how-can-iterate-in-dictionary-in-vb-net
+    For Each Paire As KeyValuePair(Of Integer, Integer) In DictQuantites
+      DBContexte.ReduireQtInventaireComplet(Paire.Key, Paire.Value)
+    Next
   End Sub
+
+  ' Cette fonction retourne des données d'inventaire filtré
+  Public Function GetDataInventaireCompletFiltre(ByVal codeProduit As String,
+                                      ByVal description As String,
+                                      ByVal emplacement As String,
+                                      ByVal categorie As String,
+                                      ByVal departement As String,
+                                      ByVal fournisseur As String) As List(Of TP1_VB.SelectInventaireCompletFiltre_Result)
+    Return DBContexte.SelectInventaireCompletFiltre(codeProduit,
+                                                    description,
+                                                    emplacement,
+                                                    categorie,
+                                                    departement,
+                                                    fournisseur).ToList
+  End Function
+
+  ' ---> Utilisateur
+
+  Public Function GetDataUtilisateur() As List(Of TP1_VB.SelectUtilisateur_Result)
+    Return DBContexte.SelectUtilisateur().ToList()
+  End Function
 
   Public Sub InsertUtilisateur(ByVal Prenom As String,
                                ByVal Nom As String,
@@ -133,6 +162,8 @@ Public Class DataTableTravailleur
     ' TODO
   End Sub
 
+  ' ---> Autre
+
   Public Sub Sauvegarder()
     Try
       DBContexte.SaveChanges()
@@ -140,27 +171,4 @@ Public Class DataTableTravailleur
       MsgBox(ex.Message)
     End Try
   End Sub
-
-  ' Méthode qui recoit un dictionnaire d'item_id et d'item_qt pour enlever des items de l'inventaire
-  Public Sub EnleverQuantite(ByVal DictQuantites As Dictionary(Of Integer, Integer))
-    ' Source : http://stackoverflow.com/questions/18628917/how-can-iterate-in-dictionary-in-vb-net
-    For Each Paire As KeyValuePair(Of Integer, Integer) In DictQuantites
-      DBContexte.ReduireQtInventaireComplet(Paire.Key, Paire.Value)
-    Next
-  End Sub
-
-  ' Cette fonction retourne un DataView filtré
-  Public Function ObtenirDataViewRech(ByVal codeProduit As String,
-                                      ByVal description As String,
-                                      ByVal emplacement As String,
-                                      ByVal categorie As String,
-                                      ByVal departement As String,
-                                      ByVal fournisseur As String) As List(Of TP1_VB.SelectInventaireCompletFiltre_Result)
-    Return DBContexte.SelectInventaireCompletFiltre(codeProduit,
-                                                    description,
-                                                    emplacement,
-                                                    categorie,
-                                                    departement,
-                                                    fournisseur).ToList
-  End Function
 End Class

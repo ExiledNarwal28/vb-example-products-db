@@ -69,20 +69,6 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonDeconnection = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
-    Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-    Me.UtilisateurNom = New System.Windows.Forms.DataGridViewTextBoxColumn()
-    Me.VoirInventaire = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.AjoutInventaire = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.ModifierInventaire = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.SupprimerInventaire = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.AdminInventaire = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.VoirFacture = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.AjoutFacture = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.VoirUtilisateur = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.AjoutUtilisateur = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.ModifierUtilisateur = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.SupprimerUtilisateur = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-    Me.AdminUtilisateur = New System.Windows.Forms.DataGridViewCheckBoxColumn()
     Me.ButtonUtilisateurAide = New System.Windows.Forms.Button()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
@@ -527,7 +513,6 @@ Partial Class FormInventaire
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DataGridViewUtilisateurs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
     Me.DataGridViewUtilisateurs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    Me.DataGridViewUtilisateurs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.UtilisateurNom, Me.VoirInventaire, Me.AjoutInventaire, Me.ModifierInventaire, Me.SupprimerInventaire, Me.AdminInventaire, Me.VoirFacture, Me.AjoutFacture, Me.VoirUtilisateur, Me.AjoutUtilisateur, Me.ModifierUtilisateur, Me.SupprimerUtilisateur, Me.AdminUtilisateur})
     DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
     DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
     DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -598,118 +583,6 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.TabIndex = 8
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
-    '
-    'ID
-    '
-    Me.ID.HeaderText = "ID"
-    Me.ID.Name = "ID"
-    Me.ID.ReadOnly = True
-    Me.ID.Visible = False
-    Me.ID.Width = 24
-    '
-    'UtilisateurNom
-    '
-    Me.UtilisateurNom.HeaderText = "Utilisateur"
-    Me.UtilisateurNom.Name = "UtilisateurNom"
-    Me.UtilisateurNom.ReadOnly = True
-    Me.UtilisateurNom.Width = 78
-    '
-    'VoirInventaire
-    '
-    Me.VoirInventaire.HeaderText = "Voir Inventaire"
-    Me.VoirInventaire.Name = "VoirInventaire"
-    Me.VoirInventaire.ReadOnly = True
-    Me.VoirInventaire.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-    Me.VoirInventaire.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-    '
-    'AjoutInventaire
-    '
-    Me.AjoutInventaire.HeaderText = "Ajout Inventaire"
-    Me.AjoutInventaire.Name = "AjoutInventaire"
-    Me.AjoutInventaire.ReadOnly = True
-    Me.AjoutInventaire.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-    Me.AjoutInventaire.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-    Me.AjoutInventaire.Width = 97
-    '
-    'ModifierInventaire
-    '
-    Me.ModifierInventaire.HeaderText = "Modifier Inventaire"
-    Me.ModifierInventaire.Name = "ModifierInventaire"
-    Me.ModifierInventaire.ReadOnly = True
-    Me.ModifierInventaire.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-    Me.ModifierInventaire.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-    Me.ModifierInventaire.Width = 109
-    '
-    'SupprimerInventaire
-    '
-    Me.SupprimerInventaire.HeaderText = "Supprimer Inventaire"
-    Me.SupprimerInventaire.Name = "SupprimerInventaire"
-    Me.SupprimerInventaire.ReadOnly = True
-    Me.SupprimerInventaire.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-    Me.SupprimerInventaire.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-    Me.SupprimerInventaire.Width = 118
-    '
-    'AdminInventaire
-    '
-    Me.AdminInventaire.HeaderText = "Admin Inventaire"
-    Me.AdminInventaire.Name = "AdminInventaire"
-    Me.AdminInventaire.ReadOnly = True
-    Me.AdminInventaire.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-    Me.AdminInventaire.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-    Me.AdminInventaire.Width = 102
-    '
-    'VoirFacture
-    '
-    Me.VoirFacture.HeaderText = "Voir Facture"
-    Me.VoirFacture.Name = "VoirFacture"
-    Me.VoirFacture.ReadOnly = True
-    Me.VoirFacture.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-    Me.VoirFacture.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-    Me.VoirFacture.Width = 82
-    '
-    'AjoutFacture
-    '
-    Me.AjoutFacture.HeaderText = "Ajout Facture"
-    Me.AjoutFacture.Name = "AjoutFacture"
-    Me.AjoutFacture.ReadOnly = True
-    Me.AjoutFacture.Width = 68
-    '
-    'VoirUtilisateur
-    '
-    Me.VoirUtilisateur.HeaderText = "VoirUtilisateur"
-    Me.VoirUtilisateur.Name = "VoirUtilisateur"
-    Me.VoirUtilisateur.ReadOnly = True
-    Me.VoirUtilisateur.Width = 77
-    '
-    'AjoutUtilisateur
-    '
-    Me.AjoutUtilisateur.HeaderText = "Ajout Utilisateur"
-    Me.AjoutUtilisateur.Name = "AjoutUtilisateur"
-    Me.AjoutUtilisateur.ReadOnly = True
-    Me.AjoutUtilisateur.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-    Me.AjoutUtilisateur.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-    Me.AjoutUtilisateur.Width = 96
-    '
-    'ModifierUtilisateur
-    '
-    Me.ModifierUtilisateur.HeaderText = "Modifier Utilisateur"
-    Me.ModifierUtilisateur.Name = "ModifierUtilisateur"
-    Me.ModifierUtilisateur.ReadOnly = True
-    Me.ModifierUtilisateur.Width = 89
-    '
-    'SupprimerUtilisateur
-    '
-    Me.SupprimerUtilisateur.HeaderText = "Supprimer Utilisateur"
-    Me.SupprimerUtilisateur.Name = "SupprimerUtilisateur"
-    Me.SupprimerUtilisateur.ReadOnly = True
-    Me.SupprimerUtilisateur.Width = 98
-    '
-    'AdminUtilisateur
-    '
-    Me.AdminUtilisateur.HeaderText = "Admin Utilisateur"
-    Me.AdminUtilisateur.Name = "AdminUtilisateur"
-    Me.AdminUtilisateur.ReadOnly = True
-    Me.AdminUtilisateur.Width = 82
     '
     'ButtonUtilisateurAide
     '
@@ -825,19 +698,5 @@ Partial Class FormInventaire
   Friend WithEvents ButtonAjoutUtilisateur As System.Windows.Forms.Button
   Friend WithEvents ButtonUtilisateurFacture As System.Windows.Forms.Button
   Friend WithEvents ButtonUtilisateurAide As System.Windows.Forms.Button
-  Friend WithEvents ID As System.Windows.Forms.DataGridViewTextBoxColumn
-  Friend WithEvents UtilisateurNom As System.Windows.Forms.DataGridViewTextBoxColumn
-  Friend WithEvents VoirInventaire As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents AjoutInventaire As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents ModifierInventaire As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents SupprimerInventaire As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents AdminInventaire As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents VoirFacture As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents AjoutFacture As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents VoirUtilisateur As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents AjoutUtilisateur As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents ModifierUtilisateur As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents SupprimerUtilisateur As System.Windows.Forms.DataGridViewCheckBoxColumn
-  Friend WithEvents AdminUtilisateur As System.Windows.Forms.DataGridViewCheckBoxColumn
 
 End Class

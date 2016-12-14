@@ -37,26 +37,132 @@ Public Class FormInventaire
     DataGridViewItems.Refresh()
     AffichageInventaireCompletColonnes()
 
+    DataGridViewUtilisateurs.DataSource = DataTableTrav.GetDataUtilisateur()
+    DataGridViewUtilisateurs.Refresh()
+    AffichageUtilisateurColonnes()
+
     MettreAJourNbItems()
+
+    MettreAJourUtilisateurDGVDroits()
 
     AffichageDroits()
   End Sub
 
-  Private Sub ButtonItemFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click,
-                                                                                ButtonFactureFacture.Click,
-                                                                                ButtonUtilisateurFacture.Click
-    FormNouvelleFacture.SetProduitID(ListeSelection)
-    FormNouvelleFacture.ShowDialog()
+  ' ---> DataGridViews : Affichage
+
+  ' Méthode pour configurer l'affichage des colonnes d'inventaire
+  Private Sub AffichageInventaireCompletColonnes()
+
+    ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
+    With DataGridViewItems
+      .Columns(0).Visible = False ' ID
+      .Columns(1).HeaderText = "Code du produit"
+      .Columns(2).HeaderText = "Description"
+      .Columns(3).HeaderText = "Emplacement"
+      .Columns(4).HeaderText = "Catégorie"
+      .Columns(5).HeaderText = "Département"
+      .Columns(6).HeaderText = "Code fourn."
+      .Columns(7).HeaderText = "Fournisseur"
+      .Columns(8).HeaderText = "Prix vente"
+      .Columns(9).HeaderText = "Prix d'achat"
+      .Columns(10).HeaderText = "Quantité"
+    End With
+
+    ' Il faut mettre à jour de total des items
+    EcrireTotalItems()
   End Sub
 
+  ' Méthode pour configurer l'affichage des colonnes d'utilisateur
+  Private Sub AffichageUtilisateurColonnes()
+    ' TODO
+  End Sub
+
+  ' ---> DataGridViews : Sélection
+
+  ' Méthode pour mettre à jour l'affichage des items sélectionnés
+  Private Sub MettreAJourItemSelection()
+    For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
+      If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
+        Rangee.DefaultCellStyle.BackColor = SystemColors.Highlight
+        Rangee.DefaultCellStyle.ForeColor = SystemColors.HighlightText
+      Else
+        Rangee.DefaultCellStyle.BackColor = SystemColors.Window
+        Rangee.DefaultCellStyle.ForeColor = SystemColors.ControlText
+      End If
+    Next
+  End Sub
+
+  ' Méthode pour écrire le nombre d'items dans la sélection
+  Private Sub MettreAJourNbItems()
+    LabelItemsNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
+    LabelFacturesNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
+    LabelUtilisateursNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
+  End Sub
+
+  ' ---> DataGridViews : Rafraichissement et mise à jour
+
+  ' Méthode pour remettre à zéro la liste de sélection et tout ce qui vient avec
+  Private Sub RafraichirDGVItems()
+    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+
+    ListeSelection.Clear()
+
+    MettreAJourNbItems()
+  End Sub
+
+  Private Sub MettreAJourUtilisateurDGVDroits()
+    ' TODO
+  End Sub
+
+  ' ---> Évênements : Général
+
+  ' Évênement pour sauvegarder
+  Private Sub ButtonSauvegarder_Click(sender As Object, e As EventArgs) Handles ButtonSauvegarder.Click
+    DataTableTrav.Sauvegarder()
+    MsgBox("Sauvegarde effectuée!")
+  End Sub
+
+  ' Évênement lorsque le programme ferme
+  Private Sub FormInventaire_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
+    ' Source : https://msdn.microsoft.com/en-us/library/system.windows.forms.form.closing(v=vs.110).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-2
+
+    ' On sauvegarde la base de données lorsqu'on quitte le programme, juste pour être certain
+    DataTableTrav.Sauvegarder()
+  End Sub
+
+  ' Évênement pour se déconnecter
+  Private Sub ButtonDeconnection_Click(sender As Object, e As EventArgs) Handles ButtonDeconnection.Click
+    DataTableTrav.Deconnection()
+    ConnexionObligatoire()
+  End Sub
+
+  ' ---> Évênements : DataGridViews
+
+  ' Évênement pour sélectionner des items
+  Private Sub DataGridViewItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewItems.CellContentClick
+    Dim dgv As DataGridView = DirectCast(sender, DataGridView)
+
+    If ListeSelection.Contains(CInt(dgv.CurrentRow.Cells(0).Value)) Then
+      ListeSelection.Remove(CInt(dgv.CurrentRow.Cells(0).Value))
+    Else
+      ListeSelection.Add(CInt(dgv.CurrentRow.Cells(0).Value))
+    End If
+
+    MettreAJourItemSelection()
+    MettreAJourNbItems()
+  End Sub
+
+  ' ---> Évênements : Boutons d'inventaire
+
+  ' Évênement pour ajouter un item à l'inventaire
   Private Sub ButtonAjoutItems_Click(sender As Object, e As EventArgs) Handles ButtonAjoutItems.Click
     FormManipulerItem.SetFormulaireMode("Ajout")
     FormManipulerItem.ShowDialog()
     Me.RafraichirDGVItems()
   End Sub
 
+  ' Évênement pour modifier un item à l'inventaire
   Private Sub ButtonModifierItems_Click(sender As Object, e As EventArgs) Handles ButtonModifierItems.Click
-    ' Méthode pour modifier une rangée de la table
 
     ' On vérifie si l'utilisateur a bien sélectionné une seule rangée
     If ListeSelection.Count = 1 Then
@@ -73,7 +179,7 @@ Public Class FormInventaire
     End If
   End Sub
 
-  ' Méthode pour supprimer une rangée de la table
+  ' Évênement pour supprimer un item à l'inventaire
   Private Sub ButtonSupprimerItems_Click(sender As Object, e As EventArgs) Handles ButtonSupprimerItems.Click
     ' On vérifie si l'utilisateur a bien sélectionné une rangée
     If DataGridViewItems.SelectedRows.Count >= 1 Then
@@ -101,19 +207,52 @@ Public Class FormInventaire
     End If
   End Sub
 
-  ' Méthode pour remettre à zéro la liste de sélection et tout ce qui vient avec
-  Private Sub RafraichirDGVItems()
-    DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
+  ' ---> Évênements : Boutons de factures
 
-    ListeSelection.Clear()
-
-    MettreAJourNbItems()
+  ' Évênement pour ajouter une facture
+  Private Sub ButtonFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click,
+                                                                                ButtonFactureFacture.Click,
+                                                                                ButtonUtilisateurFacture.Click
+    FormNouvelleFacture.SetProduitID(ListeSelection)
+    FormNouvelleFacture.ShowDialog()
   End Sub
 
+  ' ---> Évênements : Boutons d'utilisateurs
+
+  ' Évênement pour ajouter un utilisateur
+  Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click
+    FormManipulerUtilisateur.SetFormulaireMode("Ajout")
+    FormManipulerUtilisateur.ShowDialog()
+  End Sub
+
+  ' Évênement pour modifier un utilisateur
+  Private Sub ButtonModifierUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonModifierUtilisateur.Click
+    FormManipulerUtilisateur.SetFormulaireMode("Modification")
+    FormManipulerUtilisateur.ShowDialog()
+  End Sub
+
+  ' Aide pour l'utilisateur
+  Private Sub ButtonUtilisateurAide_Click(sender As Object, e As EventArgs) Handles ButtonUtilisateurAide.Click
+    MsgBox("I-V : Inventaire - Voir" & vbNewLine & _
+           "I-I : Inventaire - Insérer (ajouter)" & vbNewLine & _
+           "I-M : Inventaire - Modifier" & vbNewLine & _
+           "I-S : Inventaire - Supprimer" & vbNewLine & _
+           "I-A : Inventaire - Administrateur (estimations, prix d'achat)" & vbNewLine & _
+           "F-V : Facture - Voir" & vbNewLine & _
+           "F-I : Facture - Insérer (ajouter)" & vbNewLine & _
+           "U-V : Utilisateur - Voir" & vbNewLine & _
+           "U-I : Utilisateur - Insérer (ajouter)" & vbNewLine & _
+           "U-M : Utilisateur - Modifier (informations)" & vbNewLine & _
+           "U-S : Utilisateur - Supprimer" & vbNewLine & _
+           "U-A : Utilisateur - Administrateur (droits)")
+  End Sub
+
+  ' ---> Évênements : Recherche/Filtre
+
+  ' Évênement qui filtre le DataGridView en fonction de ce qui est écrit dans les TextBox de recherche
   Private Sub TextBoxRechItems_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRechItemsCode.TextChanged,
     TextBoxRechItemsDesc.TextChanged, TextBoxRechItemsEmp.TextChanged, TextBoxRechItemsCat.TextChanged,
     TextBoxRechItemsDep.TextChanged, TextBoxRechItemsFourn.TextChanged
-    ' Cette fonction filtre le DataGridView en fonction de ce qui est écrit dans les TextBox de recherche
     ' Il faut d'abord vérifier si les textboxs ont du texte
 
     CheckBoxFiltreSelection.Checked = False
@@ -125,7 +264,7 @@ Public Class FormInventaire
     If NombreCaracteres > 0 Then
       ' On construit une tableau de String de la recherche
 
-      DataGridViewItems.DataSource = DataTableTrav.ObtenirDataViewRech(
+      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireCompletFiltre(
         TextBoxRechItemsCode.Text,
         TextBoxRechItemsDesc.Text,
         TextBoxRechItemsEmp.Text,
@@ -138,11 +277,11 @@ Public Class FormInventaire
       DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet()
     End If
 
-    MettreAJourSelection()
+    MettreAJourItemSelection()
     EcrireTotalItems()
   End Sub
 
-  ' Méthode pour filtrer le datagridview lorsqu'on appuie sur le checkbox
+  ' Évênement pour filtrer le datagridview lorsqu'on appuie sur le checkbox
   Private Sub CheckBoxFiltreSelection_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxFiltreSelection.CheckedChanged
     ViderItemsRecherche()
 
@@ -165,55 +304,12 @@ Public Class FormInventaire
     End If
 
     EcrireTotalItems()
-    MettreAJourSelection()
+    MettreAJourItemSelection()
   End Sub
 
-  ' Méthode pour vider les champs de recherche
-  Private Sub ViderItemsRecherche()
+  ' ---> Affichage général
 
-    TextBoxRechItemsCode.Text = String.Empty
-    TextBoxRechItemsDesc.Text = String.Empty
-    TextBoxRechItemsEmp.Text = String.Empty
-    TextBoxRechItemsCat.Text = String.Empty
-    TextBoxRechItemsDep.Text = String.Empty
-    TextBoxRechItemsFourn.Text = String.Empty
-  End Sub
-
-  Private Sub AffichageInventaireCompletColonnes()
-    ' Méthode pour configurer l'affichage des colonnes
-
-    ' Source : https://msdn.microsoft.com/en-us/library/wkfe535h(v=vs.110).aspx
-    With DataGridViewItems
-      .Columns(0).Visible = False ' ID
-      .Columns(1).HeaderText = "Code du produit"
-      .Columns(2).HeaderText = "Description"
-      .Columns(3).HeaderText = "Emplacement"
-      .Columns(4).HeaderText = "Catégorie"
-      .Columns(5).HeaderText = "Département"
-      .Columns(6).HeaderText = "Code fourn."
-      .Columns(7).HeaderText = "Fournisseur"
-      .Columns(8).HeaderText = "Prix vente"
-      .Columns(9).HeaderText = "Prix d'achat"
-      .Columns(10).HeaderText = "Quantité"
-    End With
-
-    ' Il faut mettre à jour de total des items
-    EcrireTotalItems()
-  End Sub
-
-  Private Sub ButtonSauvegarder_Click(sender As Object, e As EventArgs) Handles ButtonSauvegarder.Click
-    DataTableTrav.Sauvegarder()
-    MsgBox("Sauvegarde effectuée!")
-  End Sub
-
-  ' Méthode lorsque le programme ferme
-  Private Sub FormInventaire_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-    ' Source : https://msdn.microsoft.com/en-us/library/system.windows.forms.form.closing(v=vs.110).aspx?cs-save-lang=1&cs-lang=vb#code-snippet-2
-
-    ' On sauvegarde la base de données lorsqu'on quitte le programme, juste pour être certain
-    DataTableTrav.Sauvegarder()
-  End Sub
-
+  ' Méthode pour écrire le total du montant des items affichés
   Private Sub EcrireTotalItems()
     Dim Total As Double = 0
 
@@ -299,74 +395,23 @@ Public Class FormInventaire
     End If
   End Sub
 
-  Private Sub ButtonDeconnection_Click(sender As Object, e As EventArgs) Handles ButtonDeconnection.Click
-    DataTableTrav.Deconnection()
-    ConnexionObligatoire()
+  ' ---> Autre
+
+  ' Méthode pour vider les champs de recherche
+  Private Sub ViderItemsRecherche()
+    TextBoxRechItemsCode.Text = String.Empty
+    TextBoxRechItemsDesc.Text = String.Empty
+    TextBoxRechItemsEmp.Text = String.Empty
+    TextBoxRechItemsCat.Text = String.Empty
+    TextBoxRechItemsDep.Text = String.Empty
+    TextBoxRechItemsFourn.Text = String.Empty
   End Sub
 
-  ' Méthode pour sélectionner des items
-  Private Sub DataGridViewItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewItems.CellContentClick
-    Dim dgv As DataGridView = DirectCast(sender, DataGridView)
-
-    If ListeSelection.Contains(CInt(dgv.CurrentRow.Cells(0).Value)) Then
-      ListeSelection.Remove(CInt(dgv.CurrentRow.Cells(0).Value))
-    Else
-      ListeSelection.Add(CInt(dgv.CurrentRow.Cells(0).Value))
-    End If
-
-    MettreAJourSelection()
-    MettreAJourNbItems()
-  End Sub
-
-  ' Méthode pour mettre à jour l'affichage des items sélectionnés
-  Private Sub MettreAJourSelection()
-    For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-      If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
-        Rangee.DefaultCellStyle.BackColor = SystemColors.Highlight
-        Rangee.DefaultCellStyle.ForeColor = SystemColors.HighlightText
-      Else
-        Rangee.DefaultCellStyle.BackColor = SystemColors.Window
-        Rangee.DefaultCellStyle.ForeColor = SystemColors.ControlText
-      End If
-    Next
-  End Sub
-
-  Private Sub MettreAJourNbItems()
-    LabelItemsNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
-    LabelFacturesNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
-    LabelUtilisateursNb.Text = "Nombre d'items d'inventaire sélectionnés : " & ListeSelection.Count().ToString()
-  End Sub
-
-  Private Sub ButtonAjoutUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonAjoutUtilisateur.Click
-    FormManipulerUtilisateur.SetFormulaireMode("Ajout")
-    FormManipulerUtilisateur.ShowDialog()
-  End Sub
-
-  Private Sub ButtonModifierUtilisateur_Click(sender As Object, e As EventArgs) Handles ButtonModifierUtilisateur.Click
-    FormManipulerUtilisateur.SetFormulaireMode("Modification")
-    FormManipulerUtilisateur.ShowDialog()
-  End Sub
-
+  ' Méthode pour forcer la connection
   Private Sub ConnexionObligatoire()
     Me.Hide()
     FormConnection.ShowDialog()
     AffichageDroits()
     Me.Show()
-  End Sub
-
-  ' Aide pour l'utilisateur
-  Private Sub ButtonUtilisateurAide_Click(sender As Object, e As EventArgs) Handles ButtonUtilisateurAide.Click
-    MsgBox("I-V : Inventaire - Voir" & vbNewLine & _
-           "I-I : Inventaire - Insérer (ajouter)" & vbNewLine & _
-           "I-M : Inventaire - Modifier" & vbNewLine & _
-           "I-S : Inventaire - Supprimer" & vbNewLine & _
-           "I-A : Inventaire - Administrateur (estimations, prix d'achat)" & vbNewLine & _
-           "F-V : Facture - Voir" & vbNewLine & _
-           "F-I : Facture - Insérer (ajouter)" & vbNewLine & _
-           "U-V : Utilisateur - Voir" & vbNewLine & _
-           "U-I : Utilisateur - Insérer (ajouter)" & vbNewLine & _
-           "U-M : Utilisateur - Modifier (informations)" & vbNewLine & _
-           "U-S : Utilisateur - Supprimer" & vbNewLine & _
-           "U-A : Utilisateur - Administrateur (droits)")
   End Sub
 End Class
