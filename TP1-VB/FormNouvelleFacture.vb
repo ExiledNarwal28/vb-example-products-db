@@ -125,8 +125,9 @@ Public Class FormNouvelleFacture
     e.Cancel = True
   End Sub
 
+  ' Ce bouton verifie si la facture est correcte, puis la facture
   Private Sub BoutonFactureOK_Click(sender As Object, e As EventArgs) Handles BoutonFactureOK.Click
-    ' Ce bouton verifie si la facture est correcte, puis la facture
+    VerifierQuantite()
 
     ' On vérifie si les quantités sont ok
     If VerificateurQuantite Then

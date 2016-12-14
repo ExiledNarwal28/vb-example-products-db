@@ -87,10 +87,10 @@ Public Class FormAffichageFacture
     For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
       NouvelleRangee = DataTableAFact.NewRow()
 
-      NouvelleRangee("item_desc") = Rangee.Cells("item_desc").Value
+      NouvelleRangee("item_desc") = Rangee.Cells(2).Value
       NouvelleRangee("item_qt") = 1
-      NouvelleRangee("item_prix_vente") = Rangee.Cells("item_prix_vente").Value
-      NouvelleRangee("item_ext") = CDbl(Rangee.Cells("item_prix_vente").Value) * CDbl(Rangee.Cells("item_qt").Value)
+      NouvelleRangee("item_prix_vente") = Rangee.Cells(4).Value
+      NouvelleRangee("item_ext") = CDbl(Rangee.Cells(4).Value) * CDbl(Rangee.Cells(3).Value)
 
       DataTableAFact.Rows.Add(NouvelleRangee)
     Next

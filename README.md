@@ -35,25 +35,20 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [x] Vérifier pourquoi ce n'est pas les bons inventaires qui sont affichés
 	1 [x] Réparer le DGV et les quantités
 	1 [x] Vérifier qu'il y a une sélection avant d'envoyer vers la facture
-	1 [ ] Adapter le DGV de factures à LinQ
+	1 [x] Adapter le DGV de factures à LinQ
 	1 [x] Adapter l'ajout d'éléments à la facture à LinQ
 	1 [x] Faire fonctionner la facture comme au TP1 avec LinQ
-	2 [ ] Baisser l'inventaire des factures avec LinQ - VÉRIFIER
-	2 [ ] Ajouter les factures à la base de données lors de la création
+	2 [x] Baisser l'inventaire des factures avec LinQ
 	3 [x] Faire fonctionner l'impression comme au TP1 avec LinQ
+	3 [ ] Bug de total de facture
 
 ### Tab des factures ###
 	
 	2 [ ] Faire les procedures stockées de select
 	2 [ ] Faire les procedures stockées d'insert
-	2 [ ] Faire les procedures stockées d'update
-	2 [ ] Faire les procedures stockées de delete
 	2 [x] Faire le tab des factures
 	2 [ ] Faire le DGV des factures
 	2 [ ] Faire l'ajout de factures
-	2 [ ] Faire le formulaire de manipulation de factures
-	2 [ ] Faire la modification de factures
-	2 [ ] Faire la suppresion de factures
 	5 [ ] Filtrage par ? (TODO)
 
 ### Utilisateurs de la base de données ###
@@ -70,15 +65,13 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	3 [x] Avoir une procédure stockée pour l'insert d'utilisateurs de la base de données
 	3 [x] Avoir une procédure stockée pour l'update d'utilisateurs de la base de données
 	3 [x] Avoir une procédure stockée pour le delete d'utilisateurs de la base de données
-	5 [ ] Filtrage par Nom
-	5 [ ] Filtrage par Prenom
-	5 [ ] Filtrage par Username
-	5 [ ] Filtrage par Courriel
+	5 [x] Filtrage par Nom
+	5 [x] Filtrage par Prenom
+	5 [x] Filtrage par Username
+	5 [x] Filtrage par Courriel
 
 ### Gestion de droits ###
 
-	2 [ ] Faire les procedures stockées de select d'utilisateur + des droits (au besoin)
-	2 [ ] Faire les procedures stockées d'update d'utilisateur + des droits (au besoin)
 	3 [x] Pouvoir se déconnnecter
 
 ### Application des droits ###

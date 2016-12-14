@@ -214,6 +214,7 @@ Public Class FormInventaire
   Private Sub ButtonFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
     FormNouvelleFacture.SetProduitID(ListeSelection)
     FormNouvelleFacture.ShowDialog()
+    Me.RafraichirDGVItems()
   End Sub
 
   ' ---> Évênements : Boutons d'utilisateurs
