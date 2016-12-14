@@ -353,4 +353,20 @@ Public Class FormInventaire
     AffichageDroits()
     Me.Show()
   End Sub
+
+  ' Aide pour l'utilisateur
+  Private Sub ButtonUtilisateurAide_Click(sender As Object, e As EventArgs) Handles ButtonUtilisateurAide.Click
+    MsgBox("I-V : Inventaire - Voir" & vbNewLine & _
+           "I-I : Inventaire - Insérer (ajouter)" & vbNewLine & _
+           "I-M : Inventaire - Modifier" & vbNewLine & _
+           "I-S : Inventaire - Supprimer" & vbNewLine & _
+           "I-A : Inventaire - Administrateur (estimations, prix d'achat)" & vbNewLine & _
+           "F-V : Facture - Voir" & vbNewLine & _
+           "F-I : Facture - Insérer (ajouter)" & vbNewLine & _
+           "U-V : Utilisateur - Voir" & vbNewLine & _
+           "U-I : Utilisateur - Insérer (ajouter)" & vbNewLine & _
+           "U-M : Utilisateur - Modifier (informations)" & vbNewLine & _
+           "U-S : Utilisateur - Supprimer" & vbNewLine & _
+           "U-A : Utilisateur - Administrateur (droits)")
+  End Sub
 End Class
