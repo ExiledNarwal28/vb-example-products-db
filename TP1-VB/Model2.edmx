@@ -75,7 +75,6 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MembreID" Type="int" />
           <Property Name="UtilisateurID" Type="int" />
-          <Property Name="FactureItemID" Type="int" />
           <Property Name="No" Type="int" />
           <Property Name="Date" Type="date" />
           <Property Name="ModePaiement" Type="varchar" MaxLength="30" />
@@ -87,8 +86,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProduitID" Type="int" />
+          <Property Name="FactureID" Type="int" />
+          <Property Name="InventaireID" Type="int" />
           <Property Name="Qt" Type="int" />
+          <Property Name="PrixVente" Type="float" />
           <Property Name="R1" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Tb_Fournisseur">
@@ -248,18 +249,6 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tb_Facture_Tb_FactureItem">
-          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="0..1" />
-          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_FactureItem">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tb_Facture">
-              <PropertyRef Name="FactureItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tb_Facture_Tb_Membre">
           <End Role="Tb_Membre" Type="Self.Tb_Membre" Multiplicity="0..1" />
           <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
@@ -284,15 +273,27 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tb_FactureItem_Tb_Produit">
-          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+        <Association Name="FK_Tb_FactureItem_Tb_Facture">
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="0..1" />
           <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_Produit">
+            <Principal Role="Tb_Facture">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Tb_FactureItem">
-              <PropertyRef Name="ProduitID" />
+              <PropertyRef Name="FactureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_FactureItem_Tb_Inventaire">
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="0..1" />
+          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Inventaire">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_FactureItem">
+              <PropertyRef Name="InventaireID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,6 +400,16 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="InsertFacture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MembreID" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="date" Mode="In" />
+          <Parameter Name="NoEtudiant" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertFactureItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FactureID" Type="int" Mode="In" />
+          <Parameter Name="InventaireID" Type="int" Mode="In" />
+          <Parameter Name="Qt" Type="int" Mode="In" />
+        </Function>
         <Function Name="InsertInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodeProduit" Type="nchar" Mode="In" />
           <Parameter Name="Description" Type="nchar" Mode="In" />
@@ -550,10 +561,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <End Role="Tb_Produit" EntitySet="Tb_Produit" />
             <End Role="Tb_CommandeItem" EntitySet="Tb_CommandeItem" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tb_Facture_Tb_FactureItem" Association="Self.FK_Tb_Facture_Tb_FactureItem">
-            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
-            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tb_Facture_Tb_Membre" Association="Self.FK_Tb_Facture_Tb_Membre">
             <End Role="Tb_Membre" EntitySet="Tb_Membre" />
             <End Role="Tb_Facture" EntitySet="Tb_Facture" />
@@ -562,8 +569,12 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
             <End Role="Tb_Facture" EntitySet="Tb_Facture" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tb_FactureItem_Tb_Produit" Association="Self.FK_Tb_FactureItem_Tb_Produit">
-            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+          <AssociationSet Name="FK_Tb_FactureItem_Tb_Facture" Association="Self.FK_Tb_FactureItem_Tb_Facture">
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_FactureItem_Tb_Inventaire" Association="Self.FK_Tb_FactureItem_Tb_Inventaire">
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
             <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
           </AssociationSet>
           <AssociationSet Name="FK_Tb_Inventaire_Tb_Categorie" Association="Self.FK_Tb_Inventaire_Tb_Categorie">
@@ -682,26 +693,27 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MembreID" Type="Int32" />
           <Property Name="UtilisateurID" Type="Int32" />
-          <Property Name="FactureItemID" Type="Int32" />
           <Property Name="No" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="ModePaiement" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tb_FactureItem" Relationship="Self.FK_Tb_Facture_Tb_FactureItem" FromRole="Tb_Facture" ToRole="Tb_FactureItem" />
           <NavigationProperty Name="Tb_Membre" Relationship="Self.FK_Tb_Facture_Tb_Membre" FromRole="Tb_Facture" ToRole="Tb_Membre" />
           <NavigationProperty Name="Tb_Utilisateur" Relationship="Self.FK_Tb_Facture_Tb_Utilisateur" FromRole="Tb_Facture" ToRole="Tb_Utilisateur" />
+          <NavigationProperty Name="Tb_FactureItem" Relationship="Self.FK_Tb_FactureItem_Tb_Facture" FromRole="Tb_Facture" ToRole="Tb_FactureItem" />
         </EntityType>
         <EntityType Name="Tb_FactureItem">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProduitID" Type="Int32" />
+          <Property Name="FactureID" Type="Int32" />
+          <Property Name="InventaireID" Type="Int32" />
           <Property Name="Qt" Type="Int32" />
+          <Property Name="PrixVente" Type="Double" />
           <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tb_Facture" Relationship="Self.FK_Tb_Facture_Tb_FactureItem" FromRole="Tb_FactureItem" ToRole="Tb_Facture" />
-          <NavigationProperty Name="Tb_Produit" Relationship="Self.FK_Tb_FactureItem_Tb_Produit" FromRole="Tb_FactureItem" ToRole="Tb_Produit" />
+          <NavigationProperty Name="Tb_Facture" Relationship="Self.FK_Tb_FactureItem_Tb_Facture" FromRole="Tb_FactureItem" ToRole="Tb_Facture" />
+          <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_FactureItem_Tb_Inventaire" FromRole="Tb_FactureItem" ToRole="Tb_Inventaire" />
         </EntityType>
         <EntityType Name="Tb_Fournisseur">
           <Key>
@@ -742,6 +754,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <NavigationProperty Name="Tb_Categorie" Relationship="Self.FK_Tb_Inventaire_Tb_Categorie" FromRole="Tb_Inventaire" ToRole="Tb_Categorie" />
           <NavigationProperty Name="Tb_Departement" Relationship="Self.FK_Tb_Inventaire_Tb_Departement" FromRole="Tb_Inventaire" ToRole="Tb_Departement" />
           <NavigationProperty Name="Tb_Emplacement" Relationship="Self.FK_Tb_Inventaire_Tb_Emplacement" FromRole="Tb_Inventaire" ToRole="Tb_Emplacement" />
+          <NavigationProperty Name="Tb_FactureItem" Relationship="Self.FK_Tb_FactureItem_Tb_Inventaire" FromRole="Tb_Inventaire" ToRole="Tb_FactureItem" />
           <NavigationProperty Name="Tb_Fournisseur" Relationship="Self.FK_Tb_Inventaire_Tb_Fournisseur" FromRole="Tb_Inventaire" ToRole="Tb_Fournisseur" />
           <NavigationProperty Name="Tb_Produit" Relationship="Self.FK_Tb_Inventaire_Tb_Produit" FromRole="Tb_Inventaire" ToRole="Tb_Produit" />
           <NavigationProperty Name="Tb_Localisation" Relationship="Self.FK_Tb_Localisation_Tb_Inventaire" FromRole="Tb_Inventaire" ToRole="Tb_Localisation" />
@@ -790,7 +803,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Name="R1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="R2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tb_CommandeItem" Relationship="Self.FK_Tb_CommandeItem_Tb_Produit" FromRole="Tb_Produit" ToRole="Tb_CommandeItem" />
-          <NavigationProperty Name="Tb_FactureItem" Relationship="Self.FK_Tb_FactureItem_Tb_Produit" FromRole="Tb_Produit" ToRole="Tb_FactureItem" />
           <NavigationProperty Name="Tb_Inventaire" Relationship="Self.FK_Tb_Inventaire_Tb_Produit" FromRole="Tb_Produit" ToRole="Tb_Inventaire" />
         </EntityType>
         <EntityType Name="Tb_Taxe">
@@ -924,18 +936,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tb_Facture_Tb_FactureItem">
-          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="0..1" />
-          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_FactureItem">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tb_Facture">
-              <PropertyRef Name="FactureItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tb_Facture_Tb_Membre">
           <End Role="Tb_Membre" Type="Self.Tb_Membre" Multiplicity="0..1" />
           <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="*" />
@@ -960,15 +960,27 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tb_FactureItem_Tb_Produit">
-          <End Role="Tb_Produit" Type="Self.Tb_Produit" Multiplicity="0..1" />
+        <Association Name="FK_Tb_FactureItem_Tb_Facture">
+          <End Role="Tb_Facture" Type="Self.Tb_Facture" Multiplicity="0..1" />
           <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_Produit">
+            <Principal Role="Tb_Facture">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Tb_FactureItem">
-              <PropertyRef Name="ProduitID" />
+              <PropertyRef Name="FactureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_FactureItem_Tb_Inventaire">
+          <End Role="Tb_Inventaire" Type="Self.Tb_Inventaire" Multiplicity="0..1" />
+          <End Role="Tb_FactureItem" Type="Self.Tb_FactureItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Inventaire">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tb_FactureItem">
+              <PropertyRef Name="InventaireID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1069,10 +1081,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <End Role="Tb_Emplacement" EntitySet="Tb_Emplacement" />
             <End Role="Tb_Localisation" EntitySet="Tb_Localisation" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tb_Facture_Tb_FactureItem" Association="Self.FK_Tb_Facture_Tb_FactureItem">
-            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
-            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
-          </AssociationSet>
           <AssociationSet Name="FK_Tb_Facture_Tb_Membre" Association="Self.FK_Tb_Facture_Tb_Membre">
             <End Role="Tb_Membre" EntitySet="Tb_Membre" />
             <End Role="Tb_Facture" EntitySet="Tb_Facture" />
@@ -1081,8 +1089,12 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
             <End Role="Tb_Facture" EntitySet="Tb_Facture" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tb_FactureItem_Tb_Produit" Association="Self.FK_Tb_FactureItem_Tb_Produit">
-            <End Role="Tb_Produit" EntitySet="Tb_Produit" />
+          <AssociationSet Name="FK_Tb_FactureItem_Tb_Facture" Association="Self.FK_Tb_FactureItem_Tb_Facture">
+            <End Role="Tb_Facture" EntitySet="Tb_Facture" />
+            <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_FactureItem_Tb_Inventaire" Association="Self.FK_Tb_FactureItem_Tb_Inventaire">
+            <End Role="Tb_Inventaire" EntitySet="Tb_Inventaire" />
             <End Role="Tb_FactureItem" EntitySet="Tb_FactureItem" />
           </AssociationSet>
           <AssociationSet Name="FK_Tb_Inventaire_Tb_Fournisseur" Association="Self.FK_Tb_Inventaire_Tb_Fournisseur">
@@ -1106,6 +1118,11 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           </FunctionImport>
           <FunctionImport Name="DeleteUtilisateur">
           <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertFacture" ReturnType="Collection(Decimal)">
+            <Parameter Name="MembreID" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="NoEtudiant" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertInventaireComplet">
             <Parameter Name="CodeProduit" Mode="In" Type="String" />
@@ -1154,6 +1171,12 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImport Name="SelectUtilisateur" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateur_Result)" />
           <FunctionImport Name="SelectUtilisateurDroitsSingle" ReturnType="Collection(Int16)">
           <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectUtilisateurFiltre" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateurFiltre_Result)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Courriel" Mode="In" Type="String" />
+            <Parameter Name="Nom" Mode="In" Type="String" />
+            <Parameter Name="Prenom" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SelectUtilisateurIDSingle" ReturnType="Collection(Int32)">
             <Parameter Name="Username" Mode="In" Type="String" />
@@ -1214,11 +1237,10 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Prenom" Mode="In" Type="String" />
             <Parameter Name="Droits" Mode="In" Type="Int16" />
           </FunctionImport>
-          <FunctionImport Name="SelectUtilisateurFiltre" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateurFiltre_Result)">
-            <Parameter Name="Username" Mode="In" Type="String" />
-            <Parameter Name="Courriel" Mode="In" Type="String" />
-            <Parameter Name="Nom" Mode="In" Type="String" />
-            <Parameter Name="Prenom" Mode="In" Type="String" />
+          <FunctionImport Name="InsertFactureItem" ReturnType="Collection(Decimal)">
+            <Parameter Name="FactureID" Mode="In" Type="Int32" />
+            <Parameter Name="InventaireID" Mode="In" Type="Int32" />
+            <Parameter Name="Qt" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SelectInventaireComplet_Result">
@@ -1267,6 +1289,13 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
           <Property Type="String" Name="Courriel" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="SelectUtilisateurFiltre_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Courriel" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="SelectUtilisateurSingle_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
@@ -1286,13 +1315,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SelectUtilisateurFiltre_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Nom" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Prenom" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Courriel" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1375,7 +1397,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MembreID" ColumnName="MembreID" />
                 <ScalarProperty Name="UtilisateurID" ColumnName="UtilisateurID" />
-                <ScalarProperty Name="FactureItemID" ColumnName="FactureItemID" />
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ModePaiement" ColumnName="ModePaiement" />
@@ -1388,8 +1409,10 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <EntityTypeMapping TypeName="COOPInventaire_TP3_testsModel1.Tb_FactureItem">
               <MappingFragment StoreEntitySet="Tb_FactureItem">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ProduitID" ColumnName="ProduitID" />
+                <ScalarProperty Name="FactureID" ColumnName="FactureID" />
+                <ScalarProperty Name="InventaireID" ColumnName="InventaireID" />
                 <ScalarProperty Name="Qt" ColumnName="Qt" />
+                <ScalarProperty Name="PrixVente" ColumnName="PrixVente" />
                 <ScalarProperty Name="R1" ColumnName="R1" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1511,6 +1534,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DeleteInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.DeleteInventaireComplet" />
           <FunctionImportMapping FunctionImportName="DeleteUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.DeleteUtilisateur" />
+          <FunctionImportMapping FunctionImportName="InsertFacture" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertFacture" />
           <FunctionImportMapping FunctionImportName="InsertInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertInventaireComplet" />
           <FunctionImportMapping FunctionImportName="InsertUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertUtilisateur" />
           <FunctionImportMapping FunctionImportName="InsertUtilisateurVieux" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertUtilisateurVieux" />
@@ -1578,6 +1602,17 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SelectUtilisateurDroitsSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurDroitsSingle" />
+          <FunctionImportMapping FunctionImportName="SelectUtilisateurFiltre" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurFiltre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectUtilisateurFiltre_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SelectUtilisateurIDSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurIDSingle" />
           <FunctionImportMapping FunctionImportName="SelectUtilisateurSingle" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurSingle">
             <ResultMapping>
@@ -1618,17 +1653,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="UpdateInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.UpdateInventaireComplet" />
           <FunctionImportMapping FunctionImportName="UpdateUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.UpdateUtilisateur" />
-          <FunctionImportMapping FunctionImportName="SelectUtilisateurFiltre" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectUtilisateurFiltre">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectUtilisateurFiltre_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Nom" ColumnName="Nom" />
-                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertFactureItem" FunctionName="COOPInventaire_TP3_testsModel1.Store.InsertFactureItem" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

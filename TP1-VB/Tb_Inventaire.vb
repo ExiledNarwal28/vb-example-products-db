@@ -27,6 +27,7 @@ Partial Public Class Tb_Inventaire
     Public Overridable Property Tb_Categorie As Tb_Categorie
     Public Overridable Property Tb_Departement As Tb_Departement
     Public Overridable Property Tb_Emplacement As Tb_Emplacement
+    Public Overridable Property Tb_FactureItem As ICollection(Of Tb_FactureItem) = New HashSet(Of Tb_FactureItem)
     Public Overridable Property Tb_Fournisseur As Tb_Fournisseur
     Public Overridable Property Tb_Produit As Tb_Produit
     Public Overridable Property Tb_Localisation As Tb_Localisation

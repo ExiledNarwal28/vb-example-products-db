@@ -12,11 +12,13 @@ Imports System.Collections.Generic
 
 Partial Public Class Tb_FactureItem
     Public Property ID As Integer
-    Public Property ProduitID As Nullable(Of Integer)
+    Public Property FactureID As Nullable(Of Integer)
+    Public Property InventaireID As Nullable(Of Integer)
     Public Property Qt As Nullable(Of Integer)
+    Public Property PrixVente As Nullable(Of Double)
     Public Property R1 As String
 
-    Public Overridable Property Tb_Facture As ICollection(Of Tb_Facture) = New HashSet(Of Tb_Facture)
-    Public Overridable Property Tb_Produit As Tb_Produit
+    Public Overridable Property Tb_Facture As Tb_Facture
+    Public Overridable Property Tb_Inventaire As Tb_Inventaire
 
 End Class

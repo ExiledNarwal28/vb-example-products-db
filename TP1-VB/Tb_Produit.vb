@@ -23,7 +23,6 @@ Partial Public Class Tb_Produit
     Public Property R2 As String
 
     Public Overridable Property Tb_CommandeItem As ICollection(Of Tb_CommandeItem) = New HashSet(Of Tb_CommandeItem)
-    Public Overridable Property Tb_FactureItem As ICollection(Of Tb_FactureItem) = New HashSet(Of Tb_FactureItem)
     Public Overridable Property Tb_Inventaire As ICollection(Of Tb_Inventaire) = New HashSet(Of Tb_Inventaire)
 
 End Class

@@ -193,6 +193,27 @@ Public Class DataTableTravailleur
                                               Prenom).ToList
   End Function
 
+  ' ---> Factures
+
+  ' Méthode pour insérer une facture
+  Public Sub InsertFacture(ByVal NoEtu As String,
+                           ByVal DictQuantites As Dictionary(Of Integer, Integer))
+    Dim FactureID As Int32
+
+    ' D'abord, on crée la facture
+    FactureID = CInt(DBContexte.InsertFacture(UtilisateurID,
+                                         Date.Now,
+                                         NoEtu).Single()) ' Ceci retourne le ID de la facture qu'on vient de créer
+
+    ' Ensuite, on crée un FactureItem pour chaque item de la facture
+    ' Key = InventaireId, Value = Qt
+    For Each Paire As KeyValuePair(Of Integer, Integer) In DictQuantites
+      DBContexte.InsertFactureItem(FactureID,
+                                   Paire.Key,
+                                   Paire.Value)
+    Next
+  End Sub
+
   ' ---> Autre
 
   Public Sub Sauvegarder()
