@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class SelectFacture_Result
+Partial Public Class SelectFactureFiltre_Result
     Public Property ID As Integer
     Public Property Username As String
     Public Property [Date] As Nullable(Of Date)

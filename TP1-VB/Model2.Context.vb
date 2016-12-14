@@ -142,6 +142,18 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFacture_Result)("SelectFacture")
     End Function
 
+    Public Overridable Function SelectFactureFiltre(iD As String, utilisateur As String, [date] As String, noEtu As String) As ObjectResult(Of SelectFactureFiltre_Result)
+        Dim iDParameter As ObjectParameter = If(iD IsNot Nothing, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(String)))
+
+        Dim utilisateurParameter As ObjectParameter = If(utilisateur IsNot Nothing, New ObjectParameter("Utilisateur", utilisateur), New ObjectParameter("Utilisateur", GetType(String)))
+
+        Dim dateParameter As ObjectParameter = If([date] IsNot Nothing, New ObjectParameter("Date", [date]), New ObjectParameter("Date", GetType(String)))
+
+        Dim noEtuParameter As ObjectParameter = If(noEtu IsNot Nothing, New ObjectParameter("NoEtu", noEtu), New ObjectParameter("NoEtu", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFactureFiltre_Result)("SelectFactureFiltre", iDParameter, utilisateurParameter, dateParameter, noEtuParameter)
+    End Function
+
     Public Overridable Function SelectInventaireComplet() As ObjectResult(Of SelectInventaireComplet_Result)
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectInventaireComplet_Result)("SelectInventaireComplet")
     End Function

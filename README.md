@@ -44,14 +44,14 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 
 ### Tab des factures ###
 	
-	2 [ ] Faire les procedures stockées de select de factures
+	2 [x] Faire les procedures stockées de select de factures
 	2 [ ] Faire les procedures stockées de select de factures + factureitem (détails)
 	2 [x] Faire les procedures stockées d'insert
 	2 [x] Faire le tab des factures
 	2 [x] Faire le DGV des factures
 	2 [ ] Faire le formulaire pour les détails (FactureItem) d'une facture -> adapter FormNouvelleFacture
 	3 [ ] Mettre les champs Nb_items, Prix total et Grand total + les calculer
-	5 [ ] Filtrage par no de facture, utilisateur, date et no etu
+	5 [x] Filtrage par no de facture, utilisateur, date et no etu
 
 ### Utilisateurs de la base de données ###
 

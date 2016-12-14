@@ -355,6 +355,25 @@ Public Class FormInventaire
     End If
   End Sub
 
+  ' Évênement qui filtre le DataGridView de factyre en fonction de ce qui est écrit dans les TextBox de recherche
+  Private Sub TextBoxRechFactures_TextChanged(sender As Object, e As EventArgs) Handles TextBoxRechFactureID.TextChanged,
+    TextBoxRechFactureUtilisateur.TextChanged, TextBoxRechFactureDate.TextChanged, TextBoxRechFactureNoEtu.TextChanged
+    ' Il faut d'abord vérifier si les textboxs ont du texte
+
+    Dim NombreCaracteres = TextBoxRechFactureID.Text.Trim.Length + TextBoxRechFactureUtilisateur.Text.Trim.Length +
+      TextBoxRechFactureDate.Text.Trim.Length + TextBoxRechFactureNoEtu.Text.Trim.Length
+
+    If NombreCaracteres > 0 Then
+      DataGridViewFactures.DataSource = DataTableTrav.GetDataFactureFiltre(TextBoxRechFactureID.Text,
+                                                                                   TextBoxRechFactureUtilisateur.Text,
+                                                                                   TextBoxRechFactureDate.Text,
+                                                                                   TextBoxRechFactureNoEtu.Text)
+    Else
+      ' Si l'utilisateur enlève sa recherche, alors la source est la table entière
+      DataGridViewFactures.DataSource = DataTableTrav.GetDataFacture()
+    End If
+  End Sub
+
   ' ---> Affichage général
 
   ' Méthode pour écrire le total du montant des items affichés

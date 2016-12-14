@@ -443,6 +443,12 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
           <Parameter Name="Amount" Type="int" Mode="In" />
         </Function>
         <Function Name="SelectFacture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectFactureFiltre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="varchar" Mode="In" />
+          <Parameter Name="Utilisateur" Type="varchar" Mode="In" />
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="NoEtu" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SelectInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SelectInventaireCompletFiltre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodeProduit" Type="nvarchar" Mode="In" />
@@ -1164,6 +1170,12 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Amount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectFacture" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectFacture_Result)" />
+          <FunctionImport Name="SelectFactureFiltre" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectFactureFiltre_Result)">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="Utilisateur" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="NoEtu" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="SelectInventaireComplet" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectInventaireComplet_Result)" />
           <FunctionImport Name="SelectInventaireCompletFiltre" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectInventaireCompletFiltre_Result)">
             <Parameter Name="CodeProduit" Mode="In" Type="String" />
@@ -1251,6 +1263,18 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
           <Property Type="DateTime" Name="Date" Nullable="true" />
           <Property Type="String" Name="R1" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Quantité_d_items" Nullable="false" />
+          <Property Type="Int32" Name="Total" Nullable="false" />
+          <Property Type="Int32" Name="Grand_total" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SelectFactureFiltre_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="String" Name="R1" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Quantité_d_items" Nullable="false" />
+          <Property Type="Int32" Name="Total" Nullable="false" />
+          <Property Type="Int32" Name="Grand_total" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SelectInventaireComplet_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -1556,6 +1580,22 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="Quantité_d_items" ColumnName="Quantité d'items" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Grand_total" ColumnName="Grand total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectFactureFiltre" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectFactureFiltre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectFactureFiltre_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="R1" ColumnName="R1" />
+                <ScalarProperty Name="Quantité_d_items" ColumnName="Quantité d'items" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Grand_total" ColumnName="Grand total" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

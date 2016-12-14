@@ -200,6 +200,16 @@ Public Class DataTableTravailleur
     Return DBContexte.SelectFacture().ToList()
   End Function
 
+  Public Function GetDataFactureFiltre(ByVal ID As String,
+                                       ByVal Utilisateur As String,
+                                       ByVal FactureDate As String,
+                                       ByVal NoEtu As String) As List(Of TP1_VB.SelectFactureFiltre_Result)
+    Return DBContexte.SelectFactureFiltre(ID,
+                                          Utilisateur,
+                                          FactureDate,
+                                          NoEtu).ToList()
+  End Function
+
 
   ' Méthode pour insérer une facture
   Public Sub InsertFacture(ByVal NoEtu As String,
