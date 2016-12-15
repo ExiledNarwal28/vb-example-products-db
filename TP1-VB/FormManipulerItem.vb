@@ -131,13 +131,13 @@ Public Class FormManipulerItem
     Dim Donnees As TP1_VB.SelectInventaireCompletSingle_Result = Me.DataTableTrav.GetDataInventaireCompletSingle(IDModif)
 
     With Donnees
-      TextBoxItemAjoutCodeProduit.Text = .Code_de_produit
-      TextBoxItemAjoutDesc.Text = .Description
-      TextBoxItemAjoutEmp.Text = .Emplacement
-      TextBoxItemAjoutFournNom.Text = .Nom_de_fournisseur
-      TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur
-      TextBoxItemAjoutCat.Text = .Catégorie
-      TextBoxItemAjoutDep.Text = .Département
+      TextBoxItemAjoutCodeProduit.Text = .Code_de_produit.Trim()
+      TextBoxItemAjoutDesc.Text = .Description.Trim()
+      TextBoxItemAjoutEmp.Text = .Emplacement.Trim()
+      TextBoxItemAjoutFournNom.Text = .Nom_de_fournisseur.Trim()
+      TextBoxItemAjoutFournCode.Text = .Code_de_fournisseur.Trim()
+      TextBoxItemAjoutCat.Text = .Catégorie.Trim()
+      TextBoxItemAjoutDep.Text = .Département.Trim()
       TextBoxItemAjoutPrixA.Text = CStr(.Prix_d_achat)
       TextBoxItemAjoutPrixV.Text = CStr(.Prix_de_vente)
       TextBoxItemAjoutQt.Text = CStr(.Quantité)

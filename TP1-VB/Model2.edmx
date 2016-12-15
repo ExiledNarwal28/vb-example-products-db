@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="COOPInventaire_TP3_testsModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="COOPInventaire_TP3_testsModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -449,6 +449,9 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
           <Parameter Name="Date" Type="varchar" Mode="In" />
           <Parameter Name="NoEtu" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SelectFactureItemByFactureID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FactureID" Type="int" Mode="In" />
+        </Function>
         <Function Name="SelectInventaireComplet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SelectInventaireCompletFiltre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodeProduit" Type="nvarchar" Mode="In" />
@@ -617,8 +620,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="COOPInventaire_TP3_testsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1122,10 +1124,10 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <End Role="Tb_Utilisateur" EntitySet="Tb_Utilisateur" />
           </AssociationSet>
           <FunctionImport Name="DeleteInventaireComplet">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteUtilisateur">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="InsertFacture" ReturnType="Collection(Decimal)">
             <Parameter Name="UtilisateurID" Mode="In" Type="Int32" />
@@ -1186,11 +1188,11 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Fournisseur" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SelectInventaireCompletSingle" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectInventaireCompletSingle_Result)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectUtilisateur" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateur_Result)" />
           <FunctionImport Name="SelectUtilisateurDroitsSingle" ReturnType="Collection(Int16)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectUtilisateurFiltre" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateurFiltre_Result)">
             <Parameter Name="Username" Mode="In" Type="String" />
@@ -1203,7 +1205,7 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SelectUtilisateurSingle" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectUtilisateurSingle_Result)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1256,6 +1258,9 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Nom" Mode="In" Type="String" />
             <Parameter Name="Prenom" Mode="In" Type="String" />
             <Parameter Name="Droits" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="SelectFactureItemByFactureID" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectFactureItemByFactureID_Result)">
+            <Parameter Name="FactureID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SelectFacture_Result">
@@ -1348,6 +1353,14 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SelectFactureItemByFactureID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CodeProduit" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Qt" Nullable="true" />
+          <Property Type="Double" Name="PrixVente" Nullable="true" />
+          <Property Type="Int32" Name="Extension" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1713,6 +1726,18 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="COOPInventaire_TP3_testsModel1.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="UpdateInventaireComplet" FunctionName="COOPInventaire_TP3_testsModel1.Store.UpdateInventaireComplet" />
           <FunctionImportMapping FunctionImportName="UpdateUtilisateur" FunctionName="COOPInventaire_TP3_testsModel1.Store.UpdateUtilisateur" />
+          <FunctionImportMapping FunctionImportName="SelectFactureItemByFactureID" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectFactureItemByFactureID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectFactureItemByFactureID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Qt" ColumnName="Qt" />
+                <ScalarProperty Name="PrixVente" ColumnName="PrixVente" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -51,6 +51,16 @@ Partial Class FormInventaire
     Me.LabelRechItems = New System.Windows.Forms.Label()
     Me.DataGridViewItems = New System.Windows.Forms.DataGridView()
     Me.TabPageFactures = New System.Windows.Forms.TabPage()
+    Me.LabelFactureNoEtu = New System.Windows.Forms.Label()
+    Me.TextBoxRechFactureNoEtu = New System.Windows.Forms.TextBox()
+    Me.LabelFactureDate = New System.Windows.Forms.Label()
+    Me.TextBoxRechFactureDate = New System.Windows.Forms.TextBox()
+    Me.LabelFactureUtilisateur = New System.Windows.Forms.Label()
+    Me.TextBoxRechFactureUtilisateur = New System.Windows.Forms.TextBox()
+    Me.LabelFactureID = New System.Windows.Forms.Label()
+    Me.TextBoxRechFactureID = New System.Windows.Forms.TextBox()
+    Me.LabelFactureRecherche = New System.Windows.Forms.Label()
+    Me.ButtonDetailFacture = New System.Windows.Forms.Button()
     Me.DataGridViewFactures = New System.Windows.Forms.DataGridView()
     Me.TabPageUtilisateurs = New System.Windows.Forms.TabPage()
     Me.LabelUtilisateurUsername = New System.Windows.Forms.Label()
@@ -75,16 +85,6 @@ Partial Class FormInventaire
     Me.no_fact = New System.Windows.Forms.DataGridViewTextBoxColumn()
     Me.ButtonDeconnection = New System.Windows.Forms.Button()
     Me.ButtonSauvegarder = New System.Windows.Forms.Button()
-    Me.ButtonDetailFacture = New System.Windows.Forms.Button()
-    Me.LabelFactureNoEtu = New System.Windows.Forms.Label()
-    Me.TextBoxRechFactureNoEtu = New System.Windows.Forms.TextBox()
-    Me.LabelFactureDate = New System.Windows.Forms.Label()
-    Me.TextBoxRechFactureDate = New System.Windows.Forms.TextBox()
-    Me.LabelFactureUtilisateur = New System.Windows.Forms.Label()
-    Me.TextBoxRechFactureUtilisateur = New System.Windows.Forms.TextBox()
-    Me.LabelFactureID = New System.Windows.Forms.Label()
-    Me.TextBoxRechFactureID = New System.Windows.Forms.TextBox()
-    Me.LabelFactureRecherche = New System.Windows.Forms.Label()
     Me.PageInventaire.SuspendLayout()
     Me.TabPageItems.SuspendLayout()
     CType(Me.DataGridViewItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -406,6 +406,104 @@ Partial Class FormInventaire
     Me.TabPageFactures.TabIndex = 1
     Me.TabPageFactures.Text = "Factures"
     '
+    'LabelFactureNoEtu
+    '
+    Me.LabelFactureNoEtu.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelFactureNoEtu.AutoSize = True
+    Me.LabelFactureNoEtu.Location = New System.Drawing.Point(6, 265)
+    Me.LabelFactureNoEtu.Name = "LabelFactureNoEtu"
+    Me.LabelFactureNoEtu.Size = New System.Drawing.Size(66, 13)
+    Me.LabelFactureNoEtu.TabIndex = 51
+    Me.LabelFactureNoEtu.Text = "No. Étudiant"
+    '
+    'TextBoxRechFactureNoEtu
+    '
+    Me.TextBoxRechFactureNoEtu.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechFactureNoEtu.Location = New System.Drawing.Point(9, 281)
+    Me.TextBoxRechFactureNoEtu.Name = "TextBoxRechFactureNoEtu"
+    Me.TextBoxRechFactureNoEtu.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechFactureNoEtu.TabIndex = 50
+    Me.TextBoxRechFactureNoEtu.Tag = ""
+    '
+    'LabelFactureDate
+    '
+    Me.LabelFactureDate.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelFactureDate.AutoSize = True
+    Me.LabelFactureDate.Location = New System.Drawing.Point(6, 224)
+    Me.LabelFactureDate.Name = "LabelFactureDate"
+    Me.LabelFactureDate.Size = New System.Drawing.Size(30, 13)
+    Me.LabelFactureDate.TabIndex = 49
+    Me.LabelFactureDate.Text = "Date"
+    '
+    'TextBoxRechFactureDate
+    '
+    Me.TextBoxRechFactureDate.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechFactureDate.Location = New System.Drawing.Point(9, 240)
+    Me.TextBoxRechFactureDate.Name = "TextBoxRechFactureDate"
+    Me.TextBoxRechFactureDate.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechFactureDate.TabIndex = 48
+    Me.TextBoxRechFactureDate.Tag = ""
+    '
+    'LabelFactureUtilisateur
+    '
+    Me.LabelFactureUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelFactureUtilisateur.AutoSize = True
+    Me.LabelFactureUtilisateur.Location = New System.Drawing.Point(6, 183)
+    Me.LabelFactureUtilisateur.Name = "LabelFactureUtilisateur"
+    Me.LabelFactureUtilisateur.Size = New System.Drawing.Size(53, 13)
+    Me.LabelFactureUtilisateur.TabIndex = 47
+    Me.LabelFactureUtilisateur.Text = "Utilisateur"
+    '
+    'TextBoxRechFactureUtilisateur
+    '
+    Me.TextBoxRechFactureUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechFactureUtilisateur.Location = New System.Drawing.Point(9, 199)
+    Me.TextBoxRechFactureUtilisateur.Name = "TextBoxRechFactureUtilisateur"
+    Me.TextBoxRechFactureUtilisateur.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechFactureUtilisateur.TabIndex = 46
+    Me.TextBoxRechFactureUtilisateur.Tag = ""
+    '
+    'LabelFactureID
+    '
+    Me.LabelFactureID.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelFactureID.AutoSize = True
+    Me.LabelFactureID.Location = New System.Drawing.Point(6, 142)
+    Me.LabelFactureID.Name = "LabelFactureID"
+    Me.LabelFactureID.Size = New System.Drawing.Size(63, 13)
+    Me.LabelFactureID.TabIndex = 45
+    Me.LabelFactureID.Text = "No. Facture"
+    '
+    'TextBoxRechFactureID
+    '
+    Me.TextBoxRechFactureID.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.TextBoxRechFactureID.Location = New System.Drawing.Point(9, 158)
+    Me.TextBoxRechFactureID.Name = "TextBoxRechFactureID"
+    Me.TextBoxRechFactureID.Size = New System.Drawing.Size(145, 20)
+    Me.TextBoxRechFactureID.TabIndex = 44
+    Me.TextBoxRechFactureID.Tag = ""
+    '
+    'LabelFactureRecherche
+    '
+    Me.LabelFactureRecherche.Anchor = System.Windows.Forms.AnchorStyles.Left
+    Me.LabelFactureRecherche.AutoSize = True
+    Me.LabelFactureRecherche.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+    Me.LabelFactureRecherche.Location = New System.Drawing.Point(50, 122)
+    Me.LabelFactureRecherche.Name = "LabelFactureRecherche"
+    Me.LabelFactureRecherche.Size = New System.Drawing.Size(60, 13)
+    Me.LabelFactureRecherche.TabIndex = 43
+    Me.LabelFactureRecherche.Text = "Recherche"
+    '
+    'ButtonDetailFacture
+    '
+    Me.ButtonDetailFacture.BackColor = System.Drawing.Color.DarkOliveGreen
+    Me.ButtonDetailFacture.ForeColor = System.Drawing.SystemColors.ButtonFace
+    Me.ButtonDetailFacture.Location = New System.Drawing.Point(6, 6)
+    Me.ButtonDetailFacture.Name = "ButtonDetailFacture"
+    Me.ButtonDetailFacture.Size = New System.Drawing.Size(148, 23)
+    Me.ButtonDetailFacture.TabIndex = 5
+    Me.ButtonDetailFacture.Text = "Voir les détails"
+    Me.ButtonDetailFacture.UseVisualStyleBackColor = False
+    '
     'DataGridViewFactures
     '
     Me.DataGridViewFactures.AllowUserToAddRows = False
@@ -670,104 +768,6 @@ Partial Class FormInventaire
     Me.ButtonSauvegarder.TabIndex = 8
     Me.ButtonSauvegarder.Text = "Sauvegarder"
     Me.ButtonSauvegarder.UseVisualStyleBackColor = False
-    '
-    'ButtonDetailFacture
-    '
-    Me.ButtonDetailFacture.BackColor = System.Drawing.Color.DarkOliveGreen
-    Me.ButtonDetailFacture.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.ButtonDetailFacture.Location = New System.Drawing.Point(6, 6)
-    Me.ButtonDetailFacture.Name = "ButtonDetailFacture"
-    Me.ButtonDetailFacture.Size = New System.Drawing.Size(148, 23)
-    Me.ButtonDetailFacture.TabIndex = 5
-    Me.ButtonDetailFacture.Text = "Voir les détails"
-    Me.ButtonDetailFacture.UseVisualStyleBackColor = False
-    '
-    'LabelFactureNoEtu
-    '
-    Me.LabelFactureNoEtu.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.LabelFactureNoEtu.AutoSize = True
-    Me.LabelFactureNoEtu.Location = New System.Drawing.Point(6, 265)
-    Me.LabelFactureNoEtu.Name = "LabelFactureNoEtu"
-    Me.LabelFactureNoEtu.Size = New System.Drawing.Size(66, 13)
-    Me.LabelFactureNoEtu.TabIndex = 51
-    Me.LabelFactureNoEtu.Text = "No. Étudiant"
-    '
-    'TextBoxRechFactureNoEtu
-    '
-    Me.TextBoxRechFactureNoEtu.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechFactureNoEtu.Location = New System.Drawing.Point(9, 281)
-    Me.TextBoxRechFactureNoEtu.Name = "TextBoxRechFactureNoEtu"
-    Me.TextBoxRechFactureNoEtu.Size = New System.Drawing.Size(145, 20)
-    Me.TextBoxRechFactureNoEtu.TabIndex = 50
-    Me.TextBoxRechFactureNoEtu.Tag = ""
-    '
-    'LabelFactureDate
-    '
-    Me.LabelFactureDate.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.LabelFactureDate.AutoSize = True
-    Me.LabelFactureDate.Location = New System.Drawing.Point(6, 224)
-    Me.LabelFactureDate.Name = "LabelFactureDate"
-    Me.LabelFactureDate.Size = New System.Drawing.Size(30, 13)
-    Me.LabelFactureDate.TabIndex = 49
-    Me.LabelFactureDate.Text = "Date"
-    '
-    'TextBoxRechFactureDate
-    '
-    Me.TextBoxRechFactureDate.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechFactureDate.Location = New System.Drawing.Point(9, 240)
-    Me.TextBoxRechFactureDate.Name = "TextBoxRechFactureDate"
-    Me.TextBoxRechFactureDate.Size = New System.Drawing.Size(145, 20)
-    Me.TextBoxRechFactureDate.TabIndex = 48
-    Me.TextBoxRechFactureDate.Tag = ""
-    '
-    'LabelFactureUtilisateur
-    '
-    Me.LabelFactureUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.LabelFactureUtilisateur.AutoSize = True
-    Me.LabelFactureUtilisateur.Location = New System.Drawing.Point(6, 183)
-    Me.LabelFactureUtilisateur.Name = "LabelFactureUtilisateur"
-    Me.LabelFactureUtilisateur.Size = New System.Drawing.Size(53, 13)
-    Me.LabelFactureUtilisateur.TabIndex = 47
-    Me.LabelFactureUtilisateur.Text = "Utilisateur"
-    '
-    'TextBoxRechFactureUtilisateur
-    '
-    Me.TextBoxRechFactureUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechFactureUtilisateur.Location = New System.Drawing.Point(9, 199)
-    Me.TextBoxRechFactureUtilisateur.Name = "TextBoxRechFactureUtilisateur"
-    Me.TextBoxRechFactureUtilisateur.Size = New System.Drawing.Size(145, 20)
-    Me.TextBoxRechFactureUtilisateur.TabIndex = 46
-    Me.TextBoxRechFactureUtilisateur.Tag = ""
-    '
-    'LabelFactureID
-    '
-    Me.LabelFactureID.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.LabelFactureID.AutoSize = True
-    Me.LabelFactureID.Location = New System.Drawing.Point(6, 142)
-    Me.LabelFactureID.Name = "LabelFactureID"
-    Me.LabelFactureID.Size = New System.Drawing.Size(63, 13)
-    Me.LabelFactureID.TabIndex = 45
-    Me.LabelFactureID.Text = "No. Facture"
-    '
-    'TextBoxRechFactureID
-    '
-    Me.TextBoxRechFactureID.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.TextBoxRechFactureID.Location = New System.Drawing.Point(9, 158)
-    Me.TextBoxRechFactureID.Name = "TextBoxRechFactureID"
-    Me.TextBoxRechFactureID.Size = New System.Drawing.Size(145, 20)
-    Me.TextBoxRechFactureID.TabIndex = 44
-    Me.TextBoxRechFactureID.Tag = ""
-    '
-    'LabelFactureRecherche
-    '
-    Me.LabelFactureRecherche.Anchor = System.Windows.Forms.AnchorStyles.Left
-    Me.LabelFactureRecherche.AutoSize = True
-    Me.LabelFactureRecherche.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    Me.LabelFactureRecherche.Location = New System.Drawing.Point(50, 122)
-    Me.LabelFactureRecherche.Name = "LabelFactureRecherche"
-    Me.LabelFactureRecherche.Size = New System.Drawing.Size(60, 13)
-    Me.LabelFactureRecherche.TabIndex = 43
-    Me.LabelFactureRecherche.Text = "Recherche"
     '
     'FormInventaire
     '

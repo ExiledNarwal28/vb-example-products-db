@@ -210,6 +210,10 @@ Public Class DataTableTravailleur
                                           NoEtu).ToList()
   End Function
 
+  Public Function GetDataFactureDetails(ByVal ID As Int32) As List(Of TP1_VB.SelectFactureItemByFactureID_Result)
+    Return DBContexte.SelectFactureItemByFactureID(ID).ToList()
+  End Function
+
 
   ' Méthode pour insérer une facture
   Public Sub InsertFacture(ByVal NoEtu As String,

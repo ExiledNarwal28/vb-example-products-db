@@ -1,11 +1,13 @@
 ﻿Option Strict On
 Option Explicit On
 
-Public Class FormNouvelleFacture
+Public Class FormManipulerFacture
   Private ListeID As List(Of Integer)
+  Private UniqueID As Int32
   Private DataTableTrav As DataTableTravailleur
 
   Private VerificateurQuantite As Boolean
+  Private FormulaireMode As String
 
   Private FormAffichageFacture As FormAffichageFacture
 
@@ -13,6 +15,28 @@ Public Class FormNouvelleFacture
     InitializeComponent()
 
     Me.DataTableTrav = DataTableTrav
+    Me.FormulaireMode = String.Empty
+  End Sub
+  Public Sub SetFormulaireMode(ByVal Mode As String)
+    ' Méthode pour appliquer un mode du formulaire
+
+    Me.FormulaireMode = Mode
+
+    ' On change l'apparence du formulaire en fonction du mode du formulaire
+    Select Case Me.FormulaireMode
+      Case "Ajout"
+        Me.Text = "Nouvelle facture"
+        Me.BoutonFactureAnnuler.Visible = True
+        Me.BoutonFactureOK.Text = "Facturer"
+        Me.BoutonFactureOK.Location = New Point(390, 305)
+        Me.BoutonFactureOK.Width = 349
+      Case "Détails"
+        Me.Text = "Détails d'une facture"
+        Me.BoutonFactureAnnuler.Visible = False
+        Me.BoutonFactureOK.Text = "O.K."
+        Me.BoutonFactureOK.Location = New Point(12, 305)
+        Me.BoutonFactureOK.Width = 727
+    End Select
   End Sub
 
   Public Sub SetProduitID(ByVal ListeID As List(Of Integer))
@@ -21,6 +45,17 @@ Public Class FormNouvelleFacture
 
     ' On applique les RangeesSelectionnees au DataTable
     DataGridViewFacture.DataSource = DataTableTrav.GetDataInventaireFactureParID(ListeID)
+
+    Me.AffichageColonnes()
+    Me.QuantiteDefaut()
+    Me.CalculerExtensions()
+    Me.CalculerTotaux()
+  End Sub
+
+  Public Sub SetProduitIDUnique(ByVal iD As Int32)
+    Me.UniqueID = iD
+
+    DataGridViewFacture.DataSource = DataTableTrav.GetDataFactureDetails(UniqueID)
 
     Me.AffichageColonnes()
     Me.QuantiteDefaut()
@@ -40,7 +75,6 @@ Public Class FormNouvelleFacture
       .Columns(2).ReadOnly = True
 
       .Columns(3).HeaderText = "Quantité"
-      .Columns(3).ReadOnly = False
 
       .Columns(4).HeaderText = "Prix de vente"
       .Columns(4).ReadOnly = True
@@ -48,28 +82,46 @@ Public Class FormNouvelleFacture
       .Columns(5).HeaderText = "Extension"
       .Columns(5).ReadOnly = True
 
-      .Columns(6).HeaderText = "Quantité en inventaire"
-      .Columns(6).ReadOnly = True
-
-      .Columns(7).HeaderText = "Nouvelle quantité"
-      .Columns(7).ReadOnly = True
-
-      .Columns(3).DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Bold)
     End With
+
+    If Me.FormulaireMode = "Ajout" Then
+      With DataGridViewFacture
+        .Columns(3).ReadOnly = False
+        .Columns(3).DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Bold)
+
+        .Columns(6).HeaderText = "Quantité en inventaire"
+        .Columns(6).ReadOnly = True
+
+        .Columns(7).HeaderText = "Nouvelle quantité"
+        .Columns(7).ReadOnly = True
+      End With
+    ElseIf Me.FormulaireMode = "Détails" Then
+      With DataGridViewFacture
+        .Columns(3).ReadOnly = True
+        .Columns(3).DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8.25, FontStyle.Regular)
+      End With
+    End If
   End Sub
 
   ' Méthode qui met les quantités voulues à un (valeur par défaut)
   Private Sub QuantiteDefaut()
-    For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
-      Rangee.Cells(3).Value = 1
-    Next
+    If Me.FormulaireMode = "Ajout" Then
+      For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
+        Rangee.Cells(3).Value = 1
+      Next
+    End If
   End Sub
 
   Private Sub CalculerExtensions()
     For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
       Rangee.Cells(5).Value = CDbl(Rangee.Cells(3).Value) * CDbl(Rangee.Cells(4).Value) ' Extension
-      Rangee.Cells(7).Value = CInt(Rangee.Cells(6).Value) - CInt(Rangee.Cells(3).Value) ' Nouvelle quantité
     Next
+
+    If Me.FormulaireMode = "Ajout" Then
+      For Each Rangee As DataGridViewRow In DataGridViewFacture.Rows
+        Rangee.Cells(7).Value = CInt(Rangee.Cells(6).Value) - CInt(Rangee.Cells(3).Value) ' Nouvelle quantité
+      Next
+    End If
   End Sub
 
   Private Sub CalculerTotaux()
@@ -127,52 +179,57 @@ Public Class FormNouvelleFacture
 
   ' Ce bouton verifie si la facture est correcte, puis la facture
   Private Sub BoutonFactureOK_Click(sender As Object, e As EventArgs) Handles BoutonFactureOK.Click
-    VerifierQuantite()
+    If Me.FormulaireMode = "Ajout" Then
+      VerifierQuantite()
 
-    ' On vérifie si les quantités sont ok
-    If VerificateurQuantite Then
-      If MsgBox(
-          "Êtes-vous certain de votre facture?",
-          MsgBoxStyle.YesNo,
-          "Facturation") = DialogResult.Yes Then
-
-        ' Si l'utilisateur répond positivement
-
-        ' Enlever les quantités de l'inventaire
-        DataTableTrav.EnleverQuantite(ConstruireDictionnaireQuantites())
-
-        ' On enregistre la facture
-        DataTableTrav.InsertFacture(TextBoxFactureCodeEtu.Text, ConstruireDictionnaireQuantites())
-
-        ' On instancie un formulaire pour l'affichage de la facture. Ceci demande aussi à l'utilisateur s'il veut l'imprimer.
-        Dim FormAffichageFacture As FormAffichageFacture = New FormAffichageFacture(Me.DataGridViewFacture, GetTotaux(), TextBoxFactureCodeEtu.Text, RichTextBoxComm.Text)
-
-        FormAffichageFacture.Show()
-
-        ' J'ai besoin de ce flag pour que le msgbox soit fermé lorsqu'on imprime
-        Dim VaTilDireOui As Boolean = False
-
+      ' On vérifie si les quantités sont ok
+      If VerificateurQuantite Then
         If MsgBox(
-          "Voici l'affichage de votre facture" & Environment.NewLine & "Souhaitez-vous l'imprimer?",
-          MsgBoxStyle.YesNo,
-          "Impression") = DialogResult.Yes Then
-          VaTilDireOui = True
+            "Êtes-vous certain de votre facture?",
+            MsgBoxStyle.YesNo,
+            "Facturation") = DialogResult.Yes Then
+
+          ' Si l'utilisateur répond positivement
+
+          ' Enlever les quantités de l'inventaire
+          DataTableTrav.EnleverQuantite(ConstruireDictionnaireQuantites())
+
+          ' On enregistre la facture
+          DataTableTrav.InsertFacture(TextBoxFactureCodeEtu.Text, ConstruireDictionnaireQuantites())
+
+          ' On instancie un formulaire pour l'affichage de la facture. Ceci demande aussi à l'utilisateur s'il veut l'imprimer.
+          Dim FormAffichageFacture As FormAffichageFacture = New FormAffichageFacture(Me.DataGridViewFacture, GetTotaux(), TextBoxFactureCodeEtu.Text, RichTextBoxComm.Text)
+
+          FormAffichageFacture.Show()
+
+          ' J'ai besoin de ce flag pour que le msgbox soit fermé lorsqu'on imprime
+          Dim VaTilDireOui As Boolean = False
+
+          If MsgBox(
+            "Voici l'affichage de votre facture" & Environment.NewLine & "Souhaitez-vous l'imprimer?",
+            MsgBoxStyle.YesNo,
+            "Impression") = DialogResult.Yes Then
+            VaTilDireOui = True
+          End If
+
+          If VaTilDireOui Then
+            ' Soure : http://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
+            Threading.Thread.Sleep(500)
+            FormAffichageFacture.ImprimerDialogue()
+          End If
+
+          FormAffichageFacture.Hide()
+
+          ' On ferme ensuite tout ça :D
+          Me.ViderFormulaire()
+          Me.Hide()
         End If
-
-        If VaTilDireOui Then
-          ' Soure : http://stackoverflow.com/questions/15857893/wait-5-seconds-before-continuing-code-vb-net/15861154
-          Threading.Thread.Sleep(500)
-          FormAffichageFacture.ImprimerDialogue()
-        End If
-
-        FormAffichageFacture.Hide()
-
-        ' On ferme ensuite tout ça :D
-        Me.ViderFormulaire()
-        Me.Hide()
+      Else
+        MsgBox("Facture invalide.")
       End If
-    Else
-      MsgBox("Facture invalide.")
+    ElseIf Me.FormulaireMode = "Détails" Then
+      Me.ViderFormulaire()
+      Me.Hide()
     End If
   End Sub
 

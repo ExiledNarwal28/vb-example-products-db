@@ -13,7 +13,7 @@ Public Class FormInventaire
 
   Private FormManipulerItem As FormManipulerItem
   Private FormManipulerUtilisateur As FormManipulerUtilisateur
-  Private FormNouvelleFacture As FormNouvelleFacture
+  Private FormManipulerFacture As FormManipulerFacture
   Private FormConnection As FormConnection
 
   Private ListeSelection As List(Of Integer)
@@ -24,7 +24,7 @@ Public Class FormInventaire
 
     FormManipulerItem = New FormManipulerItem(DataTableTrav)
     FormManipulerUtilisateur = New FormManipulerUtilisateur(DataTableTrav)
-    FormNouvelleFacture = New FormNouvelleFacture(DataTableTrav)
+    FormManipulerFacture = New FormManipulerFacture(DataTableTrav)
     FormConnection = New FormConnection(DataTableTrav)
 
     ListeSelection = New List(Of Integer)
@@ -231,10 +231,25 @@ Public Class FormInventaire
 
   ' Évênement pour ajouter une facture
   Private Sub ButtonFacture_Click(sender As Object, e As EventArgs) Handles ButtonItemFacture.Click
-    FormNouvelleFacture.SetProduitID(ListeSelection)
-    FormNouvelleFacture.ShowDialog()
+    FormManipulerFacture.SetFormulaireMode("Ajout")
+
+    FormManipulerFacture.SetProduitID(ListeSelection)
+    FormManipulerFacture.ShowDialog()
     Me.RafraichirDGVItems()
     Me.RafraichirDGVFactures()
+  End Sub
+
+  ' Méthode pour voir les détails d'une facture
+  Private Sub ButtonDetailFacture_Click(sender As Object, e As EventArgs) Handles ButtonDetailFacture.Click
+    If Not DataGridViewFactures.SelectedRows(0) Is Nothing Then
+      FormManipulerFacture.SetFormulaireMode("Détails")
+
+      ' On envoie le ID à Modifier
+      FormManipulerFacture.SetProduitIDUnique(CInt(DataGridViewFactures.SelectedRows(0).Cells(0).Value))
+      FormManipulerFacture.ShowDialog()
+    Else
+      MsgBox("Vous devez sélectionner une facture.")
+    End If
   End Sub
 
   ' ---> Évênements : Boutons d'utilisateurs

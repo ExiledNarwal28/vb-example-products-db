@@ -322,4 +322,10 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("UpdateUtilisateur", iDParameter, usernameParameter, passwordParameter, courrielParameter, nomParameter, prenomParameter, droitsParameter)
     End Function
 
+    Public Overridable Function SelectFactureItemByFactureID(factureID As Nullable(Of Integer)) As ObjectResult(Of SelectFactureItemByFactureID_Result)
+        Dim factureIDParameter As ObjectParameter = If(factureID.HasValue, New ObjectParameter("FactureID", factureID), New ObjectParameter("FactureID", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFactureItemByFactureID_Result)("SelectFactureItemByFactureID", factureIDParameter)
+    End Function
+
 End Class

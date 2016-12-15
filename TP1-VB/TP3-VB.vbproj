@@ -124,10 +124,10 @@
     <Compile Include="FormInventaire.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNouvelleFacture.Designer.vb">
-      <DependentUpon>FormNouvelleFacture.vb</DependentUpon>
+    <Compile Include="FormManipulerFacture.Designer.vb">
+      <DependentUpon>FormManipulerFacture.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormNouvelleFacture.vb">
+    <Compile Include="FormManipulerFacture.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Model1.Context.vb">
@@ -176,6 +176,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="SelectFactureFiltre_Result.vb">
+      <DependentUpon>Model2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectFactureItemByFactureID_Result.vb">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectFacture_Result.vb">
@@ -274,8 +277,8 @@
     <EmbeddedResource Include="FormInventaire.resx">
       <DependentUpon>FormInventaire.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNouvelleFacture.resx">
-      <DependentUpon>FormNouvelleFacture.vb</DependentUpon>
+    <EmbeddedResource Include="FormManipulerFacture.resx">
+      <DependentUpon>FormManipulerFacture.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

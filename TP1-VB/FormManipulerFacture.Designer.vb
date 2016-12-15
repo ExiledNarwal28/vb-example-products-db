@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FormNouvelleFacture
+Partial Class FormManipulerFacture
   Inherits System.Windows.Forms.Form
 
   'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -173,9 +173,9 @@ Partial Class FormNouvelleFacture
     Me.BoutonFactureOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.BoutonFactureOK.BackColor = System.Drawing.Color.SeaGreen
     Me.BoutonFactureOK.ForeColor = System.Drawing.SystemColors.ButtonFace
-    Me.BoutonFactureOK.Location = New System.Drawing.Point(386, 305)
+    Me.BoutonFactureOK.Location = New System.Drawing.Point(390, 305)
     Me.BoutonFactureOK.Name = "BoutonFactureOK"
-    Me.BoutonFactureOK.Size = New System.Drawing.Size(353, 23)
+    Me.BoutonFactureOK.Size = New System.Drawing.Size(349, 23)
     Me.BoutonFactureOK.TabIndex = 26
     Me.BoutonFactureOK.Text = "Facturer"
     Me.BoutonFactureOK.UseVisualStyleBackColor = False
@@ -208,7 +208,7 @@ Partial Class FormNouvelleFacture
     Me.LabelFactureComm.TabIndex = 30
     Me.LabelFactureComm.Text = "Commentaire : "
     '
-    'FormNouvelleFacture
+    'FormManipulerFacture
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -229,7 +229,7 @@ Partial Class FormNouvelleFacture
     Me.Controls.Add(Me.TextBoxFactureCodeEtu)
     Me.Controls.Add(Me.LabelFactureCodeEtu)
     Me.Controls.Add(Me.DataGridViewFacture)
-    Me.Name = "FormNouvelleFacture"
+    Me.Name = "FormManipulerFacture"
     Me.Text = "Nouvelle facture"
     CType(Me.DataGridViewFacture, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
