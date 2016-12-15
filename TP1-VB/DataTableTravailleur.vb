@@ -70,6 +70,34 @@ Public Class DataTableTravailleur
     End Try
   End Function
 
+  ' Fonction pour avoir l'inventaire avec une liste d'id
+  Function GetDataInventaireCompletParID(ListeID As List(Of Integer)) As IEnumerable(Of Object)
+    ' Je sais que c'est une énorme requête. En gros, je recherche les données nécéssaire à l'inventaire pour les inventaires qui sont dans une liste
+    Return (From Tb_Inventaire In DBContexte.Tb_Inventaire _
+            Join Tb_Produit In DBContexte.Tb_Produit On Tb_Produit.ID Equals Tb_Inventaire.ProduitID _
+            Join Tb_Emplacement In DBContexte.Tb_Emplacement On Tb_Inventaire.R1 Equals Tb_Emplacement.ID _
+            Join Tb_Categorie In DBContexte.Tb_Categorie On Tb_Inventaire.CategorieID Equals Tb_Categorie.ID _
+            Join Tb_Departement In DBContexte.Tb_Departement On Tb_Inventaire.DepartementID Equals Tb_Departement.ID _
+            Join Tb_Fournisseur In DBContexte.Tb_Fournisseur On Tb_Inventaire.FournisseurID Equals Tb_Fournisseur.ID _
+            Let Emplacement = Tb_Emplacement.Description
+            Let CategorieNom = Tb_Categorie.Nom
+            Let DepartementCode = Tb_Departement.Code
+            Let FournisseurCode = Tb_Fournisseur.Code
+            Let FournisseurNom = Tb_Fournisseur.Nom
+            Where ListeID.Contains(Tb_Inventaire.ID) _
+            Select New With {
+            Tb_Inventaire.ID, _
+            Tb_Produit.CodeProduit, _
+            Tb_Produit.Description, _
+            Emplacement, _
+            CategorieNom, _
+            DepartementCode, _
+            FournisseurCode, _
+            FournisseurNom,
+            Tb_Inventaire.PrixVente,
+            Tb_Inventaire.PrixAchat,
+            Tb_Inventaire.Qt}).ToList()
+  End Function
   Function GetDataInventaireFactureParID(ListeID As List(Of Integer)) As IEnumerable(Of Object)
     ' J'amène les champs réservés puisque j'ai besoin de colonnes de plus. Ils ne seront pas modifiés.
     Return (From Tb_Inventaire In DBContexte.Tb_Inventaire _

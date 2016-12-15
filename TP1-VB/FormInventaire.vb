@@ -343,24 +343,12 @@ Public Class FormInventaire
     ViderItemsRecherche()
 
     If CheckBoxFiltreSelection.Checked Then
-      For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-        If ListeSelection.Contains(CInt(Rangee.Cells(0).Value)) Then
-          Rangee.Visible = True
-        Else
-          Try
-            Rangee.Visible = False
-          Catch ex As Exception
-            ' TOFIX : Si on déselectionne un item dans la liste filtrée, cela bug lorsqu'on refiltre
-          End Try
-        End If
-      Next
+      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireCompletParID(ListeSelection)
     Else
-      For Each Rangee As DataGridViewRow In DataGridViewItems.Rows
-        Rangee.Visible = True
-      Next
+      DataGridViewItems.DataSource = DataTableTrav.GetDataInventaireComplet
     End If
 
-    EcrireTotalItems()
+    AffichageInventaireCompletColonnes()
     MettreAJourItemSelection()
   End Sub
 

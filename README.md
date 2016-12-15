@@ -99,7 +99,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [ ] Supprimer les fichiers du TP1
 	1 [ ] Renommer README.md en LISEZMOI.md
 	1 [ ] Vérifier les TODO dans le programme
-	5 [ ] Règler les anchors
+	5 [D] Règler les anchors
 
 ## Historiques des versions de LISEZMOI.md ##
 
