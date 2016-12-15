@@ -29,7 +29,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	1 [x] Vérifier pour les prix d'achats
 	3 [x] Adapter filtres à LinQ
 	3 [x] Faire fonctionner le total d'inventaire
-	4 [ ] Bug de total d'inventaire quand on filtre seulement la sélection
+	4 [x] Bug de total d'inventaire quand on filtre seulement la sélection
 
 ### LinQ + factures ###
 
@@ -96,9 +96,9 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 
 ### Autre ###
 	
-	1 [ ] Supprimer les fichiers du TP1
-	1 [ ] Renommer README.md en LISEZMOI.md
-	1 [ ] Vérifier les TODO dans le programme
+	1 [x] Supprimer les fichiers du TP1
+	1 [x] Renommer README.md en LISEZMOI.md
+	1 [x] Vérifier les TODO dans le programme
 	5 [D] Règler les anchors
 
 ## Historiques des versions de LISEZMOI.md ##
