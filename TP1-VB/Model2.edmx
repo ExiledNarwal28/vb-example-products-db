@@ -443,9 +443,6 @@ avertissement 6002: La table/vue 'COOPInventaire_TP3_tests.dbo.Tb_Localisation' 
           <Parameter Name="Amount" Type="int" Mode="In" />
         </Function>
         <Function Name="SelectFacture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SelectFactureCodeEtu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="FactureID" Type="int" Mode="In" />
-        </Function>
         <Function Name="SelectFactureFiltre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="varchar" Mode="In" />
           <Parameter Name="Utilisateur" Type="varchar" Mode="In" />
@@ -1176,9 +1173,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
             <Parameter Name="Amount" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectFacture" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectFacture_Result)" />
-          <FunctionImport Name="SelectFactureCodeEtu" ReturnType="Collection(String)">
-            <Parameter Name="FactureID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SelectFactureFiltre" ReturnType="Collection(COOPInventaire_TP3_testsModel1.SelectFactureFiltre_Result)">
             <Parameter Name="ID" Mode="In" Type="String" />
             <Parameter Name="Utilisateur" Mode="In" Type="String" />
@@ -1276,8 +1270,8 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
           <Property Type="DateTime" Name="Date" Nullable="true" />
           <Property Type="String" Name="R1" Nullable="true" MaxLength="30" />
           <Property Type="Int32" Name="Quantité_d_items" Nullable="false" />
-          <Property Type="Int32" Name="Total" Nullable="false" />
-          <Property Type="Int32" Name="Grand_total" Nullable="false" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="1" Scale="1" />
+          <Property Type="Decimal" Name="Grand_total" Nullable="false" Precision="1" Scale="1" />
         </ComplexType>
         <ComplexType Name="SelectFactureFiltre_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -1606,7 +1600,6 @@ FROM [dbo].[Tb_Localisation] AS [Tb_Localisation]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SelectFactureCodeEtu" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectFactureCodeEtu" />
           <FunctionImportMapping FunctionImportName="SelectFactureFiltre" FunctionName="COOPInventaire_TP3_testsModel1.Store.SelectFactureFiltre">
             <ResultMapping>
               <ComplexTypeMapping TypeName="COOPInventaire_TP3_testsModel1.SelectFactureFiltre_Result">

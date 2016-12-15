@@ -16,7 +16,7 @@ Partial Public Class SelectFacture_Result
     Public Property [Date] As Nullable(Of Date)
     Public Property R1 As String
     Public Property Quantité_d_items As Integer
-    Public Property Total As Integer
-    Public Property Grand_total As Integer
+    Public Property Total As Decimal
+    Public Property Grand_total As Decimal
 
 End Class

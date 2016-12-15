@@ -34,6 +34,9 @@ Public Class FormManipulerFacture
 
         Me.RichTextBoxComm.Visible = True
         Me.LabelFactureComm.Visible = True
+
+        Me.LabelFactureInstructions.Visible = True
+        Me.TextBoxFactureCodeEtu.ReadOnly = False
       Case "Détails"
         Me.Text = "Détails d'une facture"
         Me.BoutonFactureAnnuler.Visible = False
@@ -44,6 +47,9 @@ Public Class FormManipulerFacture
 
         Me.RichTextBoxComm.Visible = False
         Me.LabelFactureComm.Visible = False
+
+        Me.LabelFactureInstructions.Visible = False
+        Me.TextBoxFactureCodeEtu.ReadOnly = True
     End Select
   End Sub
 

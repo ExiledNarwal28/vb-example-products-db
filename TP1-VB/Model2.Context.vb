@@ -142,12 +142,6 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFacture_Result)("SelectFacture")
     End Function
 
-    Public Overridable Function SelectFactureCodeEtu(factureID As Nullable(Of Integer)) As ObjectResult(Of String)
-        Dim factureIDParameter As ObjectParameter = If(factureID.HasValue, New ObjectParameter("FactureID", factureID), New ObjectParameter("FactureID", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of String)("SelectFactureCodeEtu", factureIDParameter)
-    End Function
-
     Public Overridable Function SelectFactureFiltre(iD As String, utilisateur As String, [date] As String, noEtu As String) As ObjectResult(Of SelectFactureFiltre_Result)
         Dim iDParameter As ObjectParameter = If(iD IsNot Nothing, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(String)))
 

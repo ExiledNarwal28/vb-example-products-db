@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c59ec1d0d914488194c5cd2baa06a8d8" Name="Diagram1">
+      <Diagram DiagramId="ae6e36ac51034fce9d7fc06f24becf37" Name="Diagram1">
         <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel1.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel1.Tb_Categorie" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="COOPInventaire_TP3_testsModel1.Tb_Commande" Width="1.5" PointX="5.25" PointY="20" IsExpanded="true" />

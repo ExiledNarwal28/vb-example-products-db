@@ -44,6 +44,7 @@ Public Class FormInventaire
     DataGridViewFactures.DataSource = DataTableTrav.GetDataFacture()
     DataGridViewFactures.Refresh()
     AffichageFactureColonnes()
+    AffichageFactureDetails()
 
     MettreAJourNbItems()
 
@@ -93,7 +94,18 @@ Public Class FormInventaire
       .Columns(1).HeaderText = "Utilisateur"
       .Columns(2).HeaderText = "Date"
       .Columns(3).HeaderText = "No. Étudiant"
+      .Columns(4).HeaderText = "Nombre d'items"
+      .Columns(5).HeaderText = "Total ($)"
+      .Columns(6).HeaderText = "Grand total ($)"
     End With
+  End Sub
+
+  Private Sub AffichageFactureDetails()
+    For Each Rangee As DataGridViewRow In DataGridViewFactures.Rows
+      Rangee.Cells(4).Value = DataTableTrav.GetFactureNbItems(CInt(Rangee.Cells(0).Value)) ' Le nombre d'items
+      Rangee.Cells(5).Value = Math.Round(CDec(DataTableTrav.GetFactureTotal(CInt(Rangee.Cells(0).Value))), 2) ' Le total
+      Rangee.Cells(6).Value = Math.Round(CDec(DataTableTrav.GetFactureGrandTotal(CInt(Rangee.Cells(0).Value))), 2) ' Le grand total
+    Next
   End Sub
 
   ' ---> DataGridViews : Sélection
@@ -132,6 +144,7 @@ Public Class FormInventaire
 
   Private Sub RafraichirDGVFactures()
     DataGridViewFactures.DataSource = DataTableTrav.GetDataFacture()
+    AffichageFactureDetails()
   End Sub
 
   ' ---> Évênements : Général

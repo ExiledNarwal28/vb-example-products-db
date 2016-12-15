@@ -228,6 +228,49 @@ Public Class DataTableTravailleur
     End Try
   End Function
 
+  ' Function pour trouver le nombre d'items d'une facture
+  Public Function GetFactureNbItems(ByVal ID As Int32) As Int32
+    ' Try catch, au cas ou les ID sont doublés
+    Try
+      Return CInt(Aggregate Tb_FactureItem In DBContexte.Tb_FactureItem _
+                  Where Tb_FactureItem.FactureID = ID _
+                  Into Sum(Tb_FactureItem.Qt))
+    Catch ex As Exception
+      MsgBox(ex.Message)
+      Return Nothing
+    End Try
+  End Function
+
+  ' Function pour trouver le total d'une facture
+  Public Function GetFactureTotal(ByVal ID As Int32) As Double
+    ' Try catch, au cas ou les ID sont doublés
+    Try
+      Return CDbl(Aggregate Tb_FactureItem In DBContexte.Tb_FactureItem _
+                  Where Tb_FactureItem.FactureID = ID _
+                  Into Sum(Tb_FactureItem.Qt * Tb_FactureItem.PrixVente))
+    Catch ex As Exception
+      MsgBox(ex.Message)
+      Return Nothing
+    End Try
+  End Function
+
+  ' Function pour trouver le grand total d'une facture
+  Public Function GetFactureGrandTotal(ByVal ID As Int32) As Double
+    ' Try catch, au cas ou les ID sont doublés
+    Try
+      Dim total As Double = CDbl(Aggregate Tb_FactureItem In DBContexte.Tb_FactureItem _
+                                 Where Tb_FactureItem.FactureID = ID _
+                                 Into Sum(Tb_FactureItem.Qt * Tb_FactureItem.PrixVente))
+      total = CDec(total + (total * VariablesGlobales.TPS_VALEUR))
+      total = CDec(total + (total * VariablesGlobales.TVQ_VALEUR))
+
+      Return total
+    Catch ex As Exception
+      MsgBox(ex.Message)
+      Return Nothing
+    End Try
+  End Function
+
 
   ' Méthode pour insérer une facture
   Public Sub InsertFacture(ByVal NoEtu As String,

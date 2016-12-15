@@ -12,7 +12,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 	Les commentaires de factures ne sont pas sauvegardés
 
 ###Ce que je n'ai pas eu le temps de règler (bugs)###
-	(Rien)
+	Les totaux de factures ne sont pas calculés de la même manière dans le DataGridViewFactures et dans le FormManipulerFacture. Les totaux ne sont donc pas identiques à ces deux endroits.
 
 ###Ce que je n'ai pas eu à regler (vieux bugs/features du TP1 qui ne nécéssitent pas de correction)###
 	Faire marcher le filtre des items sélectionnés et la recherche en même temps
@@ -46,12 +46,12 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 ### Tab des factures ###
 	
 	2 [x] Faire les procedures stockées de select de factures
-	2 [ ] Faire les procedures stockées de select de factures + factureitem (détails)
+	2 [x] Faire les procedures stockées de select de factures + factureitem (détails)
 	2 [x] Faire les procedures stockées d'insert
 	2 [x] Faire le tab des factures
 	2 [x] Faire le DGV des factures
-	2 [ ] Faire le formulaire pour les détails (FactureItem) d'une facture -> adapter FormNouvelleFacture
-	3 [ ] Mettre les champs Nb_items, Prix total et Grand total + les calculer
+	2 [x] Faire le formulaire pour les détails (FactureItem) d'une facture -> adapter FormNouvelleFacture
+	3 [x] Mettre les champs Nb_items, Prix total et Grand total + les calculer
 	5 [x] Filtrage par no de facture, utilisateur, date et no etu
 
 ### Utilisateurs de la base de données ###
