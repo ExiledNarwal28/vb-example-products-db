@@ -27,15 +27,23 @@ Public Class FormManipulerFacture
       Case "Ajout"
         Me.Text = "Nouvelle facture"
         Me.BoutonFactureAnnuler.Visible = True
+
         Me.BoutonFactureOK.Text = "Facturer"
         Me.BoutonFactureOK.Location = New Point(390, 305)
         Me.BoutonFactureOK.Width = 349
+
+        Me.RichTextBoxComm.Visible = True
+        Me.LabelFactureComm.Visible = True
       Case "Détails"
         Me.Text = "Détails d'une facture"
         Me.BoutonFactureAnnuler.Visible = False
+
         Me.BoutonFactureOK.Text = "O.K."
         Me.BoutonFactureOK.Location = New Point(12, 305)
         Me.BoutonFactureOK.Width = 727
+
+        Me.RichTextBoxComm.Visible = False
+        Me.LabelFactureComm.Visible = False
     End Select
   End Sub
 
@@ -56,6 +64,8 @@ Public Class FormManipulerFacture
     Me.UniqueID = iD
 
     DataGridViewFacture.DataSource = DataTableTrav.GetDataFactureDetails(UniqueID)
+
+    Me.TextBoxFactureCodeEtu.Text = DataTableTrav.GetFactureCodeEtu(UniqueID)
 
     Me.AffichageColonnes()
     Me.QuantiteDefaut()

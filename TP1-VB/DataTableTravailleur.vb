@@ -210,8 +210,22 @@ Public Class DataTableTravailleur
                                           NoEtu).ToList()
   End Function
 
+  ' Fonction pour trouver les FactureItems associés à une facture
   Public Function GetDataFactureDetails(ByVal ID As Int32) As List(Of TP1_VB.SelectFactureItemByFactureID_Result)
     Return DBContexte.SelectFactureItemByFactureID(ID).ToList()
+  End Function
+
+  ' Fonction pour trouver une code d'étudiant avec un ID de facture
+  Public Function GetFactureCodeEtu(ByVal ID As Int32) As String
+    ' Try catch, au cas ou les ID sont doublés
+    Try
+      Return CStr((From Tb_Facture In DBContexte.Tb_Facture _
+                        Where Tb_Facture.ID = ID _
+                        Select Tb_Facture.R1).Single())
+    Catch ex As Exception
+      MsgBox(ex.Message)
+      Return Nothing
+    End Try
   End Function
 
 

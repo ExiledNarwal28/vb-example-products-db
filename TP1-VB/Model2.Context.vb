@@ -142,6 +142,12 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFacture_Result)("SelectFacture")
     End Function
 
+    Public Overridable Function SelectFactureCodeEtu(factureID As Nullable(Of Integer)) As ObjectResult(Of String)
+        Dim factureIDParameter As ObjectParameter = If(factureID.HasValue, New ObjectParameter("FactureID", factureID), New ObjectParameter("FactureID", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of String)("SelectFactureCodeEtu", factureIDParameter)
+    End Function
+
     Public Overridable Function SelectFactureFiltre(iD As String, utilisateur As String, [date] As String, noEtu As String) As ObjectResult(Of SelectFactureFiltre_Result)
         Dim iDParameter As ObjectParameter = If(iD IsNot Nothing, New ObjectParameter("ID", iD), New ObjectParameter("ID", GetType(String)))
 
@@ -152,6 +158,12 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Dim noEtuParameter As ObjectParameter = If(noEtu IsNot Nothing, New ObjectParameter("NoEtu", noEtu), New ObjectParameter("NoEtu", GetType(String)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFactureFiltre_Result)("SelectFactureFiltre", iDParameter, utilisateurParameter, dateParameter, noEtuParameter)
+    End Function
+
+    Public Overridable Function SelectFactureItemByFactureID(factureID As Nullable(Of Integer)) As ObjectResult(Of SelectFactureItemByFactureID_Result)
+        Dim factureIDParameter As ObjectParameter = If(factureID.HasValue, New ObjectParameter("FactureID", factureID), New ObjectParameter("FactureID", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFactureItemByFactureID_Result)("SelectFactureItemByFactureID", factureIDParameter)
     End Function
 
     Public Overridable Function SelectInventaireComplet() As ObjectResult(Of SelectInventaireComplet_Result)
@@ -320,12 +332,6 @@ Partial Public Class COOPInventaire_TP3_testsEntities1
         Dim droitsParameter As ObjectParameter = If(droits.HasValue, New ObjectParameter("Droits", droits), New ObjectParameter("Droits", GetType(Short)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("UpdateUtilisateur", iDParameter, usernameParameter, passwordParameter, courrielParameter, nomParameter, prenomParameter, droitsParameter)
-    End Function
-
-    Public Overridable Function SelectFactureItemByFactureID(factureID As Nullable(Of Integer)) As ObjectResult(Of SelectFactureItemByFactureID_Result)
-        Dim factureIDParameter As ObjectParameter = If(factureID.HasValue, New ObjectParameter("FactureID", factureID), New ObjectParameter("FactureID", GetType(Integer)))
-
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelectFactureItemByFactureID_Result)("SelectFactureItemByFactureID", factureIDParameter)
     End Function
 
 End Class

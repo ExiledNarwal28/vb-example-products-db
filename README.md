@@ -9,6 +9,7 @@ C'est une gestion d'inventaire de COOP de cégep qui utilise SQL Server 2014 et 
 ###Ce que je n'ai pas eu le temps d'ajouter (features)###
 	L'inventaire ne devrait pas avoir à aller chercher les données quand on annule l'ajout/la modification
 	Les utilisateurs ne sont pas liés à un utilisateur SQL Server 2014. Les droits et l'identification sont parfaitement fonctionnel
+	Les commentaires de factures ne sont pas sauvegardés
 
 ###Ce que je n'ai pas eu le temps de règler (bugs)###
 	(Rien)
