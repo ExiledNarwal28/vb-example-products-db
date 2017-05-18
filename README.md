@@ -1,4 +1,4 @@
-# Visual Basic example : Products database using Sql Server 2014 #
+# Visual Basic example : Products database using SQL Server 2014 #
 
 This work was done by me, Fabien Roy, during my last year of college. This program is an inventory tracker that uses SQL Server 2014 and what my teacher thought was LinQ (he was wrong, it was only Entity Framework...).
 
